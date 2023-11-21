@@ -1,0 +1,16 @@
+country,gdpCap,agriPerc,co2Cap,flag,fossilShare,nuclearShare,renewShare,gdpCapEu,agriPercEu,co2CapEu,fossilShareEu,nuclearShareEu,renewShareEu
+Österreich,52100,1.3,6.6,Flaggen/AUT.png,21,0,79,37100,1.7,5.5,37,25,37
+Belgien,49600,0.7,7.4,Flaggen/BEL.png,26,51,23,37100,1.7,5.5,37,25,37
+Kroatien,18400,2.5,3.9,Flaggen/HRV.png,30,0,70,37100,1.7,5.5,37,25,37
+Dänemark,67000,0.8,4.7,Flaggen/DNK.png,21,0,79,37100,1.7,5.5,37,25,37
+Estland,28300,2.5,5.3,Flaggen/EST.png,60,0,40,37100,1.7,5.5,37,25,37
+Finnland,50500,2.4,6.6,Flaggen/FIN.png,14,33,53,37100,1.7,5.5,37,25,37
+Frankreich,41000,1.8,4,Flaggen/FRA.png,9,69,22,37100,1.7,5.5,37,25,37
+Deutschland,48400,1.1,7.3,Flaggen/DEU.png,48,12,40,37100,1.7,5.5,37,25,37
+Griechenland,20700,3.9,4.8,Flaggen/GRC.png,60,0,40,37100,1.7,5.5,37,25,37
+Ungarn,18500,2.7,4.6,Flaggen/HUN.png,36,44,19,37100,1.7,5.5,37,25,37
+Irland,104000,1.1,6.8,Flaggen/IRL.png,63,0,37,37100,1.7,5.5,37,25,37
+Italien,34200,2,4.7,Flaggen/ITA.png,59,0,41,37100,1.7,5.5,37,25,37
+Polen,18300,2.1,7.4,Flaggen/POL.png,83,0,17,37100,1.7,5.5,37,25,37
+Rumänien,15900,4.5,3.6,Flaggen/ROU.png,36,19,45,37100,1.7,5.5,37,25,37
+Spanien,29400,2.4,4.3,Flaggen/ESP.png,33,21,46,37100,1.7,5.5,37,25,37
