@@ -77,15 +77,15 @@ body <- dashboardBody(
                                           #evp_new_print{color: black;
                                  font-size: 20px;
                                  }")),
-                     textOutput("evp_vize"),
-                     textOutput("evp_section_print"),
+                     uiOutput("evp_vize"),
+                     uiOutput("evp_section_print"),
                      textOutput("evp_new_print")
                      )),
                  fluidRow(
                    box(
                      width = 3,
                      tags$head(tags$style("#evp_res_print{color: black;
-                                 font-size: 20px;
+                                 font-size: 40px;
                                  font-style: bold;
                                  }")),
                      numericInput("evp_yes", "Ja:", value = NA),
@@ -128,15 +128,15 @@ body <- dashboardBody(
                                           #sd_new_print{color: black;
                                  font-size: 20px;
                                  }")),
-                     textOutput("sd_vize"),
-                     textOutput("sd_section_print"),
+                     uiOutput("sd_vize"),
+                     uiOutput("sd_section_print"),
                      textOutput("sd_new_print")
                    )),
                  fluidRow(
                    box(
                      width = 3,
                      tags$head(tags$style("#sd_res_print{color: black;
-                                 font-size: 20px;
+                                 font-size: 40px;
                                  font-style: bold;
                                  }")),
                      numericInput("sd_yes", "Ja:", value = NA),
@@ -177,15 +177,15 @@ body <- dashboardBody(
                                           #renew_new_print{color: black;
                                  font-size: 20px;
                                  }")),
-                     textOutput("renew_vize"),
-                     textOutput("renew_section_print"),
+                     uiOutput("renew_vize"),
+                     uiOutput("renew_section_print"),
                      textOutput("renew_new_print")
                    )),
                  fluidRow(
                    box(
                      width = 3,
                      tags$head(tags$style("#renew_res_print{color: black;
-                                 font-size: 20px;
+                                 font-size: 40px;
                                  font-style: bold;
                                  }")),
                      numericInput("renew_yes", "Ja:", value = NA),
@@ -226,15 +226,15 @@ body <- dashboardBody(
                                           #green_new_print{color: black;
                                  font-size: 20px;
                                  }")),
-                     textOutput("green_vize"),
-                     textOutput("green_section_print"),
+                     uiOutput("green_vize"),
+                     uiOutput("green_section_print"),
                      textOutput("green_new_print")
                    )),
                  fluidRow(
                    box(
                      width = 3,
                      tags$head(tags$style("#green_res_print{color: black;
-                                 font-size: 20px;
+                                 font-size: 40px;
                                  font-style: bold;
                                  }")),
                      numericInput("green_yes", "Ja:", value = NA),
@@ -275,15 +275,15 @@ body <- dashboardBody(
                                           #id_new_print{color: black;
                                  font-size: 20px;
                                  }")),
-                     textOutput("id_vize"),
-                     textOutput("id_section_print"),
+                     uiOutput("id_vize"),
+                     uiOutput("id_section_print"),
                      textOutput("id_new_print")
                    )),
                  fluidRow(
                    box(
                      width = 3,
                      tags$head(tags$style("#id_res_print{color: black;
-                                 font-size: 20px;
+                                 font-size: 40px;
                                  font-style: bold;
                                  }")),
                      numericInput("id_yes", "Ja:", value = NA),
@@ -325,7 +325,6 @@ server <- function(input, output, session) {
   output$evp_chart <- renderPlot({
     df <- data()
     
-    # Create a waffle chart using the ggplot2 package
     barchart <- ggplot(df, aes(x = cat, y = evp, fill = cat)) +
       geom_col() +
       scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
@@ -333,13 +332,17 @@ server <- function(input, output, session) {
       guides(fill = "none") +
       ylab("Anzahl") +
       xlab("") +
-      geom_text(aes(label = evp), position = position_stack(vjust = 0.5), size = 7) +
+      geom_text(aes(label = evp), position = position_stack(vjust = 0.5), size = 10) +
       theme_void()
     
     print(barchart)
   })
-  output$evp_vize <- renderText(paste0("Fraktionsvize: ", input$evp_vize))
-  output$evp_section_print <- renderText(paste0("Abschnitt: ", input$evp_section))
+  output$evp_vize <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$evp_vize))
+  })
+  output$evp_section_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$evp_section))
+  })
   output$evp_new_print <- renderText(input$evp_new)
   output$evp_logo <- renderUI({tags$img(src = "EPP.png", width = 150, height = 100)})
   evp_res <- reactive({
@@ -360,7 +363,6 @@ server <- function(input, output, session) {
   output$sd_chart <- renderPlot({
     df <- data()
     
-    # Create a waffle chart using the ggplot2 package
     barchart <- ggplot(df, aes(x = cat, y = sd, fill = cat)) +
       geom_col() +
       scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
@@ -368,13 +370,17 @@ server <- function(input, output, session) {
       guides(fill = "none") +
       ylab("Anzahl") +
       xlab("") +
-      geom_text(aes(label = sd), position = position_stack(vjust = 0.5), size = 7) +
+      geom_text(aes(label = sd), position = position_stack(vjust = 0.5), size = 10) +
       theme_void()
     
     print(barchart)
   })
-  output$sd_vize <- renderText(paste0("Fraktionsvize: ", input$sd_vize))
-  output$sd_section_print <- renderText(paste0("Abschnitt: ", input$sd_section))
+  output$sd_vize <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$sd_vize))
+  })
+  output$sd_section_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$sd_section))
+  })
   output$sd_new_print <- renderText(input$sd_new)
   output$sd_logo <- renderUI({tags$img(src = "S&D.png", width = 150, height = 100)})
   sd_res <- reactive({
@@ -393,7 +399,6 @@ server <- function(input, output, session) {
   output$renew_chart <- renderPlot({
     df <- data()
     
-    # Create a waffle chart using the ggplot2 package
     barchart <- ggplot(df, aes(x = cat, y = renew, fill = cat)) +
       geom_col() +
       scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
@@ -401,13 +406,17 @@ server <- function(input, output, session) {
       guides(fill = "none") +
       ylab("Anzahl") +
       xlab("") +
-      geom_text(aes(label = renew), position = position_stack(vjust = 0.5), size = 7) +
+      geom_text(aes(label = renew), position = position_stack(vjust = 0.5), size = 10) +
       theme_void()
     
     print(barchart)  
   })
-  output$renew_vize <- renderText(paste0("Fraktionsvize: ", input$renew_vize))
-  output$renew_section_print <- renderText(paste0("Abschnitt: ", input$renew_section))
+  output$renew_vize <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$renew_vize))
+  })
+  output$renew_section_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$renew_section))
+  })
   output$renew_new_print <- renderText(input$renew_new)
   output$renew_logo <- renderUI({tags$img(src = "Renew.png", width = 150, height = 100)})
   renew_res <- reactive({
@@ -426,7 +435,6 @@ server <- function(input, output, session) {
   output$green_chart <- renderPlot({
     df <- data()
     
-    # Create a waffle chart using the ggplot2 package
     barchart <- ggplot(df, aes(x = cat, y = green, fill = cat)) +
       geom_col() +
       scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
@@ -434,14 +442,18 @@ server <- function(input, output, session) {
       guides(fill = "none") +
       ylab("Anzahl") +
       xlab("") +
-      geom_text(aes(label = green), position = position_stack(vjust = 0.5), size = 7) +
+      geom_text(aes(label = green), position = position_stack(vjust = 0.5), size = 10) +
       theme_void()
     
     print(barchart)
   })
   
-  output$green_vize <- renderText(paste0("Fraktionsvize: ", input$green_vize))
-  output$green_section_print <- renderText(paste0("Abschnitt: ", input$green_section))
+  output$green_vize <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$green_vize))
+  })
+  output$green_section_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$green_section))
+  })
   output$green_new_print <- renderText(input$green_new)
   output$green_logo <- renderUI({tags$img(src = "Greens.png", width = 150, height = 100)})
   green_res <- reactive({
@@ -460,7 +472,6 @@ server <- function(input, output, session) {
   output$id_chart <- renderPlot({
     df <- data()
     
-    # Create a waffle chart using the ggplot2 package
     barchart <- ggplot(df, aes(x = cat, y = id, fill = cat)) +
       geom_col() +
       scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
@@ -468,13 +479,17 @@ server <- function(input, output, session) {
       guides(fill = "none") +
       ylab("Anzahl") +
       xlab("") +
-      geom_text(aes(label = id), position = position_stack(vjust = 0.5), size = 7) +
+      geom_text(aes(label = id), position = position_stack(vjust = 0.5), size = 10) +
       theme_void()
     
     print(barchart)
   })
-  output$id_vize <- renderText(paste0("Fraktionsvize: ", input$id_vize))
-  output$id_section_print <- renderText(paste0("Abschnitt: ", input$id_section))
+  output$id_vize <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$id_vize))
+  })
+  output$id_section_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$id_section))
+  })
   output$id_new_print <- renderText(input$id_new)
   output$id_logo <- renderUI({tags$img(src = "ID.png", width = 150, height = 100)})
   id_res <- reactive({
