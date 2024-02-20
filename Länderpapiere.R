@@ -1,6 +1,7 @@
 library(data.table)
-library(readr)
+library(haven)
 library(jsonlite)
+library(readr)
 library(rvest)
 library(stringr)
 library(tidyverse)
@@ -88,7 +89,7 @@ df_GD <- df_GD |>
          co2Cap = EN.ATM.CO2E.PC) |>
   mutate(flag = paste0("Flaggen/", iso3c, ".png"))
 
-
+# Scrape Our World in Data
 
 links <- xml2::read_html("https://ourworldindata.org/grapher/share-elec-by-source?tab=table&time=2021") |>
   html_nodes("link")
@@ -125,11 +126,11 @@ df_GD <- df_GD |>
 
 df_GD <- df_GD |> 
          mutate(gdpCapEu = df_GD[df_GD$country == "Europäische Union", "gdpCap"],
-         agriPercEu = df_GD[df_GD$country == "Europäische Union", "agriPerc"],
-         co2CapEu = df_GD[df_GD$country == "Europäische Union", "co2Cap"],
-         fossilShareEu = df_GD[df_GD$country == "Europäische Union", "fossilShare"],
-         nuclearShareEu = df_GD[df_GD$country == "Europäische Union", "nuclearShare"],
-         renewShareEu = df_GD[df_GD$country == "Europäische Union", "renewShare"]) |> 
+               agriPercEu = df_GD[df_GD$country == "Europäische Union", "agriPerc"],
+               co2CapEu = df_GD[df_GD$country == "Europäische Union", "co2Cap"],
+               fossilShareEu = df_GD[df_GD$country == "Europäische Union", "fossilShare"],
+               nuclearShareEu = df_GD[df_GD$country == "Europäische Union", "nuclearShare"],
+               renewShareEu = df_GD[df_GD$country == "Europäische Union", "renewShare"]) |> 
   select(country, gdpCap, agriPerc, co2Cap, 
          flag, fossilShare, nuclearShare, renewShare,
          gdpCapEu, agriPercEu, co2CapEu,
@@ -137,3 +138,86 @@ df_GD <- df_GD |>
   filter(country != "Europäische Union")
 
 write_csv(df_GD, "data_gd.csv", quote = "none")
+
+# Armee -------------------------------------------------------------------
+
+# NY.GDP.PCAP.CD # GDP/capita
+# MS.MIL.XPND.GD.ZS # Military % GDP
+
+# Ansicht zu Verteidigungsausgaben
+
+# Download "ZA8764_v1-0-0.dta" from https://search.gesis.org/research_data/ZA8764
+df_eurob <- read_dta("ZA8764_v1-0-0.dta")
+df_eurob <- df_eurob |>
+              select(isocntry, q6_2) |>
+              # Russia’s invasion of Ukraine shows the EU needs to increase military cooperation between Member States
+              rename(country = isocntry,
+              incr_coop = q6_2)
+num_resp <- df_eurob$country |> table() 
+
+{df_coop <- df_eurob |> 
+              group_by(country) |> 
+              summarise(agree = sum(incr_coop %in% c(1, 2)),
+              disagr = sum(incr_coop %in% c(3, 4))) |> 
+              mutate(agree = round(agree * 100/num_resp, 0),
+                     disagr = round(disagr * 100/num_resp, 0)) |>
+              as_tibble()
+df_coop <- rbind(df_coop, list("EU", round(mean(df_coop$agree), 0), round(mean(df_coop$disagr), 0))) |> 
+            filter(country %in% c("EU", "AT", "BE", "HR", "DK", "EE", "ES", "FI", "FR", "DE", "GR",
+                                  "HU", "IE", "IT", "PL", "RO"))}
+
+
+df_mil <- WDI(country = c("EU", "AT", "BE", "HR", "DK", "EE", "ES", "FI", "FR", "DE", "GR",
+                "HU", "IE", "IT", "PL", "RO"),
+            indicator = c("NY.GDP.PCAP.CD", "MS.MIL.XPND.GD.ZS"),
+            start = 2022, end = 2022)
+
+df_mil <- df_mil |> 
+            rename(gdpCap = NY.GDP.PCAP.CD,
+                  milPerc = MS.MIL.XPND.GD.ZS) |>
+            mutate(flag = paste0("Flaggen/", iso3c, ".png"))
+
+# Wehrpflicht
+
+webpage <- "https://worldpopulationreview.com/country-rankings/countries-with-mandatory-military-service" |> 
+  read_html()
+df_subs <- html_table(html_nodes(webpage, ".mb-5"), fill = TRUE)[[2]] |> 
+  filter(Country %in% c(
+    "Austria",
+    "Belgium",
+    "Croatia",
+    "Denmark",
+    "Estonia",
+    "Spain",
+    "Finland",
+    "France",
+    "Germany",
+    "Greece",
+    "Hungary",
+    "Ireland",
+    "Italy",
+    "Poland",
+    "Romania"
+  )) |> 
+  rename(subscription = `Mandatory Military Service`) |> 
+  select(Country, subscription)
+
+df_mil <- df_mil |> 
+          left_join(df_subs, join_by(country==Country)) |> 
+          left_join(df_coop, join_by(iso2c==country)) |> 
+          mutate(across(c(gdpCap), round, -2)) |> 
+          mutate(across(c(milPerc), round, 2)) |> 
+          mutate(country = translate_country(country))
+          
+df_mil <- df_mil |> 
+  mutate(gdpCapEu = df_mil[df_mil$country == "Europäische Union", "gdpCap"],
+         milPercEU = df_mil[df_mil$country == "Europäische Union", "milPerc"],
+         agreeEU = df_mil[df_mil$country == "Europäische Union", "agree"],
+         disagrEU = df_mil[df_mil$country == "Europäische Union", "disagr"]) |> 
+  select(country, gdpCap, milPerc, subscription, 
+         agree, disagr, flag,
+         gdpCapEu, milPercEU,
+         agreeEU, disagrEU) |> 
+  filter(country != "Europäische Union")
+
+write_csv(df_mil, "data_mil.csv", quote = "none")
