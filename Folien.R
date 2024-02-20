@@ -80,7 +80,7 @@ df_com <- url_com |>
   distinct(short, .keep_all = TRUE) |>
   rows_delete(tibble(short = "Committee")) |> 
   arrange(short) |> 
-  filter(short %in% c("AFET", "AGRI", "BUDG", "DROI", "ITRE", "LIBE", "TRAN"))
+  filter(short %in% c("AFET", "AGRI", "BUDG", "DROI", "ITRE", "LIBE", "SEDE", "TRAN"))
 
 # Falls Anmerkungen vor Vorsitzender
 {df_com$vorsitz <- sapply(df_com$vorsitz|> unname(), function(x){
