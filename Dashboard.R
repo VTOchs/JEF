@@ -85,13 +85,14 @@ body <- dashboardBody(
                    box(
                      width = 3,
                      tags$head(tags$style("#evp_res_print{color: black;
-                                 font-size: 40px;
+                                 font-size: 30px;
                                  font-style: bold;
                                  }")),
                      numericInput("evp_yes", "Ja:", value = NA),
                      numericInput("evp_no", "Nein:", value = NA),
                      numericInput("evp_abst", "Enthaltung:", value = NA),
-                     textOutput("evp_res_print")
+                     textOutput("evp_res_print"),
+                     uiOutput("evp_res_img")
                    ),
                    box(
                      width = 9,
@@ -136,13 +137,14 @@ body <- dashboardBody(
                    box(
                      width = 3,
                      tags$head(tags$style("#sd_res_print{color: black;
-                                 font-size: 40px;
+                                 font-size: 30px;
                                  font-style: bold;
                                  }")),
                      numericInput("sd_yes", "Ja:", value = NA),
                      numericInput("sd_no", "Nein:", value = NA),
                      numericInput("sd_abst", "Enthaltung:", value = NA),
-                     textOutput("sd_res_print")
+                     textOutput("sd_res_print"),
+                     uiOutput("sd_res_img")
                    ),
                    box(
                      width = 9,
@@ -185,13 +187,14 @@ body <- dashboardBody(
                    box(
                      width = 3,
                      tags$head(tags$style("#renew_res_print{color: black;
-                                 font-size: 40px;
+                                 font-size: 30px;
                                  font-style: bold;
                                  }")),
                      numericInput("renew_yes", "Ja:", value = NA),
                      numericInput("renew_no", "Nein:", value = NA),
                      numericInput("renew_abst", "Enthaltung:", value = NA),
-                     textOutput("renew_res_print")
+                     textOutput("renew_res_print"),
+                     uiOutput("renew_res_img")
                    ),
                    box(
                      width = 9,
@@ -234,13 +237,14 @@ body <- dashboardBody(
                    box(
                      width = 3,
                      tags$head(tags$style("#green_res_print{color: black;
-                                 font-size: 40px;
+                                 font-size: 30px;
                                  font-style: bold;
                                  }")),
                      numericInput("green_yes", "Ja:", value = NA),
                      numericInput("green_no", "Nein:", value = NA),
                      numericInput("green_abst", "Enthaltung:", value = NA),
-                     textOutput("green_res_print")
+                     textOutput("green_res_print"),
+                     uiOutput("green_res_img")
                    ),
                    box(
                      width = 9,
@@ -283,13 +287,14 @@ body <- dashboardBody(
                    box(
                      width = 3,
                      tags$head(tags$style("#id_res_print{color: black;
-                                 font-size: 40px;
+                                 font-size: 30px;
                                  font-style: bold;
                                  }")),
                      numericInput("id_yes", "Ja:", value = NA),
                      numericInput("id_no", "Nein:", value = NA),
                      numericInput("id_abst", "Enthaltung:", value = NA),
-                     textOutput("id_res_print")
+                     textOutput("id_res_print"),
+                     uiOutput("id_res_img")
                    ),
                    box(
                      width = 9,
@@ -356,7 +361,13 @@ server <- function(input, output, session) {
   })
   output$evp_res_print <- renderText(evp_res())
   
-  
+  output$evp_res_img <- renderUI({
+    if (evp_res() == "Der Änderungsantrag ist angenommen!") {
+      img(src = "angenommen.png", height = "100px", width = "100px")
+    } else if (evp_res() == "Der Änderungsantrag ist abgelehnt!") {
+      img(src = "abgelehnt.png", height = "100px", width = "100px")
+    }
+  })
   
   
   # S&D
@@ -394,6 +405,13 @@ server <- function(input, output, session) {
   })
   output$sd_res_print <- renderText(sd_res())  
   
+  output$sd_res_img <- renderUI({
+    if (sd_res() == "Der Änderungsantrag ist angenommen!") {
+      img(src = "angenommen.png", height = "100px", width = "100px")
+    } else if (sd_res() == "Der Änderungsantrag ist abgelehnt!") {
+      img(src = "abgelehnt.png", height = "100px", width = "100px")
+    }
+  })
   
   # Renew
   output$renew_chart <- renderPlot({
@@ -430,6 +448,13 @@ server <- function(input, output, session) {
   })
   output$renew_res_print <- renderText(renew_res())  
   
+  output$renew_res_img <- renderUI({
+    if (renew_res() == "Der Änderungsantrag ist angenommen!") {
+      img(src = "angenommen.png", height = "100px", width = "100px")
+    } else if (renew_res() == "Der Änderungsantrag ist abgelehnt!") {
+      img(src = "abgelehnt.png", height = "100px", width = "100px")
+    }
+  })
   
   # Greens
   output$green_chart <- renderPlot({
@@ -467,6 +492,13 @@ server <- function(input, output, session) {
   })
   output$green_res_print <- renderText(green_res())  
   
+  output$green_res_img <- renderUI({
+    if (green_res() == "Der Änderungsantrag ist angenommen!") {
+      img(src = "angenommen.png", height = "100px", width = "100px")
+    } else if (green_res() == "Der Änderungsantrag ist abgelehnt!") {
+      img(src = "abgelehnt.png", height = "100px", width = "100px")
+    }
+  })
   
   # ID
   output$id_chart <- renderPlot({
@@ -501,8 +533,17 @@ server <- function(input, output, session) {
       print("Der Änderungsantrag ist abgelehnt!")
     }
   })
-  output$id_res_print <- renderText(id_res())  
+  output$id_res_print <- renderText(id_res())
+  
+  output$id_res_img <- renderUI({
+    if (id_res() == "Der Änderungsantrag ist angenommen!") {
+      img(src = "angenommen.png", height = "100px", width = "100px")
+    } else if (id_res() == "Der Änderungsantrag ist abgelehnt!") {
+      img(src = "abgelehnt.png", height = "100px", width = "100px")
+    }
+  })
 }
+
 
 
 shinyApp(ui = ui, server = server)
