@@ -1,3 +1,5 @@
+rm(list = ls())
+
 library(data.table)
 library(haven)
 library(jsonlite)
@@ -24,10 +26,16 @@ translate_country <- function(country){
 
 # Asyl- und Migration -----------------------------------------------------
 
+### Problem sind die Kommata in den csv-Files ###
+
 # NY.GDP.PCAP.CD # GDP/capita
 # SP.POP.TOTL # pop total
 # SM.POP.REFG # refugee population
 # SP.POP.DPND # % working-age population
+
+set_point <- function(x){
+  formatC(x, digits = nchar(as.integer(x)), big.mark=".", decimal.mark = ",")
+}
 
 df_asyl <- WDI(country = c("EU", "AT", "BE", "HR", "DK", "EE", "ES", "FI", "FR", "DE", "GR",
                            "HU", "IE", "IT", "PL", "RO"),
@@ -41,7 +49,12 @@ df_asyl <- WDI(country = c("EU", "AT", "BE", "HR", "DK", "EE", "ES", "FI", "FR",
          flag = paste0("Flaggen/", iso3c, ".png"),
          country = translate_country(country)) |> 
   mutate(across(gdpCap, round, -2)) |> 
-  mutate(across(c(workAgePerc, refPerc), round, 1))
+  mutate(across(c(workAgePerc, refPerc), round, 1)) |> 
+  mutate(across(refPerc, ~gsub("\\.", ",", formatC(., digits = 2, decimal.mark = ","))))|>
+  mutate(across(workAgePerc, ~gsub("\\.", ",", formatC(., digits = 3, decimal.mark = ","))))
+
+df_asyl$gdpCap <- df_asyl$gdpCap |> 
+  sapply(function(x) set_point(x))
 
 df_asyl <- df_asyl |> 
   mutate(gdpCapEu = df_asyl[df_asyl$country == "Europäische Union", "gdpCap"],
@@ -67,7 +80,7 @@ df_asyl$border <- c("Nein", # AUT
                     "Ja", # ROU
                     "Ja") # ESP
 
-write_csv(df_asyl, "data_asyl.csv", quote = "none")
+write_csv(df_asyl, "data_asyl.csv")
 
 # Green Deal --------------------------------------------------------------
 
@@ -122,7 +135,11 @@ df_GD <- df_GD |>
   mutate(country = translate_country(country)) |> 
   mutate(fossilShare = round((Oil + Gas + Coal), 0),
          nuclearShare = round(Nuclear, 0),
-         renewShare = round((Bioenergy + Other + Wind + Solar+ Hydro), 0))
+         renewShare = round((Bioenergy + Other + Wind + Solar+ Hydro), 0))|> 
+  mutate(across(c(agriPerc, co2Cap), ~gsub("\\.", ",", formatC(., digits = 2, decimal.mark = ","))))
+
+df_GD$gdpCap <- df_GD$gdpCap |> 
+  sapply(function(x) set_point(x))
 
 df_GD <- df_GD |> 
          mutate(gdpCapEu = df_GD[df_GD$country == "Europäische Union", "gdpCap"],
@@ -137,7 +154,7 @@ df_GD <- df_GD |>
          fossilShareEu, nuclearShareEu, renewShareEu) |> 
   filter(country != "Europäische Union")
 
-write_csv(df_GD, "data_gd.csv", quote = "none")
+write_csv(df_GD, "data_gd.csv")
 
 # Armee -------------------------------------------------------------------
 
@@ -150,7 +167,8 @@ write_csv(df_GD, "data_gd.csv", quote = "none")
 df_eurob <- read_dta("ZA8764_v1-0-0.dta")
 df_eurob <- df_eurob |>
               select(isocntry, q6_2) |>
-              # Russia’s invasion of Ukraine shows the EU needs to increase military cooperation between Member States
+              # Russia’s invasion of Ukraine shows the EU needs to
+              # increase military cooperation between Member States
               rename(country = isocntry,
               incr_coop = q6_2)
 num_resp <- df_eurob$country |> table() 
@@ -202,13 +220,28 @@ df_subs <- html_table(html_nodes(webpage, ".mb-5"), fill = TRUE)[[2]] |>
   rename(subscription = `Mandatory Military Service`) |> 
   select(Country, subscription)
 
+# manuelles Übersetzen von Yes/No
+translation_data_sub <- data.frame(
+  en = c("Yes", "No", "De jure"),
+  de = c("Ja", "Nein", "Nein (de facto)")
+)
+
+translate_sub <- function(varx){
+  translation_data_sub[translation_data_sub$en == varx, "de"]
+}
+
 df_mil <- df_mil |> 
           left_join(df_subs, join_by(country==Country)) |> 
           left_join(df_coop, join_by(iso2c==country)) |> 
           mutate(across(c(gdpCap), round, -2)) |> 
           mutate(across(c(milPerc), round, 2)) |> 
-          mutate(country = translate_country(country))
-          
+          mutate(country = translate_country(country)) |> 
+          mutate(across(milPerc, ~gsub("\\.", ",", formatC(., digits = 3, decimal.mark = ","))))
+
+df_mil$gdpCap <- df_mil$gdpCap |> 
+  sapply(function(x) set_point(x))
+
+        
 df_mil <- df_mil |> 
   mutate(gdpCapEu = df_mil[df_mil$country == "Europäische Union", "gdpCap"],
          milPercEU = df_mil[df_mil$country == "Europäische Union", "milPerc"],
@@ -220,4 +253,9 @@ df_mil <- df_mil |>
          agreeEU, disagrEU) |> 
   filter(country != "Europäische Union")
 
-write_csv(df_mil, "data_mil.csv", quote = "none")
+df_mil$subscription <- df_mil$subscription |> 
+                        sapply(function(x) translate_sub(x)) |> 
+                        unlist() |>
+                        unname()
+
+write_csv(df_mil, "data_mil.csv")

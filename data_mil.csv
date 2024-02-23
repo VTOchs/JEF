@@ -1,16 +1,16 @@
 country,gdpCap,milPerc,subscription,agree,disagr,flag,gdpCapEu,milPercEU,agreeEU,disagrEU
-Österreich,52100,0.77,Yes,60,29,Flaggen/AUT.png,37400,1.56,73,20
-Belgien,49900,1.18,No,76,16,Flaggen/BEL.png,37400,1.56,73,20
-Kroatien,18600,2.17,No,79,16,Flaggen/HRV.png,37400,1.56,73,20
-Dänemark,67800,1.42,Yes,79,14,Flaggen/DNK.png,37400,1.56,73,20
-Estland,28200,2.09,Yes,86,10,Flaggen/EST.png,37400,1.56,73,20
-Finnland,50900,1.72,Yes,84,11,Flaggen/FIN.png,37400,1.56,73,20
-Frankreich,40900,1.94,No,78,14,Flaggen/FRA.png,37400,1.56,73,20
-Deutschland,48700,1.39,No,74,18,Flaggen/DEU.png,37400,1.56,73,20
-Griechenland,20900,3.69,Yes,63,31,Flaggen/GRC.png,37400,1.56,73,20
-Ungarn,18400,1.53,No,67,24,Flaggen/HUN.png,37400,1.56,73,20
-Irland,104000,0.23,No,71,21,Flaggen/IRL.png,37400,1.56,73,20
-Italien,34800,1.68,No,68,22,Flaggen/ITA.png,37400,1.56,73,20
-Polen,18700,2.39,No,88,9,Flaggen/POL.png,37400,1.56,73,20
-Rumänien,15800,1.73,No,80,15,Flaggen/ROU.png,37400,1.56,73,20
-Spanien,29700,1.47,De jure,77,14,Flaggen/ESP.png,37400,1.56,73,20
+Österreich,52.100,"0,77",Ja,60,29,Flaggen/AUT.png,37.400,"1,56",73,20
+Belgien,49.900,"1,18",Nein,76,16,Flaggen/BEL.png,37.400,"1,56",73,20
+Kroatien,18.600,"2,17",Nein,79,16,Flaggen/HRV.png,37.400,"1,56",73,20
+Dänemark,67.800,"1,42",Ja,79,14,Flaggen/DNK.png,37.400,"1,56",73,20
+Estland,28.200,"2,09",Ja,86,10,Flaggen/EST.png,37.400,"1,56",73,20
+Finnland,50.900,"1,72",Ja,84,11,Flaggen/FIN.png,37.400,"1,56",73,20
+Frankreich,40.900,"1,94",Nein,78,14,Flaggen/FRA.png,37.400,"1,56",73,20
+Deutschland,48.700,"1,39",Nein,74,18,Flaggen/DEU.png,37.400,"1,56",73,20
+Griechenland,20.900,"3,69",Ja,63,31,Flaggen/GRC.png,37.400,"1,56",73,20
+Ungarn,18.400,"1,53",Nein,67,24,Flaggen/HUN.png,37.400,"1,56",73,20
+Irland,104.000,"0,23",Nein,71,21,Flaggen/IRL.png,37.400,"1,56",73,20
+Italien,34.800,"1,68",Nein,68,22,Flaggen/ITA.png,37.400,"1,56",73,20
+Polen,18.700,"2,39",Nein,88,9,Flaggen/POL.png,37.400,"1,56",73,20
+Rumänien,15.800,"1,73",Nein,80,15,Flaggen/ROU.png,37.400,"1,56",73,20
+Spanien,29.700,"1,47",Nein (de facto),77,14,Flaggen/ESP.png,37.400,"1,56",73,20
