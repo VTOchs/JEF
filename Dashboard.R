@@ -1,6 +1,21 @@
+library(diffobj)
+library(ggplot2)
+library(pkgmaker)
 library(shiny)
 library(shinydashboard)
-library(ggplot2)
+library(stringr)
+
+collapse_diff <- function(str_list){
+  for (i in seq_along(str_list)) {
+    if (names(str_list)[i] == "Diff") {
+      str_list[i] <- paste0("<b>", str_list[i], "</b>")
+    }
+  }
+  str_list |> unlist() |> paste(collapse = "")
+}
+
+
+# UI -------------------------------------------------------------
 
 header <- dashboardHeader(title = "Plenardebatte")
 
@@ -21,28 +36,28 @@ body <- dashboardBody(
         tabPanel("EVP",
                  textInput("evp_vize", "Fraktionsvize:"),
                  textInput("evp_section", "Abschnitt:"),
-                 # textInput("evp_old", "alter Text:"),
-                 textInput("evp_new", "Änderungsantrag:")),
+                 textInput("evp_old", "alter Text:"),
+                 textInput("evp_new", "neuer Text:")),
         tabPanel("S&D",
                  textInput("sd_vize", "Fraktionsvize:"),
                  textInput("sd_section", "Abschnitt:"),
-                 # textInput("sd_old", "alter Text:"),
-                 textInput("sd_new", "Änderungsantrag:")),
+                 textInput("sd_old", "alter Text:"),
+                 textInput("sd_new", "neuer Text:")),
         tabPanel("Renew",
                  textInput("renew_vize", "Fraktionsvize:"),
                  textInput("renew_section", "Abschnitt:"),
-                 # textInput("renew_old", "alter Text:"),
-                 textInput("renew_new", "Änderungsantrag:")),
+                 textInput("renew_old", "alter Text:"),
+                 textInput("renew_new", "neuer Text:")),
         tabPanel("Grüne",
                  textInput("green_vize", "Fraktionsvize:"),
                  textInput("green_section", "Abschnitt:"),
-                 # textInput("green_old", "alter Text:"),
-                 textInput("green_new", "Änderungsantrag:")),
+                 textInput("green_old", "alter Text:"),
+                 textInput("green_new", "neuer Text:")),
         tabPanel("ID",
                  textInput("id_vize", "Fraktionsvize:"),
                  textInput("id_section", "Abschnitt:"),
-                 # textInput("id_old", "alter Text:"),
-                 textInput("id_new", "Änderungsantrag:"))
+                 textInput("id_old", "alter Text:"),
+                 textInput("id_new", "neuer Text:"))
       ),
     ),
     
@@ -74,12 +89,16 @@ body <- dashboardBody(
                                  font-size: 24px;
                                  font-style: bold;
                                  }
+                                          #evp_old_print{color: black;
+                                 font-size: 20px;
+                                 }
                                           #evp_new_print{color: black;
                                  font-size: 20px;
                                  }")),
                      uiOutput("evp_vize"),
                      uiOutput("evp_section_print"),
-                     textOutput("evp_new_print")
+                     uiOutput("evp_old_print"),
+                     uiOutput("evp_new_print")
                      )),
                  fluidRow(
                    box(
@@ -126,12 +145,16 @@ body <- dashboardBody(
                                  font-size: 24px;
                                  font-style: bold;
                                  }
+                                          #sd_old_print{color: black;
+                                 font-size: 20px;
+                                 }
                                           #sd_new_print{color: black;
                                  font-size: 20px;
                                  }")),
                      uiOutput("sd_vize"),
                      uiOutput("sd_section_print"),
-                     textOutput("sd_new_print")
+                     uiOutput("sd_old_print"),
+                     uiOutput("sd_new_print")
                    )),
                  fluidRow(
                    box(
@@ -176,12 +199,16 @@ body <- dashboardBody(
                                  font-size: 24px;
                                  font-style: bold;
                                  }
+                                          #renew_old_print{color: black;
+                                 font-size: 20px;
+                                 }
                                           #renew_new_print{color: black;
                                  font-size: 20px;
                                  }")),
                      uiOutput("renew_vize"),
                      uiOutput("renew_section_print"),
-                     textOutput("renew_new_print")
+                     uiOutput("renew_old_print"),
+                     uiOutput("renew_new_print")
                    )),
                  fluidRow(
                    box(
@@ -226,12 +253,16 @@ body <- dashboardBody(
                                  font-size: 24px;
                                  font-style: bold;
                                  }
+                                          #green_old_print{color: black;
+                                 font-size: 20px;
+                                 }
                                           #green_new_print{color: black;
                                  font-size: 20px;
                                  }")),
                      uiOutput("green_vize"),
                      uiOutput("green_section_print"),
-                     textOutput("green_new_print")
+                     uiOutput("green_old_print"),
+                     uiOutput("green_new_print")
                    )),
                  fluidRow(
                    box(
@@ -276,12 +307,16 @@ body <- dashboardBody(
                                  font-size: 24px;
                                  font-style: bold;
                                  }
+                                          #id_old_print{color: black;
+                                 font-size: 20px;
+                                 }
                                           #id_new_print{color: black;
                                  font-size: 20px;
                                  }")),
                      uiOutput("id_vize"),
                      uiOutput("id_section_print"),
-                     textOutput("id_new_print")
+                     uiOutput("id_old_print"),
+                     uiOutput("id_new_print")
                    )),
                  fluidRow(
                    box(
@@ -310,6 +345,7 @@ ui <- dashboardPage(header, sidebar, body)
 
 
 
+# Server ------------------------------------------------------------------
 
 server <- function(input, output, session) {
   
@@ -324,8 +360,7 @@ server <- function(input, output, session) {
     )
   })
   
-  
-  
+
   # EVP
   output$evp_chart <- renderPlot({
     df <- data()
@@ -348,7 +383,59 @@ server <- function(input, output, session) {
   output$evp_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$evp_section))
   })
-  output$evp_new_print <- renderText(input$evp_new)
+  output$evp_old_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$evp_old))
+  })
+  
+  output$evp_new_print <- renderUI({
+    
+    evp_old <- input$evp_old
+    evp_new <- input$evp_new
+    
+    evp_equal_string <- diffChr(evp_old, evp_new, format = "ansi8")@cur.dat$eq |> trimws()
+    evp_eq_mat <- str_locate(evp_new, strsplit(evp_equal_string, " ")[[1]]) # get positions where strings are the same
+    evp_new_split <- str_split(evp_new, "")[[1]]
+    
+    evp_diff_list <- list()
+    
+    if (evp_eq_mat[1,1]!=1) { # if first part is not equal
+      # get string up to first equal part
+      evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[1:(evp_eq_mat[1,1]-1)] |> paste(collapse = "")
+    }
+    for (i in 1:nrow(evp_eq_mat)) {
+      # get first equal part
+      evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[evp_eq_mat[i,1]:evp_eq_mat[i,2]] |> paste(collapse = "")
+      if (i < nrow(evp_eq_mat)) {# if not last equal part
+        # get different part (between two equal parts)  
+        evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[(evp_eq_mat[i,2]+1):(evp_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
+      }else{
+        if (evp_eq_mat[i,2]!=length(evp_new_split)) { #if last part is not equal
+          # get last (different) part
+          evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[(evp_eq_mat[i,2]+1):length(evp_new_split)] |> paste(collapse = "")
+        }
+      }
+    }
+    
+    if (evp_eq_mat[1,1]!=1) { # String B fängt anders an
+      for (i in seq_along(evp_diff_list)) {
+        if (i%%2==1) { # erster Part anders
+          names(evp_diff_list)[i] <- "Diff"
+        }else{
+          names(evp_diff_list)[i] <- "Same"
+        }
+      }
+    }else{
+      for (i in seq_along(evp_diff_list)) {
+        if (i%%2==1) { # erster Part gleich
+          names(evp_diff_list)[i] <- "Same"
+        }else{
+          names(evp_diff_list)[i] <- "Diff"
+        }
+      }
+    }
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(evp_diff_list)))
+  })
+  
   output$evp_logo <- renderUI({tags$img(src = "EPP.png", width = 150, height = 100)})
   evp_res <- reactive({
     if (is.na(input$evp_yes) | is.na(input$evp_no) | is.na(input$evp_abst)) {
@@ -368,6 +455,7 @@ server <- function(input, output, session) {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
+  
   
   
   # S&D
@@ -392,7 +480,59 @@ server <- function(input, output, session) {
   output$sd_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$sd_section))
   })
-  output$sd_new_print <- renderText(input$sd_new)
+  output$sd_old_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$sd_old))
+  })
+  
+  output$sd_new_print <- renderUI({
+    
+    sd_old <- input$sd_old
+    sd_new <- input$sd_new
+    
+    sd_equal_string <- diffChr(sd_old, sd_new, format = "ansi8")@cur.dat$eq |> trimws()
+    sd_eq_mat <- str_locate(sd_new, strsplit(sd_equal_string, " ")[[1]]) # get positions where strings are the same
+    sd_new_split <- str_split(sd_new, "")[[1]]
+    
+    sd_diff_list <- list()
+    
+    if (sd_eq_mat[1,1]!=1) { # if first part is not equal
+      # get string up to first equal part
+      sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[1:(sd_eq_mat[1,1]-1)] |> paste(collapse = "")
+    }
+    for (i in 1:nrow(sd_eq_mat)) {
+      # get first equal part
+      sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[sd_eq_mat[i,1]:sd_eq_mat[i,2]] |> paste(collapse = "")
+      if (i < nrow(sd_eq_mat)) {# if not last equal part
+        # get different part (between two equal parts)  
+        sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[(sd_eq_mat[i,2]+1):(sd_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
+      }else{
+        if (sd_eq_mat[i,2]!=length(sd_new_split)) { #if last part is not equal
+          # get last (different) part
+          sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[(sd_eq_mat[i,2]+1):length(sd_new_split)] |> paste(collapse = "")
+        }
+      }
+    }
+    
+    if (sd_eq_mat[1,1]!=1) { # String B fängt anders an
+      for (i in seq_along(sd_diff_list)) {
+        if (i%%2==1) { # erster Part anders
+          names(sd_diff_list)[i] <- "Diff"
+        }else{
+          names(sd_diff_list)[i] <- "Same"
+        }
+      }
+    }else{
+      for (i in seq_along(sd_diff_list)) {
+        if (i%%2==1) { # erster Part gleich
+          names(sd_diff_list)[i] <- "Same"
+        }else{
+          names(sd_diff_list)[i] <- "Diff"
+        }
+      }
+    }
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(sd_diff_list)))
+  })
+  
   output$sd_logo <- renderUI({tags$img(src = "S&D.png", width = 150, height = 100)})
   sd_res <- reactive({
     if (is.na(input$sd_yes) | is.na(input$sd_no) | is.na(input$sd_abst)) {
@@ -412,6 +552,8 @@ server <- function(input, output, session) {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
+  
+  
   
   # Renew
   output$renew_chart <- renderPlot({
@@ -435,7 +577,59 @@ server <- function(input, output, session) {
   output$renew_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$renew_section))
   })
-  output$renew_new_print <- renderText(input$renew_new)
+  output$renew_old_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$renew_old))
+  })
+  
+  output$renew_new_print <- renderUI({
+    
+    renew_old <- input$renew_old
+    renew_new <- input$renew_new
+    
+    renew_equal_string <- diffChr(renew_old, renew_new, format = "ansi8")@cur.dat$eq |> trimws()
+    renew_eq_mat <- str_locate(renew_new, strsplit(renew_equal_string, " ")[[1]]) # get positions where strings are the same
+    renew_new_split <- str_split(renew_new, "")[[1]]
+    
+    renew_diff_list <- list()
+    
+    if (renew_eq_mat[1,1]!=1) { # if first part is not equal
+      # get string up to first equal part
+      renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[1:(renew_eq_mat[1,1]-1)] |> paste(collapse = "")
+    }
+    for (i in 1:nrow(renew_eq_mat)) {
+      # get first equal part
+      renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[renew_eq_mat[i,1]:renew_eq_mat[i,2]] |> paste(collapse = "")
+      if (i < nrow(renew_eq_mat)) {# if not last equal part
+        # get different part (between two equal parts)  
+        renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[(renew_eq_mat[i,2]+1):(renew_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
+      }else{
+        if (renew_eq_mat[i,2]!=length(renew_new_split)) { #if last part is not equal
+          # get last (different) part
+          renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[(renew_eq_mat[i,2]+1):length(renew_new_split)] |> paste(collapse = "")
+        }
+      }
+    }
+    
+    if (renew_eq_mat[1,1]!=1) { # String B fängt anders an
+      for (i in seq_along(renew_diff_list)) {
+        if (i%%2==1) { # erster Part anders
+          names(renew_diff_list)[i] <- "Diff"
+        }else{
+          names(renew_diff_list)[i] <- "Same"
+        }
+      }
+    }else{
+      for (i in seq_along(renew_diff_list)) {
+        if (i%%2==1) { # erster Part gleich
+          names(renew_diff_list)[i] <- "Same"
+        }else{
+          names(renew_diff_list)[i] <- "Diff"
+        }
+      }
+    }
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(renew_diff_list)))
+  })
+  
   output$renew_logo <- renderUI({tags$img(src = "Renew.png", width = 150, height = 100)})
   renew_res <- reactive({
     if (is.na(input$renew_yes) | is.na(input$renew_no) | is.na(input$renew_abst)) {
@@ -455,6 +649,8 @@ server <- function(input, output, session) {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
+  
+  
   
   # Greens
   output$green_chart <- renderPlot({
@@ -479,7 +675,59 @@ server <- function(input, output, session) {
   output$green_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$green_section))
   })
-  output$green_new_print <- renderText(input$green_new)
+  output$green_old_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$green_old))
+  })
+  
+  output$green_new_print <- renderUI({
+    
+    green_old <- input$green_old
+    green_new <- input$green_new
+    
+    green_equal_string <- diffChr(green_old, green_new, format = "ansi8")@cur.dat$eq |> trimws()
+    green_eq_mat <- str_locate(green_new, strsplit(green_equal_string, " ")[[1]]) # get positions where strings are the same
+    green_new_split <- str_split(green_new, "")[[1]]
+    
+    green_diff_list <- list()
+    
+    if (green_eq_mat[1,1]!=1) { # if first part is not equal
+      # get string up to first equal part
+      green_diff_list[length(green_diff_list)+1] <- green_new_split[1:(green_eq_mat[1,1]-1)] |> paste(collapse = "")
+    }
+    for (i in 1:nrow(green_eq_mat)) {
+      # get first equal part
+      green_diff_list[length(green_diff_list)+1] <- green_new_split[green_eq_mat[i,1]:green_eq_mat[i,2]] |> paste(collapse = "")
+      if (i < nrow(green_eq_mat)) {# if not last equal part
+        # get different part (between two equal parts)  
+        green_diff_list[length(green_diff_list)+1] <- green_new_split[(green_eq_mat[i,2]+1):(green_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
+      }else{
+        if (green_eq_mat[i,2]!=length(green_new_split)) { #if last part is not equal
+          # get last (different) part
+          green_diff_list[length(green_diff_list)+1] <- green_new_split[(green_eq_mat[i,2]+1):length(green_new_split)] |> paste(collapse = "")
+        }
+      }
+    }
+    
+    if (green_eq_mat[1,1]!=1) { # String B fängt anders an
+      for (i in seq_along(green_diff_list)) {
+        if (i%%2==1) { # erster Part anders
+          names(green_diff_list)[i] <- "Diff"
+        }else{
+          names(green_diff_list)[i] <- "Same"
+        }
+      }
+    }else{
+      for (i in seq_along(green_diff_list)) {
+        if (i%%2==1) { # erster Part gleich
+          names(green_diff_list)[i] <- "Same"
+        }else{
+          names(green_diff_list)[i] <- "Diff"
+        }
+      }
+    }
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(green_diff_list)))
+  })
+  
   output$green_logo <- renderUI({tags$img(src = "Greens.png", width = 150, height = 100)})
   green_res <- reactive({
     if (is.na(input$green_yes) | is.na(input$green_no) | is.na(input$green_abst)) {
@@ -499,6 +747,8 @@ server <- function(input, output, session) {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
+  
+  
   
   # ID
   output$id_chart <- renderPlot({
@@ -522,7 +772,59 @@ server <- function(input, output, session) {
   output$id_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$id_section))
   })
-  output$id_new_print <- renderText(input$id_new)
+  output$id_old_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$id_old))
+  })
+  
+  output$id_new_print <- renderUI({
+    
+    id_old <- input$id_old
+    id_new <- input$id_new
+    
+    id_equal_string <- diffChr(id_old, id_new, format = "ansi8")@cur.dat$eq |> trimws()
+    id_eq_mat <- str_locate(id_new, strsplit(id_equal_string, " ")[[1]]) # get positions where strings are the same
+    id_new_split <- str_split(id_new, "")[[1]]
+    
+    id_diff_list <- list()
+    
+    if (id_eq_mat[1,1]!=1) { # if first part is not equal
+      # get string up to first equal part
+      id_diff_list[length(id_diff_list)+1] <- id_new_split[1:(id_eq_mat[1,1]-1)] |> paste(collapse = "")
+    }
+    for (i in 1:nrow(id_eq_mat)) {
+      # get first equal part
+      id_diff_list[length(id_diff_list)+1] <- id_new_split[id_eq_mat[i,1]:id_eq_mat[i,2]] |> paste(collapse = "")
+      if (i < nrow(id_eq_mat)) {# if not last equal part
+        # get different part (between two equal parts)  
+        id_diff_list[length(id_diff_list)+1] <- id_new_split[(id_eq_mat[i,2]+1):(id_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
+      }else{
+        if (id_eq_mat[i,2]!=length(id_new_split)) { #if last part is not equal
+          # get last (different) part
+          id_diff_list[length(id_diff_list)+1] <- id_new_split[(id_eq_mat[i,2]+1):length(id_new_split)] |> paste(collapse = "")
+        }
+      }
+    }
+    
+    if (id_eq_mat[1,1]!=1) { # String B fängt anders an
+      for (i in seq_along(id_diff_list)) {
+        if (i%%2==1) { # erster Part anders
+          names(id_diff_list)[i] <- "Diff"
+        }else{
+          names(id_diff_list)[i] <- "Same"
+        }
+      }
+    }else{
+      for (i in seq_along(id_diff_list)) {
+        if (i%%2==1) { # erster Part gleich
+          names(id_diff_list)[i] <- "Same"
+        }else{
+          names(id_diff_list)[i] <- "Diff"
+        }
+      }
+    }
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(id_diff_list)))
+  })
+  
   output$id_logo <- renderUI({tags$img(src = "ID.png", width = 150, height = 100)})
   id_res <- reactive({
     if (is.na(input$id_yes) | is.na(input$id_no) | is.na(input$id_abst)) {
