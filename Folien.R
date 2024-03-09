@@ -34,17 +34,18 @@ df_pres <- url_pres |>
             .[[1]] %>%
             html_table() |> 
             clean_names() |> 
-            select(group_7_2, leader_s) |> 
-            rename(caucus = group_7_2,
+            select(group_8_2, leader_s) |> 
+            rename(caucus = group_8_2,
                    leader = leader_s) |> 
             filter(str_detect(caucus, paste(c("EPP", "S&D", "Renew", "Greens", "ID"), collapse = "|")))
 
 
 df_caucus <- data.frame(total = c(df_seats[nrow(df_seats),]) |> unlist(),
-                        countries = 27 - df_seats |> sapply(function(x) sum(is.na(x)))) |> 
-                        #presidents = sapply(df_pres$leader, function(x) gsub("\\[|\\]|\\d", "", x, perl = TRUE) %>%
-                         #                     gsub("\n", " \\& ", ., perl = TRUE))) |> 
-              mutate(rank = order(df_caucus$total, decreasing = T))
+                        countries = 27 - df_seats |> sapply(function(x) sum(is.na(x))),
+                        presidents = sapply(df_pres$leader, function(x) gsub("\\[|\\]|\\d", "", x, perl = TRUE) %>%
+                                              gsub("\n", " \\& ", ., perl = TRUE)))
+df_caucus <- df_caucus |> 
+  mutate(rank = order(df_caucus$total, decreasing = T))
 
 
 write_csv(df_caucus, "caucus_data.csv", quote = "none")
