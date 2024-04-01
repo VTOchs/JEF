@@ -334,12 +334,45 @@ body <- dashboardBody(
                    box(
                      width = 9,
                      plotOutput("id_chart")
-                   )
-                 )
+             )
+           )
+        ),
+        
+        tabPanel("Abschlussabstimmung",
+                 fluidRow(
+                   box(
+                     width = 3,
+                     tags$head(tags$style("#tot_res_print{color: black;
+                                 font-size: 30px;
+                                 font-style: bold;
+                                 }")),
+                     numericInput("tot_yes", "Ja:", value = NA),
+                     numericInput("tot_no", "Nein:", value = NA),
+                     numericInput("tot_abst", "Enthaltung:", value = NA)
+                   ),
+                   box(
+                     width = 6,
+                     tags$figure(
+                       textOutput("tot_res_print"),
+                       uiOutput("tot_res_img")  
+                     )
+                   ),
+                   box(
+                     width = 3,
+                     tags$figure(
+                       class = "centerFigure",
+                       tags$img(
+                         src = "EP_Logo.png",
+                         height = 142
+                       )))),
+                 fluidRow(
+                     plotOutput("tot_chart")
+          )
         )
       )
     )
-  ))
+  )
+)
 
 ui <- dashboardPage(header, sidebar, body)
 
@@ -356,7 +389,8 @@ server <- function(input, output, session) {
       sd = c(input$sd_yes, input$sd_no, input$sd_abst),
       renew = c(input$renew_yes, input$renew_no, input$renew_abst),
       green = c(input$green_yes, input$green_no, input$green_abst),
-      id = c(input$id_yes, input$id_no, input$id_abst)
+      id = c(input$id_yes, input$id_no, input$id_abst),
+      tot = c(input$tot_yes, input$tot_no, input$tot_abst)
     )
   })
   
@@ -844,6 +878,44 @@ server <- function(input, output, session) {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
+  
+  
+  # Abschlussabstimmung
+  output$tot_chart <- renderPlot({
+    df <- data()
+    
+    barchart <- ggplot(df, aes(x = cat, y = tot, fill = cat)) +
+      geom_col() +
+      scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
+      theme(axis.text.x = element_text(size = 15)) +
+      guides(fill = "none") +
+      ylab("Anzahl") +
+      xlab("") +
+      geom_text(aes(label = tot), position = position_stack(vjust = 0.5), size = 10) +
+      theme_void()
+    
+    print(barchart)
+  })
+
+  tot_res <- reactive({
+    if (is.na(input$tot_yes) | is.na(input$tot_no) | is.na(input$tot_abst)) {
+      print("")
+    } else if (input$tot_yes > input$tot_no) {
+      print("Der Gesetzesentwurf ist angenommen!")
+    } else {
+      print("Der Gesetzesentwurf ist abgelehnt!")
+    }
+  })
+  output$tot_res_print <- renderText(tot_res())
+  
+  output$tot_res_img <- renderUI({
+    if (tot_res() == "Der Gesetzesentwurf ist angenommen!") {
+      img(src = "angenommen.png", height = "100px", width = "100px")
+    } else if (tot_res() == "Der Gesetzesentwurf ist abgelehnt!") {
+      img(src = "abgelehnt.png", height = "100px", width = "100px")
+    }
+  })
+  
 }
 
 
