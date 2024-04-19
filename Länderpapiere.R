@@ -103,8 +103,8 @@ df_GD <- df_GD |>
   mutate(flag = paste0("Flaggen/", iso3c, ".png"))
 
 # Scrape Our World in Data
-
 links <- xml2::read_html("https://ourworldindata.org/grapher/share-elec-by-source?tab=table&time=2021") |>
+# links <- xml2::read_html("https://ourworldindata.org/grapher/share-elec-by-source?tab=table&time=2022") |>
   html_nodes("link")
 all_urls <- links[html_attr(links, "rel") == "preload"] |> 
   html_attr("href")
