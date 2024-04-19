@@ -15,6 +15,7 @@ collapse_diff <- function(str_list){
 }
 
 
+
 # UI -------------------------------------------------------------
 
 header <- dashboardHeader(title = "Plenardebatte")
@@ -374,7 +375,7 @@ body <- dashboardBody(
   )
 )
 
-ui <- dashboardPage(header, sidebar, body)
+ui <- dashboardPage(skin = "green", header, sidebar, body)
 
 
 
@@ -417,57 +418,31 @@ server <- function(input, output, session) {
   output$evp_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$evp_section))
   })
+  
   output$evp_old_print <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$evp_old))
+    diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
+    splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
+    splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
+
+    oldBold_evp <- splitOldNew_evp[(splitMat_evp[1,2]+1):(splitMat_evp[2,1]-1)]
+    oldBold_evp <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_evp, collapse = ""))
+    oldBold_evp <- gsub("</span>", "</b>", paste(oldBold_evp, collapse = ""))
+    oldBold_evp
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_evp))
   })
   
   output$evp_new_print <- renderUI({
+    diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
+    splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
+    splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
     
-    evp_old <- input$evp_old
-    evp_new <- input$evp_new
+    newBold_evp <- splitOldNew_evp[(splitMat_evp[3,2]+1):(splitMat_evp[4,1]-1)]
+    newBold_evp <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_evp, collapse = ""))
+    newBold_evp <- gsub("</span>", "</b>", paste(newBold_evp, collapse = ""))
+    newBold_evp
     
-    evp_equal_string <- diffChr(evp_old, evp_new, format = "ansi8")@cur.dat$eq |> trimws()
-    evp_eq_mat <- str_locate(evp_new, strsplit(evp_equal_string, " ")[[1]]) # get positions where strings are the same
-    evp_new_split <- str_split(evp_new, "")[[1]]
-    
-    evp_diff_list <- list()
-    
-    if (evp_eq_mat[1,1]!=1) { # if first part is not equal
-      # get string up to first equal part
-      evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[1:(evp_eq_mat[1,1]-1)] |> paste(collapse = "")
-    }
-    for (i in 1:nrow(evp_eq_mat)) {
-      # get first equal part
-      evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[evp_eq_mat[i,1]:evp_eq_mat[i,2]] |> paste(collapse = "")
-      if (i < nrow(evp_eq_mat)) {# if not last equal part
-        # get different part (between two equal parts)  
-        evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[(evp_eq_mat[i,2]+1):(evp_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
-      }else{
-        if (evp_eq_mat[i,2]!=length(evp_new_split)) { #if last part is not equal
-          # get last (different) part
-          evp_diff_list[length(evp_diff_list)+1] <- evp_new_split[(evp_eq_mat[i,2]+1):length(evp_new_split)] |> paste(collapse = "")
-        }
-      }
-    }
-    
-    if (evp_eq_mat[1,1]!=1) { # String B fängt anders an
-      for (i in seq_along(evp_diff_list)) {
-        if (i%%2==1) { # erster Part anders
-          names(evp_diff_list)[i] <- "Diff"
-        }else{
-          names(evp_diff_list)[i] <- "Same"
-        }
-      }
-    }else{
-      for (i in seq_along(evp_diff_list)) {
-        if (i%%2==1) { # erster Part gleich
-          names(evp_diff_list)[i] <- "Same"
-        }else{
-          names(evp_diff_list)[i] <- "Diff"
-        }
-      }
-    }
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(evp_diff_list)))
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_evp))
   })
   
   output$evp_logo <- renderUI({tags$img(src = "EPP.png", width = 150, height = 100)})
@@ -514,57 +489,31 @@ server <- function(input, output, session) {
   output$sd_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$sd_section))
   })
+  
   output$sd_old_print <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$sd_old))
+    diffOldNew_sd <- as.character(diffChr(input$sd_old, input$sd_new, pager="off"))[1]
+    splitOldNew_sd <- strsplit(diffOldNew_sd, "")[[1]]
+    splitMat_sd <- str_locate_all(diffOldNew_sd, "<span class='diffobj-trim'></span>")[[1]]
+    
+    oldBold_sd <- splitOldNew_sd[(splitMat_sd[1,2]+1):(splitMat_sd[2,1]-1)]
+    oldBold_sd <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_sd, collapse = ""))
+    oldBold_sd <- gsub("</span>", "</b>", paste(oldBold_sd, collapse = ""))
+    oldBold_sd
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_sd))
   })
   
   output$sd_new_print <- renderUI({
+    diffOldNew_sd <- as.character(diffChr(input$sd_old, input$sd_new, pager="off"))[1]
+    splitOldNew_sd <- strsplit(diffOldNew_sd, "")[[1]]
+    splitMat_sd <- str_locate_all(diffOldNew_sd, "<span class='diffobj-trim'></span>")[[1]]
     
-    sd_old <- input$sd_old
-    sd_new <- input$sd_new
+    newBold_sd <- splitOldNew_sd[(splitMat_sd[3,2]+1):(splitMat_sd[4,1]-1)]
+    newBold_sd <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_sd, collapse = ""))
+    newBold_sd <- gsub("</span>", "</b>", paste(newBold_sd, collapse = ""))
+    newBold_sd
     
-    sd_equal_string <- diffChr(sd_old, sd_new, format = "ansi8")@cur.dat$eq |> trimws()
-    sd_eq_mat <- str_locate(sd_new, strsplit(sd_equal_string, " ")[[1]]) # get positions where strings are the same
-    sd_new_split <- str_split(sd_new, "")[[1]]
-    
-    sd_diff_list <- list()
-    
-    if (sd_eq_mat[1,1]!=1) { # if first part is not equal
-      # get string up to first equal part
-      sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[1:(sd_eq_mat[1,1]-1)] |> paste(collapse = "")
-    }
-    for (i in 1:nrow(sd_eq_mat)) {
-      # get first equal part
-      sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[sd_eq_mat[i,1]:sd_eq_mat[i,2]] |> paste(collapse = "")
-      if (i < nrow(sd_eq_mat)) {# if not last equal part
-        # get different part (between two equal parts)  
-        sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[(sd_eq_mat[i,2]+1):(sd_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
-      }else{
-        if (sd_eq_mat[i,2]!=length(sd_new_split)) { #if last part is not equal
-          # get last (different) part
-          sd_diff_list[length(sd_diff_list)+1] <- sd_new_split[(sd_eq_mat[i,2]+1):length(sd_new_split)] |> paste(collapse = "")
-        }
-      }
-    }
-    
-    if (sd_eq_mat[1,1]!=1) { # String B fängt anders an
-      for (i in seq_along(sd_diff_list)) {
-        if (i%%2==1) { # erster Part anders
-          names(sd_diff_list)[i] <- "Diff"
-        }else{
-          names(sd_diff_list)[i] <- "Same"
-        }
-      }
-    }else{
-      for (i in seq_along(sd_diff_list)) {
-        if (i%%2==1) { # erster Part gleich
-          names(sd_diff_list)[i] <- "Same"
-        }else{
-          names(sd_diff_list)[i] <- "Diff"
-        }
-      }
-    }
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(sd_diff_list)))
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_sd))
   })
   
   output$sd_logo <- renderUI({tags$img(src = "S&D.png", width = 150, height = 100)})
@@ -611,57 +560,31 @@ server <- function(input, output, session) {
   output$renew_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$renew_section))
   })
+  
   output$renew_old_print <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$renew_old))
+    diffOldNew_renew <- as.character(diffChr(input$renew_old, input$renew_new, pager="off"))[1]
+    splitOldNew_renew <- strsplit(diffOldNew_renew, "")[[1]]
+    splitMat_renew <- str_locate_all(diffOldNew_renew, "<span class='diffobj-trim'></span>")[[1]]
+    
+    oldBold_renew <- splitOldNew_renew[(splitMat_renew[1,2]+1):(splitMat_renew[2,1]-1)]
+    oldBold_renew <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_renew, collapse = ""))
+    oldBold_renew <- gsub("</span>", "</b>", paste(oldBold_renew, collapse = ""))
+    oldBold_renew
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_renew))
   })
   
   output$renew_new_print <- renderUI({
+    diffOldNew_renew <- as.character(diffChr(input$renew_old, input$renew_new, pager="off"))[1]
+    splitOldNew_renew <- strsplit(diffOldNew_renew, "")[[1]]
+    splitMat_renew <- str_locate_all(diffOldNew_renew, "<span class='diffobj-trim'></span>")[[1]]
     
-    renew_old <- input$renew_old
-    renew_new <- input$renew_new
+    newBold_renew <- splitOldNew_renew[(splitMat_renew[3,2]+1):(splitMat_renew[4,1]-1)]
+    newBold_renew <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_renew, collapse = ""))
+    newBold_renew <- gsub("</span>", "</b>", paste(newBold_renew, collapse = ""))
+    newBold_renew
     
-    renew_equal_string <- diffChr(renew_old, renew_new, format = "ansi8")@cur.dat$eq |> trimws()
-    renew_eq_mat <- str_locate(renew_new, strsplit(renew_equal_string, " ")[[1]]) # get positions where strings are the same
-    renew_new_split <- str_split(renew_new, "")[[1]]
-    
-    renew_diff_list <- list()
-    
-    if (renew_eq_mat[1,1]!=1) { # if first part is not equal
-      # get string up to first equal part
-      renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[1:(renew_eq_mat[1,1]-1)] |> paste(collapse = "")
-    }
-    for (i in 1:nrow(renew_eq_mat)) {
-      # get first equal part
-      renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[renew_eq_mat[i,1]:renew_eq_mat[i,2]] |> paste(collapse = "")
-      if (i < nrow(renew_eq_mat)) {# if not last equal part
-        # get different part (between two equal parts)  
-        renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[(renew_eq_mat[i,2]+1):(renew_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
-      }else{
-        if (renew_eq_mat[i,2]!=length(renew_new_split)) { #if last part is not equal
-          # get last (different) part
-          renew_diff_list[length(renew_diff_list)+1] <- renew_new_split[(renew_eq_mat[i,2]+1):length(renew_new_split)] |> paste(collapse = "")
-        }
-      }
-    }
-    
-    if (renew_eq_mat[1,1]!=1) { # String B fängt anders an
-      for (i in seq_along(renew_diff_list)) {
-        if (i%%2==1) { # erster Part anders
-          names(renew_diff_list)[i] <- "Diff"
-        }else{
-          names(renew_diff_list)[i] <- "Same"
-        }
-      }
-    }else{
-      for (i in seq_along(renew_diff_list)) {
-        if (i%%2==1) { # erster Part gleich
-          names(renew_diff_list)[i] <- "Same"
-        }else{
-          names(renew_diff_list)[i] <- "Diff"
-        }
-      }
-    }
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(renew_diff_list)))
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_renew))
   })
   
   output$renew_logo <- renderUI({tags$img(src = "Renew.png", width = 150, height = 100)})
@@ -709,57 +632,31 @@ server <- function(input, output, session) {
   output$green_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$green_section))
   })
+  
   output$green_old_print <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$green_old))
+    diffOldNew_green <- as.character(diffChr(input$green_old, input$green_new, pager="off"))[1]
+    splitOldNew_green <- strsplit(diffOldNew_green, "")[[1]]
+    splitMat_green <- str_locate_all(diffOldNew_green, "<span class='diffobj-trim'></span>")[[1]]
+    
+    oldBold_green <- splitOldNew_green[(splitMat_green[1,2]+1):(splitMat_green[2,1]-1)]
+    oldBold_green <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_green, collapse = ""))
+    oldBold_green <- gsub("</span>", "</b>", paste(oldBold_green, collapse = ""))
+    oldBold_green
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_green))
   })
   
   output$green_new_print <- renderUI({
+    diffOldNew_green <- as.character(diffChr(input$green_old, input$green_new, pager="off"))[1]
+    splitOldNew_green <- strsplit(diffOldNew_green, "")[[1]]
+    splitMat_green <- str_locate_all(diffOldNew_green, "<span class='diffobj-trim'></span>")[[1]]
     
-    green_old <- input$green_old
-    green_new <- input$green_new
+    newBold_green <- splitOldNew_green[(splitMat_green[3,2]+1):(splitMat_green[4,1]-1)]
+    newBold_green <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_green, collapse = ""))
+    newBold_green <- gsub("</span>", "</b>", paste(newBold_green, collapse = ""))
+    newBold_green
     
-    green_equal_string <- diffChr(green_old, green_new, format = "ansi8")@cur.dat$eq |> trimws()
-    green_eq_mat <- str_locate(green_new, strsplit(green_equal_string, " ")[[1]]) # get positions where strings are the same
-    green_new_split <- str_split(green_new, "")[[1]]
-    
-    green_diff_list <- list()
-    
-    if (green_eq_mat[1,1]!=1) { # if first part is not equal
-      # get string up to first equal part
-      green_diff_list[length(green_diff_list)+1] <- green_new_split[1:(green_eq_mat[1,1]-1)] |> paste(collapse = "")
-    }
-    for (i in 1:nrow(green_eq_mat)) {
-      # get first equal part
-      green_diff_list[length(green_diff_list)+1] <- green_new_split[green_eq_mat[i,1]:green_eq_mat[i,2]] |> paste(collapse = "")
-      if (i < nrow(green_eq_mat)) {# if not last equal part
-        # get different part (between two equal parts)  
-        green_diff_list[length(green_diff_list)+1] <- green_new_split[(green_eq_mat[i,2]+1):(green_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
-      }else{
-        if (green_eq_mat[i,2]!=length(green_new_split)) { #if last part is not equal
-          # get last (different) part
-          green_diff_list[length(green_diff_list)+1] <- green_new_split[(green_eq_mat[i,2]+1):length(green_new_split)] |> paste(collapse = "")
-        }
-      }
-    }
-    
-    if (green_eq_mat[1,1]!=1) { # String B fängt anders an
-      for (i in seq_along(green_diff_list)) {
-        if (i%%2==1) { # erster Part anders
-          names(green_diff_list)[i] <- "Diff"
-        }else{
-          names(green_diff_list)[i] <- "Same"
-        }
-      }
-    }else{
-      for (i in seq_along(green_diff_list)) {
-        if (i%%2==1) { # erster Part gleich
-          names(green_diff_list)[i] <- "Same"
-        }else{
-          names(green_diff_list)[i] <- "Diff"
-        }
-      }
-    }
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(green_diff_list)))
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_green))
   })
   
   output$green_logo <- renderUI({tags$img(src = "Greens.png", width = 150, height = 100)})
@@ -806,57 +703,31 @@ server <- function(input, output, session) {
   output$id_section_print <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$id_section))
   })
+  
   output$id_old_print <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", input$id_old))
+    diffOldNew_id <- as.character(diffChr(input$id_old, input$id_new, pager="off"))[1]
+    splitOldNew_id <- strsplit(diffOldNew_id, "")[[1]]
+    splitMat_id <- str_locate_all(diffOldNew_id, "<span class='diffobj-trim'></span>")[[1]]
+    
+    oldBold_id <- splitOldNew_id[(splitMat_id[1,2]+1):(splitMat_id[2,1]-1)]
+    oldBold_id <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_id, collapse = ""))
+    oldBold_id <- gsub("</span>", "</b>", paste(oldBold_id, collapse = ""))
+    oldBold_id
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_id))
   })
   
   output$id_new_print <- renderUI({
+    diffOldNew_id <- as.character(diffChr(input$id_old, input$id_new, pager="off"))[1]
+    splitOldNew_id <- strsplit(diffOldNew_id, "")[[1]]
+    splitMat_id <- str_locate_all(diffOldNew_id, "<span class='diffobj-trim'></span>")[[1]]
     
-    id_old <- input$id_old
-    id_new <- input$id_new
+    newBold_id <- splitOldNew_id[(splitMat_id[3,2]+1):(splitMat_id[4,1]-1)]
+    newBold_id <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_id, collapse = ""))
+    newBold_id <- gsub("</span>", "</b>", paste(newBold_id, collapse = ""))
+    newBold_id
     
-    id_equal_string <- diffChr(id_old, id_new, format = "ansi8")@cur.dat$eq |> trimws()
-    id_eq_mat <- str_locate(id_new, strsplit(id_equal_string, " ")[[1]]) # get positions where strings are the same
-    id_new_split <- str_split(id_new, "")[[1]]
-    
-    id_diff_list <- list()
-    
-    if (id_eq_mat[1,1]!=1) { # if first part is not equal
-      # get string up to first equal part
-      id_diff_list[length(id_diff_list)+1] <- id_new_split[1:(id_eq_mat[1,1]-1)] |> paste(collapse = "")
-    }
-    for (i in 1:nrow(id_eq_mat)) {
-      # get first equal part
-      id_diff_list[length(id_diff_list)+1] <- id_new_split[id_eq_mat[i,1]:id_eq_mat[i,2]] |> paste(collapse = "")
-      if (i < nrow(id_eq_mat)) {# if not last equal part
-        # get different part (between two equal parts)  
-        id_diff_list[length(id_diff_list)+1] <- id_new_split[(id_eq_mat[i,2]+1):(id_eq_mat[(i+1),1]-1)] |> paste(collapse = "")
-      }else{
-        if (id_eq_mat[i,2]!=length(id_new_split)) { #if last part is not equal
-          # get last (different) part
-          id_diff_list[length(id_diff_list)+1] <- id_new_split[(id_eq_mat[i,2]+1):length(id_new_split)] |> paste(collapse = "")
-        }
-      }
-    }
-    
-    if (id_eq_mat[1,1]!=1) { # String B fängt anders an
-      for (i in seq_along(id_diff_list)) {
-        if (i%%2==1) { # erster Part anders
-          names(id_diff_list)[i] <- "Diff"
-        }else{
-          names(id_diff_list)[i] <- "Same"
-        }
-      }
-    }else{
-      for (i in seq_along(id_diff_list)) {
-        if (i%%2==1) { # erster Part gleich
-          names(id_diff_list)[i] <- "Same"
-        }else{
-          names(id_diff_list)[i] <- "Diff"
-        }
-      }
-    }
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", collapse_diff(id_diff_list)))
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_id))
   })
   
   output$id_logo <- renderUI({tags$img(src = "ID.png", width = 150, height = 100)})
@@ -901,17 +772,21 @@ server <- function(input, output, session) {
     if (is.na(input$tot_yes) | is.na(input$tot_no) | is.na(input$tot_abst)) {
       print("")
     } else if (input$tot_yes > input$tot_no) {
-      print("Der Gesetzesentwurf ist angenommen!")
+      print("Die Entschließung ist angenommen!")
+      #print("Der Gesetzesentwurf ist angenommen!")
     } else {
-      print("Der Gesetzesentwurf ist abgelehnt!")
+      print("Die Entschließung ist abgelehnt!")
+      #print("Der Gesetzesentwurf ist abgelehnt!")
     }
   })
   output$tot_res_print <- renderText(tot_res())
   
   output$tot_res_img <- renderUI({
-    if (tot_res() == "Der Gesetzesentwurf ist angenommen!") {
+    if (tot_res() == "Die Entschließung ist angenommen!") {
+    #if (tot_res() == "Der Gesetzesentwurf ist angenommen!") {
       img(src = "angenommen.png", height = "100px", width = "100px")
-    } else if (tot_res() == "Der Gesetzesentwurf ist abgelehnt!") {
+    } else if (tot_res() == "Die Entschließung ist abgelehnt!") {
+    # } else if (tot_res() == "Der Gesetzesentwurf ist abgelehnt!") {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })

@@ -94,4 +94,4 @@ df_com <- url_com |>
 df_com$vorsitz <- unname(df_com$vorsitz)}
 
 write_csv(df_com, "committee_data.csv", quote = "none")
-df_com[,c("short", "vorsitz")]
+df_com[,c("short", "members", "vorsitz")]
