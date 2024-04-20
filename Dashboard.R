@@ -58,7 +58,12 @@ body <- dashboardBody(
                  textInput("id_vize", "Fraktionsvize:"),
                  textInput("id_section", "Abschnitt:"),
                  textInput("id_old", "alter Text:"),
-                 textInput("id_new", "neuer Text:"))
+                 textInput("id_new", "neuer Text:")),
+        tabPanel("Abschlussabstimmung",
+                 radioButtons("topic", "Thema:",
+                              choices = c("Green Deal/Migration", "Armee"),
+                              selected = "Green Deal/Migration")  
+        )
       ),
     ),
     
@@ -772,21 +777,25 @@ server <- function(input, output, session) {
     if (is.na(input$tot_yes) | is.na(input$tot_no) | is.na(input$tot_abst)) {
       print("")
     } else if (input$tot_yes > input$tot_no) {
-      print("Die Entschließung ist angenommen!")
-      #print("Der Gesetzesentwurf ist angenommen!")
+        if (input$topic == "Green Deal/Migration") {
+          print("Der Gesetzesentwurf ist angenommen!")
+        } else{
+          print("Die Entschließung ist angenommen!")  
+        }
     } else {
-      print("Die Entschließung ist abgelehnt!")
-      #print("Der Gesetzesentwurf ist abgelehnt!")
+      if (input$topic == "Green Deal/Migration") {
+        print("Der Gesetzesentwurf ist angenommen!")
+      } else{
+        print("Die Entschließung ist angenommen!")  
+      }
     }
   })
   output$tot_res_print <- renderText(tot_res())
   
   output$tot_res_img <- renderUI({
-    if (tot_res() == "Die Entschließung ist angenommen!") {
-    #if (tot_res() == "Der Gesetzesentwurf ist angenommen!") {
+    if ((tot_res() == "Die Entschließung ist angenommen!") | (tot_res() == "Der Gesetzesentwurf ist angenommen!")) {
       img(src = "angenommen.png", height = "100px", width = "100px")
-    } else if (tot_res() == "Die Entschließung ist abgelehnt!") {
-    # } else if (tot_res() == "Der Gesetzesentwurf ist abgelehnt!") {
+    } else if ((tot_res() == "Die Entschließung ist abgelehnt!") | (tot_res() == "Der Gesetzesentwurf ist abgelehnt!")) {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
