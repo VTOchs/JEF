@@ -26,8 +26,6 @@ translate_country <- function(country){
 
 # Asyl- und Migration -----------------------------------------------------
 
-### Problem sind die Kommata in den csv-Files ###
-
 # NY.GDP.PCAP.CD # GDP/capita
 # SP.POP.TOTL # pop total
 # SM.POP.REFG # refugee population

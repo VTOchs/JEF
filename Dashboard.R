@@ -1,9 +1,12 @@
 library(diffobj)
+library(ggparliament)
 library(ggplot2)
+library(grid)
 library(pkgmaker)
 library(shiny)
 library(shinydashboard)
 library(stringr)
+library(tidyverse)
 
 collapse_diff <- function(str_list){
   for (i in seq_along(str_list)) {
@@ -12,6 +15,38 @@ collapse_diff <- function(str_list){
     }
   }
   str_list |> unlist() |> paste(collapse = "")
+}
+
+plot_result_circle <- function(df, party){
+  
+  hsize <- 3
+  df_plot <- df %>%
+    mutate(x = hsize) |> 
+    filter(cat == "Ja" | cat == "Nein")
+  
+  party_wo <- enquo(party) # needed for the ggplot syntax
+  
+  abst <- df %>% 
+    filter(cat == "Enthaltung") %>% 
+    pull(!!party_wo)
+  
+  main_plot <- ggplot(df_plot, aes(x = hsize, y = !!party_wo, fill = cat)) +
+    geom_col() +
+    coord_polar(theta = "y", start = pi, direction = -1) +
+    xlim(c(0.2, hsize + 0.5)) +
+    theme_void() +
+    scale_fill_manual(values = c('#00A86B', '#D32F2F')) +
+    labs(fill='') +
+    theme(plot.title = element_text(hjust = 0.5, size = 16), legend.position = "none") +
+    annotate("text", x = 0.3, y = 0, 
+             label = paste("Enthaltungen: \n", abst), 
+             hjust = 0.5, vjust = 0.5, size = 5)
+  
+  # Display the plot with the line
+  grid.newpage()
+  print(main_plot)
+  grid.lines(x = c(0.5, 0.5), y = c(0.79, 0.89), gp = gpar(col = "black", lwd = 4, lty = "solid", alpha = 0.8))
+  
 }
 
 
@@ -404,18 +439,7 @@ server <- function(input, output, session) {
   # EVP
   output$evp_chart <- renderPlot({
     df <- data()
-    
-    barchart <- ggplot(df, aes(x = cat, y = evp, fill = cat)) +
-      geom_col() +
-      scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
-      theme(axis.text.x = element_text(size = 15)) +
-      guides(fill = "none") +
-      ylab("Anzahl") +
-      xlab("") +
-      geom_text(aes(label = evp), position = position_stack(vjust = 0.5), size = 10) +
-      theme_void()
-    
-    print(barchart)
+    plot_result_circle(df, evp)
   })
   output$evp_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$evp_vize))
@@ -475,18 +499,7 @@ server <- function(input, output, session) {
   # S&D
   output$sd_chart <- renderPlot({
     df <- data()
-    
-    barchart <- ggplot(df, aes(x = cat, y = sd, fill = cat)) +
-      geom_col() +
-      scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
-      theme(axis.text.x = element_text(size = 15)) +
-      guides(fill = "none") +
-      ylab("Anzahl") +
-      xlab("") +
-      geom_text(aes(label = sd), position = position_stack(vjust = 0.5), size = 10) +
-      theme_void()
-    
-    print(barchart)
+    plot_result_circle(df, sd)
   })
   output$sd_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$sd_vize))
@@ -546,18 +559,7 @@ server <- function(input, output, session) {
   # Renew
   output$renew_chart <- renderPlot({
     df <- data()
-    
-    barchart <- ggplot(df, aes(x = cat, y = renew, fill = cat)) +
-      geom_col() +
-      scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
-      theme(axis.text.x = element_text(size = 15)) +
-      guides(fill = "none") +
-      ylab("Anzahl") +
-      xlab("") +
-      geom_text(aes(label = renew), position = position_stack(vjust = 0.5), size = 10) +
-      theme_void()
-    
-    print(barchart)  
+    plot_result_circle(df, renew) 
   })
   output$renew_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$renew_vize))
@@ -617,18 +619,7 @@ server <- function(input, output, session) {
   # Greens
   output$green_chart <- renderPlot({
     df <- data()
-    
-    barchart <- ggplot(df, aes(x = cat, y = green, fill = cat)) +
-      geom_col() +
-      scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
-      theme(axis.text.x = element_text(size = 15)) +
-      guides(fill = "none") +
-      ylab("Anzahl") +
-      xlab("") +
-      geom_text(aes(label = green), position = position_stack(vjust = 0.5), size = 10) +
-      theme_void()
-    
-    print(barchart)
+    plot_result_circle(df, green)
   })
   
   output$green_vize <- renderUI({
@@ -689,18 +680,7 @@ server <- function(input, output, session) {
   # ID
   output$id_chart <- renderPlot({
     df <- data()
-    
-    barchart <- ggplot(df, aes(x = cat, y = id, fill = cat)) +
-      geom_col() +
-      scale_fill_manual(values = c('#00A86B', '#D32F2F', '#FFD600')) +
-      theme(axis.text.x = element_text(size = 15)) +
-      guides(fill = "none") +
-      ylab("Anzahl") +
-      xlab("") +
-      geom_text(aes(label = id), position = position_stack(vjust = 0.5), size = 10) +
-      theme_void()
-    
-    print(barchart)
+    plot_result_circle(df, id)
   })
   output$id_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$id_vize))
