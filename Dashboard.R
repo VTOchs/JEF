@@ -19,9 +19,8 @@ collapse_diff <- function(str_list){
 
 plot_result_circle <- function(df, party){
   
-  hsize <- 3
   df_plot <- df %>%
-    mutate(x = hsize) |> 
+    mutate(x = 3) |> 
     filter(cat == "Ja" | cat == "Nein")
   
   party_wo <- enquo(party) # needed for the ggplot syntax
@@ -30,17 +29,17 @@ plot_result_circle <- function(df, party){
     filter(cat == "Enthaltung") %>% 
     pull(!!party_wo)
   
-  main_plot <- ggplot(df_plot, aes(x = hsize, y = !!party_wo, fill = cat)) +
-    geom_col() +
+  main_plot <- ggplot(df_plot, aes(x = x, y = !!party_wo, fill = cat)) +
+    geom_col(color = "black") +
     coord_polar(theta = "y", start = pi, direction = -1) +
-    xlim(c(0.2, hsize + 0.5)) +
+    xlim(c(0.2, 3 + 0.5)) +
     theme_void() +
     scale_fill_manual(values = c('#00A86B', '#D32F2F')) +
-    labs(fill='') +
-    theme(plot.title = element_text(hjust = 0.5, size = 16), legend.position = "none") +
+    theme(legend.position = "none") +
+    geom_text(aes(label = !!party_wo), position = position_stack(vjust = 0.5), color = "black", size = 6) +  # Add count numbers
     annotate("text", x = 0.3, y = 0, 
              label = paste("Enthaltungen: \n", abst), 
-             hjust = 0.5, vjust = 0.5, size = 5)
+             hjust = 0.5, vjust = 0.5, size = 5) 
   
   # Display the plot with the line
   grid.newpage()
@@ -49,6 +48,19 @@ plot_result_circle <- function(df, party){
   
 }
 
+
+plot_empty_circle <- function(){
+  df_empty <- data.frame(cat = c("Ja", "Nein"),
+                        portion = c(1,1),
+                        x = c(3,3))
+  
+  ggplot(df_empty, aes(x = x, y = portion)) +
+    geom_col(color = "black", fill = NA) +  # Transparent fill and black edge
+    coord_polar(theta = "y", start = pi) +
+    xlim(c(0.2, 3 + 0.5)) +
+    theme_void() +
+    theme(legend.position = "none")
+}
 
 # UI -------------------------------------------------------------
 
@@ -427,25 +439,29 @@ ui <- dashboardPage(skin = "green", header, sidebar, body)
 # Server ------------------------------------------------------------------
 
 server <- function(input, output, session) {
-  data_store <- reactiveVal(NULL)
+
+  # EVP
+  evp_type <- reactiveVal("empty")
   evp_res <- reactiveVal("")
-  sd_res <- reactiveVal("")
-  renew_res <- reactiveVal("")
-  green_res <- reactiveVal("")
-  id_res <- reactiveVal("")
-  tot_res <- reactiveVal("")
+  evp_plot_data <- reactiveVal(NULL)
   
-  observeEvent(list(input$evp_button, input$sd_button, input$renew_button, input$green_button, input$id_button, input$tot_button), {
-    # Update the data only when the button is clicked
-    data_store(data.frame(
+  # Initial plot (empty circle)
+  output$evp_chart <- renderPlot({
+    if (evp_type() == "empty") {
+      plot_empty_circle()
+    } else {
+      plot_result_circle(evp_plot_data(), evp)
+    }
+  })
+  
+  # Observe button clicks and switch to the result plot
+  observeEvent(input$evp_button, {
+    evp_type("result")
+    evp_new_data <- data.frame(
       cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
-      evp = c(input$evp_yes, input$evp_no, input$evp_abst),
-      sd = c(input$sd_yes, input$sd_no, input$sd_abst),
-      renew = c(input$renew_yes, input$renew_no, input$renew_abst),
-      green = c(input$green_yes, input$green_no, input$green_abst),
-      id = c(input$id_yes, input$id_no, input$id_abst),
-      tot = c(input$tot_yes, input$tot_no, input$tot_abst)
-    ))
+      evp = c(input$evp_yes, input$evp_no, input$evp_abst)
+    )
+    evp_plot_data(evp_new_data)
     
     if (is.na(input$evp_yes) | is.na(input$evp_no) | is.na(input$evp_abst)) {
       evp_res("")
@@ -454,65 +470,6 @@ server <- function(input, output, session) {
     } else {
       evp_res("Der Änderungsantrag ist abgelehnt!")
     }
-    
-    if (is.na(input$sd_yes) | is.na(input$sd_no) | is.na(input$sd_abst)) {
-      sd_res("")
-    } else if (input$sd_yes > input$sd_no) {
-      sd_res("Der Änderungsantrag ist angenommen!")
-    } else {
-      sd_res("Der Änderungsantrag ist abgelehnt!")
-    }
-    
-    if (is.na(input$renew_yes) | is.na(input$renew_no) | is.na(input$renew_abst)) {
-      renew_res("")
-    } else if (input$renew_yes > input$renew_no) {
-      renew_res("Der Änderungsantrag ist angenommen!")
-    } else {
-      renew_res("Der Änderungsantrag ist abgelehnt!")
-    }
-    
-    if (is.na(input$green_yes) | is.na(input$green_no) | is.na(input$green_abst)) {
-      green_res("")
-    } else if (input$green_yes > input$green_no) {
-      green_res("Der Änderungsantrag ist angenommen!")
-    } else {
-      green_res("Der Änderungsantrag ist abgelehnt!")
-    }
-    
-    if (is.na(input$id_yes) | is.na(input$id_no) | is.na(input$id_abst)) {
-      id_res("")
-    } else if (input$id_yes > input$id_no) {
-      id_res("Der Änderungsantrag ist angenommen!")
-    } else {
-      id_res("Der Änderungsantrag ist abgelehnt!")
-    }
-    
-    if (is.na(input$tot_yes) | is.na(input$tot_no) | is.na(input$tot_abst)) {
-        print("")
-      } else if (input$tot_yes > input$tot_no) {
-        if (input$topic == "Green Deal/Migration") {
-          tot_res("Der Gesetzesentwurf ist angenommen!")
-        } else{
-          tot_res("Die Entschließung ist angenommen!")  
-        }
-      } else {
-        if (input$topic == "Green Deal/Migration") {
-          tot_res("Der Gesetzesentwurf ist abgelehnt!")
-        } else{
-          tot_res("Die Entschließung ist abgelehnt!")  
-        }
-      }
-  })
-  
-
-  # EVP
-  
-  output$evp_chart <- renderPlot({
-    req(data_store())
-    
-    df <- data_store()
-    
-    plot_result_circle(df, evp)
   })
   
   output$evp_vize <- renderUI({
@@ -526,7 +483,7 @@ server <- function(input, output, session) {
     diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
     splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
     splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
-
+    
     oldBold_evp <- splitOldNew_evp[(splitMat_evp[1,2]+1):(splitMat_evp[2,1]-1)]
     oldBold_evp <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_evp, collapse = ""))
     oldBold_evp <- gsub("</span>", "</b>", paste(oldBold_evp, collapse = ""))
@@ -549,7 +506,8 @@ server <- function(input, output, session) {
   })
   
   output$evp_logo <- renderUI({tags$img(src = "EPP.png", width = 150, height = 100)})
-  output$evp_res_print <- renderText(evp_res())
+  output$evp_res_print <- renderText(evp_res())  
+  
   output$evp_res_img <- renderUI({
     if (evp_res() == "Der Änderungsantrag ist angenommen!") {
       img(src = "angenommen.png", height = "100px", width = "100px")
@@ -561,11 +519,37 @@ server <- function(input, output, session) {
   
   
   # S&D
+  sd_type <- reactiveVal("empty")
+  sd_res <- reactiveVal("")
+  sd_plot_data <- reactiveVal(NULL)
+
+  # Initial plot (empty circle)
   output$sd_chart <- renderPlot({
-    req(data_store())
-    df <- data_store()
-    plot_result_circle(df, sd)
+    if (sd_type() == "empty") {
+      plot_empty_circle()
+    } else {
+      plot_result_circle(sd_plot_data(), sd)
+    }
   })
+
+  # Observe button clicks and switch to the result plot
+  observeEvent(input$sd_button, {
+    sd_type("result")
+    sd_new_data <- data.frame(
+      cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
+      sd = c(input$sd_yes, input$sd_no, input$sd_abst)
+    )
+    sd_plot_data(sd_new_data)
+
+    if (is.na(input$sd_yes) | is.na(input$sd_no) | is.na(input$sd_abst)) {
+      sd_res("")
+    } else if (input$sd_yes > input$sd_no) {
+      sd_res("Der Änderungsantrag ist angenommen!")
+    } else {
+      sd_res("Der Änderungsantrag ist abgelehnt!")
+    }
+  })
+  
   output$sd_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$sd_vize))
   })
@@ -613,11 +597,37 @@ server <- function(input, output, session) {
   
   
   # Renew
+  renew_type <- reactiveVal("empty")
+  renew_res <- reactiveVal("")
+  renew_plot_data <- reactiveVal(NULL)
+  
+  # Initial plot (empty circle)
   output$renew_chart <- renderPlot({
-    req(data_store())
-    df <- data_store()
-    plot_result_circle(df, renew) 
+    if (renew_type() == "empty") {
+      plot_empty_circle()
+    } else {
+      plot_result_circle(renew_plot_data(), renew)
+    }
   })
+  
+  # Observe button clicks and switch to the result plot
+  observeEvent(input$renew_button, {
+    renew_type("result")
+    renew_new_data <- data.frame(
+      cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
+      renew = c(input$renew_yes, input$renew_no, input$renew_abst)
+    )
+    renew_plot_data(renew_new_data)
+    
+    if (is.na(input$renew_yes) | is.na(input$renew_no) | is.na(input$renew_abst)) {
+      renew_res("")
+    } else if (input$renew_yes > input$renew_no) {
+      renew_res("Der Änderungsantrag ist angenommen!")
+    } else {
+      renew_res("Der Änderungsantrag ist abgelehnt!")
+    }
+  })
+  
   output$renew_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$renew_vize))
   })
@@ -665,10 +675,36 @@ server <- function(input, output, session) {
   
   
   # Greens
+  
+  green_type <- reactiveVal("empty")
+  green_res <- reactiveVal("")
+  green_plot_data <- reactiveVal(NULL)
+  
+  # Initial plot (empty circle)
   output$green_chart <- renderPlot({
-    req(data_store())
-    df <- data_store()
-    plot_result_circle(df, green)
+    if (green_type() == "empty") {
+      plot_empty_circle()
+    } else {
+      plot_result_circle(green_plot_data(), green)
+    }
+  })
+  
+  # Observe button clicks and switch to the result plot
+  observeEvent(input$green_button, {
+    green_type("result")
+    green_new_data <- data.frame(
+      cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
+      green = c(input$green_yes, input$green_no, input$green_abst)
+    )
+    green_plot_data(green_new_data)
+    
+    if (is.na(input$green_yes) | is.na(input$green_no) | is.na(input$green_abst)) {
+      green_res("")
+    } else if (input$green_yes > input$green_no) {
+      green_res("Der Änderungsantrag ist angenommen!")
+    } else {
+      green_res("Der Änderungsantrag ist abgelehnt!")
+    }
   })
   
   output$green_vize <- renderUI({
@@ -718,11 +754,38 @@ server <- function(input, output, session) {
   
   
   # ID
+  
+  id_type <- reactiveVal("empty")
+  id_res <- reactiveVal("")
+  id_plot_data <- reactiveVal(NULL)
+  
+  # Initial plot (empty circle)
   output$id_chart <- renderPlot({
-    req(data_store())
-    df <- data_store()
-    plot_result_circle(df, id)
+    if (id_type() == "empty") {
+      plot_empty_circle()
+    } else {
+      plot_result_circle(id_plot_data(), id)
+    }
   })
+  
+  # Observe button clicks and switch to the result plot
+  observeEvent(input$id_button, {
+    id_type("result")
+    id_new_data <- data.frame(
+      cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
+      id = c(input$id_yes, input$id_no, input$id_abst)
+    )
+    id_plot_data(id_new_data)
+    
+    if (is.na(input$id_yes) | is.na(input$id_no) | is.na(input$id_abst)) {
+      id_res("")
+    } else if (input$id_yes > input$id_no) {
+      id_res("Der Änderungsantrag ist angenommen!")
+    } else {
+      id_res("Der Änderungsantrag ist abgelehnt!")
+    }
+  })
+  
   output$id_vize <- renderUI({
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$id_vize))
   })
@@ -769,12 +832,47 @@ server <- function(input, output, session) {
   
   
   # Abschlussabstimmung
+  
+  tot_type <- reactiveVal("empty")
+  tot_res <- reactiveVal("")
+  tot_plot_data <- reactiveVal(NULL)
+  
+  # Initial plot (empty circle)
   output$tot_chart <- renderPlot({
-    req(data_store())
-    df <- data_store()
-    plot_result_circle(df, tot)
+    if (tot_type() == "empty") {
+      plot_empty_circle()
+    } else {
+      plot_result_circle(tot_plot_data(), tot)
+    }
   })
-
+  
+  # Observe button clicks and switch to the result plot
+  observeEvent(input$tot_button, {
+    tot_type("result")
+    tot_new_data <- data.frame(
+      cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
+      tot = c(input$tot_yes, input$tot_no, input$tot_abst)
+    )
+    tot_plot_data(tot_new_data)
+    
+    
+    if (is.na(input$tot_yes) | is.na(input$tot_no) | is.na(input$tot_abst)) {
+      tot_res("")
+    } else if (input$tot_yes > input$tot_no) {
+      if (input$topic == "Green Deal/Migration") {
+        tot_res("Der Gesetzesentwurf ist angenommen!")
+      } else{
+        tot_res("Die Entschließung ist angenommen!")  
+      }
+    } else {
+      if (input$topic == "Green Deal/Migration") {
+        tot_res("Der Gesetzesentwurf ist abgelehnt!")
+      } else{
+        tot_res("Die Entschließung ist abgelehnt!")  
+      }
+    }
+  })
+  
   output$tot_res_print <- renderText(tot_res())
   output$tot_res_img <- renderUI({
     if ((tot_res() == "Die Entschließung ist angenommen!") | (tot_res() == "Der Gesetzesentwurf ist angenommen!")) {
