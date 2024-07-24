@@ -5,9 +5,8 @@ library(rlang)
 
 plot_result_circle <- function(df, party){
   
-  hsize <- 3
   df_plot <- df %>%
-    mutate(x = hsize) |> 
+    mutate(x = 3) |> 
     filter(cat == "Ja" | cat == "Nein")
   
   party_wo <- enquo(party) # needed for the ggplot syntax
@@ -17,16 +16,16 @@ plot_result_circle <- function(df, party){
     pull(!!party_wo)
   
   main_plot <- ggplot(df_plot, aes(x = hsize, y = !!party_wo, fill = cat)) +
-    geom_col() +
+    geom_col(color = "black") +
     coord_polar(theta = "y", start = pi, direction = -1) +
     xlim(c(0.2, hsize + 0.5)) +
     theme_void() +
     scale_fill_manual(values = c('#00A86B', '#D32F2F')) +
-    labs(fill='') +
-    theme(plot.title = element_text(hjust = 0.5, size = 16), legend.position = "none") +
+    theme(legend.position = "none") +
+    geom_text(aes(label = evp), position = position_stack(vjust = 0.5), color = "black", size = 6) +  # Add count numbers
     annotate("text", x = 0.3, y = 0, 
              label = paste("Enthaltungen: \n", abst), 
-             hjust = 0.5, vjust = 0.5, size = 5)
+             hjust = 0.5, vjust = 0.5, size = 5) 
   
   # Display the plot with the line
   grid.newpage()
@@ -34,10 +33,29 @@ plot_result_circle <- function(df, party){
   grid.lines(x = c(0.5, 0.5), y = c(0.79, 0.89), gp = gpar(col = "black", lwd = 4, lty = "solid", alpha = 0.8))
   
 }
-
 plot_result_circle(test, evp)
+
+
+plot_empty_circle <- function(){
+  df_plot <- data.frame(cat = c("Ja", "Nein"),
+                        party = c(1,1),
+                        x = c(3,3))
+  
+  ggplot(df_plot, aes(x = hsize, y = party)) +
+    geom_col(color = "black", fill = NA) +  # Transparent fill and black edge
+    coord_polar(theta = "y", start = pi) +
+    xlim(c(0.2, hsize + 0.5)) +
+    theme_void() +
+    theme(legend.position = "none")
+}
+
+plot_empty_circle()
+plot_result_circle(test, evp)
+
 test <- data.frame(cat = c("Ja", "Nein", "Enthaltung"),
-                   evp = c(35, 34, 8))
+                   evp = c(40, 3, 8))
+plot_result_circle(test, evp)
+
 # Früher ------------------------------------------------------------------
 
 library(diffobj)
