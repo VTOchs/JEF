@@ -1,4 +1,5 @@
 # Verteilung pro Schüler --------------------------------------------------
+rm(list = ls())
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
@@ -31,10 +32,34 @@ dhondt <- function (parties, votes, n_seats){
   }
 }
 
-dhondt(parties = c("EVP", "S&D", "Renew", "Grüne", "ID"),
-       votes = c(30, 30, 20, 20, 20),
-       n_seats = 87)
+countries <- c("Österreich", "Belgien", "Kroatien", "Dänemark", "Estland",
+               "Finnland", "Frankreich", "Deutschland", "Griechenland",
+               "Ungarn", "Irland", "Italien", "Polen", "Rumänien", "Spanien")
+numSuS <- 87
 
+{partyDist <- dhondt(parties = c("EVP", "S&D", "Renew", "Grüne", "PfE"),
+                    votes = c(30, 30, 20, 20, 20),
+                    n_seats = numSuS)
+
+countDist <- dhondt(parties = countries,
+                    votes = rep(1, length(countries)),
+                    n_seats = numSuS)
+
+listDist <- vector(mode = "list", length = 5)
+names(listDist) <- c("EVP", "S&D", "Renew", "Grüne", "PfE")
+
+while (countDist$SEATS |> sum() > 0) {
+  party <- partyDist[which.max(partyDist$SEATS),] |> pull(PARTY)
+  partyDist[partyDist$PARTY == party, "SEATS"] <- partyDist[partyDist$PARTY == party, "SEATS"] - 1
+  countryCandid <- countDist |> filter(SEATS == max(countDist$SEATS)) |> pull(PARTY)
+  country <- sample(countryCandid, 1)
+  listDist[[party]][[length(listDist[[party]]) + 1]] <- country
+  countDist[countDist$PARTY == country, "SEATS"] <- countDist[countDist$PARTY == country, "SEATS"] - 1
+}
+
+listDist <- lapply(listDist, unlist)}
+listDist
+stop()
 
 
 # LaTeX Integration -------------------------------------------------------
