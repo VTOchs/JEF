@@ -12,241 +12,177 @@
 \usepackage[german]{babel}
 \usepackage{media9}
 \usetikzlibrary{calc}
+\input{../Meta/var.tex}
+
+%\newcommand{\Fraktion}{LEER} % AUF KEINEN FALL ÄNDERN
 
 
-
-\newcommand{\city}{Bamberg}
-
-\newcommand{\checkCity}{%
-    \ifdefined\city%
-        \ifthenelse{\equal{\city}{Bayreuth}}{%
-            \newcommand{\timeEinf}{09:00-09:45}%
-            \newcommand{\timeFrakOne}{09:45-11:15}%
-            \newcommand{\timeAuss}{11:30-12:45}%
-            \newcommand{\timeMittag}{12:45-13:15}%
-            \newcommand{\timeFrakTwo}{13:15-13:45}%
-            \newcommand{\timePlenar}{14:00-15:00}%
-            \newcommand{\Politiker}{Thomas Hacker}%
-            \newcommand{\office}{Mitglied des Bundestags}%
-            \newcommand{\evpleader}{Marco}%
-            \newcommand{\sdleader}{Franz}%
-            \newcommand{\releader}{Lea}%
-            \newcommand{\greenleader}{Linus}%
-            \newcommand{\idleader}{Yannick}%
-            \newcommand{\evproom}{WIRD NOCH EINGEFÜGT}%
-            \newcommand{\sdroom}{WIRD NOCH EINGEFÜGT}%
-            \newcommand{\reroom}{WIRD NOCH EINGEFÜGT}%
-            \newcommand{\greenroom}{WIRD NOCH EINGEFÜGT}%
-            \newcommand{\idroom}{WIRD NOCH EINGEFÜGT}%
-            \newcommand{\picPolitiker}{Bilder/hacker.png}%
-            \date{17. Mai 2024}%
-        }{%
-            \newcommand{\timeEinf}{09:15-10:00}%
-            \newcommand{\timeFrakOne}{10:00-11:30}%
-            \newcommand{\timeAuss}{11:45-13:00}%
-            \newcommand{\timeMittag}{13:00-13:30}%
-            \newcommand{\timeFrakTwo}{13:30-14:00}%
-            \newcommand{\timePlenar}{14:15-15:15}%
-            \newcommand{\Politiker}{Thomas Silberhorn}%
-            \newcommand{\office}{Mitglied des Bundestags}%
-            \newcommand{\evpleader}{Franz}%
-            \newcommand{\sdleader}{Christoph}%
-            \newcommand{\releader}{Lea}%
-            \newcommand{\greenleader}{Vanessa}%
-            \newcommand{\idleader}{Yannick}%
-            \newcommand{\evproom}{H136}%
-            \newcommand{\sdroom}{H137}%
-            \newcommand{\reroom}{H121}%
-            \newcommand{\greenroom}{H138}%
-            \newcommand{\idroom}{H123}%
-            \newcommand{\picPolitiker}{Bilder/silberhorn.png}%
-            \date{16. Mai 2024}%
+\IfEqCase{\Thema}{%
+	{Green Deal}{
+		\newcommand{\ausschuesse}{
+   			\begin{enumerate}
+           		\item Haushaltsausschuss (BUDG)
+                	\item Ausschuss für Industrie, Forschung und Energie (ITRE)
+              	\item Ausschuss für Verkehr und Tourismus (TRAN)
+              	\item Ausschuss für Landwirtschaft und ländliche Entwicklung (AGRI)
+           	\end{enumerate}
+     	}%
+       	\newcommand{\topic}{Klimaschutzpolitik}%
+       	\newcommand{\slideOne}{%
+            	\vspace{-1cm}
+           	\begin{center}
+           	\includegraphics[height=6cm]{Bilder/em_sector.png} 
+        		\end{center}
+      	}%
+        \newcommand{\slideOneTitle}{%
+        		Treibhausgasemissionen in der EU nach Sektoren (2019)
+       	}%
+        	\newcommand{\slideTwo}{%
+        		\vspace{-1cm}
+            	\begin{center}
+            	\includegraphics[height=6cm, width=\textwidth]{Bilder/em_vergleich.png}
+            \end{center}
+      	}%
+        	\newcommand{\slideTwoTitle}{%
+        		Pro-Kopf-Treibhausgas-Emissionen der Europäischen Union im Vergleich (2021)
+       	}%
+       	\newcommand{\slideThree}{%
+        		\vspace{-1cm}
+            	\begin{itemize}
+            		\item 1992: Klimarahmenkonvention der Vereinten Nationen (UNFCCC)
+	           	\item 1997: Erstes völkerrechtliches Abkommen mit bindenden Treibhausgas-Reduktionszielen (Kyoto Protokoll)
+    		       	\item 2005: Einführung eines EU-weiten $CO_2$-Zertifikate-Handels
+        		    	\item 2015: Pariser Abkommen
+            		\begin{itemize}
+            			\item Ziel: 1,5\degree C, maximal 2\degree C globale Erwärmung
+                		\item Staaten setzen sich selbst verbindliche Ziele
+	            	\end{itemize}
+    		       	\item 2019: Europäischer Green Deal
+	            	\begin{itemize}
+    		        		\item Ziel: erster klimaneutraler Kontinent bis 2050
+        		        	\item Viele Bereiche umfassendes Paket an Klimaschutzmaßnahmen
+				\end{itemize}
+    			\end{itemize}
+  		}%
+      	\newcommand{\slideThreeTitle}{%
+        		Geschichte der internationalen und EU-Klimaschutzpolitik
+       	}%
+       	\newcommand{\slideFour}{%
+        		\vspace{-1.25cm}
+           	\begin{center}
+			\includegraphics[height=6cm, width=\textwidth]{Bilder/green_deal.png}
+            	\end{center}
+      	}%
+       	\newcommand{\slideFourTitle}{%
+        		EU Green Deal
         }%
-    \fi%
-}
-
-
-% hier bei entsprechendem Thema % entfernen
-\newcommand{\thema}{Green Deal}
-%\newcommand{\thema}{Migration}
-%\newcommand{\thema}{Armee}
-
-\newcommand{\Fraktion}{LEER} % AUF KEINEN FALL ÄNDERN
-
-
-
-\newcommand{\checkTopic}{%
-    \ifdefined\thema%
-        \ifthenelse{\equal{\thema}{Green Deal}}{%
-            \newcommand{\ausschuesse}{
-                \begin{enumerate}
-                    \item Haushaltsausschuss (BUDG)
-                    \item Ausschuss für Industrie, Forschung und Energie (ITRE)
-                    \item Ausschuss für Verkehr und Tourismus (TRAN)
-                    \item Ausschuss für Landwirtschaft und ländliche Entwicklung (AGRI)
-                \end{enumerate}
-            }%
-            \newcommand{\topic}{Klimaschutzpolitik}%
-            \newcommand{\slideOne}{%
-                \vspace{-1cm}
-                \begin{center}
-                    \includegraphics[height=6cm]{Bilder/em_sector.png} 
-                \end{center}
-            }%
-            \newcommand{\slideOneTitle}{%
-                Treibhausgasemissionen in der EU nach Sektoren (2019)
-            }%
-            \newcommand{\slideTwo}{%
-                \vspace{-1cm}
-                \begin{center}
-                    \includegraphics[height=6cm, width=\textwidth]{Bilder/em_vergleich.png}
-                \end{center}
-            }%
-            \newcommand{\slideTwoTitle}{%
-                Pro-Kopf-Treibhausgas-Emissionen der Europäischen Union im Vergleich (2021)
-            }%
-            \newcommand{\slideThree}{%
-                \vspace{-1cm}
-                \begin{itemize}
-                    \item 1992: Klimarahmenkonvention der Vereinten Nationen (UNFCCC)
-                    \item 1997: Erstes völkerrechtliches Abkommen mit bindenden Treibhausgas-Reduktionszielen (Kyoto Protokoll)
-                    \item 2005: Einführung eines EU-weiten $CO_2$-Zertifikate-Handels
-                    \item 2015: Pariser Abkommen
-                    \begin{itemize}
-                        \item Ziel: 1,5\degree C, maximal 2\degree C globale Erwärmung
-                        \item Staaten setzen sich selbst verbindliche Ziele
-                    \end{itemize}
-                    \item 2019: Europäischer Green Deal
-                    \begin{itemize}
-                        \item Ziel: erster klimaneutraler Kontinent bis 2050
-                        \item Viele Bereiche umfassendes Paket an Klimaschutzmaßnahmen
-                    \end{itemize}
-                \end{itemize}
-            }%
-            \newcommand{\slideThreeTitle}{%
-                Geschichte der internationalen und EU-Klimaschutzpolitik
-            }%
-            \newcommand{\slideFour}{%
-                \vspace{-1.25cm}
-                \begin{center}
-                    \includegraphics[height=6cm, width=\textwidth]{Bilder/green_deal.png}
-                \end{center}
-            }%
-            \newcommand{\slideFourTitle}{%
-                EU Green Deal
-            }%
-        }{%
-            \ifthenelse{\equal{\thema}{Migration}}{%
-                \newcommand{\ausschuesse}{%
-                    \begin{enumerate}
-                        \item Ausschuss für bürgerliche Freiheiten, Justiz und Inneres (LIBE)
-                        \item Ausschuss für Auswärtige Angelegenheiten (AFET)
-                        \item Unterausschuss für Menschenrechte (DROI)
-                    \end{enumerate}
+	}%
+	{Migration}{
+		\newcommand{\ausschuesse}{%
+       		\begin{enumerate}
+           		\item Ausschuss für bürgerliche Freiheiten, Justiz und Inneres (LIBE)
+                	\item Ausschuss für Auswärtige Angelegenheiten (AFET)
+                	\item Unterausschuss für Menschenrechte (DROI)
+         	\end{enumerate}
+      	}
+       	\newcommand{\topic}{Asyl- und Migrationspolitik}
+        \newcommand{\slideOne}{%
+        		\vspace{-1cm}
+			\begin{center}
+        		\includegraphics[height=6cm, width=\textwidth]{Bilder/asyl_num.png} 
+        		\end{center}
+      	}
+        \newcommand{\slideOneTitle}{%
+        		Entwicklung der Anzahl der Asylanträge \newline in der EU
+      	}
+      	\newcommand{\slideTwo}{%
+        		\vspace{-1cm}
+            	\begin{center}
+            	\includegraphics[height=6cm]{Bilder/asyl_capita.png} 
+           	\end{center}
+       	}
+       	\newcommand{\slideTwoTitle}{%
+        		Anzahl der Asyl-Anträge pro Mitgliedstaat (2021)
+     	}
+       	\newcommand{\slideThree}{%
+        		\vspace{-1cm}
+            	\begin{center}
+            	\includegraphics[height=6cm]{Bilder/ukraine.png} 
+           	\end{center}
+     	}
+       	\newcommand{\slideThreeTitle}{%
+        		Anzahl der aufgenommenen Geflüchteten aus der Ukraine (2023)
+      	}
+        	\newcommand{\slideFour}{%
+      		\vspace{-1cm}
+            	\begin{itemize}
+            		\item 1997: Dublin Übereinkommen
+                	\begin{itemize}
+	                	\item Erste Vereinheitlichung der europäischen Asylpolitik
+               		\item Zuständig für Asylsuchende ist Einreisestaat
+                	\end{itemize}
+    				\item 2004: Gründung Frontex (Grenz- und Küstenwache)
+                	\item 2014: Einführung Asyl-, Migrations- und Integrationsfonds
+                	\item 2023: EU-Asylkompromiss
+                	\begin{itemize}
+                		\item Asylverfahren an Außengrenze
+                    	\item Solidaritätsmechanismus für Staaten mit Außengrenze (Aufnahme oder Ausgleichszahlungen)
+               	\end{itemize}                
+          	\end{itemize}
+       	}
+       	\newcommand{\slideFourTitle}{%
+        		Geschichte der Europäischen Asyl- und Migrationspolitik
                 }
-                \newcommand{\topic}{Asyl- und Migrationspolitik}
-                \newcommand{\slideOne}{%
-                        \vspace{-1cm}
-                        \begin{center}
-                            \includegraphics[height=6cm, width=\textwidth]{Bilder/asyl_num.png} 
-                        \end{center}
-                }
-                \newcommand{\slideOneTitle}{%
-                    Entwicklung der Anzahl der Asylanträge \newline in der EU
-                }
-                \newcommand{\slideTwo}{%
-                        \vspace{-1cm}
-                        \begin{center}
-                            \includegraphics[height=6cm]{Bilder/asyl_capita.png} 
-                        \end{center}
-                }
-                \newcommand{\slideTwoTitle}{%
-                    Anzahl der Asyl-Anträge pro Mitgliedstaat (2021)
-                }
-                \newcommand{\slideThree}{%
-                        \vspace{-1cm}
-                        \begin{center}
-                            \includegraphics[height=6cm]{Bilder/ukraine.png} 
-                        \end{center}
-                }
-                \newcommand{\slideThreeTitle}{%
-                    Anzahl der aufgenommenen Geflüchteten aus der Ukraine (2023)
-                }
-                \newcommand{\slideFour}{%
-                    \vspace{-1cm}
-                    \begin{itemize}
-                        \item 1997: Dublin Übereinkommen
-                        \begin{itemize}
-                            \item Erste Vereinheitlichung der europäischen Asylpolitik
-                            \item Zuständig für Asylsuchende ist Einreisestaat
-                        \end{itemize}
-                        \item 2004: Gründung Frontex (Grenz- und Küstenwache)
-                        \item 2014: Einführung Asyl-, Migrations- und Integrationsfonds
-                        \item 2023: EU-Asylkompromiss
-                        \begin{itemize}
-                            \item Asylverfahren an Außengrenze
-                            \item Solidaritätsmechanismus für Staaten mit Außengrenze (Aufnahme oder Ausgleichszahlungen)
-                        \end{itemize}                
-                    \end{itemize}
-                }
-                \newcommand{\slideFourTitle}{%
-                    Geschichte der Europäischen Asyl- und Migrationspolitik
-                }
-            }{%
-                \ifthenelse{\equal{\thema}{Armee}}{%
-                    \newcommand{\ausschuesse}{%
-                        \begin{enumerate}
-                            \item Haushaltsausschuss (BUDG)
-                            \item Ausschuss für bürgerliche Freiheiten, Justiz und Inneres (LIBE)
-                            \item Unterausschuss für Sicherheit und Verteidigung (SEDE)
-                        \end{enumerate}
-                    }
-                    \newcommand{\topic}{Außen- und Sicherheitspolitik}
-                    \newcommand{\slideOne}{%
-                        \vspace{-1cm}
-                        \begin{center}
-                        \includegraphics[height=6cm, width=\textwidth]{Bilder/conflicts.png} 
-                        \end{center}
-                    }
-                    \newcommand{\slideOneTitle}{%
-                        Todeszahlen in weltweiten Konflikten (2023)
-                    }
-                    \newcommand{\slideTwo}{%
-                        \vspace{-1cm}
-                        \begin{center}
-                            \includegraphics[height=6cm, width=\textwidth]{Bilder/mil_spend_world.png} 
-                        \end{center}
-                    }
-                    \newcommand{\slideTwoTitle}{%
-                        40 Länder mit höchsten Verteidigungsausgaben (2022)
-                    }
-                    \newcommand{\slideThree}{%
-                        \vspace{-1cm}
-                        \begin{center}
-                            \includegraphics[height=6cm, width=\textwidth]{Bilder/mil_spend_eu.png} 
-                        \end{center}
-                    }
-                    \newcommand{\slideThreeTitle}{%
-                        Gesamte Verteidigungsausgaben der EU-Mitgliedstaaten (2005-2022)
-                    }
-                    \newcommand{\slideFour}{%
-                        \vspace{-1cm}
-                        \begin{itemize}
-                            \item 1954: Französische Nationalversammlung lehnt Europäische Armee ab, stattdessen Gründung Westeuropäische Union
-                            \item 1992: Gemeinsame Außen- und Sicherheitspolitik (GASP)
-                            \item 1999: Hoher Vertreter der EU für Außen- und Sicherheitspolitik
-                            \item 2017: Vertiefte militärische Koordinierung durch Permanent Structured Cooperation (SSZ/PESCO)
-                        \end{itemize}
-                    }
-                    \newcommand{\slideFourTitle}{%
-                        Geschichte der Europäischen Außen- und Sicherheitspolitik
-                    }
-                }{%
-                    \newcommand{\topic}{FML}
-                }%
-            }%
-        }%
-    \fi%
+		}%
+	{Armee}{
+		\newcommand{\ausschuesse}{%
+     		\begin{enumerate}
+            		\item Haushaltsausschuss (BUDG)
+                	\item Ausschuss für bürgerliche Freiheiten, Justiz und Inneres (LIBE)
+               	\item Unterausschuss für Sicherheit und Verteidigung (SEDE)
+          	\end{enumerate}
+       	}
+        	\newcommand{\topic}{Außen- und Sicherheitspolitik}
+       	\newcommand{\slideOne}{%
+        		\vspace{-1cm}
+            	\begin{center}
+            	\includegraphics[height=6cm, width=\textwidth]{Bilder/conflicts.png} 
+            	\end{center}
+       	}
+        	\newcommand{\slideOneTitle}{%
+        		Todeszahlen in weltweiten Konflikten (2023)
+        	}
+        	\newcommand{\slideTwo}{%
+        		\vspace{-1cm}
+            	\begin{center}
+            	\includegraphics[height=6cm, width=\textwidth]{Bilder/mil_spend_world.png} 
+            	\end{center}
+      	}
+        	\newcommand{\slideTwoTitle}{%
+        		40 Länder mit höchsten Verteidigungsausgaben (2022)
+       	}
+        	\newcommand{\slideThree}{%
+        		\vspace{-1cm}
+            	\begin{center}
+            	\includegraphics[height=6cm, width=\textwidth]{Bilder/mil_spend_eu.png} 
+            	\end{center}
+      	}
+        	\newcommand{\slideThreeTitle}{%
+        		Gesamte Verteidigungsausgaben der EU-Mitgliedstaaten (2005-2022)
+       	}
+       	\newcommand{\slideFour}{%
+        		\vspace{-1cm}
+            \begin{itemize}
+            		\item 1954: Französische Nationalversammlung lehnt Europäische Armee ab, stattdessen Gründung Westeuropäische Union
+              	\item 1992: Gemeinsame Außen- und Sicherheitspolitik (GASP)
+             	\item 1999: Hoher Vertreter der EU für Außen- und Sicherheitspolitik
+                	\item 2017: Vertiefte militärische Koordinierung durch Permanent Structured Cooperation (SSZ/PESCO)
+          	\end{itemize}
+        	}
+        \newcommand{\slideFourTitle}{%
+        		Geschichte der Europäischen Außen- und Sicherheitspolitik
+       	}
+	}%
 }
 
 
@@ -257,14 +193,12 @@
 
 
 \begin{document}
-\checkCity
-\checkTopic
 \frame{\titlepage}
 
-\begin{frame}{Grußwort \Politiker \newline (\office)}
+\begin{frame}{Grußwort \politiker \newline (\politikerOffice)}
 \vspace{-1cm}
     \begin{center}
-        \includegraphics[height=4cm]{\picPolitiker}
+        \includegraphics[height=4cm]{\politikerPic}
     \end{center}
 \end{frame}
 
@@ -408,11 +342,11 @@
         \begin{tabular}{c|c|c}
              Fraktion & Fraktionssaal & Fraktionsleitung \\
              \hline
-             EVP & \evproom & \evpleader \\
-             S\&D & \sdroom & \sdleader \\
-             Renew & \reroom & \releader \\
-             Grüne &\greenroom & \greenleader \\
-             ID & \idroom & \idleader \\
+             EVP & \evpRoom & \evpLeader \\
+             S\&D & \sdRoom & \sdLeader \\
+             Renew & \reRoom & \reLeader \\
+             Grüne &\greenRoom & \greenLeader \\
+             ID & \idRoom & \idLeader \\
         \end{tabular}
     \end{table}
 \end{frame}

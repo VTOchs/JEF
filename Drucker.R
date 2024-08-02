@@ -3,6 +3,7 @@ rm(list = ls())
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
+library(tinytex)
 
 dhondt <- function (parties, votes, n_seats){
   divisors <- 1:n_seats
@@ -32,13 +33,29 @@ dhondt <- function (parties, votes, n_seats){
   }
 }
 
-countries <- c("Österreich", "Belgien", "Kroatien", "Dänemark", "Estland",
-               "Finnland", "Frankreich", "Deutschland", "Griechenland",
-               "Ungarn", "Irland", "Italien", "Polen", "Rumänien", "Spanien")
-numSuS <- 87
+countries <- c("Österreich", "Belgien", "Bulgarien", "Kroatien", "Zypern", "Tschechien", "Tschechien", "Dänemark",
+               "Estland", "Finnland", "Frankreich", "Deutschland", "Griechenland", "Ungarn",
+               "Irland", "Italien", "Lettland", "Litauen", "Luxemburg", "Malta", "Niederlande",
+               "Polen", "Portugal", "Rumänien", "Slowakei", "Slowenien", "Spanien", "Schweden")
 
+header <- dashboardHeader(title = "Unterlagendrucker")
+
+sidebar <- dashboardSidebar(
+  sidebarMenu(
+    menuItem("Eingabe", tabName = "input_tab"),
+    menuItem("Ergebnis", tabName = "output_tab")
+  )
+)
+
+
+
+
+
+numSuS <- 87
+source("Folien.R")
+source("Länderpapiere.R")
 {partyDist <- dhondt(parties = c("EVP", "S&D", "Renew", "Grüne", "PfE"),
-                    votes = c(30, 30, 20, 20, 20),
+                    votes = c(188, 136, 77, 53, 84),
                     n_seats = numSuS)
 
 countDist <- dhondt(parties = countries,
@@ -59,20 +76,80 @@ while (countDist$SEATS |> sum() > 0) {
 
 listDist <- lapply(listDist, unlist)}
 listDist
-stop()
+
 
 
 # LaTeX Integration -------------------------------------------------------
 
-library(tinytex)
-latexmk("LaTeX/How-To.tex", engine = "pdflatex")
+
+# latexmk("LaTeX/How-To.tex", engine = "pdflatex")
+
+dfTexInput <- data.frame(index = "a",
+                      group = "SD", # EVP/SD/RE/Green/ID | LEER,
+                      topic = "Green Deal", # Green Deal/Migration/Armee 
+                      com = "AFET", # AFET, AGRI, BUDG, DROI, ITRE, LIBE, SEDE, TRAN
+                      city = "Bayreuth",
+                      timeEinf = "09:00-09:45",
+                      timeFrakOne = "09:45-11:15",
+                      timeAuss = "11:30-12:45",
+                      timeMittag = "12:45-13:15",
+                      timeFrakTwo = "13:15-13:45",
+                      timePlenar = "14:00-15:00",
+                      date = "17. Mai 2024",
+                      politiker = "Thomas Hacker",
+                      politikerOffice = "Mitglied des Bundestages",
+                      politikerPic = "Bilder/hacker.png",
+                      stadtvertreter = "Janina Kiekebusch",
+                      stadtvertreterOffice = "IHK-Referentin für europäischen Handel und EU-Politik",
+                      stadtvertreterPic = "Bilder/kikebusch.png",
+                      iso = "SWE",
+                      evpLeader = "TBD",
+                      evpRoom = "TBD",
+                      sdLeader = "TBD",
+                      sdRoom = "TBD",
+                      reLeader = "TBD",
+                      reRoom = "TBD",
+                      greenLeader = "TBD",
+                      greenRoom = "TBD",
+                      idLeader = "TBD",
+                      idRoom = "TBD")
+
+{sink("LaTeX/Meta/var.tex")
+paste0("\\newcommand\\Fraktion{", dfTexInput$group, "}\n") |> cat()
+paste0("\\newcommand\\Thema{", dfTexInput$topic, "}\n") |> cat()
+paste0("\\newcommand\\Committee{", dfTexInput$com, "}\n") |> cat()
+paste0("\\newcommand\\city{", dfTexInput$city, "}\n") |> cat()
+paste0("\\newcommand\\timeEinf{", dfTexInput$timeEinf, "}\n") |> cat()
+paste0("\\newcommand\\timeFrakOne{", dfTexInput$timeFrakOne, "}\n") |> cat()
+paste0("\\newcommand\\timeAuss{", dfTexInput$timeAuss, "}\n") |> cat()
+paste0("\\newcommand\\timeMittag{", dfTexInput$timeMittag, "}\n") |> cat()
+paste0("\\newcommand\\timeFrakTwo{", dfTexInput$timeFrakTwo, "}\n") |> cat()
+paste0("\\newcommand\\timePlenar{", dfTexInput$timePlenar, "}\n") |> cat()
+paste0("\\newcommand\\politiker{", dfTexInput$politiker, "}\n") |> cat()
+paste0("\\newcommand\\politikerOffice{", dfTexInput$politikerOffice, "}\n") |> cat()
+paste0("\\newcommand\\politikerPic{", dfTexInput$politikerPic, "}\n") |> cat()
+paste0("\\newcommand\\stadtvertreter{", dfTexInput$stadtvertreter, "}\n") |> cat()
+paste0("\\newcommand\\stadtvertreterOffice{", dfTexInput$stadtvertreterOffice, "}\n") |> cat()
+paste0("\\newcommand\\stadtvertreterPic{", dfTexInput$stadtvertreterPic, "}\n") |> cat()
+paste0("\\newcommand\\kurzel{", dfTexInput$iso, "}\n") |> cat()
+paste0("\\newcommand\\evpLeader{", dfTexInput$evpLeader, "}\n") |> cat()
+paste0("\\newcommand\\evpRoom{", dfTexInput$evpRoom, "}\n") |> cat()
+paste0("\\newcommand\\sdLeader{", dfTexInput$sdLeader, "}\n") |> cat()
+paste0("\\newcommand\\sdRoom{", dfTexInput$sdRoom, "}\n") |> cat()
+paste0("\\newcommand\\reLeader{", dfTexInput$reLeader, "}\n") |> cat()
+paste0("\\newcommand\\reRoom{", dfTexInput$reRoom, "}\n") |> cat()
+paste0("\\newcommand\\greenLeader{", dfTexInput$greenLeader, "}\n") |> cat()
+paste0("\\newcommand\\greenRoom{", dfTexInput$greenRoom, "}\n") |> cat()
+paste0("\\newcommand\\idLeader{", dfTexInput$idLeader, "}\n") |> cat()
+paste0("\\newcommand\\idRoom{", dfTexInput$idRoom, "}\n") |> cat()
+sink()}
+#
 
 
 
-# tex-Dateien in neuer Ordnerstruktur zum Laufen bringen
-# verschiedene Parteien/Städte/Themen von außen anwählbar machen
-# Checken dass alle gecrawlten Dateien eingelesen werden
 # Über latexmk kompilieren
 # Länderverteilung nach Anzahl zuordnen lassen
 # Stadtspezifische Dinge (Redner etc.) als Shiny-Input
 # In richtiger Reihenfolge je nach dhondt-Ergebnis in ein pdf fügen
+  # qpdf::pdf_combine(input = c("file.pdf", "file2.pdf", "file3.pdf"),
+  #                   output = "output.pdf")

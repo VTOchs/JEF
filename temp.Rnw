@@ -1,0 +1,197 @@
+
+\documentclass{article}
+\usepackage{Sweave}
+\begin{document}
+  index group
+1     1   EVP
+essing code chunks with options ...
+
+You can now run (pdf)latex on ‘temp.tex’
+Writing to file temp.tex.tex
+Processing code chunks with options ...
+
+You can now run (pdf)latex on ‘temp.tex.tex’
+Writing to file temp2.tex.tex
+Processing code chunks with options ...
+
+You can now run (pdf)latex on ‘temp2.tex.tex’
+  index group
+1     1   EVP
+  index group
+1     1   EVP
+
+  B & 518 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 480 \\ 
+  B & 520 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 511 \\ 
+  B & 489 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 525 \\ 
+  B & 475 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 524 \\ 
+  B & 476 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 480 \\ 
+  B & 520 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 509 \\ 
+  B & 491 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 502 \\ 
+  B & 498 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 484 \\ 
+  B & 516 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 512 \\ 
+  B & 488 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 506 \\ 
+  B & 494 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 501 \\ 
+  B & 499 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 491 \\ 
+  B & 509 \\ 
+   \hline
+\end{tabular}
+\end{table}
+% latex table generated in R 4.3.3 by xtable 1.8-4 package
+% Sun Jul 28 19:21:17 2024
+\begin{table}[!htp]
+\centering
+\begin{tabular}{rr}
+  \hline
+ & x \\ 
+  \hline
+A & 508 \\ 
+  B & 492 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\end{document}

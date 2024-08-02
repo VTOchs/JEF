@@ -8,17 +8,7 @@
 \usepackage{xstring}
 \usepackage[german]{babel}
 \usetikzlibrary{calc}
-
-
-% Namen der Teamer:innen einfügen
-\newcommand{\city}{Bayreuth}
-\newcommand{\stadtvertreter}{Janina Kiekebusch}%
-\newcommand{\office}{IHK-Referentin für europäischen Handel \& EU-Politik}%
-\newcommand{\stadtvertreterBild}{Bilder/kikebusch.png}%
-\date{17. Mai 2024}%
-
-
-\newcommand{\Fraktion}{LEER} % AUF KEINEN FALL ÄNDERN
+\input{../Meta/var.tex}
 
 
 %Information to be included in the title page:
@@ -28,10 +18,10 @@
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Grußwort \stadtvertreter\ (\office)}
+\begin{frame}{Grußwort \stadtvertreter\ (\stadtvertreterOffice)}
 \vspace{-1.5cm}
     \begin{center}
-        \includegraphics[height=4cm]{\stadtvertreterBild}
+        \includegraphics[height=4cm]{\stadtvertreterPic}
     \end{center}
 \end{frame}
 
@@ -49,14 +39,5 @@
     \end{enumerate}
 \end{frame}
 
-\begin{comment}
-\begin{frame}{JEF \city}
-\vspace{-0.5cm} 
-\hspace{0.1cm} Nächstes Treffen: Europapicknick 04.06. 18:00
-\newline
-\center
-\includegraphics[height=5cm]{\qrinsta}
-\end{frame}
-\end{comment}
 
 \end{document}
