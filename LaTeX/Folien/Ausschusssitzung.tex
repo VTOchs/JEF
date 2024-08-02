@@ -6,27 +6,9 @@
 \usepackage{etoolbox}
 \usepackage{xstring}
 \usepackage[german]{babel}
+\input{../Meta/var.tex}
 
 % -------------------------------------------------------------
-% HIER EINSTELLEN:
-% * Namen der Teamer:innen
-% * Ausschuss (% jeweils löschen)
-% !!! NUR EIN AUSSCHUSS ZUGLEICH OHNE %
-
-\newcommand{\city}{Bayreuth}
-\date{17. Mai 2024}
-% hier bei entsprechendem Ausschuss % entfernen
-
-\newcommand{\Committee}{AFET}
-%\newcommand{\Committee}{AGRI}
-%\newcommand{\Committee}{BUDG}
-%\newcommand{\Committee}{DROI}
-%\newcommand{\Committee}{ITRE}
-%\newcommand{\Committee}{LIBE}
-%\newcommand{\Committee}{SEDE}
-%\newcommand{\Committee}{TRAN}
-
-
 
 \DTLloaddb{committees}{../../Daten/committee_data.csv}
 \newcommand{\comPres}[1]{%
@@ -42,96 +24,90 @@
 }
 
 % Folien:
-
-\IfStrEq{\Committee}{AFET}{%
-    \newcommand{\Auschussname}{Ausschuss für Auswärtige Angelegenheiten}
-    \newcommand{\auschussThemen}{
-    \begin{itemize}
-        \item Gemeinsame Außen- und Sicherheitspolitik (GASP)
-        \item Beziehung zu anderen EU-Organen und internationalen Organisationen
-        \item Stärkung der politischen Beziehungen zu Drittländern
-        \item Fragen im Zusammenhang mit der Demokratie, der Rechtsstaatlichkeit, den Menschenrechten
-    \end{itemize}
-    }
-}{%
-    \IfStrEq{\Committee}{AGRI}{%
-        \newcommand{\Auschussname}{Ausschuss für Landwirtschaft und ländliche Entwicklung}
+\IfEqCase{\Committee}{
+	{AFET}{
+		\newcommand{\Auschussname}{Ausschuss für Auswärtige Angelegenheiten}
+    		\newcommand{\auschussThemen}{
+    		\begin{itemize}
+        		\item Gemeinsame Außen- und Sicherheitspolitik (GASP)
+			\item Beziehung zu anderen EU-Organen und internationalen Organisationen
+        		\item Stärkung der politischen Beziehungen zu Drittländern
+        		\item Fragen im Zusammenhang mit der Demokratie, der Rechtsstaatlichkeit, den Menschenrechten
+    		\end{itemize}
+    		}
+	}%
+	{AGRI}{
+		\newcommand{\Auschussname}{Ausschuss für Landwirtschaft und ländliche Entwicklung}
         \newcommand{\auschussThemen}{
 	        \begin{itemize}
-    	        \item Gemeinsame Agrarpolitik
-                \item Ländliche Entwicklung
-                 \item Tier- und Pflanzenschutz
-                 \item Qualität von landwirtschaftlichen Produkten
+    	        		\item Gemeinsame Agrarpolitik
+             	\item Ländliche Entwicklung
+               	\item Tier- und Pflanzenschutz
+               	\item Qualität von landwirtschaftlichen Produkten
              \end{itemize}
          }
-    }{%
-        \IfStrEq{\Committee}{BUDG}{%
-            \newcommand{\Auschussname}{Haushaltsausschuss}
-            \newcommand{\auschussThemen}{Planung \& Überwachung EU-Haushalt}
-        }{%
-            \IfStrEq{\Committee}{DROI}{%
-                \newcommand{\Auschussname}{Unterausschuss für Menschenrechte}
-                \newcommand{\auschussThemen}{
-                    \begin{itemize}
-                        \item Menschenrechte
-                        \item Demokratie
-                        \item Minderheitenschutz
-                    \end{itemize}
-                }
-            }{%
-                \IfStrEq{\Committee}{ITRE}{%
-                    \newcommand{\Auschussname}{Ausschuss für Industrie, Forschung und Energie}
-                    \newcommand{\auschussThemen}{
-                        \begin{itemize}
-                            \item Industriepolitik der EU (Förderung von neuen Technologien und KMUs)
-                            \item Forschungspolitik
-                            \item Energiepolitik
-                            \item Informationstechnologie
-                        \end{itemize}
-                    }
-                }{%
-                    \IfStrEq{\Committee}{LIBE}{%
-                        \newcommand{\Auschussname}{Ausschuss für bürgerliche Freiheiten, Justiz und Inneres}
-                        \newcommand{\auschussThemen}{
-                            \begin{itemize}
-                                \item Schutz von Menschenrechten \& Minderheiten
-                                \item Bekämpfung von Diskriminierung
-                                \item Datenschutz
-                                \item Asyl- und Migrationspolitik
-                                \item Justiz- \& Polizeikooperation
-                            \end{itemize}
+	}%
+	{BUDG}{
+		\newcommand{\Auschussname}{Haushaltsausschuss}
+       	\newcommand{\auschussThemen}{Planung \& Überwachung EU-Haushalt}
+	}%
+	{DROI}{
+		\newcommand{\Auschussname}{Unterausschuss für Menschenrechte}
+       	\newcommand{\auschussThemen}{
+        		\begin{itemize}
+            		\item Menschenrechte
+                	\item Demokratie
+                	\item Minderheitenschutz
+            	\end{itemize}
+      	}
+	}%
+	{ITRE}{
+		\newcommand{\Auschussname}{Ausschuss für Industrie, Forschung und Energie}
+       	\newcommand{\auschussThemen}{
+        		\begin{itemize}
+            		\item Industriepolitik der EU (Förderung von neuen Technologien und KMUs)
+                	\item Forschungspolitik
+                	\item Energiepolitik
+                	\item Informationstechnologie
+            	\end{itemize}
+    		}
+	}%
+	{LIBE}{
+		\newcommand{\Auschussname}{Ausschuss für bürgerliche Freiheiten, Justiz und Inneres}
+        	\newcommand{\auschussThemen}{
+        		\begin{itemize}
+            		\item Schutz von Menschenrechten \& Minderheiten
+                	\item Bekämpfung von Diskriminierung
+               	\item Datenschutz
+                	\item Asyl- und Migrationspolitik
+                	\item Justiz- \& Polizeikooperation
+          	\end{itemize}
                         }
-                    }{%
-                        \IfStrEq{\Committee}{SEDE}{%
-                            \newcommand{\Auschussname}{
-                            Unterausschuss für Sicherheit und Verteidigung}
-                            \newcommand{\auschussThemen}{            
-                            \begin{itemize}
-                                \item Sicherheit- und Verteidigungspolitik
-                                \item Beziehungen zu strategischen Partnern
-                            \end{itemize}}
-                        }{%
-                        \IfStrEq{\Committee}{TRAN}{%
-                            \newcommand{\Auschussname}{
-                            Ausschuss für Verkehr und Tourismus}
-                            \newcommand{\auschussThemen}{
-                            \begin{itemize}
-                                \item Eisenbahn- und Straßenverkehr \item Binnen- und Seeschifffahrt und Luftfahrt
-                                \item Tourismus
-                            \end{itemize}}
-                            }{%
-                                \newcommand{\Auschussname}{Falsches Ausschusskürzel}
-                                }%
-                        }%
-                    }%
-                }%
-            }%
-        }%
-    }%
+	}%
+	{SEDE}{
+		\newcommand{\Auschussname}{Unterausschuss für Sicherheit und Verteidigung}
+      	\newcommand{\auschussThemen}{            
+        		\begin{itemize}
+            		\item Sicherheit- und Verteidigungspolitik
+                	\item Beziehungen zu strategischen Partnern
+           	\end{itemize}}
+	}%
+	{TRAN}{
+		\newcommand{\Auschussname}{Ausschuss für Verkehr und Tourismus}
+		\newcommand{\auschussThemen}{
+        		\begin{itemize}
+            		\item Eisenbahn- und Straßenverkehr
+            		\item Binnen- und Seeschifffahrt und Luftfahrt
+               	\item Tourismus
+       		\end{itemize}}
+	}%
 }
 
-\newcommand{\Fraktion}{LEER} % AUF KEINEN FALL ÄNDERN
-
+       
+            
+                    
+       
+                            
 %Information to be included in the title page:
 \title{\Auschussname\ (\Committee)}
 

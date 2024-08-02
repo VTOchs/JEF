@@ -6,56 +6,33 @@
 \usepackage{etoolbox}
 \usepackage{xstring}
 \usepackage[german]{babel}
+\input{../Meta/var.tex}
 
 
 % -------------------------------------------------------------
-% HIER EINSTELLEN:
-% * Namen der Teamer:innen
-% * Fraktion (% jeweils löschen)
-% !!! NUR EINE FRAKTION ZUGLEICH OHNE %
-% * Thema (% jeweils löschen)
-% !!! NUR EIN THEMA ZUGLEICH OHNE %
 
-
-% Namen der Teamer:innen einfügen
-% hier bei entsprechender Fraktion % entfernen
-
-%\newcommand{\Fraktion}{EVP}
-%\newcommand{\Fraktion}{SD}
-%\newcommand{\Fraktion}{RE}
-%\newcommand{\Fraktion}{Green}
-\newcommand{\Fraktion}{ID}
-
-\newcommand{\city}{Bayreuth}
-
-\IfStrEq{\Fraktion}{EVP}{%
-    \newcommand{\Fraktionsname}{Europäische Volkspartei}
-    \newcommand{\Fraktionskuerzel}{EVP}
-}{%
-    \IfStrEq{\Fraktion}{SD}{%
-        \newcommand{\Fraktionsname}{Progressive Allianz der Sozialdemokraten}
+\IfEqCase{\Fraktion}{%
+	{EVP}{
+		\newcommand{\Fraktionsname}{Europäische Volkspartei}
+	    \newcommand{\Fraktionskuerzel}{EVP}
+	}%
+	{SD}{
+		\newcommand{\Fraktionsname}{Progressive Allianz der Sozialdemokraten}
         \newcommand{\Fraktionskuerzel}{S\&D}
-    }{%
-        \IfStrEq{\Fraktion}{RE}{%
-            \newcommand{\Fraktionsname}{Renew Europe}
-            \newcommand{\Fraktionskuerzel}{Renew}
-        }{%
-            \IfStrEq{\Fraktion}{Green}{%
-                \newcommand{\Fraktionsname}{Die Grünen/Europäische Freie Allianz}
-                \newcommand{\Fraktionskuerzel}{Grüne/EFA}
-            }{%
-                \IfStrEq{\Fraktion}{ID}{%
-                    \newcommand{\Fraktionsname}{Identität \& Demokratie}
-                    \newcommand{\Fraktionskuerzel}{ID}
-                }{%
-                    \newcommand{\Fraktionsname}{Falsches Fraktionskürzel}
-                    \newcommand{\Fraktionskuerzel}{Falsches Fraktionskürzel}
-                }%
-            }%
-        }%
-    }%
+	}%
+	{RE}{
+		\newcommand{\Fraktionsname}{Renew Europe}
+		\newcommand{\Fraktionskuerzel}{Renew}
+	}%
+	{Green}{
+		\newcommand{\Fraktionsname}{Die Grünen/Europäische Freie Allianz}
+		\newcommand{\Fraktionskuerzel}{Grüne/EFA}
+	}%
+	{ID}{
+		\newcommand{\Fraktionsname}{Identität \& Demokratie}
+		\newcommand{\Fraktionskuerzel}{ID}
+	}%
 }
-
 
 
 %Information to be included in the title page:
