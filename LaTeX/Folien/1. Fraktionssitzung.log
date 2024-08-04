@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  28 JUL 2024 21:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  4 AUG 2024 21:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1089,24 +1089,24 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (1. Fraktionssitzung.aux)
 \openout1 = `"1. Fraktionssitzung.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 444.
-LaTeX Font Info:    ... okay on input line 444.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 435.
+LaTeX Font Info:    ... okay on input line 435.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1176,63 +1176,63 @@ G,.JBIG2,.JB2,.eps]
 .cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 444.
+Package hyperref Info: Link coloring OFF on input line 435.
  (1. Fraktionssitzung.out) (1. Fraktionssitzung.out)
 \@outlinefile=\write6
 \openout6 = `"1. Fraktionssitzung.out"'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 444.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 435.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 444.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 435.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 444.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 444.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 435.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 444.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 444.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 444.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 435.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 444.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 444.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 444.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 435.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 444.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 444.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 444.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 435.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 444.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 444.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 435.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 444.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 435.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 444.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 444.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 444.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 444.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 444.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 435.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 444.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 444.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 435.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 435.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 4
-44.
+35.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 4
-44.
+35.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 444.
+ut line 435.
 
 (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
 -basic-dictionary-English.dict
@@ -1264,55 +1264,68 @@ Package caption Info: End \AtBeginDocument code.
 <Bilder/SD.png, id=12, 417.56pt x 417.56pt>
 File: Bilder/SD.png Graphic file (type png)
 <use Bilder/SD.png>
-Package pdftex.def Info: Bilder/SD.png  used on input line 445.
+Package pdftex.def Info: Bilder/SD.png  used on input line 436.
 (pdftex.def)             Requested size: 71.1308pt x 71.13188pt.
 <../Logos/jef.png, id=13, 794.97pt x 270.38014pt>
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 445.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 436.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 <../Logos/simep.png, id=15, 376.40625pt x 376.40625pt>
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 445.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 436.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 <../Logos/finance.png, id=16, 1003.75pt x 530.98375pt>
 File: ../Logos/finance.png Graphic file (type png)
 <use ../Logos/finance.png>
-Package pdftex.def Info: ../Logos/finance.png  used on input line 445.
+Package pdftex.def Info: ../Logos/finance.png  used on input line 436.
 (pdftex.def)             Requested size: 80.66922pt x 42.67912pt.
-<../Logos/Bayreuth.png, id=17, 597.432pt x 128.8815pt>
-File: ../Logos/Bayreuth.png Graphic file (type png)
-<use ../Logos/Bayreuth.png>
-Package pdftex.def Info: ../Logos/Bayreuth.png  used on input line 445.
-(pdftex.def)             Requested size: 99.58464pt x 21.48282pt.
+<../Logos/Bamberg.png, id=17, 481.8pt x 429.605pt>
+File: ../Logos/Bamberg.png Graphic file (type png)
+<use ../Logos/Bamberg.png>
+Package pdftex.def Info: ../Logos/Bamberg.png  used on input line 436.
+(pdftex.def)             Requested size: 99.58464pt x 88.79066pt.
 
 
 [1
 
 {C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/S
 D.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance.png> <../Logos
-/Bayreuth.png (PNG copy)>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 459
+/Bamberg.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 450
 .
 
 (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 459
+LaTeX Font Info:    Trying to load font information for U+msb on input line 450
 .
 
 (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 459.
+ut line 450.
 
 (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mat
 hkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 450.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 450.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[2
+
+]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 459.
@@ -1323,37 +1336,24 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 459.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
-[2
-
-]
-File: ../Logos/jef.png Graphic file (type png)
-<use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 468.
-(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
-File: ../Logos/simep.png Graphic file (type png)
-<use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 468.
-(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
-
-
 [3
 
 ]
-<Bilder/EP_seats.jpg, id=107, 1839.87375pt x 1036.87375pt>
+<Bilder/EP_seats.jpg, id=108, 730.22812pt x 728.7225pt>
 File: Bilder/EP_seats.jpg Graphic file (type jpg)
 <use Bilder/EP_seats.jpg>
-Package pdftex.def Info: Bilder/EP_seats.jpg  used on input line 482.
-(pdftex.def)             Requested size: 227.62204pt x 128.26407pt.
+Package pdftex.def Info: Bilder/EP_seats.jpg  used on input line 470.
+(pdftex.def)             Requested size: 156.80656pt x 156.49014pt.
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 482.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 470.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 482.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 470.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
-Overfull \vbox (0.19817pt too high) detected at line 482
+Overfull \vbox (10.82423pt too high) detected at line 470
  []
 
 
@@ -1363,39 +1363,39 @@ Overfull \vbox (0.19817pt too high) detected at line 482
  <./Bilder/EP_seats.jpg>]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 490.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 478.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 490.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 478.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
 [5
 
 ]
-<Bilder/rep1_SD.jpg, id=162, 114.8215pt x 145.21542pt>
+<Bilder/rep1_SD.jpg, id=163, 114.8215pt x 145.21542pt>
 File: Bilder/rep1_SD.jpg Graphic file (type jpg)
 <use Bilder/rep1_SD.jpg>
-Package pdftex.def Info: Bilder/rep1_SD.jpg  used on input line 519.
+Package pdftex.def Info: Bilder/rep1_SD.jpg  used on input line 507.
 (pdftex.def)             Requested size: 44.99394pt x 56.9055pt.
-<Bilder/rep2_SD.jpg, id=163, 113.9742pt x 142.46774pt>
+<Bilder/rep2_SD.jpg, id=164, 113.9742pt x 142.46774pt>
 File: Bilder/rep2_SD.jpg Graphic file (type jpg)
 <use Bilder/rep2_SD.jpg>
-Package pdftex.def Info: Bilder/rep2_SD.jpg  used on input line 519.
+Package pdftex.def Info: Bilder/rep2_SD.jpg  used on input line 507.
 (pdftex.def)             Requested size: 45.5245pt x 56.9055pt.
-<Bilder/rep3_SD.jpg, id=164, 668.0157pt x 834.9594pt>
+<Bilder/rep3_SD.jpg, id=165, 668.0157pt x 834.9594pt>
 File: Bilder/rep3_SD.jpg Graphic file (type jpg)
 <use Bilder/rep3_SD.jpg>
-Package pdftex.def Info: Bilder/rep3_SD.jpg  used on input line 519.
+Package pdftex.def Info: Bilder/rep3_SD.jpg  used on input line 507.
 (pdftex.def)             Requested size: 45.52231pt x 56.9055pt.
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 519.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 507.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 519.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 507.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
@@ -1404,11 +1404,11 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 519.
  <./Bilder/rep1_SD.jpg> <./Bilder/rep2_SD.jpg> <./Bilder/rep3_SD.jpg>]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 524.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 512.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 524.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 512.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
@@ -1417,11 +1417,11 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 524.
 ]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 529.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 517.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 529.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 517.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
@@ -1430,11 +1430,11 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 529.
 ]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 539.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 527.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 539.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 527.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
@@ -1443,15 +1443,28 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 539.
 ]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 547.
+Package pdftex.def Info: ../Logos/jef.png  used on input line 535.
 (pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 547.
+Package pdftex.def Info: ../Logos/simep.png  used on input line 535.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
 [10
+
+]
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 545.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 545.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[11
 
 ]
 File: ../Logos/jef.png Graphic file (type png)
@@ -1461,19 +1474,6 @@ Package pdftex.def Info: ../Logos/jef.png  used on input line 557.
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 557.
-(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
-
-
-[11
-
-]
-File: ../Logos/jef.png Graphic file (type png)
-<use ../Logos/jef.png>
-Package pdftex.def Info: ../Logos/jef.png  used on input line 569.
-(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
-File: ../Logos/simep.png Graphic file (type png)
-<use ../Logos/simep.png>
-Package pdftex.def Info: ../Logos/simep.png  used on input line 569.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
 
@@ -1498,11 +1498,11 @@ Package rerunfilecheck Info: File `"1. Fraktionssitzung".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30692 strings out of 473938
- 605882 string characters out of 5726448
+ 30712 strings out of 473938
+ 606072 string characters out of 5726448
  1938893 words of memory out of 5000000
- 52885 multiletter control sequences out of 15000+600000
- 566080 words of font info for 64 fonts, out of 8000000 for 9000
+ 52906 multiletter control sequences out of 15000+600000
+ 565724 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,419b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
@@ -1511,12 +1511,10 @@ m/cmss10.pfb><C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public
 ype1/public/amsfonts/cm/cmss17.pfb><C:/Users/Vincent/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Vincent/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Vincent/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users
-/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam
-10.pfb>
-Output written on "1. Fraktionssitzung.pdf" (12 pages, 1635237 bytes).
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on "1. Fraktionssitzung.pdf" (12 pages, 1404635 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
+ 381 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 

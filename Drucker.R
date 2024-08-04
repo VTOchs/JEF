@@ -1,11 +1,12 @@
 # Libraries ---------------------------------------------------------------
 
 rm(list = ls())
+library(DT)
+library(readxl)
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
 library(tinytex)
-library(DT)
 
 # Funktionen --------------------------------------------------------------
 
@@ -103,6 +104,8 @@ body <- dashboardBody(
                      choices = c("Green Deal", "Migration", "Armee"),
                      selected = "Green Deal"),
         textInput("city", "Stadt:"),
+        textInput("localSup", "Lokale Unterstützung:"),
+        textInput("sponsor", "Sponsor:"),
         dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
         selectInput("docs", "Dokumente:",
                      choices = c("Repository", "Unterlagen SuS", "TN-Zertifikate", "SuS-Verteilung"),
@@ -112,7 +115,7 @@ body <- dashboardBody(
                     selected = "Keine")
       )
     ),
-    
+  
     tabItem(
       tabName = "folien_tab",
       fluidRow(
@@ -121,7 +124,9 @@ body <- dashboardBody(
           textInput("pol", "Politiker:"),
           textInput("pol_office", "Politiker (Amt):", value = "Mitglied des Europäischen Parlaments"),
           textInput("stadtvert", "Stadtvertreter:"),
-          textInput("stadtvert_office", "Stadtvertreter (Amt):")
+          textInput("stadtvert_office", "Stadtvertreter (Amt):"),
+          textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
+          selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "w"), selected = "M")
         ),
         box(
           width = 4,
@@ -187,6 +192,7 @@ server <- function(input, output, session) {
   
   observeEvent(input$print, 
      # Fix LaTex-Variables into tex-File
+     
      {dfTexInput <- data.frame(index = "a",
                                topic = input$topic, # Green Deal/Migration/Armee 
                                city = input$city,
@@ -210,7 +216,12 @@ server <- function(input, output, session) {
                                greenLeader = input$leit_green,
                                greenRoom = input$room_green,
                                pfeLeader = input$leit_pfe,
-                               pfeRoom = input$room_pfe)
+                               pfeRoom = input$room_pfe,
+                               localSupport = input$localSup,
+                               sponsor = input$sponsor,
+                               jefVorsitz = input$jefvorsitz,
+                               genderVorsitz = ifelse(input$gender == "M", "Landesvorsitzender", "Landesvorsitzende"))
+     
      sink("LaTeX/Meta/shinyin.tex")
      paste0("\\newcommand\\Thema{", dfTexInput$topic, "}\n") |> cat()
      paste0("\\newcommand\\city{", dfTexInput$city, "}\n") |> cat()
@@ -224,6 +235,10 @@ server <- function(input, output, session) {
      paste0("\\newcommand\\politikerOffice{", dfTexInput$politikerOffice, "}\n") |> cat()
      paste0("\\newcommand\\stadtvertreter{", dfTexInput$stadtvertreter, "}\n") |> cat()
      paste0("\\newcommand\\stadtvertreterOffice{", dfTexInput$stadtvertreterOffice, "}\n") |> cat()
+     paste0("\\newcommand\\localSupport{", dfTexInput$localSupport, "}\n") |> cat()
+     paste0("\\newcommand\\sponsor{", dfTexInput$sponsor, "}\n") |> cat()
+     paste0("\\newcommand\\vorsitz{", dfTexInput$jefVorsitz, "}\n") |> cat()
+     paste0("\\newcommand\\gendervorsitz{", dfTexInput$genderVorsitz, "}\n") |> cat()
      paste0("\\newcommand\\evpLeader{", dfTexInput$evpLeader, "}\n") |> cat()
      paste0("\\newcommand\\evpRoom{", dfTexInput$evpRoom, "}\n") |> cat()
      paste0("\\newcommand\\sdLeader{", dfTexInput$sdLeader, "}\n") |> cat()
@@ -235,8 +250,9 @@ server <- function(input, output, session) {
      paste0("\\newcommand\\pfeLeader{", dfTexInput$pfeLeader, "}\n") |> cat()
      paste0("\\newcommand\\pfeRoom{", dfTexInput$pfeRoom, "}\n") |> cat()
      sink()})        
-
-  observeEvent(input$print, 
+  
+  
+  observeEvent(input$print,
     if (input$reload == "Länderpapiere") {
       source("Länderpapiere.R")
     } else if (input$reload == "Fraktionen & Ausschüsse") {
@@ -260,6 +276,7 @@ server <- function(input, output, session) {
   #           (TN-Zertifikate)
   #           Länderpapiere
   observeEvent(input$print, 
+       ### ZUM LAUFEN BRINGEN ###
     if (input$docs == "Repository") {
       # Involvierte Ausschüsse festlegen
       if (input$topic == "Green Deal") {
@@ -297,6 +314,7 @@ server <- function(input, output, session) {
         latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
                 pdf_file = paste0(input$resPath, "Fraktionen/", group, "/Fraktionspapier.pdf"))
       }
+      
       ## Ausschüsse
       for (committee in committees) {
         {dfTextVar <- data.frame(index = "a",
@@ -307,17 +325,54 @@ server <- function(input, output, session) {
         latexmk("LaTeX/Folien/Ausschusssitzung.tex", engine = "pdflatex",
                 pdf_file = paste0(input$resPath, "Ausschüsse/", committee, ".pdf"))
       }
+      
       ## Sonstiges
       latexmk("LaTeX/Folien/Plenarsitzung.tex", engine = "pdflatex",
               pdf_file = paste0(input$resPath, "Sonstiges/Plenarsitzung.pdf"))
       latexmk("LaTeX/Folien/Briefing.tex", engine = "pdflatex",
               pdf_file = paste0(input$resPath, "Sonstiges/Briefing.pdf"))
-      ### ZUM LAUFEN BRINGEN & HIER NOCH TN-ZERTIFIKATE REIN ###
+      
+      ## TN-Zertifikate
+      
+      for (excel in list.files("Daten/Schüler")) {
+        xlPath <- paste0("Daten/Schüler/", excel)
+        for (sheet in excel_sheets(xlPath)) {
+          df_xlsx <- read_excel(xlPath, sheet = sheet)
+          write.csv(df_xlsx, paste0("Daten/Schüler/", sheet, ".csv"))
+          {dfTextVar <- data.frame(index = "a",
+                                   klasse = sheet)
+            sink("LaTeX/Meta/var.tex")
+            paste0("\\newcommand\\klasse{", dfTexInput$klasse, "}\n") |> cat()
+            sink()}
+          latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
+                  pdf_file = paste0(input$resPath, "Sonstiges/", sheet, ".pdf"))
+        }
+      }
       
     } else if (input$docs == "Unterlagen SuS") {
-      abc
+      # für jede Fraktion:
+        # Fraktionspapier drucken
+      # für jedes Land
+        # Länderpapier drucken
+      # für jede Fraktion alle SuS durchgehen -> get_sus_dist:
+        # Fraktionspapier
+        # Gesetzesentwurf
+        # Länderpapier
     } else if (input$docs == "TN-Zertifikate") {
-      abc
+      
+      xlPath <- paste0("Daten/Schüler/", input$tnListPath)
+      for (sheet in excel_sheets(xlPath)) {
+        df_xlsx <- read_excel(xlPath, sheet = sheet)
+        write.csv(df_xlsx, paste0("Daten/Schüler/", sheet, ".csv"))
+        {dfTextVar <- data.frame(index = "a",
+                                 klasse = sheet)
+          sink("LaTeX/Meta/var.tex")
+          paste0("\\newcommand\\klasse{", dfTexInput$klasse, "}\n") |> cat()
+          sink()}
+        latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
+                pdf_file = paste0(input$resPath, "Sonstiges/", sheet, ".pdf"))
+      }
+      
     } else if (input$docs == "SuS-Verteilung") {
       ### ZUM LAUFEN BRINGEN ###
       resSuS <- get_sus_dist(input$numSuS, landDist = F)
@@ -328,6 +383,36 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 
 stop()
+
+
+
+# \begin{comment}
+# Anleitung für Erstellung richtiger csv-Dateien:
+#   1. Entsprechende Excel-Tabelle öffnen (Spalten müssen "Vorname" und "Nachname" heißen)
+# 2. Alt + F11
+# 3. Einfügen > Modul
+# 4. Folgendes reinkopieren:
+#   
+#   Sub ExcelToCSV()
+# Dim sh As Worksheet
+# Dim file_path As String
+# Application.ScreenUpdating = False
+# file_path = ActiveWorkbook.Path & "\" & _
+# Left(ActiveWorkbook.Name, InStr(ActiveWorkbook.Name, ".") - 1)
+# For Each sh In Worksheets
+# sh.Copy
+# ActiveWorkbook.SaveAs Filename:=file_path & "-" & sh.Name & ".csv", _
+# FileFormat:=xlCSVUTF8, CreateBackup:=False
+# ActiveWorkbook.Close False
+# Next
+# Application.ScreenUpdating = True
+# End Sub
+# 
+# 5. F5 drücken
+# 6. kurz warten & entstandene .csv-Dateien in "Daten"-Ordner laden
+# 
+# \end{comment}
+
 
 # paste0("\\newcommand\\Fraktion{", dfTexInput$group, "}\n") |> cat()
 # iso = "SWE",
@@ -378,19 +463,6 @@ stop()
 #     timeFrakTwo = "13:15-13:45",
 #     timePlenar = "14:00-15:00"
 
-
-
-stop()
-
-
-
-
-
-
-# LaTeX Integration -------------------------------------------------------
-
-
-# latexmk("LaTeX/How-To.tex", engine = "pdflatex", pdf_file = xxx)
 
 # Über latexmk kompilieren
 # Länderverteilung nach Anzahl zuordnen lassen
