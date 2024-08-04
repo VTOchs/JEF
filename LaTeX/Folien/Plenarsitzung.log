@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  28 JUL 2024 23:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  4 AUG 2024 13:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1110,11 +1110,11 @@ Dictionary: translator-theorem-dictionary, Language: English
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (Plenarsitzung.nav)
-<Bilder/LEER.png, id=12, 923.45pt x 840.13875pt>
-File: Bilder/LEER.png Graphic file (type png)
-<use Bilder/LEER.png>
-Package pdftex.def Info: Bilder/LEER.png  used on input line 19.
-(pdftex.def)             Requested size: 78.17517pt x 71.13188pt.
+<Bilder/SD.png, id=12, 417.56pt x 417.56pt>
+File: Bilder/SD.png Graphic file (type png)
+<use Bilder/SD.png>
+Package pdftex.def Info: Bilder/SD.png  used on input line 19.
+(pdftex.def)             Requested size: 71.1308pt x 71.13188pt.
 <../Logos/jef.png, id=13, 794.97pt x 270.38014pt>
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
@@ -1130,23 +1130,23 @@ File: ../Logos/finance.png Graphic file (type png)
 <use ../Logos/finance.png>
 Package pdftex.def Info: ../Logos/finance.png  used on input line 19.
 (pdftex.def)             Requested size: 80.66922pt x 42.67912pt.
-<../Logos/Bayreuth.png, id=17, 597.432pt x 128.8815pt>
-File: ../Logos/Bayreuth.png Graphic file (type png)
-<use ../Logos/Bayreuth.png>
-Package pdftex.def Info: ../Logos/Bayreuth.png  used on input line 19.
-(pdftex.def)             Requested size: 99.58464pt x 21.48282pt.
+<../Logos/Bamberg.png, id=17, 481.8pt x 429.605pt>
+File: ../Logos/Bamberg.png Graphic file (type png)
+<use ../Logos/Bamberg.png>
+Package pdftex.def Info: ../Logos/Bamberg.png  used on input line 19.
+(pdftex.def)             Requested size: 99.58464pt x 88.79066pt.
 
 
 [1
 
-{C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/L
-EER.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance.png> <../Log
-os/Bayreuth.png (PNG copy)>]
-<Bilder/kikebusch.png, id=52, 602.25pt x 602.25pt>
-File: Bilder/kikebusch.png Graphic file (type png)
-<use Bilder/kikebusch.png>
-Package pdftex.def Info: Bilder/kikebusch.png  used on input line 26.
-(pdftex.def)             Requested size: 113.80379pt x 113.81102pt.
+{C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/S
+D.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance.png> <../Logos
+/Bamberg.png>]
+<Bilder/Stadt_Bamberg.png, id=53, 144.54pt x 216.81pt>
+File: Bilder/Stadt_Bamberg.png Graphic file (type png)
+<use Bilder/Stadt_Bamberg.png>
+Package pdftex.def Info: Bilder/Stadt_Bamberg.png  used on input line 26.
+(pdftex.def)             Requested size: 75.8736pt x 113.81102pt.
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 26.
@@ -1159,7 +1159,7 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 26.
 
 [2
 
- <./Bilder/kikebusch.png>]
+ <./Bilder/Stadt_Bamberg.png>]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
 
 
@@ -1211,10 +1211,10 @@ Package rerunfilecheck Info: File `Plenarsitzung.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27476 strings out of 473938
- 546796 string characters out of 5726448
+ 27473 strings out of 473938
+ 546722 string characters out of 5726448
  1938893 words of memory out of 5000000
- 49772 multiletter control sequences out of 15000+600000
+ 49769 multiletter control sequences out of 15000+600000
  563981 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,411b,700s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1224,9 +1224,9 @@ m/cmss10.pfb><C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public
 ype1/public/amsfonts/cm/cmss17.pfb><C:/Users/Vincent/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Vincent/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Plenarsitzung.pdf (3 pages, 1626411 bytes).
+Output written on Plenarsitzung.pdf (3 pages, 1071209 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
+ 130 PDF objects out of 1000 (max. 8388607)
  7 named destinations out of 1000 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
