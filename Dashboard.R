@@ -99,7 +99,7 @@ body <- dashboardBody(
                  textInput("green_section", "Abschnitt:"),
                  textInput("green_old", "alter Text:"),
                  textInput("green_new", "neuer Text:")),
-        tabPanel("ID",
+        tabPanel("PfE",
                  textInput("id_vize", "Fraktionsvize:"),
                  textInput("id_section", "Abschnitt:"),
                  textInput("id_old", "alter Text:"),
@@ -337,7 +337,7 @@ body <- dashboardBody(
                  )
         ),
         
-        tabPanel("ID",
+        tabPanel("PfE",
                  fluidRow(
                    box(
                      width = 3,

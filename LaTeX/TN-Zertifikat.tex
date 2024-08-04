@@ -8,74 +8,28 @@
 \usepackage{etoolbox}
 \usepackage{verbatim}
 \usepackage[utf8]{inputenc} % Use utf8 encoding for special characters
+\input{Meta/var.tex}
+\input{Meta/shinyin.tex}
 
-\begin{comment}
-Anleitung für Erstellung richtiger csv-Dateien:
-1. Entsprechende Excel-Tabelle öffnen (Spalten müssen "Vorname" und "Nachname" heißen)
-2. Alt + F11
-3. Einfügen > Modul
-4. Folgendes reinkopieren:
+\DTLloaddb[keys={Vorname,Nachname}]{class}{../Daten/Schüler/\klasse.csv}
 
-Sub ExcelToCSV()
-Dim sh As Worksheet
-Dim file_path As String
-Application.ScreenUpdating = False
-file_path = ActiveWorkbook.Path & "\" & _
-Left(ActiveWorkbook.Name, InStr(ActiveWorkbook.Name, ".") - 1)
-For Each sh In Worksheets
-sh.Copy
-ActiveWorkbook.SaveAs Filename:=file_path & "-" & sh.Name & ".csv", _
-FileFormat:=xlCSVUTF8, CreateBackup:=False
-ActiveWorkbook.Close False
-Next
-Application.ScreenUpdating = True
-End Sub
-
-5. F5 drücken
-6. kurz warten & entstandene .csv-Dateien in "Daten"-Ordner laden
-
-\end{comment}
-
-\DTLloaddb[keys={Vorname,Nachname}]{class}{../Daten/PPG.csv} % hier csv-Dateinamen anpassen
-\newcommand{\city}{Bamberg}
-%\newcommand{\theme}{zur Europäischen Klimapolitik im Rahmen des Green Deal}
-\newcommand{\sponsor}{die Bayerische Landeszentrale für politische Bildungsarbeit}
-\newcommand{\vorsitz}{Farras Fathi}
-\newcommand{\gendervorsitz}{Landesvorsitzender} % "r" weg, wenn weiblich
+\IfEqCase{\Thema}{
+	{Green Deal}{\newcommand{\theme}{zur Europäischen Klimapolitik im Rahmen des Green Deal}}%
+	{Migration}{\newcommand{\theme}{zu einem Europäischen Asyl- und Migrationssystem}}%
+	{Armee}{\newcommand{\theme}{zu einer Europäischen Armee}}%
+}
 
 \newcommand{\logoOne}{Logos/jef.png}
 \newcommand{\logoTwo}{Logos/simep.png}
 \newcommand{\logoThree}{Logos/finance.png}
 \newcommand{\signature}{Logos/signature.png}
-
-
-\newcommand{\checkCity}{%
-    \ifdefined\city%
-        \ifthenelse{\equal{\city}{Bayreuth}}{%
-            \newcommand{\logoX}{-5}%
-            \newcommand{\logoY}{9}%
-            \newcommand{\logoH}{1.5}%
-            \newcommand{\textX}{-20}%
-            \newcommand{\textY}{28}%
-            \newcommand{\simepDate}{17. Mai 2024}%
-            \newcommand{\theme}{zu einem Gemeinsamen Europäischen Asylsystems}%
-            \newcommand{\localSupport}{den Stadtjugendring Bayreuth}%
-        }{%
-            \newcommand{\logoX}{-15}%
-            \newcommand{\logoY}{4}%
-            \newcommand{\logoH}{2}%
-            \newcommand{\textX}{-12}%
-            \newcommand{\textY}{28}%
-            \newcommand{\simepDate}{16. Mai 2024}%
-            \newcommand{\theme}{zu einer Europäischen Armee}%
-            \newcommand{\localSupport}{die Stadt Bamberg}%
-        }%
-    \fi%
-}
-
+\newcommand{\logoX}{-5}%
+\newcommand{\logoY}{9}%
+\newcommand{\logoH}{1.5}%
+\newcommand{\textX}{-20}%
+\newcommand{\textY}{28}%
 
 \begin{document}
-\checkCity
 \DTLforeach{class}{\prename=Vorname, \surname=Nachname}{
     \thispagestyle{empty} % No page number on the certificate
     
@@ -90,11 +44,11 @@ End Sub
     \end{center}
     
     \begin{center}
-        \Large \simepDate
+        \Large \date
     \end{center}
     \vspace{1cm}
     \begin{hyphenrules}{nohyphenation}
-    \prename\ \surname\ hat am \simepDate\ an der Simulation des Europäischen Parlaments (SimEP) in \city\ teilgenommen. \newline
+    \prename\ \surname\ hat am \date\ an der Simulation des Europäischen Parlaments (SimEP) in \city\ teilgenommen. \newline
     \newline
     \prename\ \surname\ hat an den Gruppendiskussionen in den Fraktions- und Ausschusssitzungen sowie in der Plenardebatte mitgewirkt und eine Entschließung des Europäischen Parlaments \theme\ erarbeitet. Dabei wurden das europäische politische System im Allgemeinen und die Funktionsweise des Parlaments im Speziellen beleuchtet.\newline
     \newline
