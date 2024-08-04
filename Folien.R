@@ -154,8 +154,8 @@ write_csv(df_caucus, "Daten/caucus_data.csv", quote = "none")
 # Committees --------------------------------------------------------------
 
 translation_data_group <- data.frame(
-  en = c("EPP", "S&D", "Renew", "G / EFA", "PfE", "ECR", "The Left", "ESN", "Verts/ALE", "PPE"),
-  de = c("EVP", "S&D", "Renew", "Grüne", "PfE", "EKR", "Die Linke", "ESN", "Grüne", "EVP")
+  en = c("EPP", "S&D", "Renew", "G / EFA", "PfE", "ECR", "The Left", "ESN", "Verts/ALE", "PPE", "Greens/EFA"),
+  de = c("EVP", "S&D", "Renew", "Grüne", "PfE", "EKR", "Die Linke", "ESN", "Grüne", "EVP", "Grüne")
 )
 
 translate_group <- function(group){

@@ -48,7 +48,6 @@ plot_result_circle <- function(df, party){
   
 }
 
-
 plot_empty_circle <- function(){
   df_empty <- data.frame(cat = c("Ja", "Nein"),
                         portion = c(1,1),
@@ -172,8 +171,6 @@ body <- dashboardBody(
                    )
                  )
         ),
-        
-        
         
         tabPanel("S&D",
                  fluidRow(
