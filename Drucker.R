@@ -2,6 +2,7 @@
 
 rm(list = ls())
 library(DT)
+library(qpdf)
 library(readxl)
 library(shiny)
 library(shinydashboard)
@@ -79,7 +80,6 @@ translate_group <- function(group){
   translation_data_group[translation_data_group$en == group, "de"]
 }
 
-
 # UI ----------------------------------------------------------------------
 
 header <- dashboardHeader(title = "Unterlagendrucker")
@@ -91,7 +91,6 @@ sidebar <- dashboardSidebar(
     menuItem("Sonstiges", tabName = "sonst_tab")
   )
 )
-
 
 body <- dashboardBody(
   tabItems(
@@ -109,7 +108,7 @@ body <- dashboardBody(
         dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
         selectInput("docs", "Dokumente:",
                      choices = c("Repository", "Unterlagen SuS", "TN-Zertifikate", "SuS-Verteilung"),
-                     selected = "Unterlagen SuS"),
+                     selected = "SuS-Verteilung"),
         selectInput("reload", "Daten aktualisieren?",
                     choices = c("Länderpapiere", "Fraktionen & Ausschüsse", "Alle", "Keine"),
                     selected = "Keine")
@@ -126,7 +125,7 @@ body <- dashboardBody(
           textInput("stadtvert", "Stadtvertreter:"),
           textInput("stadtvert_office", "Stadtvertreter (Amt):"),
           textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
-          selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "w"), selected = "M")
+          selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
         ),
         box(
           width = 4,
@@ -183,16 +182,18 @@ ui <- dashboardPage(skin = "green", header, sidebar, body)
 
 server <- function(input, output, session) {
 
-  countries <- c("Österreich", "Belgien", "Bulgarien", "Kroatien", "Zypern", "Tschechien", "Dänemark",
-                 "Estland", "Finnland", "Frankreich", "Deutschland", "Griechenland", "Ungarn",
-                 "Irland", "Italien", "Lettland", "Litauen", "Luxemburg", "Malta", "Niederlande",
-                 "Polen", "Portugal", "Rumänien", "Slowakei", "Slowenien", "Spanien", "Schweden")
+  countries <-  c("AUT", "BEL", "BGR", "HRV",
+                  "CYP", "CZE", "DNK", "EST",
+                  "FIN", "FRA", "DEU", "GRC",
+                  "HUN", "IRL", "ITA", "LVA",
+                  "LTU", "LUX", "MLT", "NLD",
+                  "POL", "PRT", "ROU", "SVK",
+                  "SVN", "ESP", "SWE")
   
   groupsEP <- c("EVP", "S&D", "Renew", "Grüne", "PfE")
   
   observeEvent(input$print, 
      # Fix LaTex-Variables into tex-File
-     
      {dfTexInput <- data.frame(index = "a",
                                topic = input$topic, # Green Deal/Migration/Armee 
                                city = input$city,
@@ -262,19 +263,7 @@ server <- function(input, output, session) {
       source("Folien.R")
     })
   
-  
-  # verschiedene Druckoptionen durchspielen
-  #         Fraktionen
-  #           1. Fraktionssitzung
-  #           2. Fraktionssitzung
-  #           Fraktionspapier
-  #         Ausschüsse
-  #           Ausschusssitzung
-  #         Sonstiges
-  #           Briefing
-  #           Plenarsitzung
-  #           (TN-Zertifikate)
-  #           Länderpapiere
+
   observeEvent(input$print, 
        ### ZUM LAUFEN BRINGEN ###
     if (input$docs == "Repository") {
@@ -305,14 +294,14 @@ server <- function(input, output, session) {
         {dfTextVar <- data.frame(index = "a",
                                  group = group)
         sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\Fraktion{", dfTexInput$group, "}\n") |> cat()
+        paste0("\\newcommand\\Fraktion{", dfTextVar$group, "}\n") |> cat()
         sink()}
         latexmk("LaTeX/Folien/1. Fraktionssitzung.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "Fraktionen/", group, "/1. Fraktionssitzung.pdf"))
+                pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/1. Fraktionssitzung_", group, ".pdf"))
         latexmk("LaTeX/Folien/2. Fraktionssitzung.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "Fraktionen/", group, "/2. Fraktionssitzung.pdf"))
+                pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/2. Fraktionssitzung_", group, ".pdf"))
         latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "Fraktionen/", group, "/Fraktionspapier.pdf"))
+                pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/Fraktionspapier_", group, ".pdf"))
       }
       
       ## Ausschüsse
@@ -320,17 +309,17 @@ server <- function(input, output, session) {
         {dfTextVar <- data.frame(index = "a",
                                  com = committee)
         sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\kurzel{", dfTexInput$iso, "}\n") |> cat()
+        paste0("\\newcommand\\kurzel{", dfTextVar$iso, "}\n") |> cat()
         sink()}
         latexmk("LaTeX/Folien/Ausschusssitzung.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "Ausschüsse/", committee, ".pdf"))
+                pdf_file = paste0(input$resPath, "/Ausschüsse/", committee, ".pdf"))
       }
       
       ## Sonstiges
       latexmk("LaTeX/Folien/Plenarsitzung.tex", engine = "pdflatex",
-              pdf_file = paste0(input$resPath, "Sonstiges/Plenarsitzung.pdf"))
+              pdf_file = paste0(input$resPath, "/Sonstiges/Plenarsitzung.pdf"))
       latexmk("LaTeX/Folien/Briefing.tex", engine = "pdflatex",
-              pdf_file = paste0(input$resPath, "Sonstiges/Briefing.pdf"))
+              pdf_file = paste0(input$resPath, "/Sonstiges/Briefing.pdf"))
       
       ## TN-Zertifikate
       
@@ -342,22 +331,51 @@ server <- function(input, output, session) {
           {dfTextVar <- data.frame(index = "a",
                                    klasse = sheet)
             sink("LaTeX/Meta/var.tex")
-            paste0("\\newcommand\\klasse{", dfTexInput$klasse, "}\n") |> cat()
+            paste0("\\newcommand\\klasse{", dfTextVar$klasse, "}\n") |> cat()
             sink()}
           latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
-                  pdf_file = paste0(input$resPath, "Sonstiges/", sheet, ".pdf"))
+                  pdf_file = paste0(input$resPath, "/Sonstiges/", sheet, ".pdf"))
         }
       }
       
     } else if (input$docs == "Unterlagen SuS") {
-      # für jede Fraktion:
-        # Fraktionspapier drucken
-      # für jedes Land
-        # Länderpapier drucken
-      # für jede Fraktion alle SuS durchgehen -> get_sus_dist:
-        # Fraktionspapier
-        # Gesetzesentwurf
-        # Länderpapier
+      
+      dir.create(file.path(input$resPath), showWarnings = F)
+      dir.create(file.path(input$resPath, "Einzeldokumente"), showWarnings = F)
+      
+      for (group in groupsEP) {
+        {dfTextVar <- data.frame(index = "a",
+                                 group = group)
+        sink("LaTeX/Meta/var.tex")
+        paste0("\\newcommand\\Fraktion{", dfTextVar$group, "}\n") |> cat()
+        sink()}
+        latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
+                pdf_file = paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+      }
+      
+      for (member in countries) {
+        {dfTextVar <- data.frame(index = "a",
+                                 iso = member)
+        sink("LaTeX/Meta/var.tex")
+        paste0("\\newcommand\\iso{", dfTextVar$iso, "}\n") |> cat()
+        sink()}
+        latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
+                pdf_file = paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+        
+      }
+      
+      susFrakLand <- get_sus_dist(input$numSuS)
+      pdf_order <- c()
+      for (group in susFrakLand |> names()) {
+        for (member in susFrakLand[[group]]) {
+          pdf_order <-append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+          pdf_order <-append(pdf_order, paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"))
+          pdf_order <-append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+        }
+      }
+      pdf_combine(input = pdf_order,
+                        output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+
     } else if (input$docs == "TN-Zertifikate") {
       
       xlPath <- paste0("Daten/Schüler/", input$tnListPath)
@@ -367,12 +385,11 @@ server <- function(input, output, session) {
         {dfTextVar <- data.frame(index = "a",
                                  klasse = sheet)
           sink("LaTeX/Meta/var.tex")
-          paste0("\\newcommand\\klasse{", dfTexInput$klasse, "}\n") |> cat()
+          paste0("\\newcommand\\klasse{", dfTextVar$klasse, "}\n") |> cat()
           sink()}
         latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "Sonstiges/", sheet, ".pdf"))
+                pdf_file = paste0(sheet, ".pdf"))
       }
-      
     } else if (input$docs == "SuS-Verteilung") {
       ### ZUM LAUFEN BRINGEN ###
       resSuS <- get_sus_dist(input$numSuS, landDist = F)
@@ -386,6 +403,7 @@ stop()
 
 
 
+# pdf_order
 # \begin{comment}
 # Anleitung für Erstellung richtiger csv-Dateien:
 #   1. Entsprechende Excel-Tabelle öffnen (Spalten müssen "Vorname" und "Nachname" heißen)
