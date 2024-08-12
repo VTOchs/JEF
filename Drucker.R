@@ -65,9 +65,11 @@ get_sus_dist <- function(numSuS, landDist = T){
     }
     
     listDist <- lapply(listDist, unlist)
+    listDist <- listDist[order(sapply(listDist, length), decreasing = T)]
     listDist
   } else {
-    partyDist
+    partyDist |> arrange(desc(SEATS)) |> rename(SuS = SEATS,
+                                                Fraktion = PARTY)
   }
 }
 
@@ -87,8 +89,11 @@ header <- dashboardHeader(title = "Unterlagendrucker")
 sidebar <- dashboardSidebar(
   sidebarMenu(
     menuItem("Allgemein", tabName = "all_tab"),
-    menuItem("Folien", tabName = "folien_tab"),
-    menuItem("Sonstiges", tabName = "sonst_tab")
+    menuItem("R/U/TN", tabName = "r_u_tn_tab"),
+    menuItem("R/TN", tabName = "r_tn_tab"),
+    menuItem("R/U", tabName = "r_u_tab"),
+    menuItem("R", tabName = "r_tab"),
+    menuItem("TN", tabName = "tn_tab")
   )
 )
 
@@ -98,34 +103,80 @@ body <- dashboardBody(
       tabName = "all_tab",
       tabBox(
         title = "Allgemein",
-        width = 12,
-        selectInput("topic", "Thema:",
-                     choices = c("Green Deal", "Migration", "Armee"),
-                     selected = "Green Deal"),
-        textInput("city", "Stadt:"),
-        textInput("localSup", "Lokale Unterstützung:"),
-        textInput("sponsor", "Sponsor:"),
-        dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
-        selectInput("docs", "Dokumente:",
-                     choices = c("Repository", "Unterlagen SuS", "TN-Zertifikate", "SuS-Verteilung"),
-                     selected = "SuS-Verteilung"),
-        selectInput("reload", "Daten aktualisieren?",
-                    choices = c("Länderpapiere", "Fraktionen & Ausschüsse", "Alle", "Keine"),
-                    selected = "Keine")
+        fluidRow(
+          box(
+            width = 12,
+            selectInput("docs", "Dokumente:",
+                        choices = c("Repository", "Unterlagen SuS", "TN-Zertifikate", "SuS-Verteilung"),
+                        selected = "SuS-Verteilung"),
+            numericInput("numSuS", "Anzahl SuS:", 0),
+            actionButton("print", "Drucken")  
+          )
+        ),
+        fluidRow(
+          box(
+            width = 12,
+            tableOutput("susVert")  
+          )
+        )
       )
     ),
-  
+    
     tabItem(
-      tabName = "folien_tab",
+      tabName = "r_u_tn_tab",
+      fluidRow(
+        box(
+          width = 12,
+          selectInput("topic", "Thema:",
+                      choices = c("Green Deal", "Migration", "Armee"),
+                      selected = "Green Deal"),
+          textInput("city", "Stadt:"),
+          dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
+          textInput("resPath", "Zielordner:", "Results")
+        )
+      )
+    ),
+    
+    tabItem(
+      tabName = "r_tn_tab",
+      fluidRow(
+        box(
+          width = 12,
+          textInput("localSup", "Lokale Unterstützung:"),
+          textInput("sponsor", "Sponsor:"),
+          textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
+          selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
+        )
+      )
+    ),
+    
+    tabItem(
+      tabName = "r_u_tab",
+      fluidRow(
+        box(
+          width = 12,
+          selectInput("reload", "Daten aktualisieren?",
+                      choices = c("Länderpapiere", "Fraktionen & Ausschüsse", "Alle", "Keine"),
+                      selected = "Keine"),
+          textInput("timeEinf", "Uhrzeit Briefing:", value = "09:00-09:45"),
+          textInput("timeFrakOne", "Uhrzeit 1. Fraktionssitzung:", value = "09:45-11:15"),
+          textInput("timeAuss", "Uhrzeit Ausschusssitzung:", value = "11:30-12:45"),
+          textInput("timeMittag", "Uhrzeit Mittagspause:", value = "12:45-13:15"),
+          textInput("timeFrakTwo", "Uhrzeit 2. Fraktionssitzung:", value = "13:15-13:45"),
+          textInput("timePlenar", "Uhrzeit Plenardebatte:", value = "14:00-15:00")
+        )
+      )
+    ),
+    
+    tabItem(
+      tabName = "r_tab",
       fluidRow(
         box(
           width = 4,
           textInput("pol", "Politiker:"),
           textInput("pol_office", "Politiker (Amt):", value = "Mitglied des Europäischen Parlaments"),
           textInput("stadtvert", "Stadtvertreter:"),
-          textInput("stadtvert_office", "Stadtvertreter (Amt):"),
-          textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
-          selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
+          textInput("stadtvert_office", "Stadtvertreter (Amt):")
         ),
         box(
           width = 4,
@@ -145,32 +196,14 @@ body <- dashboardBody(
         )
       )
     ),
-    
+  
     tabItem(
-      tabName = "sonst_tab",
+      tabName = "tn_tab",
       fluidRow(
         box(
-          width = 4,
-          numericInput("numSuS", "Anzahl SuS:", 0),
-          textInput("tnListPath", "Dateiname TN-Excel:"),
-          textInput("resPath", "Zielordner:", "Results"),
-          actionButton("print", "Drucken")
-        ),
-        box(
-          width = 4,
-          textInput("timeEinf", "Uhrzeit Briefing:", value = "09:00-09:45"),
-          textInput("timeFrakOne", "Uhrzeit 1. Fraktionssitzung:", value = "09:45-11:15"),
-          textInput("timeAuss", "Uhrzeit Ausschusssitzung:", value = "11:30-12:45")
-        ),
-        box(
-          width = 4,
-          textInput("timeMittag", "Uhrzeit Mittagspause:", value = "12:45-13:15"),
-          textInput("timeFrakTwo", "Uhrzeit 2. Fraktionssitzung:", value = "13:15-13:45"),
-          textInput("timePlenar", "Uhrzeit Plenardebatte:", value = "14:00-15:00")
+          width = 12,
+          textInput("tnListPath", "Dateiname TN-Excel:")
         )
-      ),
-      fluidRow(
-        DT::dataTableOutput("susVert")
       )
     )
   )
@@ -194,62 +227,33 @@ server <- function(input, output, session) {
   
   observeEvent(input$print, 
      # Fix LaTex-Variables into tex-File
-     {dfTexInput <- data.frame(index = "a",
-                               topic = input$topic, # Green Deal/Migration/Armee 
-                               city = input$city,
-                               timeEinf = input$timeEinf,
-                               timeFrakOne = input$timeFrakOne,
-                               timeAuss = input$timeAuss,
-                               timeMittag = input$timeMittag,
-                               timeFrakTwo = input$timeFrakTwo,
-                               timePlenar = input$timePlenar,
-                               date = input$date |> as.character(),
-                               politiker = input$pol,
-                               politikerOffice = input$pol_office,
-                               stadtvertreter = input$stadtvert,
-                               stadtvertreterOffice = input$stadtvert_office,
-                               evpLeader = input$leit_evp,
-                               evpRoom = input$room_evp,
-                               sdLeader = input$leit_sd,
-                               sdRoom = input$room_sd,
-                               reLeader = input$leit_renew,
-                               reRoom = input$room_renew,
-                               greenLeader = input$leit_green,
-                               greenRoom = input$room_green,
-                               pfeLeader = input$leit_pfe,
-                               pfeRoom = input$room_pfe,
-                               localSupport = input$localSup,
-                               sponsor = input$sponsor,
-                               jefVorsitz = input$jefvorsitz,
-                               genderVorsitz = ifelse(input$gender == "M", "Landesvorsitzender", "Landesvorsitzende"))
-     
-     sink("LaTeX/Meta/shinyin.tex")
-     paste0("\\newcommand\\Thema{", dfTexInput$topic, "}\n") |> cat()
-     paste0("\\newcommand\\city{", dfTexInput$city, "}\n") |> cat()
-     paste0("\\newcommand\\timeEinf{", dfTexInput$timeEinf, "}\n") |> cat()
-     paste0("\\newcommand\\timeFrakOne{", dfTexInput$timeFrakOne, "}\n") |> cat()
-     paste0("\\newcommand\\timeAuss{", dfTexInput$timeAuss, "}\n") |> cat()
-     paste0("\\newcommand\\timeMittag{", dfTexInput$timeMittag, "}\n") |> cat()
-     paste0("\\newcommand\\timeFrakTwo{", dfTexInput$timeFrakTwo, "}\n") |> cat()
-     paste0("\\newcommand\\timePlenar{", dfTexInput$timePlenar, "}\n") |> cat()
-     paste0("\\newcommand\\politiker{", dfTexInput$politiker, "}\n") |> cat()
-     paste0("\\newcommand\\politikerOffice{", dfTexInput$politikerOffice, "}\n") |> cat()
-     paste0("\\newcommand\\stadtvertreter{", dfTexInput$stadtvertreter, "}\n") |> cat()
-     paste0("\\newcommand\\stadtvertreterOffice{", dfTexInput$stadtvertreterOffice, "}\n") |> cat()
-     paste0("\\newcommand\\localSupport{", dfTexInput$localSupport, "}\n") |> cat()
-     paste0("\\newcommand\\sponsor{", dfTexInput$sponsor, "}\n") |> cat()
-     paste0("\\newcommand\\vorsitz{", dfTexInput$jefVorsitz, "}\n") |> cat()
-     paste0("\\newcommand\\gendervorsitz{", dfTexInput$genderVorsitz, "}\n") |> cat()
-     paste0("\\newcommand\\evpLeader{", dfTexInput$evpLeader, "}\n") |> cat()
-     paste0("\\newcommand\\evpRoom{", dfTexInput$evpRoom, "}\n") |> cat()
-     paste0("\\newcommand\\sdLeader{", dfTexInput$sdLeader, "}\n") |> cat()
-     paste0("\\newcommand\\sdRoom{", dfTexInput$sdRoom, "}\n") |> cat()
-     paste0("\\newcommand\\reLeader{", dfTexInput$reLeader, "}\n") |> cat()
-     paste0("\\newcommand\\reRoom{", dfTexInput$reRoom, "}\n") |> cat()
-     paste0("\\newcommand\\greenLeader{", dfTexInput$greenLeader, "}\n") |> cat()
-     paste0("\\newcommand\\greenRoom{", dfTexInput$greenRoom, "}\n") |> cat()
-     paste0("\\newcommand\\pfeLeader{", dfTexInput$pfeLeader, "}\n") |> cat()
-     paste0("\\newcommand\\pfeRoom{", dfTexInput$pfeRoom, "}\n") |> cat()
+     {sink("LaTeX/Meta/shinyin.tex")
+     paste0("\\newcommand\\Thema{", input$topic, "}\n") |> cat()
+     paste0("\\newcommand\\city{", input$city, "}\n") |> cat()
+     paste0("\\newcommand\\timeEinf{", input$timeEinf, "}\n") |> cat()
+     paste0("\\newcommand\\timeFrakOne{", input$timeFrakOne, "}\n") |> cat()
+     paste0("\\newcommand\\timeAuss{", input$timeAuss, "}\n") |> cat()
+     paste0("\\newcommand\\timeMittag{", input$timeMittag, "}\n") |> cat()
+     paste0("\\newcommand\\timeFrakTwo{", input$timeFrakTwo, "}\n") |> cat()
+     paste0("\\newcommand\\timePlenar{", input$timePlenar, "}\n") |> cat()
+     paste0("\\newcommand\\politiker{", input$pol, "}\n") |> cat()
+     paste0("\\newcommand\\politikerOffice{", input$pol_office, "}\n") |> cat()
+     paste0("\\newcommand\\stadtvertreter{", input$stadtvert, "}\n") |> cat()
+     paste0("\\newcommand\\stadtvertreterOffice{", input$stadtvert_office, "}\n") |> cat()
+     paste0("\\newcommand\\localSupport{", input$localSup, "}\n") |> cat()
+     paste0("\\newcommand\\sponsor{", input$sponsor, "}\n") |> cat()
+     paste0("\\newcommand\\jefvorsitz{", input$jefvorsitz, "}\n") |> cat()
+     paste0("\\newcommand\\gendervorsitz{", ifelse(input$gender == "M", "Landesvorsitzender", "Landesvorsitzende"), "}\n") |> cat()
+     paste0("\\newcommand\\evpLeader{", input$leit_evp, "}\n") |> cat()
+     paste0("\\newcommand\\evpRoom{", input$room_evp, "}\n") |> cat()
+     paste0("\\newcommand\\sdLeader{", input$leit_sd, "}\n") |> cat()
+     paste0("\\newcommand\\sdRoom{", input$room_sd, "}\n") |> cat()
+     paste0("\\newcommand\\reLeader{", input$leit_renew, "}\n") |> cat()
+     paste0("\\newcommand\\reRoom{", input$room_renew, "}\n") |> cat()
+     paste0("\\newcommand\\greenLeader{", input$leit_green, "}\n") |> cat()
+     paste0("\\newcommand\\greenRoom{", input$room_green, "}\n") |> cat()
+     paste0("\\newcommand\\pfeLeader{", input$leit_pfe, "}\n") |> cat()
+     paste0("\\newcommand\\pfeRoom{", input$room_pfe, "}\n") |> cat()
      sink()})        
   
   
@@ -265,7 +269,6 @@ server <- function(input, output, session) {
   
 
   observeEvent(input$print, 
-       ### ZUM LAUFEN BRINGEN ###
     if (input$docs == "Repository") {
       # Involvierte Ausschüsse festlegen
       if (input$topic == "Green Deal") {
@@ -280,7 +283,7 @@ server <- function(input, output, session) {
       dir.create(file.path(input$resPath), showWarnings = F)
       ## Fraktionen
       dir.create(file.path(input$resPath, "Fraktionen"), showWarnings = F)
-      for (group in groups) {
+      for (group in groupsEP) {
         dir.create(file.path(input$resPath, "Fraktionen", group), showWarnings = F)
       }
       ## Ausschüsse
@@ -291,10 +294,8 @@ server <- function(input, output, session) {
       # Compile pdfs
       ## Fraktionen
       for (group in groupsEP) {
-        {dfTextVar <- data.frame(index = "a",
-                                 group = group)
-        sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\Fraktion{", dfTextVar$group, "}\n") |> cat()
+        {sink("LaTeX/Meta/var.tex")
+        paste0("\\newcommand\\Fraktion{", group, "}\n") |> cat()
         sink()}
         latexmk("LaTeX/Folien/1. Fraktionssitzung.tex", engine = "pdflatex",
                 pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/1. Fraktionssitzung_", group, ".pdf"))
@@ -306,10 +307,8 @@ server <- function(input, output, session) {
       
       ## Ausschüsse
       for (committee in committees) {
-        {dfTextVar <- data.frame(index = "a",
-                                 com = committee)
-        sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\kurzel{", dfTextVar$iso, "}\n") |> cat()
+        {sink("LaTeX/Meta/var.tex")
+        paste0("\\newcommand\\Committee{", committee, "}\n") |> cat()
         sink()}
         latexmk("LaTeX/Folien/Ausschusssitzung.tex", engine = "pdflatex",
                 pdf_file = paste0(input$resPath, "/Ausschüsse/", committee, ".pdf"))
@@ -328,10 +327,8 @@ server <- function(input, output, session) {
         for (sheet in excel_sheets(xlPath)) {
           df_xlsx <- read_excel(xlPath, sheet = sheet)
           write.csv(df_xlsx, paste0("Daten/Schüler/", sheet, ".csv"))
-          {dfTextVar <- data.frame(index = "a",
-                                   klasse = sheet)
-            sink("LaTeX/Meta/var.tex")
-            paste0("\\newcommand\\klasse{", dfTextVar$klasse, "}\n") |> cat()
+          {sink("LaTeX/Meta/var.tex")
+            paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
             sink()}
           latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
                   pdf_file = paste0(input$resPath, "/Sonstiges/", sheet, ".pdf"))
@@ -344,20 +341,16 @@ server <- function(input, output, session) {
       dir.create(file.path(input$resPath, "Einzeldokumente"), showWarnings = F)
       
       for (group in groupsEP) {
-        {dfTextVar <- data.frame(index = "a",
-                                 group = group)
-        sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\Fraktion{", dfTextVar$group, "}\n") |> cat()
+        {sink("LaTeX/Meta/var.tex")
+        paste0("\\newcommand\\Fraktion{", group, "}\n") |> cat()
         sink()}
         latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
                 pdf_file = paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
       }
       
       for (member in countries) {
-        {dfTextVar <- data.frame(index = "a",
-                                 iso = member)
-        sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\iso{", dfTextVar$iso, "}\n") |> cat()
+        {sink("LaTeX/Meta/var.tex")
+        paste0("\\newcommand\\iso{", member, "}\n") |> cat()
         sink()}
         latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
                 pdf_file = paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
@@ -368,9 +361,9 @@ server <- function(input, output, session) {
       pdf_order <- c()
       for (group in susFrakLand |> names()) {
         for (member in susFrakLand[[group]]) {
-          pdf_order <-append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
-          pdf_order <-append(pdf_order, paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"))
-          pdf_order <-append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+          pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+          pdf_order <- append(pdf_order, paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"))
+          pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
         }
       }
       pdf_combine(input = pdf_order,
@@ -382,27 +375,21 @@ server <- function(input, output, session) {
       for (sheet in excel_sheets(xlPath)) {
         df_xlsx <- read_excel(xlPath, sheet = sheet)
         write.csv(df_xlsx, paste0("Daten/Schüler/", sheet, ".csv"))
-        {dfTextVar <- data.frame(index = "a",
-                                 klasse = sheet)
-          sink("LaTeX/Meta/var.tex")
-          paste0("\\newcommand\\klasse{", dfTextVar$klasse, "}\n") |> cat()
+        {sink("LaTeX/Meta/var.tex")
+          paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
           sink()}
         latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
                 pdf_file = paste0(sheet, ".pdf"))
       }
     } else if (input$docs == "SuS-Verteilung") {
-      ### ZUM LAUFEN BRINGEN ###
       resSuS <- get_sus_dist(input$numSuS, landDist = F)
-      output$susVert <- renderDataTable({datatable(resSuS)})
+      output$susVert <- renderTable({resSuS})
     }
   )
 }
 shinyApp(ui = ui, server = server)
 
 stop()
-
-
-
 # pdf_order
 # \begin{comment}
 # Anleitung für Erstellung richtiger csv-Dateien:
@@ -430,60 +417,3 @@ stop()
 # 6. kurz warten & entstandene .csv-Dateien in "Daten"-Ordner laden
 # 
 # \end{comment}
-
-
-# paste0("\\newcommand\\Fraktion{", dfTexInput$group, "}\n") |> cat()
-# iso = "SWE",
-# paste0("\\newcommand\\kurzel{", dfTexInput$iso, "}\n") |> cat()
-# com = "AFET", # AFET, AGRI, BUDG, DROI, ITRE, LIBE, SEDE, TRAN
-# paste0("\\newcommand\\Committee{", dfTexInput$com, "}\n") |> cat()
-
-# Input
-#   Allgemein
-#     City
-#     Date
-#     Topic
-#     Dokumente-Auswahl
-#       a) Repository
-#         Fraktionen
-#           1. Fraktionssitzung
-#           2. Fraktionssitzung
-#           Fraktionspapier
-#         Ausschüsse
-#           Ausschusssitzung
-#         Sonstiges
-#           Briefing
-#           Plenarsitzung
-#           TN-Zertifikate
-#       b) Unterlagen
-#         Gesamt-PDF
-#           Fraktionspapier
-#           Gesetzesentwurf
-#           Länderpapier
-#       c) TN-Zertifikate (mit spezieller xlsx)
-#       d) SuS-Verteilung
-
-#   Folien
-#     Politiker
-#     Politiker (Amt)
-#     Stadtvertreter
-#     Stadtvertreter (Amt)
-#     Fraktionsleiter
-#     Fraktionsräume
-
-#   Sonstiges
-#     Anzahl SuS
-#     TN xlsx
-#     timeEinf = "09:00-09:45",
-#     timeFrakOne = "09:45-11:15",
-#     timeAuss = "11:30-12:45",
-#     timeMittag = "12:45-13:15",
-#     timeFrakTwo = "13:15-13:45",
-#     timePlenar = "14:00-15:00"
-
-
-# Über latexmk kompilieren
-# Länderverteilung nach Anzahl zuordnen lassen
-# In richtiger Reihenfolge je nach dhondt-Ergebnis in ein pdf fügen
-  # qpdf::pdf_combine(input = c("file.pdf", "file2.pdf", "file3.pdf"),
-  #                   output = "output.pdf")
