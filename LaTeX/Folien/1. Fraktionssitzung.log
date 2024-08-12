@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  4 AUG 2024 21:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  12 AUG 2024 14:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1080,12 +1080,11 @@ Package babel Info: Importing font and identification data for german
 (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
 ikz/libraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (../Meta/var.tex)
+) (../Meta/var.tex) (../Meta/shinyin.tex)
 \dtldb@caucus=\toks71
 \dtlkeys@caucus=\toks72
 \dtlrows@caucus=\count402
 \dtlcols@caucus=\count403
-
 (1. Fraktionssitzung.aux)
 \openout1 = `"1. Fraktionssitzung.aux"'.
 
@@ -1261,11 +1260,11 @@ Dictionary: translator-theorem-dictionary, Language: English
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (1. Fraktionssitzung.nav)
-<Bilder/SD.png, id=12, 417.56pt x 417.56pt>
-File: Bilder/SD.png Graphic file (type png)
-<use Bilder/SD.png>
-Package pdftex.def Info: Bilder/SD.png  used on input line 436.
-(pdftex.def)             Requested size: 71.1308pt x 71.13188pt.
+<Bilder/EVP.png, id=12, 475.7775pt x 234.8775pt>
+File: Bilder/EVP.png Graphic file (type png)
+<use Bilder/EVP.png>
+Package pdftex.def Info: Bilder/EVP.png  used on input line 436.
+(pdftex.def)             Requested size: 144.08466pt x 71.13188pt.
 <../Logos/jef.png, id=13, 794.97pt x 270.38014pt>
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
@@ -1281,18 +1280,18 @@ File: ../Logos/finance.png Graphic file (type png)
 <use ../Logos/finance.png>
 Package pdftex.def Info: ../Logos/finance.png  used on input line 436.
 (pdftex.def)             Requested size: 80.66922pt x 42.67912pt.
-<../Logos/Bamberg.png, id=17, 481.8pt x 429.605pt>
-File: ../Logos/Bamberg.png Graphic file (type png)
-<use ../Logos/Bamberg.png>
-Package pdftex.def Info: ../Logos/Bamberg.png  used on input line 436.
-(pdftex.def)             Requested size: 99.58464pt x 88.79066pt.
+<../Logos/Bayreuth.png, id=17, 597.432pt x 128.8815pt>
+File: ../Logos/Bayreuth.png Graphic file (type png)
+<use ../Logos/Bayreuth.png>
+Package pdftex.def Info: ../Logos/Bayreuth.png  used on input line 436.
+(pdftex.def)             Requested size: 99.58464pt x 21.48282pt.
 
 
 [1
 
-{C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/S
-D.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance.png> <../Logos
-/Bamberg.png>]
+{C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/E
+VP.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance.png> <../Logo
+s/Bayreuth.png (PNG copy)>]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 450
 .
 
@@ -1339,7 +1338,7 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 459.
 [3
 
 ]
-<Bilder/EP_seats.jpg, id=108, 730.22812pt x 728.7225pt>
+<Bilder/EP_seats.jpg, id=107, 730.22812pt x 728.7225pt>
 File: Bilder/EP_seats.jpg Graphic file (type jpg)
 <use Bilder/EP_seats.jpg>
 Package pdftex.def Info: Bilder/EP_seats.jpg  used on input line 470.
@@ -1374,21 +1373,21 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 478.
 [5
 
 ]
-<Bilder/rep1_SD.jpg, id=163, 114.8215pt x 145.21542pt>
-File: Bilder/rep1_SD.jpg Graphic file (type jpg)
-<use Bilder/rep1_SD.jpg>
-Package pdftex.def Info: Bilder/rep1_SD.jpg  used on input line 507.
+<Bilder/rep1_EVP.jpg, id=162, 114.8215pt x 145.21542pt>
+File: Bilder/rep1_EVP.jpg Graphic file (type jpg)
+<use Bilder/rep1_EVP.jpg>
+Package pdftex.def Info: Bilder/rep1_EVP.jpg  used on input line 507.
 (pdftex.def)             Requested size: 44.99394pt x 56.9055pt.
-<Bilder/rep2_SD.jpg, id=164, 113.9742pt x 142.46774pt>
-File: Bilder/rep2_SD.jpg Graphic file (type jpg)
-<use Bilder/rep2_SD.jpg>
-Package pdftex.def Info: Bilder/rep2_SD.jpg  used on input line 507.
-(pdftex.def)             Requested size: 45.5245pt x 56.9055pt.
-<Bilder/rep3_SD.jpg, id=165, 668.0157pt x 834.9594pt>
-File: Bilder/rep3_SD.jpg Graphic file (type jpg)
-<use Bilder/rep3_SD.jpg>
-Package pdftex.def Info: Bilder/rep3_SD.jpg  used on input line 507.
-(pdftex.def)             Requested size: 45.52231pt x 56.9055pt.
+<Bilder/rep2_EVP.jpg, id=163, 114.8215pt x 145.21542pt>
+File: Bilder/rep2_EVP.jpg Graphic file (type jpg)
+<use Bilder/rep2_EVP.jpg>
+Package pdftex.def Info: Bilder/rep2_EVP.jpg  used on input line 507.
+(pdftex.def)             Requested size: 44.99394pt x 56.9055pt.
+<Bilder/rep3_EVP.jpg, id=164, 114.8215pt x 145.21542pt>
+File: Bilder/rep3_EVP.jpg Graphic file (type jpg)
+<use Bilder/rep3_EVP.jpg>
+Package pdftex.def Info: Bilder/rep3_EVP.jpg  used on input line 507.
+(pdftex.def)             Requested size: 44.99394pt x 56.9055pt.
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 507.
@@ -1398,10 +1397,14 @@ File: ../Logos/simep.png Graphic file (type png)
 Package pdftex.def Info: ../Logos/simep.png  used on input line 507.
 (pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
 
+Overfull \vbox (0.97711pt too high) detected at line 507
+ []
+
+
 
 [6
 
- <./Bilder/rep1_SD.jpg> <./Bilder/rep2_SD.jpg> <./Bilder/rep3_SD.jpg>]
+ <./Bilder/rep1_EVP.jpg> <./Bilder/rep2_EVP.jpg> <./Bilder/rep3_EVP.jpg>]
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 512.
@@ -1498,10 +1501,10 @@ Package rerunfilecheck Info: File `"1. Fraktionssitzung".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30712 strings out of 473938
- 606072 string characters out of 5726448
+ 30718 strings out of 473938
+ 606278 string characters out of 5726448
  1938893 words of memory out of 5000000
- 52906 multiletter control sequences out of 15000+600000
+ 52909 multiletter control sequences out of 15000+600000
  565724 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,419b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1512,9 +1515,9 @@ ype1/public/amsfonts/cm/cmss17.pfb><C:/Users/Vincent/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Vincent/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Vincent/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "1. Fraktionssitzung.pdf" (12 pages, 1404635 bytes).
+Output written on "1. Fraktionssitzung.pdf" (12 pages, 1082920 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
+ 380 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
