@@ -1,5 +1,4 @@
 library(diffobj)
-library(ggparliament)
 library(ggplot2)
 library(grid)
 library(pkgmaker)
