@@ -11,6 +11,27 @@ library(tinytex)
 
 # Funktionen --------------------------------------------------------------
 
+groupsEP <- c("EVP", "SD", "RE", "Green", "PfE")
+
+countries <-  c("AUT", "BEL", "BGR", "HRV",
+                "CYP", "CZE", "DNK", "EST",
+                "FIN", "FRA", "DEU", "GRC",
+                "HUN", "IRL", "ITA", "LVA",
+                "LTU", "LUX", "MLT", "NLD",
+                "POL", "PRT", "ROU", "SVK",
+                "SVN", "ESP", "SWE")
+
+
+# für die LaTeX-Dokumente
+translation_data_latex <- data.frame(
+  en = c("EPP", "S&D", "Renew", "G / EFA", "PfE", "ECR", "The Left", "ESN", "Verts/ALE", "PPE", "Greens/EFA"),
+  de = c("EVP", "SD", "RE", "Green", "PfE", "EKR", "Die Linke", "ESN", "Green", "EVP", "Green")
+)
+
+translate_latex <- function(group){
+  translation_data_latex[translation_data_latex$en == group, "de"]
+}
+
 dhondt <- function (parties, votes, n_seats){
   divisors <- 1:n_seats
   votes <- tibble(PARTY = as.character(parties), VOTES = votes)
@@ -39,10 +60,11 @@ dhondt <- function (parties, votes, n_seats){
   }
 }
 
+
 get_sus_dist <- function(numSuS, landDist = T){
   
   df_caucus <- read.csv("Daten/caucus_data.csv")
-  df_caucus$party <- df_caucus$party |> sapply(translate_group)
+  df_caucus$party <- df_caucus$party |> sapply(translate_latex)
   
   partyDist <- dhondt(parties = df_caucus$party,
                       votes = df_caucus$total,
@@ -53,7 +75,7 @@ get_sus_dist <- function(numSuS, landDist = T){
                         n_seats = numSuS)
     
     listDist <- vector(mode = "list", length = 5)
-    names(listDist) <- c("EVP", "S&D", "Renew", "Grüne", "PfE")
+    names(listDist) <- groupsEP
     
     while (countDist$SEATS |> sum() > 0) {
       party <- partyDist[which.max(partyDist$SEATS),] |> pull(PARTY)
@@ -71,15 +93,6 @@ get_sus_dist <- function(numSuS, landDist = T){
     partyDist |> arrange(desc(SEATS)) |> rename(SuS = SEATS,
                                                 Fraktion = PARTY)
   }
-}
-
-translation_data_group <- data.frame(
-  en = c("EPP", "S&D", "Renew", "G / EFA", "PfE", "ECR", "The Left", "ESN", "Verts/ALE", "PPE", "Greens/EFA"),
-  de = c("EVP", "S&D", "Renew", "Grüne", "PfE", "EKR", "Die Linke", "ESN", "Grüne", "EVP", "Grüne")
-)
-
-translate_group <- function(group){
-  translation_data_group[translation_data_group$en == group, "de"]
 }
 
 # UI ----------------------------------------------------------------------
@@ -215,21 +228,13 @@ ui <- dashboardPage(skin = "green", header, sidebar, body)
 
 server <- function(input, output, session) {
 
-  countries <-  c("AUT", "BEL", "BGR", "HRV",
-                  "CYP", "CZE", "DNK", "EST",
-                  "FIN", "FRA", "DEU", "GRC",
-                  "HUN", "IRL", "ITA", "LVA",
-                  "LTU", "LUX", "MLT", "NLD",
-                  "POL", "PRT", "ROU", "SVK",
-                  "SVN", "ESP", "SWE")
-  
-  groupsEP <- c("EVP", "S&D", "Renew", "Grüne", "PfE")
   
   observeEvent(input$print, 
      # Fix LaTex-Variables into tex-File
      {sink("LaTeX/Meta/shinyin.tex")
      paste0("\\newcommand\\Thema{", input$topic, "}\n") |> cat()
      paste0("\\newcommand\\city{", input$city, "}\n") |> cat()
+     paste0("\\newcommand\\datum{", input$date, "}\n") |> cat()
      paste0("\\newcommand\\timeEinf{", input$timeEinf, "}\n") |> cat()
      paste0("\\newcommand\\timeFrakOne{", input$timeFrakOne, "}\n") |> cat()
      paste0("\\newcommand\\timeAuss{", input$timeAuss, "}\n") |> cat()
@@ -290,6 +295,8 @@ server <- function(input, output, session) {
       dir.create(file.path(input$resPath, "Ausschüsse"), showWarnings = F)
       ## Sonstiges
       dir.create(file.path(input$resPath, "Sonstiges"), showWarnings = F)
+      ### TN-Zertifikate
+      dir.create(file.path(input$resPath, "Sonstiges", "TN-Zertifikate"), showWarnings = F)
       
       # Compile pdfs
       ## Fraktionen
@@ -297,28 +304,33 @@ server <- function(input, output, session) {
         {sink("LaTeX/Meta/var.tex")
         paste0("\\newcommand\\Fraktion{", group, "}\n") |> cat()
         sink()}
-        latexmk("LaTeX/Folien/1. Fraktionssitzung.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/1. Fraktionssitzung_", group, ".pdf"))
-        latexmk("LaTeX/Folien/2. Fraktionssitzung.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/2. Fraktionssitzung_", group, ".pdf"))
-        latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "/Fraktionen/", group, "/Fraktionspapier_", group, ".pdf"))
+        
+        tools::texi2pdf("LaTeX/Folien/1. Fraktionssitzung.tex", clean = T)
+        file.rename("1. Fraktionssitzung.pdf", paste0(input$resPath, "/Fraktionen/", group, "/1. Fraktionssitzung_", group, ".pdf"))
+        
+        tools::texi2pdf("LaTeX/Folien/2. Fraktionssitzung.tex", clean = T)
+        file.rename("2. Fraktionssitzung.pdf", paste0(input$resPath, "/Fraktionen/", group, "/2. Fraktionssitzung_", group, ".pdf"))
+        
+        tools::texi2pdf("LaTeX/Fraktionspapier.tex", clean = T)
+        file.rename("Fraktionspapier.pdf", paste0(input$resPath, "/Fraktionen/", group, "/Fraktionspapier_", group, ".pdf"))
       }
       
       ## Ausschüsse
       for (committee in committees) {
         {sink("LaTeX/Meta/var.tex")
         paste0("\\newcommand\\Committee{", committee, "}\n") |> cat()
+        paste0("\\newcommand\\Fraktion{LEER}\n") |> cat()
         sink()}
-        latexmk("LaTeX/Folien/Ausschusssitzung.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "/Ausschüsse/", committee, ".pdf"))
+        tools::texi2pdf("LaTeX/Folien/Ausschusssitzung.tex", clean = T)
+        file.rename("Ausschusssitzung.pdf", paste0(input$resPath, "/Ausschüsse/", committee, ".pdf"))
       }
       
       ## Sonstiges
-      latexmk("LaTeX/Folien/Plenarsitzung.tex", engine = "pdflatex",
-              pdf_file = paste0(input$resPath, "/Sonstiges/Plenarsitzung.pdf"))
-      latexmk("LaTeX/Folien/Briefing.tex", engine = "pdflatex",
-              pdf_file = paste0(input$resPath, "/Sonstiges/Briefing.pdf"))
+      tools::texi2pdf("LaTeX/Folien/Plenarsitzung.tex", clean = T)
+      file.rename("Plenarsitzung.pdf", paste0(input$resPath, "/Sonstiges/Plenarsitzung.pdf"))
+      
+      tools::texi2pdf("LaTeX/Folien/Briefing.tex", clean = T)
+      file.rename("Briefing.pdf", paste0(input$resPath, "/Sonstiges/Briefing.pdf"))
       
       ## TN-Zertifikate
       
@@ -330,8 +342,8 @@ server <- function(input, output, session) {
           {sink("LaTeX/Meta/var.tex")
             paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
             sink()}
-          latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
-                  pdf_file = paste0(input$resPath, "/Sonstiges/", sheet, ".pdf"))
+          tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
+          file.rename("TN-Zertifikat.pdf", paste0(input$resPath, "/Sonstiges/TN-Zertifikate", sheet, ".pdf"))
         }
       }
       
@@ -344,16 +356,18 @@ server <- function(input, output, session) {
         {sink("LaTeX/Meta/var.tex")
         paste0("\\newcommand\\Fraktion{", group, "}\n") |> cat()
         sink()}
-        latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+        
+        tools::texi2pdf("LaTeX/Fraktionspapier.tex", clean = T)
+        file.rename("Fraktionspapier.pdf", paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
       }
       
       for (member in countries) {
         {sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\iso{", member, "}\n") |> cat()
+        paste0("\\newcommand\\kurzel{", member, "}\n") |> cat()
         sink()}
-        latexmk("LaTeX/Fraktionspapier.tex", engine = "pdflatex",
-                pdf_file = paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+        
+        tools::texi2pdf("LaTeX/Länderpapier.tex", clean = T)
+        file.rename("Länderpapier.pdf", paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
         
       }
       
@@ -378,11 +392,13 @@ server <- function(input, output, session) {
         {sink("LaTeX/Meta/var.tex")
           paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
           sink()}
-        latexmk("LaTeX/TN-Zertifikat.tex", engine = "pdflatex",
-                pdf_file = paste0(sheet, ".pdf"))
+        
+        tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
+        file.rename("Länderpapier.pdf", paste0(sheet, ".pdf"))
+        
       }
     } else if (input$docs == "SuS-Verteilung") {
-      resSuS <- get_sus_dist(input$numSuS, landDist = F)
+      resSuS <- get_sus_dist(input$numSuS, landDist = T)
       output$susVert <- renderTable({resSuS})
     }
   )
@@ -390,7 +406,8 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 
 stop()
-# pdf_order
+
+# tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
 # \begin{comment}
 # Anleitung für Erstellung richtiger csv-Dateien:
 #   1. Entsprechende Excel-Tabelle öffnen (Spalten müssen "Vorname" und "Nachname" heißen)
@@ -398,7 +415,7 @@ stop()
 # 3. Einfügen > Modul
 # 4. Folgendes reinkopieren:
 #   
-#   Sub ExcelToCSV()
+# Sub ExcelToCSV()
 # Dim sh As Worksheet
 # Dim file_path As String
 # Application.ScreenUpdating = False

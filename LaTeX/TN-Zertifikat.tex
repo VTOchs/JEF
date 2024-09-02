@@ -1,19 +1,19 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry} % Adjust margins as needed
 \usepackage{graphicx}
-\usepackage{tikz}
 \usepackage[ngerman]{babel}
-%\usepackage{mailmerge}
 \usepackage{datatool}
 \usepackage{etoolbox}
+\usepackage{tikz}
 \usepackage{verbatim}
+\usepackage{xstring}
 \usepackage[utf8]{inputenc} % Use utf8 encoding for special characters
 \input{Meta/var.tex}
 \input{Meta/shinyin.tex}
 
-\DTLloaddb[keys={Vorname,Nachname}]{class}{../Daten/Schüler/\klasse.csv}
+\DTLloaddb[keys={Vorname,Nachname}]{class}{../Daten/SuS/\klasse.csv}
 
-\IfEqCase{\Thema}{
+\IfEqCase{\Thema}{%
 	{Green Deal}{\newcommand{\theme}{zur Europäischen Klimapolitik im Rahmen des Green Deal}}%
 	{Migration}{\newcommand{\theme}{zu einem Europäischen Asyl- und Migrationssystem}}%
 	{Armee}{\newcommand{\theme}{zu einer Europäischen Armee}}%
@@ -33,7 +33,7 @@
 \DTLforeach{class}{\prename=Vorname, \surname=Nachname}{
     \thispagestyle{empty} % No page number on the certificate
     
-    \vspace*{2cm} % Adjust the value as needed
+    \vspace*{2cm}
     
     \begin{center}
         \textbf{\huge Teilnahmebescheinigung}
@@ -44,11 +44,11 @@
     \end{center}
     
     \begin{center}
-        \Large \date
+        \Large \datum
     \end{center}
     \vspace{1cm}
     \begin{hyphenrules}{nohyphenation}
-    \prename\ \surname\ hat am \date\ an der Simulation des Europäischen Parlaments (SimEP) in \city\ teilgenommen. \newline
+    \prename\ \surname\ hat am \datum\ an der Simulation des Europäischen Parlaments (SimEP) in \city\ teilgenommen. \newline
     \newline
     \prename\ \surname\ hat an den Gruppendiskussionen in den Fraktions- und Ausschusssitzungen sowie in der Plenardebatte mitgewirkt und eine Entschließung des Europäischen Parlaments \theme\ erarbeitet. Dabei wurden das europäische politische System im Allgemeinen und die Funktionsweise des Parlaments im Speziellen beleuchtet.\newline
     \newline
@@ -79,7 +79,7 @@
         
         % Bottom left corner
         \node at ([xshift=4mm, yshift=2mm] current page.south west) [anchor=south west, inner sep=0pt] {
-            \includegraphics[height=2.5cm]{\logoThree}\\
+            \includegraphics[height=2.5cm]{\logoThree}
         };
         % Text below bottom left corner
         \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
@@ -97,16 +97,17 @@
     
     \end{tikzpicture}
     
-    \begin{center}
-        \vspace{2cm}
+	\vspace{1cm}
+	
+	\begin{center}
         \footnotesize Junge Europäische Föderalist:innen Bayern e.V.
-    \end{center}
-    \begin{center}
+	\end{center}
+	\begin{center}  
         \footnotesize jef-bayern.de $|$ @jef\_bayern $|$ geschaeftsstelle@jef-bayern.de
-    \end{center}
-    \begin{center}
-        \footnotesize Oberanger 32, 80331 München
-    \end{center}
+	\end{center}
+	\begin{center}
+		\footnotesize Oberanger 32, 80331 München
+	\end{center}
     \newpage
-}
+}%
 \end{document}
