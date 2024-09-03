@@ -234,7 +234,7 @@ server <- function(input, output, session) {
      {sink("LaTeX/Meta/shinyin.tex")
      paste0("\\newcommand\\Thema{", input$topic, "}\n") |> cat()
      paste0("\\newcommand\\city{", input$city, "}\n") |> cat()
-     paste0("\\newcommand\\datum{", input$date, "}\n") |> cat()
+     paste0("\\newcommand\\datum{", format(as.Date(input$date), "%d.%m.%Y"), "}\n") |> cat()
      paste0("\\newcommand\\timeEinf{", input$timeEinf, "}\n") |> cat()
      paste0("\\newcommand\\timeFrakOne{", input$timeFrakOne, "}\n") |> cat()
      paste0("\\newcommand\\timeAuss{", input$timeAuss, "}\n") |> cat()
@@ -334,11 +334,11 @@ server <- function(input, output, session) {
       
       ## TN-Zertifikate
       
-      for (excel in list.files("Daten/Schüler")) {
-        xlPath <- paste0("Daten/Schüler/", excel)
+      for (excel in list.files("Daten/SuS")) {
+        xlPath <- paste0("Daten/SuS/", excel)
         for (sheet in excel_sheets(xlPath)) {
           df_xlsx <- read_excel(xlPath, sheet = sheet)
-          write.csv(df_xlsx, paste0("Daten/Schüler/", sheet, ".csv"))
+          write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"))
           {sink("LaTeX/Meta/var.tex")
             paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
             sink()}
@@ -385,16 +385,16 @@ server <- function(input, output, session) {
 
     } else if (input$docs == "TN-Zertifikate") {
       
-      xlPath <- paste0("Daten/Schüler/", input$tnListPath)
+      xlPath <- paste0("Daten/SuS/", input$tnListPath, ".xlsx")
       for (sheet in excel_sheets(xlPath)) {
         df_xlsx <- read_excel(xlPath, sheet = sheet)
-        write.csv(df_xlsx, paste0("Daten/Schüler/", sheet, ".csv"))
+        write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE)
         {sink("LaTeX/Meta/var.tex")
-          paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
-          sink()}
+        paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
+        sink()}
         
         tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
-        file.rename("Länderpapier.pdf", paste0(sheet, ".pdf"))
+        file.rename("TN-Zertifikat.pdf", paste0(input$resPath, "/", sheet, ".pdf"))
         
       }
     } else if (input$docs == "SuS-Verteilung") {

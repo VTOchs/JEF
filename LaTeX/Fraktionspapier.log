@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  1 AUG 2024 21:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  3 SEP 2024 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -767,7 +767,7 @@ Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
 \xs_countb=\count354
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
-) (Meta/var.tex)
+) (Meta/var.tex) (Meta/shinyin.tex)
 \dtldb@caucus=\toks65
 \dtlkeys@caucus=\toks66
 \dtlrows@caucus=\count355
@@ -775,20 +775,20 @@ Package: xstring 2023/08/22 v1.86 String manipulations (CT)
  (Fraktionspapier.aux)
 \openout1 = `Fraktionspapier.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 391.
-LaTeX Font Info:    ... okay on input line 391.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 395.
+LaTeX Font Info:    ... okay on input line 395.
 
 (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
 mkii
@@ -855,147 +855,167 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \celsius on input line 391.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 391
+LaTeX Info: Redefining \celsius on input line 395.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 395
 .
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 391.
-Package gensymb Info: Using \Omega for \ohm on input line 391.
+LaTeX Info: Redefining \ohm on input line 395.
+Package gensymb Info: Using \Omega for \ohm on input line 395.
 
 Package gensymb Warning: Not defining \micro.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--398
+Underfull \hbox (badness 10000) in paragraph at lines 398--402
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--398
+Underfull \hbox (badness 10000) in paragraph at lines 398--402
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--405
+Underfull \hbox (badness 10000) in paragraph at lines 406--409
 
  []
 
 
-Underfull \hbox (badness 2293) in paragraph at lines 402--405
+Underfull \hbox (badness 2293) in paragraph at lines 406--409
 \OT1/cmr/m/n/10.95 Du bist Ab-ge-ord-ne-te:r im Eu-rop[]aischen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--405
-\OT1/cmr/m/n/10.95 gres-si-ve Al-li-anz der So-zi-al-de-mo-kra-ten
+Underfull \hbox (badness 6961) in paragraph at lines 406--409
+\OT1/cmr/m/n/10.95 rop[]aische Volks-par-tei (EVP) an. Dein
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--405
-
+Underfull \hbox (badness 3701) in paragraph at lines 406--409
+\OT1/cmr/m/n/10.95 Ziel ist es, die In-ter-es-sen und Stand-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 1776) in paragraph at lines 406--409
+\OT1/cmr/m/n/10.95 punk-te der EVP-Fraktion durch-zu-set-zen.
+ []
+
+
+Underfull \hbox (badness 1983) in paragraph at lines 406--409
+\OT1/cmr/m/n/10.95 Zu-gleich kommst du aus ei-nem der 27
+ []
+
+
+Underfull \hbox (badness 1881) in paragraph at lines 406--409
+\OT1/cmr/m/n/10.95 EU-Mitgliedstaaten und hast so-mit ei-ne
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 406--409
 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 422--423
-[]\OT1/cmr/m/n/10.95 Zusammensetzung: So-zi-al-de-mo-kra-
+
  []
 
 
-Underfull \hbox (badness 1406) in paragraph at lines 422--423
-\OT1/cmr/m/n/10.95 ti-sche Par-tei-en (Deutsch-land: SPD)
+Underfull \hbox (badness 7308) in paragraph at lines 426--427
+[]\OT1/cmr/m/n/10.95 Zusammensetzung: Christ-de-mo-kra-ti-
+ []
+
+
+Underfull \hbox (badness 5970) in paragraph at lines 426--427
+\OT1/cmr/m/n/10.95 sche Par-tei-en (Deutsch-land: CSU,
  []
 
 <Logos/jef.png, id=4, 794.97pt x 270.38014pt>
 File: Logos/jef.png Graphic file (type png)
 <use Logos/jef.png>
-Package pdftex.def Info: Logos/jef.png  used on input line 442.
+Package pdftex.def Info: Logos/jef.png  used on input line 446.
 (pdftex.def)             Requested size: 167.31253pt x 56.9055pt.
 <Logos/simep.png, id=6, 376.40625pt x 376.40625pt>
 File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
-Package pdftex.def Info: Logos/simep.png  used on input line 447.
+Package pdftex.def Info: Logos/simep.png  used on input line 451.
 (pdftex.def)             Requested size: 78.24355pt x 78.24507pt.
-<Folien/Bilder/SD.png, id=7, 417.56pt x 417.56pt>
-File: Folien/Bilder/SD.png Graphic file (type png)
-<use Folien/Bilder/SD.png>
-Package pdftex.def Info: Folien/Bilder/SD.png  used on input line 452.
-(pdftex.def)             Requested size: 71.1308pt x 71.13188pt.
+<Folien/Bilder/EVP.png, id=7, 475.7775pt x 234.8775pt>
+File: Folien/Bilder/EVP.png Graphic file (type png)
+<use Folien/Bilder/EVP.png>
+Package pdftex.def Info: Folien/Bilder/EVP.png  used on input line 456.
+(pdftex.def)             Requested size: 144.08466pt x 71.13188pt.
 <Logos/finance.png, id=8, 1003.75pt x 530.98375pt>
 File: Logos/finance.png Graphic file (type png)
 <use Logos/finance.png>
-Package pdftex.def Info: Logos/finance.png  used on input line 457.
+Package pdftex.def Info: Logos/finance.png  used on input line 461.
 (pdftex.def)             Requested size: 134.45891pt x 71.13188pt.
-<Logos/Bayreuth.png, id=9, 597.432pt x 128.8815pt>
-File: Logos/Bayreuth.png Graphic file (type png)
-<use Logos/Bayreuth.png>
-Package pdftex.def Info: Logos/Bayreuth.png  used on input line 466.
-(pdftex.def)             Requested size: 197.83687pt x 42.67912pt.
+<Logos/Bamberg.png, id=9, 481.8pt x 429.605pt>
+File: Logos/Bamberg.png Graphic file (type png)
+<use Logos/Bamberg.png>
+Package pdftex.def Info: Logos/Bamberg.png  used on input line 470.
+(pdftex.def)             Requested size: 47.85934pt x 42.67912pt.
 
 
 [1
 
 {C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Logos/je
-f.png> <./Logos/simep.png> <./Folien/Bilder/SD.png> <./Logos/finance.png> <./Lo
-gos/Bayreuth.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 478--480
+f.png> <./Logos/simep.png> <./Folien/Bilder/EVP.png> <./Logos/finance.png> <./L
+ogos/Bamberg.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 482--484
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--481
+Underfull \hbox (badness 10000) in paragraph at lines 485--485
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--481
+Underfull \hbox (badness 10000) in paragraph at lines 485--485
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 485--487
+Underfull \hbox (badness 10000) in paragraph at lines 489--491
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--488
+Underfull \hbox (badness 10000) in paragraph at lines 492--492
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--488
+Underfull \hbox (badness 10000) in paragraph at lines 492--492
 
  []
 
 
-Overfull \hbox (9.66388pt too wide) in paragraph at lines 488--489
-\OT1/cmr/m/n/10.95 rop[]aische Ebe-ne. Zu-dem muss die EU auch auf di-plo-ma-ti
--schem Ge-biet ei-ne F[]uhrungsrolle []ubernehmen
+Overfull \hbox (26.43982pt too wide) in paragraph at lines 492--493
+\OT1/cmr/m/n/10.95 rop[]aischer Ver-tei-di-gungs-fonds ge-schaf-fen wer-den. Au
+s die-sem soll auch die eu-rop[]aische R[]ustungsindustrie,
  []
 
 File: Logos/jef.png Graphic file (type png)
 <use Logos/jef.png>
-Package pdftex.def Info: Logos/jef.png  used on input line 493.
+Package pdftex.def Info: Logos/jef.png  used on input line 497.
 (pdftex.def)             Requested size: 167.31253pt x 56.9055pt.
 File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
-Package pdftex.def Info: Logos/simep.png  used on input line 498.
+Package pdftex.def Info: Logos/simep.png  used on input line 502.
 (pdftex.def)             Requested size: 78.24355pt x 78.24507pt.
 
 
 [2]
 File: Logos/jef.png Graphic file (type png)
 <use Logos/jef.png>
-Package pdftex.def Info: Logos/jef.png  used on input line 508.
+Package pdftex.def Info: Logos/jef.png  used on input line 512.
 (pdftex.def)             Requested size: 167.31253pt x 56.9055pt.
 File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
-Package pdftex.def Info: Logos/simep.png  used on input line 513.
+Package pdftex.def Info: Logos/simep.png  used on input line 517.
 (pdftex.def)             Requested size: 78.24355pt x 78.24507pt.
 
 Overfull \vbox (28.0674pt too high) has occurred while \output is active []
@@ -1010,9 +1030,9 @@ L3 programming layer <2024-05-08>
  ) 
 Here is how much of TeX's memory you used:
  20226 strings out of 473938
- 396546 string characters out of 5726448
+ 396586 string characters out of 5726448
  1942893 words of memory out of 5000000
- 42682 multiletter control sequences out of 15000+600000
+ 42679 multiletter control sequences out of 15000+600000
  563388 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,6n,117p,625b,620s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1023,9 +1043,9 @@ ublic/amsfonts/cm/cmbx10.pfb><C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Vincent/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Vincent/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Fraktionspapier.pdf (3 pages, 611005 bytes).
+Output written on Fraktionspapier.pdf (3 pages, 526348 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
