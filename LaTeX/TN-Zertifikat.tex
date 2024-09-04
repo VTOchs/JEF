@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry} % Adjust margins as needed
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage{datatool}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{xstring}
+\usepackage[utf8]{inputenc} % Use utf8 encoding for special characters
+\input{Meta/var.tex}
+\input{Meta/shinyin.tex}
+
+\DTLloaddb[keys={Vorname,Nachname}]{class}{../Daten/SuS/\klasse.csv}
+
+\IfEqCase{\Thema}{%
+	{Green Deal}{\newcommand{\theme}{zur Europäischen Klimapolitik im Rahmen des Green Deal}}%
+	{Migration}{\newcommand{\theme}{zu einem Europäischen Asyl- und Migrationssystem}}%
+	{Armee}{\newcommand{\theme}{zu einer Europäischen Armee}}%
+}
+
+\newcommand{\logoOne}{Logos/jef.png}
+\newcommand{\logoTwo}{Logos/simep.png}
+\newcommand{\logoThree}{Logos/finance.png}
+\newcommand{\signature}{Logos/signature.png}
+\newcommand{\logoX}{-25}%
+\newcommand{\logoY}{9}%
+\newcommand{\logoH}{1.5}%
+\newcommand{\textX}{-20}%
+\newcommand{\textY}{28}%
+
+\begin{document}
+\DTLforeach{class}{\prename=Vorname, \surname=Nachname}{
+    \thispagestyle{empty} % No page number on the certificate
+    
+    \vspace*{2cm}
+    
+    \begin{center}
+        \textbf{\huge Teilnahmebescheinigung}
+    \end{center}
+    
+    \begin{center}
+        \LARGE Simulation des Europäischen Parlaments
+    \end{center}
+    
+    \begin{center}
+        \Large \datum
+    \end{center}
+    \vspace{1cm}
+    \begin{hyphenrules}{nohyphenation}
+    \prename\ \surname\ hat am \datum\ an der Simulation des Europäischen Parlaments (SimEP) in \city\ teilgenommen. \newline
+    \newline
+    \prename\ \surname\ hat an den Gruppendiskussionen in den Fraktions- und Ausschusssitzungen sowie in der Plenardebatte mitgewirkt und eine Entschließung des Europäischen Parlaments \theme\ erarbeitet. Dabei wurden das europäische politische System im Allgemeinen und die Funktionsweise des Parlaments im Speziellen beleuchtet.\newline
+    \newline
+    Die Simulation des Europäischen Parlaments ist eine Veranstaltung der Jungen Europäischen Föderalist:innen (JEF) Bayern. Als unabhängiger und überparteilicher Jugendverband bemüht sich die JEF, Jugendliche für den europäischen Gedanken zu begeistern und sie zu europapolitischem Engagement zu motivieren. Die~SimEP  bietet zahlreichen Schüler:innen die Gelegenheit, in die Rolle von Abgeordneten des Europäischen Parlaments zu schlüpfen und zu erleben, wie europäische Politik in der parlamentarischen Praxis abläuft. Die~Simulation des Europäischen Parlaments wurde durch \sponsor\ und \localSupport\ unterstützt.\newline
+    \end{hyphenrules}
+    \newline
+    Europäische Grüße \newline
+    \newline
+    \includegraphics[width=0.15\textwidth]{\signature}
+    \newline
+    \jefvorsitz \newline
+    \newline
+    \gendervorsitz\ Junge Europäische Föderalist:innen Bayern
+    
+    
+    \vfill
+    
+    \begin{tikzpicture}[remember picture, overlay]
+        % Top left corner
+        \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
+            \includegraphics[height=2cm]{\logoOne}
+        };
+        
+        % Top right corner
+        \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
+            \includegraphics[height=2.75cm]{\logoTwo}
+        };
+        
+        % Bottom left corner
+        \node at ([xshift=4mm, yshift=2mm] current page.south west) [anchor=south west, inner sep=0pt] {
+            \includegraphics[height=2.5cm]{\logoThree}
+        };
+        % Text below bottom left corner
+        \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
+            \small Kofinanziert durch:
+        };
+    
+        % Bottom right corner
+        \node at ([xshift=\logoX mm, yshift=\logoY mm] current page.south east) [anchor=south east, inner sep=0pt] {
+            \includegraphics[height=\logoH cm]{Logos/\city.png}
+        };
+        % Text below bottom right corner
+        \node at ([xshift=\textX mm, yshift=\textY mm] current page.south east) [anchor=south east, inner sep=0pt] {
+            \small Unterstützt durch:
+        };
+    
+    \end{tikzpicture}
+    
+	\vspace{1cm}
+	
+	\begin{center}
+        \footnotesize Junge Europäische Föderalist:innen Bayern e.V.
+	\end{center}
+	\begin{center}  
+        \footnotesize jef-bayern.de $|$ @jef\_bayern $|$ geschaeftsstelle@jef-bayern.de
+	\end{center}
+	\begin{center}
+		\footnotesize Oberanger 32, 80331 München
+	\end{center}
+    \newpage
+}%
+\end{document}

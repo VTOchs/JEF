@@ -1,0 +1,1624 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.6.7)  4 AUG 2024 13:47
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./Briefing.tex
+(Briefing.tex
+LaTeX2e <2024-06-01>
+L3 programming layer <2024-05-08>
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
+Document Class: beamer 2024/01/06 v3.71 A class for typesetting presentations
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasemode
+s.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count194
+)
+\beamer@tempbox=\box52
+\beamer@tempcount=\count195
+\c@beamerpauses=\count196
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasedeco
+de.sty
+\beamer@slideinframe=\count197
+\beamer@minimum=\count198
+\beamer@decode@box=\box53
+)
+\beamer@commentbox=\box54
+\beamer@modecount=\count199
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+\headdp=\dimen141
+\footheight=\dimen142
+\sidebarheight=\dimen143
+\beamer@tempdim=\dimen144
+\beamer@finalheight=\dimen145
+\beamer@animht=\dimen146
+\beamer@animdp=\dimen147
+\beamer@animwd=\dimen148
+\beamer@leftmargin=\dimen149
+\beamer@rightmargin=\dimen150
+\beamer@leftsidebar=\dimen151
+\beamer@rightsidebar=\dimen152
+\beamer@boxsize=\dimen153
+\beamer@vboxoffset=\dimen154
+\beamer@descdefault=\dimen155
+\beamer@descriptionwidth=\dimen156
+\beamer@lastskip=\skip49
+\beamer@areabox=\box55
+\beamer@animcurrent=\box56
+\beamer@animshowbox=\box57
+\beamer@sectionbox=\box58
+\beamer@logobox=\box59
+\beamer@linebox=\box60
+\beamer@sectioncount=\count266
+\beamer@subsubsectionmax=\count267
+\beamer@subsectionmax=\count268
+\beamer@sectionmax=\count269
+\beamer@totalheads=\count270
+\beamer@headcounter=\count271
+\beamer@partstartpage=\count272
+\beamer@sectionstartpage=\count273
+\beamer@subsectionstartpage=\count274
+\beamer@animationtempa=\count275
+\beamer@animationtempb=\count276
+\beamer@xpos=\count277
+\beamer@ypos=\count278
+\beamer@ypos@offset=\count279
+\beamer@showpartnumber=\count280
+\beamer@currentsubsection=\count281
+\beamer@coveringdepth=\count282
+\beamer@sectionadjust=\count283
+\beamer@toclastsection=\count284
+\beamer@tocsectionnumber=\count285
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseopti
+ons.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+))
+\beamer@paperwidth=\skip50
+\beamer@paperheight=\skip51
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count286
+\Gm@cntv=\count287
+\c@Gm@tempcnt=\count288
+\Gm@bindingoffset=\dimen157
+\Gm@wd@mp=\dimen158
+\Gm@odd@mp=\dimen159
+\Gm@even@mp=\dimen160
+\Gm@layoutwidth=\dimen161
+\Gm@layoutheight=\dimen162
+\Gm@layouthoffset=\dimen163
+\Gm@layoutvoffset=\dimen164
+\Gm@dimlist=\toks18
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.
+sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfut
+il-common.tex
+\pgfutil@everybye=\toks19
+\pgfutil@tempdima=\dimen165
+\pgfutil@tempdimb=\dimen166
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfut
+il-latex.def
+\pgfutil@abb=\box61
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrc
+s.code.tex
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.te
+x)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys
+.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfke
+ys.code.tex
+\pgfkeys@pathtoks=\toks20
+\pgfkeys@temptoks=\toks21
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfke
+yslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks22
+)))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.co
+de.tex
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathuti
+l.code.tex
+\pgf@x=\dimen167
+\pgf@xa=\dimen168
+\pgf@xb=\dimen169
+\pgf@xc=\dimen170
+\pgf@y=\dimen171
+\pgf@ya=\dimen172
+\pgf@yb=\dimen173
+\pgf@yc=\dimen174
+\c@pgf@counta=\count289
+\c@pgf@countb=\count290
+\c@pgf@countc=\count291
+\c@pgf@countd=\count292
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathpar
+ser.code.tex
+\pgfmath@dimen=\dimen175
+\pgfmath@count=\count293
+\pgfmath@box=\box62
+\pgfmath@toks=\toks23
+\pgfmath@stack@operand=\toks24
+\pgfmath@stack@operation=\toks25
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.basic.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.trigonometric.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.random.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.comparison.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.base.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.round.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.misc.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfun
+ctions.integerarithmetics.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcal
+c.code.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathflo
+at.code.tex
+\c@pgfmathroundto@lastzeros=\count294
+)))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
+File: size11.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcor
+e.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics
+.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.d
+ef
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen176
+\Gin@req@width=\dimen177
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsy
+s.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+\pgf@x=\dimen178
+\pgf@y=\dimen179
+\pgf@xa=\dimen180
+\pgf@ya=\dimen181
+\pgf@xb=\dimen182
+\pgf@yb=\dimen183
+\pgf@xc=\dimen184
+\pgf@yc=\dimen185
+\pgf@xd=\dimen186
+\pgf@yd=\dimen187
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count295
+\c@pgf@countb=\count296
+\c@pgf@countc=\count297
+\c@pgf@countd=\count298
+\t@pgf@toka=\toks26
+\t@pgf@tokb=\toks27
+\t@pgf@tokc=\toks28
+\pgf@sys@id@count=\count299
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+syssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count300
+\pgfsyssoftpath@bigbuffer@items=\count301
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf
+sysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cf
+g
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.lt
+x)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+ore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.cod
+e.tex)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen188
+\pgf@picmaxx=\dimen189
+\pgf@picminy=\dimen190
+\pgf@picmaxy=\dimen191
+\pgf@pathminx=\dimen192
+\pgf@pathmaxx=\dimen193
+\pgf@pathminy=\dimen194
+\pgf@pathmaxy=\dimen195
+\pgf@xx=\dimen196
+\pgf@xy=\dimen197
+\pgf@yx=\dimen198
+\pgf@yy=\dimen199
+\pgf@zx=\dimen256
+\pgf@zy=\dimen257
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen258
+\pgf@path@lasty=\dimen259
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen260
+\pgf@shorten@start@additional=\dimen261
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box63
+\pgf@hbox=\box64
+\pgf@layerbox@main=\box65
+\pgf@picture@serial@count=\count302
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen262
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen263
+\pgf@pt@y=\dimen264
+\pgf@pt@temp=\dimen265
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen266
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen267
+\pgf@sys@shading@range@num=\count303
+\pgf@shadingcount=\count304
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box66
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+oretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfc
+orerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\xxcolor
+.sty
+Package: xxcolor 2003/10/24 ver 0.1
+\XC@nummixins=\count305
+\XC@countmixins=\count306
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2024-05-23 v7.01i Hypertext links for LaTeX
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.s
+ty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefi
+nekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape
+.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcm
+ds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr
+.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gett
+itlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.s
+ty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count307
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc
+.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen268
+\Hy@linkcounter=\count308
+\Hy@pagecounter=\count309
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2024-05-23 v7.01i Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count310
+ (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2024-05-23 v7.01i Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 4040.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4040.
+Package hyperref Info: Option `implicit' set `false' on input line 4040.
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
+Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count311
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen269
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintca
+lc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count312
+\Field@Width=\dimen270
+\Fld@charsize=\dimen271
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+\Hy@abspage=\count313
+
+
+Package hyperref Message: Stopped early.
+
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2024-05-23 v7.01i Hyperref driver for pdfTeX
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.st
+y
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count314
+\c@bookmark@seq@number=\count315
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunf
+ilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniqu
+ecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaserequ
+ires.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasecomp
+atibility.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasefont
+.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks29
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\sansma
+thaccent.sty
+Package: sansmathaccent 2020/01/31
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile.
+sty
+Package: scrlfile 2023/07/07 v3.41 KOMA-Script package (file load hooks)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlfile-
+hook.sty
+Package: scrlfile-hook 2023/07/07 v3.41 KOMA-Script package (using LaTeX hooks)
+
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/koma-script\scrlogo.s
+ty
+Package: scrlogo 2023/07/07 v3.41 KOMA-Script package (logo)
+)))))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetran
+slator.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+.sty
+Package: translator 2021-05-31 v1.12d Easy translation of strings in LaTeX
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasemisc
+.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetwos
+creens.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseover
+lay.sty
+\beamer@argscount=\count316
+\beamer@lastskipcover=\skip52
+\beamer@trivlistdepth=\count317
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetitl
+e.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasesect
+ion.sty
+\c@lecture=\count318
+\c@part=\count319
+\c@section=\count320
+\c@subsection=\count321
+\c@subsubsection=\count322
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasefram
+e.sty
+\beamer@framebox=\box67
+\beamer@frametitlebox=\box68
+\beamer@zoombox=\box69
+\beamer@zoomcount=\count323
+\beamer@zoomframecount=\count324
+\beamer@frametextheight=\dimen272
+\c@subsectionslide=\count325
+\beamer@frametopskip=\skip53
+\beamer@framebottomskip=\skip54
+\beamer@frametopskipautobreak=\skip55
+\beamer@framebottomskipautobreak=\skip56
+\beamer@envbody=\toks30
+\framewidth=\dimen273
+\c@framenumber=\count326
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseverb
+atim.sty
+\beamer@verbatimfileout=\write4
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasefram
+esize.sty
+\beamer@splitbox=\box70
+\beamer@autobreakcount=\count327
+\beamer@autobreaklastheight=\dimen274
+\beamer@frametitletoks=\toks31
+\beamer@framesubtitletoks=\toks32
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasefram
+ecomponents.sty
+\beamer@footins=\box71
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasecolo
+r.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasenote
+s.sty
+\beamer@frameboxcopy=\box72
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetoc.
+sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetemp
+lates.sty
+\beamer@sbttoks=\toks33
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseauxt
+emplates.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseboxe
+s.sty
+\bmb@box=\box73
+\bmb@colorbox=\box74
+\bmb@boxwidth=\dimen275
+\bmb@boxheight=\dimen276
+\bmb@prevheight=\dimen277
+\bmb@temp=\dimen278
+\bmb@dima=\dimen279
+\bmb@dimb=\dimen280
+\bmb@prevheight=\dimen281
+)
+\beamer@blockheadheight=\dimen282
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbaseloca
+lstructure.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/tools\enumerate.sty
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks34
+)
+\beamer@bibiconwidth=\skip57
+\c@figure=\count328
+\c@table=\count329
+\abovecaptionskip=\skip58
+\belowcaptionskip=\skip59
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasenavi
+gation.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasenavi
+gationsymbols.tex)
+\beamer@section@min@dim=\dimen283
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasetheo
+rems.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip60
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks35
+\ex@=\dimen284
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen285
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count330
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count331
+\leftroot@=\count332
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count333
+\DOTSCASE@=\count334
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box75
+\strutbox@=\box76
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen286
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count335
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count336
+\dotsspace@=\muskip18
+\c@parentequation=\count337
+\dspbrk@lvl=\count338
+\tag@help=\toks36
+\row@=\count339
+\column@=\count340
+\maxfields@=\count341
+\andhelp@=\toks37
+\eqnshift@=\dimen287
+\alignsep@=\dimen288
+\tagshift@=\dimen289
+\tagwidth@=\dimen290
+\totwidth@=\dimen291
+\lineht@=\dimen292
+\@envbody=\toks38
+\multlinegap=\skip61
+\multlinetaggap=\skip62
+\mathdisplay@stack=\toks39
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks40
+\thm@bodyfont=\toks41
+\thm@headfont=\toks42
+\thm@notefont=\toks43
+\thm@headpunct=\toks44
+\thm@preskip=\skip63
+\thm@postskip=\skip64
+\thm@headsep=\skip65
+\dth@everypar=\toks45
+)
+\c@theorem=\count342
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerbasethem
+es.sty))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerthemedef
+ault.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerfontthem
+edefault.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamercolorthe
+medefault.sty)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerinnerthe
+medefault.sty
+\beamer@dima=\dimen293
+\beamer@dimb=\dimen294
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamerouterthe
+medefault.sty))) (JEFtheme.sty
+Package: JEFtheme 
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tik
+z.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.st
+y
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodu
+leshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box77
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodu
+leplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgf
+comp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen295
+\pgf@nodesepend=\dimen296
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgf
+comp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.
+sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffo
+r.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen297
+\pgffor@skip=\dimen298
+\pgffor@stack=\toks46
+\pgffor@toks=\toks47
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgfli
+braryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count343
+\pgfplotmarksize=\dimen299
+)
+\tikz@lastx=\dimen300
+\tikz@lasty=\dimen301
+\tikz@lastxsaved=\dimen302
+\tikz@lastysaved=\dimen303
+\tikz@lastmovetox=\dimen304
+\tikz@lastmovetoy=\dimen305
+\tikzleveldistance=\dimen306
+\tikzsiblingdistance=\dimen307
+\tikz@figbox=\box78
+\tikz@figbox@bg=\box79
+\tikz@tempbox=\box80
+\tikz@tempbox@bg=\box81
+\tikztreelevel=\count344
+\tikznumberofchildren=\count345
+\tikznumberofcurrentchild=\count346
+\tikz@fig@count=\count347
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodu
+lematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count348
+\pgfmatrixcurrentcolumn=\count349
+\pgf@matrix@numberofcolumns=\count350
+)
+\tikz@expandcount=\count351
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen308
+\captionmargin=\dimen309
+\caption@leftmargin=\dimen310
+\caption@rightmargin=\dimen311
+\caption@width=\dimen312
+\caption@indent=\dimen313
+\caption@parindent=\dimen314
+\caption@hangindent=\dimen315
+Package caption Info: beamer document class detected.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption-beame
+r.sto
+File: caption-beamer.sto 2022/01/06 v2.0c Adaption of the caption package to th
+e beamer document classes (AR)
+))
+\c@caption@flags=\count352
+\c@continuedfloat=\count353
+Package caption Info: hyperref package is loaded.
+Package caption Info: Hyperref support is turned off
+(caption)             because hyperref has stopped early.
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/csvsimple\csvsimple.s
+ty
+Package: csvsimple 2024/05/16 v2.6.1 LaTeX CSV file processing
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/csvsimple\csvsimple-l
+egacy.sty
+Package: csvsimple-legacy 2024/05/16 version 2.6.1 LaTeX2e CSV file processing
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/tools\shellesc.sty
+Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+)
+\csv@file=\read3
+\c@csvinputline=\count354
+\c@csvrow=\count355
+\c@csvcol=\count356
+\csv@out=\write5
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2024-05-08 L3 programming layer (loader) 
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-p
+dftex.def
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count357
+\l__pdf_internal_box=\box82
+))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool.sty
+Package: datatool 2019/09/27 v2.32 (NLCT)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.te
+x
+\XKV@toks=\toks48
+\XKV@tempa@toks=\toks49
+)
+\XKV@depth=\count358
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/xfor\xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/substr\substr.sty
+Package: substr 2009/10/20 v1.2 Handle substrings
+\c@su@anzahl=\count359
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-bas
+e.sty
+Package: datatool-base 2019/09/27 v2.32 (NLCT)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-fp.
+sty
+Package: datatool-fp 2019/09/27 v2.32 (NLCT)
+ (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count360
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count361
+\FP@xia=\count362
+\FP@xib=\count363
+\FP@xfa=\count364
+\FP@xfb=\count365
+\FP@rega=\count366
+\FP@regb=\count367
+\FP@regs=\count368
+\FP@times=\count369
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count370
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-eval.sty
+Package: fp-eval 1995/04/03
+)))
+\@dtl@toks=\toks50
+\@dtl@tmpcount=\count371
+\dtl@tmplength=\skip66
+\dtl@sortresult=\count372
+\@dtl@numgrpsepcount=\count373
+\@dtl@datatype=\count374
+\dtl@codeA=\count375
+\dtl@codeB=\count376
+\@dtl@foreach@level=\count377
+)
+\dtlcolumnnum=\count378
+\dtlrownum=\count379
+\@dtl@before=\toks51
+\@dtl@after=\toks52
+\@dtl@colhead=\toks53
+\dtlcurrentrow=\toks54
+\dtlbeforerow=\toks55
+\dtlafterrow=\toks56
+\dtlforeachlevel=\count380
+\c@DTLrowi=\count381
+\c@DTLrowii=\count382
+\c@DTLrowiii=\count383
+\c@DTLrow=\count384
+\dtl@rowi=\count385
+\dtl@rowii=\count386
+\dtl@rowiii=\count387
+\@dtl@curi=\toks57
+\@dtl@previ=\toks58
+\@dtl@nexti=\toks59
+\@dtl@curii=\toks60
+\@dtl@previi=\toks61
+\@dtl@nextii=\toks62
+\@dtl@curiii=\toks63
+\@dtl@previii=\toks64
+\@dtl@nextiii=\toks65
+\@dtl@elements=\count388
+\@dtl@list=\toks66
+\@dtl@rowa=\toks67
+\@dtl@rowb=\toks68
+\@dtl@toksA=\toks69
+\@dtl@toksB=\toks70
+\@dtl@write=\write6
+\@dtl@read=\read4
+\dtl@entrycr=\count389
+\dtl@omitlines=\count390
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/gensymb\gensymb.sty
+Package: gensymb 2022/10/17 v1.0.2 (KJH)
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks71
+\verbatim@line=\toks72
+\verbatim@in@stream=\read5
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count391
+\xs_countb=\count392
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+) (C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2024/05/18 v24.5 The Babel package
+\babel@savecnt=\count393
+\U@D=\dimen316
+\l@unhyphenated=\language79
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read6
+LaTeX Info: Redefining \textlatin on input line 3930.
+\bbl@dirlevel=\count394
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\german.l
+df
+Language: german 2024/01/19 v2.14 German support for babel (pre-1996 orthograph
+y)
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/babel-german\germanb.
+ldf
+Language: germanb 2024/01/19 v2.14 German support for babel (pre-1996 orthograp
+hy)
+Package babel Info: Making " an active character on input line 139.
+)))
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/de\bab
+el-german.tex
+Package babel Info: Importing font and identification data for german
+(babel)             from babel-de-1901.ini. Reported on input line 25.
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/media9\media9.sty
+Package: media9 2022/08/04 v1.25 acrobat-9/X compatible media
+\g_mix_pkgresizeflag_int=\count395
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/media9\pdfbase.sty
+Package: pdfbase 2022/08/04 v0.55 driver independent access to low-level PDF fe
+atures
+\g_pbs_page_int=\count396
+\g_pbs_oc_int=\count397
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/ocgx2\ocgbase.sty
+Package: ocgbase 2022/08/04 v0.22 support package for ocgx2.sty
+\g_ocgbase_nd_int=\count398
+)
+\l_mix_poster_box=\box83
+\g_mix_wd_dim=\dimen317
+\g_mix_ht_dim=\dimen318
+\g_mix_dp_dim=\dimen319
+\g_mix_rmcnt_int=\count399
+\l_mix_viewcnt_int=\count400
+\g@mix@page@int=\count401
+\g_mix_resizeflag_int=\count402
+\l_mix_lineno_int=\count403
+\l_mix_pbtn_box=\box84
+\g_mix_mbtncnt_int=\count404
+\mix@btn@dim=\dimen320
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (../Meta/var.tex) (Briefing.aux)
+\openout1 = `Briefing.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot 
+* h-part:(L,W,R)=(28.45274pt, 307.28987pt, 28.45274pt)
+* v-part:(T,H,B)=(0.0pt, 273.14662pt, 0.0pt)
+* \paperwidth=364.19536pt
+* \paperheight=273.14662pt
+* \textwidth=307.28987pt
+* \textheight=244.6939pt
+* \oddsidemargin=-43.81725pt
+* \evensidemargin=-43.81725pt
+* \topmargin=-72.26999pt
+* \headheight=14.22636pt
+* \headsep=0.0pt
+* \topskip=11.0pt
+* \footskip=14.22636pt
+* \marginparwidth=4.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
+mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count405
+\scratchdimen=\dimen321
+\scratchbox=\box85
+\nofMPsegments=\count406
+\nofMParguments=\count407
+\everyMPshowfont=\toks73
+\MPscratchCnt=\count408
+\MPscratchDim=\dimen322
+\MPnumerator=\count409
+\makeMPintoPDFobject=\count410
+\everyMPtoPDFconversion=\toks74
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf
+-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys
+.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring OFF on input line 195.
+ (Briefing.out) (Briefing.out)
+\@outlinefile=\write7
+\openout7 = `Briefing.out'.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 195.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 195.
+\symnumbers=\mathgroup6
+\sympureletters=\mathgroup7
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 195.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 195.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 195.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 195.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 195.
+LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 195.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 195.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 195.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 195.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 1
+95.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 1
+95.
+LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
+ut line 195.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+-basic-dictionary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+-bibliography-dictionary-English.dict
+Dictionary: translator-bibliography-dictionary, Language: English 
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+-environment-dictionary-English.dict
+Dictionary: translator-environment-dictionary, Language: English 
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+-months-dictionary-English.dict
+Dictionary: translator-months-dictionary, Language: English 
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+-numbers-dictionary-English.dict
+Dictionary: translator-numbers-dictionary, Language: English 
+)
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator
+-theorem-dictionary-English.dict
+Dictionary: translator-theorem-dictionary, Language: English 
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \celsius on input line 195.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 195
+.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 195.
+Package gensymb Info: Using \Omega for \ohm on input line 195.
+
+Package gensymb Warning: Not defining \micro.
+
+(Briefing.nav)
+<Bilder/SD.png, id=12, 417.56pt x 417.56pt>
+File: Bilder/SD.png Graphic file (type png)
+<use Bilder/SD.png>
+Package pdftex.def Info: Bilder/SD.png  used on input line 196.
+(pdftex.def)             Requested size: 71.1308pt x 71.13188pt.
+<../Logos/jef.png, id=13, 794.97pt x 270.38014pt>
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 196.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+<../Logos/simep.png, id=15, 376.40625pt x 376.40625pt>
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 196.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+<../Logos/finance.png, id=16, 1003.75pt x 530.98375pt>
+File: ../Logos/finance.png Graphic file (type png)
+<use ../Logos/finance.png>
+Package pdftex.def Info: ../Logos/finance.png  used on input line 196.
+(pdftex.def)             Requested size: 80.66922pt x 42.67912pt.
+<../Logos/Bamberg.png, id=17, 481.8pt x 429.605pt>
+File: ../Logos/Bamberg.png Graphic file (type png)
+<use ../Logos/Bamberg.png>
+Package pdftex.def Info: ../Logos/Bamberg.png  used on input line 196.
+(pdftex.def)             Requested size: 99.58464pt x 88.79066pt.
+
+
+[1
+
+{C:/Users/Vincent/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/S
+D.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance.png> <../Logos
+/Bamberg.png>]
+<Bilder/Pol_Bamberg.png, id=54, 427.5975pt x 570.63188pt>
+File: Bilder/Pol_Bamberg.png Graphic file (type png)
+<use Bilder/Pol_Bamberg.png>
+Package pdftex.def Info: Bilder/Pol_Bamberg.png  used on input line 203.
+(pdftex.def)             Requested size: 85.2831pt x 113.81102pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 203.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 203.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[2
+
+ <./Bilder/Pol_Bamberg.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 226
+.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 226
+.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
+ut line 226.
+
+(C:\Users\Vincent\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mat
+hkerncmss.fd
+File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
+thkerncmss.
+)
+<Bilder/mitmachen.png, id=82, 445.665pt x 445.665pt>
+File: Bilder/mitmachen.png Graphic file (type png)
+<use Bilder/mitmachen.png>
+Package pdftex.def Info: Bilder/mitmachen.png  used on input line 226.
+(pdftex.def)             Requested size: 99.58347pt x 99.58464pt.
+
+Overfull \hbox (22.761pt too wide) in paragraph at lines 226--226
+[][] 
+ []
+
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 226.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 226.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[3
+
+ <./Bilder/mitmachen.png>]
+<Bilder/ep.png, id=112, 903.375pt x 474.27188pt>
+File: Bilder/ep.png Graphic file (type png)
+<use Bilder/ep.png>
+Package pdftex.def Info: Bilder/ep.png  used on input line 231.
+(pdftex.def)             Requested size: 307.28987pt x 161.32991pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 231.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 231.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[4
+
+ <./Bilder/ep.png>]
+<Bilder/EP_seats.jpg, id=139, 1839.87375pt x 1036.87375pt>
+File: Bilder/EP_seats.jpg Graphic file (type jpg)
+<use Bilder/EP_seats.jpg>
+Package pdftex.def Info: Bilder/EP_seats.jpg  used on input line 244.
+(pdftex.def)             Requested size: 176.69887pt x 99.58464pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 244.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 244.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[5
+
+ <./Bilder/EP_seats.jpg>]
+<Bilder/gesetzgebungsprozess.jpg, id=166, 542.025pt x 334.24875pt>
+File: Bilder/gesetzgebungsprozess.jpg Graphic file (type jpg)
+<use Bilder/gesetzgebungsprozess.jpg>
+Package pdftex.def Info: Bilder/gesetzgebungsprozess.jpg  used on input line 25
+1.
+(pdftex.def)             Requested size: 276.84262pt x 170.71652pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 251.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 251.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[6
+
+ <./Bilder/gesetzgebungsprozess.jpg>]
+<Bilder/vdl.png, id=193, 217.5628pt x 283.81032pt>
+File: Bilder/vdl.png Graphic file (type png)
+<use Bilder/vdl.png>
+Package pdftex.def Info: Bilder/vdl.png  used on input line 297.
+(pdftex.def)             Requested size: 54.52667pt x 71.13188pt.
+<Bilder/metsola.png, id=194, 338.01282pt x 451.6875pt>
+File: Bilder/metsola.png Graphic file (type png)
+<use Bilder/metsola.png>
+Package pdftex.def Info: Bilder/metsola.png  used on input line 297.
+(pdftex.def)             Requested size: 53.22697pt x 71.13188pt.
+<Bilder/decroo.png, id=195, 264.99pt x 320.99925pt>
+File: Bilder/decroo.png Graphic file (type png)
+<use Bilder/decroo.png>
+Package pdftex.def Info: Bilder/decroo.png  used on input line 297.
+(pdftex.def)             Requested size: 58.71849pt x 71.13188pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 297.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 297.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+Overfull \vbox (7.34824pt too high) detected at line 297
+ []
+
+
+
+[7
+
+ <./Bilder/vdl.png> <./Bilder/metsola.png> <./Bilder/decroo.png>]
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 309.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 309.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[8
+
+]
+<Bilder/em_sector.png, id=251, 903.375pt x 704.6325pt>
+File: Bilder/em_sector.png Graphic file (type png)
+<use Bilder/em_sector.png>
+Package pdftex.def Info: Bilder/em_sector.png  used on input line 313.
+(pdftex.def)             Requested size: 218.8683pt x 170.71652pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 313.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 313.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[9
+
+ <./Bilder/em_sector.png>]
+<Bilder/em_vergleich.png, id=278, 603.03984pt x 265.77983pt>
+File: Bilder/em_vergleich.png Graphic file (type png)
+<use Bilder/em_vergleich.png>
+Package pdftex.def Info: Bilder/em_vergleich.png  used on input line 317.
+(pdftex.def)             Requested size: 307.2886pt x 170.72304pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 317.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 317.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[10
+
+ <./Bilder/em_vergleich.png>]
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 321.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 321.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[11
+
+]
+<Bilder/green_deal.png, id=333, 899.61093pt x 547.2947pt>
+File: Bilder/green_deal.png Graphic file (type png)
+<use Bilder/green_deal.png>
+Package pdftex.def Info: Bilder/green_deal.png  used on input line 325.
+(pdftex.def)             Requested size: 307.29128pt x 170.72017pt.
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 325.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 325.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[12
+
+ <./Bilder/green_deal.png>]
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 337.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 337.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[13
+
+]
+File: ../Logos/jef.png Graphic file (type png)
+<use ../Logos/jef.png>
+Package pdftex.def Info: ../Logos/jef.png  used on input line 352.
+(pdftex.def)             Requested size: 83.65019pt x 28.45274pt.
+File: ../Logos/simep.png Graphic file (type png)
+<use ../Logos/simep.png>
+Package pdftex.def Info: ../Logos/simep.png  used on input line 352.
+(pdftex.def)             Requested size: 42.67412pt x 42.67912pt.
+
+
+[14
+
+]
+\tf@nav=\write8
+\openout8 = `Briefing.nav'.
+
+\tf@toc=\write9
+\openout9 = `Briefing.toc'.
+
+\tf@snm=\write10
+\openout10 = `Briefing.snm'.
+
+ (Briefing.aux)
+ ***********
+LaTeX2e <2024-06-01>
+L3 programming layer <2024-05-08>
+ ***********
+Package rerunfilecheck Info: File `Briefing.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 31392 strings out of 473938
+ 623524 string characters out of 5726448
+ 1940893 words of memory out of 5000000
+ 53566 multiletter control sequences out of 15000+600000
+ 569519 words of font info for 77 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 128i,14n,123p,406b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmss10.pfb><C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmss12.pfb><C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmss17.pfb><C:/Users/Vincent/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Vincent/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Vincent/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users
+/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+><C:/Users/Vincent/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sy
+mbols/msam10.pfb>
+Output written on Briefing.pdf (14 pages, 2761893 bytes).
+PDF statistics:
+ 452 PDF objects out of 1000 (max. 8388607)
+ 29 named destinations out of 1000 (max. 500000)
+ 123 words of extra memory for PDF output out of 10000 (max. 10000000)
+
