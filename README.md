@@ -1,5 +1,4 @@
 # JEF
 
-Dashboard.R - Bisher Shiny-App für Plenarsitzung, weitere Ideen in Dashboard.txt
-
-Länderpapiere.R - Datencrawler für SimEP-Länderpapiere -> entstehenden csv-Dateien in Latex-Repo
+* Dashboard.R - Shiny-App für Abstimmungen in Plenarsitzung
+* Drucker.R - Shiny-App um Unterlagen automatisiert zu generieren und aktualisieren
