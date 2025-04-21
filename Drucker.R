@@ -106,7 +106,7 @@ move_temp_files <- function(target_dir, file_ext, source_dir = "."){
   
   for (file in files_to_move) {
     file_name <- basename(file)
-    file.rename(from = paste0(source_dir, "/", file), to = file.path(target_dir, file_name))
+    file.rename(from = paste0(source_dir, "/", file_name), to = file.path(target_dir, file_name))
   }  
 }
 
