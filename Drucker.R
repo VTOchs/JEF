@@ -1,7 +1,6 @@
 # Libraries ---------------------------------------------------------------
 
 rm(list = ls())
-library(DT)
 library(qpdf)
 library(readxl)
 library(shiny)
@@ -94,6 +93,24 @@ get_sus_dist <- function(numSuS, landDist = T){
   }
 }
 
+move_temp_files <- function(target_dir, file_ext, source_dir = "."){
+
+  files_to_move <- list.files(path = source_dir, 
+                              pattern = paste0("\\.", file_ext, "$"), 
+                              full.names = FALSE)
+  
+  # Create the target directory if it doesn't exist
+  if (!dir.exists(target_dir)) {
+    dir.create(target_dir, recursive = TRUE)
+  }
+  
+  for (file in files_to_move) {
+    file_name <- basename(file)
+    file.rename(from = paste0(source_dir, "/", file), to = file.path(target_dir, file_name))
+  }  
+}
+
+
 # UI ----------------------------------------------------------------------
 
 header <- dashboardHeader(title = "Unterlagendrucker")
@@ -142,8 +159,8 @@ body <- dashboardBody(
           width = 12,
           selectInput("topic", "Thema:",
                       choices = c("Green Deal", "Migration", "Armee"),
-                      selected = "Green Deal"),
-          textInput("city", "Stadt:", value = "Bamberg"),
+                      selected = "Migration"),
+          textInput("city", "Stadt:", value = "München"),
           dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
           textInput("resPath", "Zielordner:", "Results")
         )
@@ -155,8 +172,8 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 12,
-          textInput("localSup", "Lokale Unterstützung:"),
-          textInput("sponsor", "Sponsor:"),
+          textInput("localSup", "Lokale Unterstützung:", "Europe Direct München"),
+          textInput("sponsor", "Sponsor:", "Stadt München"),
           textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
           selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
         )
@@ -183,10 +200,10 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 4,
-          textInput("pol", "Politiker:"),
+          textInput("pol", "Politiker:", value = "Maria Noichl"),
           textInput("pol_office", "Politiker (Amt):", value = "Mitglied des Europäischen Parlaments"),
-          textInput("stadtvert", "Stadtvertreter:"),
-          textInput("stadtvert_office", "Stadtvertreter (Amt):")
+          textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
+          textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat")
         ),
         box(
           width = 4,
@@ -226,8 +243,8 @@ ui <- dashboardPage(skin = "green", header, sidebar, body)
 server <- function(input, output, session) {
 
   observeEvent(input$reload,
-                {source("Länderpapiere.R")
-                source("Folien.R")}
+                {source("Scripts/Länderpapiere.R")
+                source("Scripts/Folien.R")}
                )
   
   observeEvent(input$print, 
@@ -338,6 +355,12 @@ server <- function(input, output, session) {
         }
       }
       
+      for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
+        move_temp_files("temp", suffix)
+        move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
+        move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
+      }
+      
     } else if (input$docs == "Unterlagen SuS") {
       
       dir.create(file.path(input$resPath), showWarnings = F)
@@ -372,7 +395,12 @@ server <- function(input, output, session) {
         }
       }
       pdf_combine(input = pdf_order,
-                        output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+                  output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+      for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
+        move_temp_files("temp", suffix)
+        move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
+        move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
+      }
 
     } else if (input$docs == "TN-Zertifikate") {
       
@@ -387,7 +415,14 @@ server <- function(input, output, session) {
         
         tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
         file.rename("TN-Zertifikat.pdf", paste0(input$resPath, "/", sheet, ".pdf"))
-        
+        for (suffix in c("aux", "txt", "out", "nav", "toc")) {
+          move_temp_files("temp", suffix)
+        }
+      }
+      for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
+        move_temp_files("temp", suffix)
+        move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
+        move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
       }
     } else if (input$docs == "SuS-Verteilung") {
       resSuS <- get_sus_dist(input$numSuS, landDist = F)

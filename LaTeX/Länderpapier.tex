@@ -47,7 +47,8 @@
         		\newline
         		\item \textbf{Anteil Geflüchtete an Bevölkerung}: \refperc \% (\largediameter EU: \refperceu \%)
         		\newline
-        		\item \textbf{Anteil Bevölkerung im arbeitsfähigen Alter} \newline (je niedriger, desto mehr Einwanderung benötigt): \workageperc \% (\largediameter EU: \workageperceu \%)
+        		\item \textbf{Anteil Bevölkerung im arbeitsfähigen Alter} \newline (je niedriger, desto mehr Einwanderung benötigt): \newline 
+        		\workageperc \% (\largediameter EU: \workageperceu \%)
         		\newline
         		\item \textbf{EU-Außengrenze (ohne EFTA)}: \border
         	}
@@ -68,17 +69,10 @@
 }
 
 
-
 \newcommand{\largediameter}{\scalebox{1.5}{\diameter}}
 \newcommand{\logoOne}{Logos/jef.png}
 \newcommand{\logoTwo}{Logos/simep.png}
 \newcommand{\logoThree}{Logos/finance.png}
-\newcommand{\logoX}{-25}
-\newcommand{\logoY}{9}
-\newcommand{\logoH}{1.5}
-\newcommand{\textX}{-20}
-\newcommand{\textY}{28}
-
 
 \newcommand{\getcountry}[1]{%
     \DTLforeach{members}{\iso=iso,\country=country}{%
@@ -923,9 +917,17 @@
         \newline
     \end{center}
     
-    \begin{itemize}
-		\facts
-    \end{itemize}
+    \begin{minipage}[t]{0.7\textwidth}
+		\begin{itemize}
+			\facts
+	    \end{itemize}    
+    \end{minipage}%
+    \begin{minipage}[t]{0.25\textwidth}
+    		\vspace{1cm}
+    		\hspace{-0.2cm}
+    		\includegraphics[height=3.5cm]{Maps/\kurzel.png}
+    \end{minipage}
+    
     
     \vfill
     
@@ -948,13 +950,14 @@
         \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
             \small Kofinanziert durch:
         };
+               
         
         % Bottom right corner
-        \node at ([xshift=\logoX mm, yshift=\logoY mm] current page.south east) [anchor=south east, inner sep=0pt] {
-            \includegraphics[height=\logoH cm]{Logos/\city.png}
+        \node at ([xshift=-4mm, yshift=10mm] current page.south east) [anchor=south east, inner sep=0pt] {
+            \includegraphics[height=1.5cm]{Logos/\city.png}
         };
         % Text below bottom right corner
-        \node at ([xshift=\textX mm, yshift=\textY mm] current page.south east) [anchor=south east, inner sep=0pt] {
+        \node at ([xshift=-14mm, yshift=28mm] current page.south east) [anchor=south east, inner sep=0pt] {
             \small Unterstützt durch:
         };
     
