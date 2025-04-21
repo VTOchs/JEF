@@ -1,11 +1,10 @@
 library(diffobj)
 library(ggplot2)
 library(grid)
-library(pkgmaker)
 library(shiny)
 library(shinydashboard)
 library(stringr)
-library(tidyverse)
+library(tidyverse)#
 
 collapse_diff <- function(str_list){
   for (i in seq_along(str_list)) {
@@ -99,10 +98,10 @@ body <- dashboardBody(
                  textInput("green_old", "alter Text:"),
                  textInput("green_new", "neuer Text:")),
         tabPanel("PfE",
-                 textInput("id_vize", "Fraktionsvize:"),
-                 textInput("id_section", "Abschnitt:"),
-                 textInput("id_old", "alter Text:"),
-                 textInput("id_new", "neuer Text:")),
+                 textInput("pfe_vize", "Fraktionsvize:"),
+                 textInput("pfe_section", "Abschnitt:"),
+                 textInput("pfe_old", "alter Text:"),
+                 textInput("pfe_new", "neuer Text:")),
         tabPanel("Abschlussabstimmung",
                  radioButtons("topic", "Thema:",
                               choices = c("Green Deal/Migration", "Armee"),
@@ -346,47 +345,47 @@ body <- dashboardBody(
                          src = "EP_Logo.png",
                          width = 150
                        )),
-                     uiOutput("id_logo")
+                     uiOutput("pfe_logo")
                    ),
                    box(
                      width = 9,
                      align = "left",
-                     tags$head(tags$style("#id_vize{color: black;
+                     tags$head(tags$style("#pfe_vize{color: black;
                                  font-size: 24px;
                                  font-style: bold;
                                  }
-                                          #id_section_print{color: black;
+                                          #pfe_section_print{color: black;
                                  font-size: 24px;
                                  font-style: bold;
                                  }
-                                          #id_old_print{color: black;
+                                          #pfe_old_print{color: black;
                                  font-size: 20px;
                                  }
-                                          #id_new_print{color: black;
+                                          #pfe_new_print{color: black;
                                  font-size: 20px;
                                  }")),
-                     uiOutput("id_vize"),
-                     uiOutput("id_section_print"),
-                     uiOutput("id_old_print"),
-                     uiOutput("id_new_print")
+                     uiOutput("pfe_vize"),
+                     uiOutput("pfe_section_print"),
+                     uiOutput("pfe_old_print"),
+                     uiOutput("pfe_new_print")
                    )),
                  fluidRow(
                    box(
                      width = 3,
-                     tags$head(tags$style("#id_res_print{color: black;
+                     tags$head(tags$style("#pfe_res_print{color: black;
                                  font-size: 30px;
                                  font-style: bold;
                                  }")),
-                     numericInput("id_yes", "Ja:", value = NA),
-                     numericInput("id_no", "Nein:", value = NA),
-                     numericInput("id_abst", "Enthaltung:", value = NA),
-                     actionButton("id_button", "Ergebnis"),
-                     textOutput("id_res_print"),
-                     uiOutput("id_res_img")
+                     numericInput("pfe_yes", "Ja:", value = NA),
+                     numericInput("pfe_no", "Nein:", value = NA),
+                     numericInput("pfe_abst", "Enthaltung:", value = NA),
+                     actionButton("pfe_button", "Ergebnis"),
+                     textOutput("pfe_res_print"),
+                     uiOutput("pfe_res_img")
                    ),
                    box(
                      width = 9,
-                     plotOutput("id_chart")
+                     plotOutput("pfe_chart")
              )
            )
         ),
@@ -751,46 +750,46 @@ server <- function(input, output, session) {
   
   # ID
   
-  id_type <- reactiveVal("empty")
-  id_res <- reactiveVal("")
-  id_plot_data <- reactiveVal(NULL)
+  pfe_type <- reactiveVal("empty")
+  pfe_res <- reactiveVal("")
+  pfe_plot_data <- reactiveVal(NULL)
   
   # Initial plot (empty circle)
-  output$id_chart <- renderPlot({
-    if (id_type() == "empty") {
+  output$pfe_chart <- renderPlot({
+    if (pfe_type() == "empty") {
       plot_empty_circle()
     } else {
-      plot_result_circle(id_plot_data(), id)
+      plot_result_circle(pfe_plot_data(), id)
     }
   })
   
   # Observe button clicks and switch to the result plot
-  observeEvent(input$id_button, {
-    id_type("result")
-    id_new_data <- data.frame(
+  observeEvent(input$pfe_button, {
+    pfe_type("result")
+    pfe_new_data <- data.frame(
       cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
-      id = c(input$id_yes, input$id_no, input$id_abst)
+      id = c(input$pfe_yes, input$pfe_no, input$pfe_abst)
     )
-    id_plot_data(id_new_data)
+    pfe_plot_data(pfe_new_data)
     
-    if (is.na(input$id_yes) | is.na(input$id_no) | is.na(input$id_abst)) {
-      id_res("")
-    } else if (input$id_yes > input$id_no) {
-      id_res("Der Änderungsantrag ist angenommen!")
+    if (is.na(input$pfe_yes) | is.na(input$pfe_no) | is.na(input$pfe_abst)) {
+      pfe_res("")
+    } else if (input$pfe_yes > input$pfe_no) {
+      pfe_res("Der Änderungsantrag ist angenommen!")
     } else {
-      id_res("Der Änderungsantrag ist abgelehnt!")
+      pfe_res("Der Änderungsantrag ist abgelehnt!")
     }
   })
   
-  output$id_vize <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$id_vize))
+  output$pfe_vize <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Fraktionsvize:</div> ", input$pfe_vize))
   })
-  output$id_section_print <- renderUI({
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$id_section))
+  output$pfe_section_print <- renderUI({
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$pfe_section))
   })
   
-  output$id_old_print <- renderUI({
-    diffOldNew_id <- as.character(diffChr(input$id_old, input$id_new, pager="off"))[1]
+  output$pfe_old_print <- renderUI({
+    diffOldNew_id <- as.character(diffChr(input$pfe_old, input$pfe_new, pager="off"))[1]
     splitOldNew_id <- strsplit(diffOldNew_id, "")[[1]]
     splitMat_id <- str_locate_all(diffOldNew_id, "<span class='diffobj-trim'></span>")[[1]]
     
@@ -802,8 +801,8 @@ server <- function(input, output, session) {
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_id))
   })
   
-  output$id_new_print <- renderUI({
-    diffOldNew_id <- as.character(diffChr(input$id_old, input$id_new, pager="off"))[1]
+  output$pfe_new_print <- renderUI({
+    diffOldNew_id <- as.character(diffChr(input$pfe_old, input$pfe_new, pager="off"))[1]
     splitOldNew_id <- strsplit(diffOldNew_id, "")[[1]]
     splitMat_id <- str_locate_all(diffOldNew_id, "<span class='diffobj-trim'></span>")[[1]]
     
@@ -815,13 +814,13 @@ server <- function(input, output, session) {
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_id))
   })
   
-  output$id_logo <- renderUI({tags$img(src = "ID.png", width = 150, height = 100)})
-  output$id_res_print <- renderText(id_res())
+  output$pfe_logo <- renderUI({tags$img(src = "PfE.png", width = 150, height = 100)})
+  output$pfe_res_print <- renderText(pfe_res())
   
-  output$id_res_img <- renderUI({
-    if (id_res() == "Der Änderungsantrag ist angenommen!") {
+  output$pfe_res_img <- renderUI({
+    if (pfe_res() == "Der Änderungsantrag ist angenommen!") {
       img(src = "angenommen.png", height = "100px", width = "100px")
-    } else if (id_res() == "Der Änderungsantrag ist abgelehnt!") {
+    } else if (pfe_res() == "Der Änderungsantrag ist abgelehnt!") {
       img(src = "abgelehnt.png", height = "100px", width = "100px")
     }
   })
