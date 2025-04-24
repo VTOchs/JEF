@@ -396,6 +396,7 @@ server <- function(input, output, session) {
       }
       pdf_combine(input = pdf_order,
                   output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+      
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
@@ -415,9 +416,6 @@ server <- function(input, output, session) {
         
         tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
         file.rename("TN-Zertifikat.pdf", paste0(input$resPath, "/", sheet, ".pdf"))
-        for (suffix in c("aux", "txt", "out", "nav", "toc")) {
-          move_temp_files("temp", suffix)
-        }
       }
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
