@@ -58,7 +58,6 @@ dhondt <- function (parties, votes, n_seats){
   }
 }
 
-
 get_sus_dist <- function(numSuS, landDist = T){
   
   df_caucus <- read.csv("Daten/caucus_data.csv")
@@ -136,9 +135,9 @@ body <- dashboardBody(
           box(
             width = 12,
             selectInput("docs", "Dokumente:",
-                        choices = c("Repository", "Unterlagen SuS", "TN-Zertifikate", "SuS-Verteilung"),
+                        choices = c("Repository", "Unterlagen SuS (min. 27)", "TN-Zertifikate", "SuS-Verteilung"),
                         selected = "SuS-Verteilung"),
-            numericInput("numSuS", "Anzahl SuS:", 0),
+            numericInput("numSuS", "Anzahl SuS:", 27),
             actionButton("reload", "Daten aktualisieren"),
             actionButton("print", "Drucken")
           )
@@ -334,6 +333,7 @@ server <- function(input, output, session) {
       }
       
       ## Sonstiges
+      
       tools::texi2pdf("LaTeX/Folien/Plenarsitzung.tex", clean = T)
       file.rename("Plenarsitzung.pdf", paste0(input$resPath, "/Sonstiges/Plenarsitzung.pdf"))
       
@@ -361,32 +361,40 @@ server <- function(input, output, session) {
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
       }
       
-    } else if (input$docs == "Unterlagen SuS") {
+    } else if (input$docs == "Unterlagen SuS (min. 27)") {
       
       dir.create(file.path(input$resPath), showWarnings = F)
       dir.create(file.path(input$resPath, "Einzeldokumente"), showWarnings = F)
       
       for (group in groupsEP) {
-        {sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\Fraktion{", group, "}\n") |> cat()
-        sink()}
+        output_file <- paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group, ".pdf")
         
-        tools::texi2pdf("LaTeX/Fraktionspapier.tex", clean = T)
-        file.rename("Fraktionspapier.pdf", paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+        if (!file.exists(output_file)) {
+          {sink("LaTeX/Meta/var.tex")
+          paste0("\\newcommand\\Fraktion{", group, "}\n") |> cat()
+          sink()}
+          
+          tools::texi2pdf("LaTeX/Fraktionspapier.tex", clean = T)
+          file.rename("Fraktionspapier.pdf", paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+        }
       }
       
       for (member in countries) {
-        {sink("LaTeX/Meta/var.tex")
-        paste0("\\newcommand\\kurzel{", member, "}\n") |> cat()
-        sink()}
+        output_file <- paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member, ".pdf")
         
-        tools::texi2pdf("LaTeX/Länderpapier.tex", clean = T)
-        file.rename("Länderpapier.pdf", paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
-        
+        if (!file.exists(output_file)) {
+          {sink("LaTeX/Meta/var.tex")
+          paste0("\\newcommand\\kurzel{", member, "}\n") |> cat()
+          sink()}
+          
+          tools::texi2pdf("LaTeX/Länderpapier.tex", clean = T)
+          file.rename("Länderpapier.pdf", paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+        }
       }
       
       susFrakLand <- get_sus_dist(input$numSuS)
       pdf_order <- c()
+      
       for (group in susFrakLand |> names()) {
         for (member in susFrakLand[[group]]) {
           pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
@@ -394,6 +402,7 @@ server <- function(input, output, session) {
           pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
         }
       }
+      
       pdf_combine(input = pdf_order,
                   output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
       

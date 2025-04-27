@@ -49,14 +49,14 @@
 }   
 
 
-\newcommand{\logoOne}{Logos/jef.png}
-\newcommand{\logoTwo}{Logos/simep.png}
-\newcommand{\logoThree}{Logos/finance.png}
-\newcommand{\logoX}{-25}%
-\newcommand{\logoY}{9}%
-\newcommand{\logoH}{1.5}%
-\newcommand{\textX}{-20}%
-\newcommand{\textY}{28}%
+\newcommand{\constrainedlogo}[3][2cm]{%
+  \includegraphics[width=#2,height=#1,keepaspectratio]{#3}%
+}
+
+\newcommand{\jeflogo}{\constrainedlogo[2.5cm]{5cm}{Logos/jef.png}}
+\newcommand{\simeplogo}{\constrainedlogo[2.5cm]{5cm}{Logos/simep.png}}
+\newcommand{\financelogo}{\constrainedlogo[2.5cm]{5cm}{Logos/finance.png}}
+\newcommand{\citylogo}{\constrainedlogo[2.5cm]{5cm}{Logos/\city.png}}
 
 
 \IfEqCase{\Fraktion}{
@@ -438,39 +438,36 @@ durch Pestizide und Chemikalien müssen beibehalten werden. \newline
 \end{minipage}
 
 \begin{tikzpicture}[remember picture, overlay]
-    % Top left corner
-    \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
-        \includegraphics[height=2cm]{\logoOne}
-    };
+        % Top left corner
+        \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
+            {\jeflogo}
+        };
+        
+        % Top right corner
+        \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
+            {\simeplogo}
+        };      
+        
+        % Bottom left corner
+        \node at ([xshift=4mm, yshift=15mm] current page.south west) [anchor=south west, inner sep=0pt] {
+            {\financelogo}
+        };
+        % Text below bottom left corner
+        \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
+            \small Kofinanziert durch:
+        };
     
-    % Top right corner
-    \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
-        \includegraphics[height=2.75cm]{\logoTwo}
-    };
-
-    % Additional picture immediately below the one in the top right corner
-    \node at ([xshift=-12mm, yshift=-35mm] current page.north east) [anchor=north east, inner sep=0pt] {
-        \includegraphics[height=2.5cm]{Folien/Bilder/\Fraktion.png}
-    };
+        % Bottom right corner
+        \node at ([xshift=-10mm, yshift=12mm] current page.south east) [anchor=south east, inner sep=0pt] {
+            {\citylogo}
+        };
+        % Text below bottom right corner
+        \node at ([xshift=-20mm, yshift=28mm] current page.south east) [anchor=south east, inner sep=0pt] {
+            \small Unterstützt durch:
+        };
     
-    % Bottom left corner
-    \node at ([xshift=4mm, yshift=2mm] current page.south west) [anchor=south west, inner sep=0pt] {
-        \includegraphics[height=2.5cm]{\logoThree}\\
-    };
-    % Text below bottom left corner
-    \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
-        \small Kofinanziert durch:
-    };
 
-    % Bottom right corner
-    \node at ([xshift=\logoX mm, yshift=\logoY mm] current page.south east) [anchor=south east, inner sep=0pt] {
-        \includegraphics[height=\logoH cm]{Logos/\city.png}
-    };
-    % Text below bottom right corner
-    \node at ([xshift=\textX mm, yshift=\textY mm] current page.south east) [anchor=south east, inner sep=0pt] {
-        \small Unterstützt durch:
-    };
-\end{tikzpicture}
+    \end{tikzpicture}
 
 \newpage
 
@@ -489,30 +486,30 @@ durch Pestizide und Chemikalien müssen beibehalten werden. \newline
 \policyPosition
 
 \begin{tikzpicture}[remember picture, overlay]
-    % Top left corner
-    \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
-        \includegraphics[height=2cm]{\logoOne}
-    };
-    
-    % Top right corner
-    \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
-        \includegraphics[height=2.75cm]{\logoTwo}
-    };
+        % Top left corner
+        \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
+            {\jeflogo}
+        };
+        
+        % Top right corner
+        \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
+            {\simeplogo}
+        }; 
 
 \end{tikzpicture}
 
 \newpage
 
 \begin{tikzpicture}[remember picture, overlay]
-    % Top left corner
-    \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
-        \includegraphics[height=2cm]{\logoOne}
-    };
-    
-    % Top right corner
-    \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
-        \includegraphics[height=2.75cm]{\logoTwo}
-    };
+        % Top left corner
+        \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
+            {\jeflogo}
+        };
+        
+        % Top right corner
+        \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
+            {\simeplogo}
+        }; 
 
 \end{tikzpicture}
 
