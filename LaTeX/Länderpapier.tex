@@ -70,9 +70,15 @@
 
 
 \newcommand{\largediameter}{\scalebox{1.5}{\diameter}}
-\newcommand{\logoOne}{Logos/jef.png}
-\newcommand{\logoTwo}{Logos/simep.png}
-\newcommand{\logoThree}{Logos/finance.png}
+\newcommand{\constrainedlogo}[3][2cm]{%
+  \includegraphics[width=#2,height=#1,keepaspectratio]{#3}%
+}
+
+\newcommand{\jeflogo}{\constrainedlogo[2.5cm]{5cm}{Logos/jef.png}}
+\newcommand{\simeplogo}{\constrainedlogo[2.5cm]{5cm}{Logos/simep.png}}
+\newcommand{\financelogo}{\constrainedlogo[2.5cm]{5cm}{Logos/finance.png}}
+\newcommand{\citylogo}{\constrainedlogo[2.5cm]{5cm}{Logos/\city.png}}
+
 
 \newcommand{\getcountry}[1]{%
     \DTLforeach{members}{\iso=iso,\country=country}{%
@@ -934,33 +940,33 @@
 \begin{tikzpicture}[remember picture, overlay]
         % Top left corner
         \node at ([xshift=10mm, yshift=-8mm] current page.north west) [anchor=north west, inner sep=0pt] {
-            \includegraphics[height=2cm]{\logoOne}
+            {\jeflogo}
         };
         
         % Top right corner
         \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
-            \includegraphics[height=2.75cm]{\logoTwo}
-        };
+            {\simeplogo}
+        };      
         
         % Bottom left corner
-        \node at ([xshift=4mm, yshift=2mm] current page.south west) [anchor=south west, inner sep=0pt] {
-            \includegraphics[height=2.5cm]{\logoThree}\\
+        \node at ([xshift=4mm, yshift=15mm] current page.south west) [anchor=south west, inner sep=0pt] {
+            {\financelogo}
         };
         % Text below bottom left corner
         \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
             \small Kofinanziert durch:
         };
-               
-        
+    
         % Bottom right corner
-        \node at ([xshift=-4mm, yshift=10mm] current page.south east) [anchor=south east, inner sep=0pt] {
-            \includegraphics[height=1.5cm]{Logos/\city.png}
+        \node at ([xshift=-10mm, yshift=12mm] current page.south east) [anchor=south east, inner sep=0pt] {
+            {\citylogo}
         };
         % Text below bottom right corner
-        \node at ([xshift=-14mm, yshift=28mm] current page.south east) [anchor=south east, inner sep=0pt] {
+        \node at ([xshift=-20mm, yshift=28mm] current page.south east) [anchor=south east, inner sep=0pt] {
             \small Unterstützt durch:
         };
     
+
     \end{tikzpicture}
     
 \end{document}

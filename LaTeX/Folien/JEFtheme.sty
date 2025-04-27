@@ -25,12 +25,12 @@
 \newcommand{\simeplogo}{\constrainedlogo[1.5cm]{3cm}{../Logos/simep.png}}
 \newcommand{\financelogo}{\constrainedlogo[1.5cm]{3cm}{../Logos/finance.png}}
 \newcommand{\citylogo}{\constrainedlogo[1.5cm]{3cm}{../Logos/\city.png}}
-
+\newcommand{\fraktionlogo}{\constrainedlogo[1.5cm]{3cm}{Bilder/\Fraktion.png}}
 
 % Title Page Template with logos using TikZ
 \defbeamertemplate*{title page}{mycustomtheme}{
    \begin{tikzpicture}[remember picture, overlay]
-      \node at (current page.south) [anchor=south] {\includegraphics[height=2.5cm]{Bilder/\Fraktion.png}};
+      \node at (current page.south) [anchor=south] {\fraktionlogo};
       \node at (current page.north west) [anchor=north west,yshift=-0.2cm] {\jeflogo};
       \node at (current page.north east) [anchor=north east] {\simeplogo};
       \node at (current page.south west) [anchor=south west, yshift=0.2cm] {\financelogo};
