@@ -57,6 +57,7 @@
 \newcommand{\simeplogo}{\constrainedlogo[2.5cm]{5cm}{Logos/simep.png}}
 \newcommand{\financelogo}{\constrainedlogo[2.5cm]{5cm}{Logos/finance.png}}
 \newcommand{\citylogo}{\constrainedlogo[2.5cm]{5cm}{Logos/\city.png}}
+\newcommand{\fraktionslogo}{\constrainedlogo[2.5cm]{5cm}{Folien/Bilder/\Fraktion.png}}
 
 
 \IfEqCase{\Fraktion}{
@@ -446,7 +447,11 @@ durch Pestizide und Chemikalien müssen beibehalten werden. \newline
         % Top right corner
         \node at ([xshift=-7.5mm, yshift=-6mm] current page.north east) [anchor=north east, inner sep=0pt] {
             {\simeplogo}
-        };      
+        };
+        
+        \node at ([xshift=-12mm, yshift=-35mm] current page.north east) [anchor=north east, inner sep=0pt] {
+			{\fraktionslogo}        		
+        	};
         
         % Bottom left corner
         \node at ([xshift=4mm, yshift=15mm] current page.south west) [anchor=south west, inner sep=0pt] {
