@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  21 APR 2025 13:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  13 MAY 2025 20:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -229,7 +229,8 @@ tex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count307
 \l__pdf_internal_box=\box53
-) (How-To.aux)
+)
+No file How-To.aux.
 \openout1 = `How-To.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -246,7 +247,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
 LaTeX Font Info:    ... okay on input line 62.
- [1
+[1
 
 {C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Overfull \hbox (0.88828pt too wide) in paragraph at lines 241--242
@@ -273,10 +274,10 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3708 strings out of 474486
- 55799 string characters out of 5743756
+ 3705 strings out of 474486
+ 55723 string characters out of 5743756
  1934542 words of memory out of 5000000
- 25976 multiletter control sequences out of 15000+600000
+ 25975 multiletter control sequences out of 15000+600000
  560376 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,5n,93p,317b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s

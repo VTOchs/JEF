@@ -243,7 +243,8 @@ server <- function(input, output, session) {
 
   observeEvent(input$reload,
                 {source("Scripts/Länderpapiere.R")
-                source("Scripts/Folien.R")}
+                source("Scripts/Folien.R")
+                print("New data downloaded!")}
                )
   
   observeEvent(input$print, 
@@ -285,7 +286,7 @@ server <- function(input, output, session) {
       if (input$topic == "Green Deal") {
         committees <- c("AGRI", "BUDG", "ITRE", "TRAN")
       } else if (input$topic == "Migration") {
-        committees <- c("AFET", "DROI", "LIBE")
+        committees <- c("BUDG", "DROI", "EMPL", "LIBE")
       } else if (input$topic == "Armee") {
         committees <- c("BUDG", "LIBE", "SEDE")
       }
@@ -361,6 +362,8 @@ server <- function(input, output, session) {
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
       }
       
+      print("Repo-Druck fertig!")
+      
     } else if (input$docs == "Unterlagen SuS (min. 27)") {
       
       dir.create(file.path(input$resPath), showWarnings = F)
@@ -411,6 +414,8 @@ server <- function(input, output, session) {
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
       }
+      
+      print("Unterlagen-Druck fertig!")
 
     } else if (input$docs == "TN-Zertifikate") {
       
@@ -431,6 +436,9 @@ server <- function(input, output, session) {
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
       }
+      
+      print("Zertifikate-Druck fertig!")
+      
     } else if (input$docs == "SuS-Verteilung") {
       resSuS <- get_sus_dist(input$numSuS, landDist = F)
       output$susVert <- renderTable({resSuS})

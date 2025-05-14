@@ -164,7 +164,7 @@ translate_group <- function(group){
 
 
 df_com_paste <- data.frame()
-com_list <- c("afet", "agri", "budg", "droi", "itre", "libe", "sede", "tran")
+com_list <- c("afet", "agri", "budg", "droi", "empl", "itre", "libe", "sede", "tran")
 
 for (committee in com_list) {
   
