@@ -46,7 +46,7 @@ euMember <- c("Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia", 
               "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden")
 
 
-scrape_OWID <- function(indicator, df){
+scrape_OWID <- function(indicator, df, indName="indicator"){
   urlOWID <- paste0("https://ourworldindata.org/grapher/", indicator, "?tab=table&time=latest")
   
   links <- xml2::read_html(urlOWID) |>
@@ -85,11 +85,13 @@ scrape_OWID <- function(indicator, df){
       rename(!!col_name := values, iso3c := code) |> 
       right_join(dfOWID, join_by(iso3c == iso3c))
   }
+  if (ncol(dfOWID) == 4) {
+    names(dfOWID) <- c(indName, "iso3c", "iso2c", "country")
+  }
   dfOWID
 }
 
-
-# Crawlen -----------------------------------------------------
+# OWID Crawlen -----------------------------------------------------
 
 df_landerpapiere <- data.frame(
   iso3c = c(
@@ -115,27 +117,21 @@ df_landerpapiere <- data.frame(
     "Polen", "Portugal", "Rumänien", "Slowakei", "Slowenien", "Spanien", "Schweden", "Europäische Union"))
 
 df_landerpapiere <- scrape_OWID("share-elec-by-source", df_landerpapiere) |> 
-          left_join(scrape_OWID("per-capita-ghg-emissions", df_landerpapiere)[, c("Per", "iso3c")], by = "iso3c") |> 
-          left_join(scrape_OWID("military-spending-as-a-share-of-gdp-sipri", df_landerpapiere)[, c("Military", "iso3c")], by = "iso3c") |> 
-          left_join(scrape_OWID("gdp-per-capita-worldbank", df_landerpapiere)[, c("GDP", "iso3c")], by = "iso3c") |> 
-          left_join(scrape_OWID("population", df_landerpapiere)[, c("Population", "iso3c")], by = "iso3c") |>
-          left_join(scrape_OWID("refugee-population-by-country-or-territory-of-asylum", df_landerpapiere)[, c("Refugees", "iso3c")], by = "iso3c") |>
-          left_join(scrape_OWID("agriculture-share-gdp", df_landerpapiere)[, c("Agriculture,", "iso3c")], by = "iso3c") |>
+          left_join(scrape_OWID("per-capita-ghg-emissions", df_landerpapiere, indName="coCap")[, c("coCap", "iso3c")], by = "iso3c") |> 
+          left_join(scrape_OWID("military-spending-as-a-share-of-gdp-sipri", df_landerpapiere, indName="milPerc")[, c("milPerc", "iso3c")], by = "iso3c") |> 
+          left_join(scrape_OWID("gdp-per-capita-worldbank", df_landerpapiere, indName="gdpCap")[, c("gdpCap", "iso3c")], by = "iso3c") |> 
+          left_join(scrape_OWID("gdp-worldbank", df_landerpapiere, indName="gdp")[, c("gdp", "iso3c")], by = "iso3c") |> 
+          left_join(scrape_OWID("population", df_landerpapiere, indName="totPop")[, c("totPop", "iso3c")], by = "iso3c") |>
+          left_join(scrape_OWID("refugee-population-by-country-or-territory-of-asylum", df_landerpapiere, indName="refPop")[, c("refPop", "iso3c")], by = "iso3c") |>
+          left_join(scrape_OWID("agriculture-share-gdp", df_landerpapiere, indName="agriPerc")[, c("agriPerc", "iso3c")], by = "iso3c") |>
           left_join(scrape_OWID("population-young-working-elderly", df_landerpapiere)[, c("Population.x", "iso3c")], by = "iso3c")
 
-# get rid of commas and spaces in colnames
-names(df_landerpapiere) <- gsub(",", "", gsub("([a-zA-Z]),", "\\1 ", df_landerpapiere |> names())) |> trimws()
-names(df_landerpapiere) <- gsub("-", "_", gsub("([a-zA-Z]),", "\\1 ", df_landerpapiere |> names()))
-
 df_landerpapiere <- df_landerpapiere |> 
-                      rename(gdpCap = GDP,
-                             totPop = Population,
-                             refPop = Refugees,
-                             workAgePop = Population.x,
-                             agriPerc = Agriculture,
-                             coCap = Per,
-                             milPerc = Military) |> 
-                      mutate(across(c(gdpCap,
+                      rename(
+                        workAgePop = Population.x
+                      ) |> 
+                      mutate(across(c(gdp,
+                                      gdpCap,
                                       totPop,
                                       refPop,
                                       workAgePop,
@@ -153,21 +149,25 @@ df_landerpapiere <- df_landerpapiere |>
                                       Coal),
                                     as.numeric)) |> 
                       mutate(refPerc = (refPop*100)/totPop,
-                             workAgePerc = (workAgePop * 100)/totPop) |> 
-                      mutate(across(gdpCap, round, -2)) |> 
-                      mutate(across(c(milPerc), round, 2)) |>
-                      mutate(across(c(workAgePerc, refPerc, agriPerc, coCap), round, 1)) |> 
+                             workAgePerc = (workAgePop * 100)/totPop,
+                             gdp = gdp / 1e9) |> 
+                      mutate(across(gdpCap, \(x) round(x, -2))) |> 
+                      mutate(across(milPerc, \(x) round(x, 2))) |>
+                      mutate(across(gdp, \(x) round(x, 0))) |>
+                      mutate(across(c(workAgePerc, refPerc, agriPerc, coCap), \(x) round(x, 1))) |> 
                       mutate(across(c(refPerc, agriPerc, coCap), ~gsub("\\.", ",", formatC(., digits = 2, decimal.mark = ","))))|>
                       mutate(across(c(workAgePerc, milPerc), ~gsub("\\.", ",", formatC(., digits = 3, decimal.mark = ",")))) |> 
                       mutate(fossilShare = round((Oil + Gas + Coal), 0),
                              nuclearShare = round(Nuclear, 0),
                              renewShare = round((Bioenergy + Other + Wind + Solar+ Hydro), 0))
 
-
 df_landerpapiere$gdpCap <- df_landerpapiere$gdpCap |> 
                             sapply(function(x) set_point(x))
+df_landerpapiere$gdp <- df_landerpapiere$gdp |> 
+                            sapply(function(x) set_point(x))
 
-# manuelle Zuweisung EFTA-Außengrenze
+# Manuelle Zuweisung EFTA-Außengrenze -------------------------------------
+
 df_landerpapiere$border <- c("Nein", # AUT
                              "Nein", # BEL
                              "Ja", # BGR
@@ -197,6 +197,9 @@ df_landerpapiere$border <- c("Nein", # AUT
                              "Nein", # SWE 
                              "-") # EUU
 
+
+# Umfrage EU-Verteidigung -------------------------------------------------
+
 # Download "ZA8764_v1-0-0.dta" from https://search.gesis.org/research_data/ZA8764
 {df_eurob <- read_dta("Daten/ZA8764_v1-0-0.dta")
   df_eurob <- df_eurob |>
@@ -216,8 +219,7 @@ df_landerpapiere$border <- c("Nein", # AUT
     as_tibble()
   df_coop <- rbind(df_coop, list("EU", round(mean(df_coop$agree), 0), round(mean(df_coop$disagr), 0)))}
 
-# Wehrpflicht
-
+# Wehrpflicht -------------------------------------------------------------
 
 {webpage <- "https://worldpopulationreview.com/country-rankings/countries-with-mandatory-military-service" |> 
     read_html()
@@ -246,7 +248,8 @@ df_landerpapiere <- df_landerpapiere |>
   left_join(df_subs, join_by(country == Country))
 
 df_landerpapiere <- df_landerpapiere |> 
-                      mutate(gdpCapEu = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "gdpCap"],
+                      mutate(gdpEu = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "gdp"],
+                             gdpCapEu = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "gdpCap"],
                              refPercEu = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "refPerc"],
                              workAgePercEu = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "workAgePerc"],
                              agriPercEu = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "agriPerc"],
@@ -257,10 +260,10 @@ df_landerpapiere <- df_landerpapiere |>
                              milPercEU = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "milPerc"],
                              agreeEU = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "agree"],
                              disagrEU = df_landerpapiere[df_landerpapiere$country == "Europäische Union", "disagr"]) |> 
-                      select(iso3c, iso2c, country, gdpCap, refPerc, agriPerc, coCap, 
+                      select(iso3c, iso2c, country, gdp, gdpCap, refPerc, agriPerc, coCap, 
                              fossilShare, nuclearShare, renewShare, workAgePerc, 
                              milPerc, agree, disagr, border, subscription,
-                             gdpCapEu, refPercEu, workAgePercEu, agriPercEu,
+                             gdpEu, gdpCapEu, refPercEu, workAgePercEu, agriPercEu,
                              coCapEu, fossilShareEu, nuclearShareEu, renewShareEu,
                              milPercEU, agreeEU, disagrEU) |> 
                       rename(iso = iso3c) |> 

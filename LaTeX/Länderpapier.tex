@@ -26,8 +26,8 @@
 	{Green Deal}{
 		\newcommand{\theme}{zur Bewertung der Klima- und Umweltpolitik}
 		\newcommand{\facts}{
-			\item \textbf{BIP/Kopf} (Reichtum des Landes): \gdpcap \$ (\largediameter EU: \gdpcapeu \$)
-        		\newline
+			\item \textbf{BIP} (Größe der Wirtschaft): \gdp\ Mrd. \$ (\largediameter EU:\gdpeu\ Mrd. \$) \newline
+			\textbf{BIP/Kopf}: \qquad \qquad \qquad \qquad \quad \gdpcap\ \$ (\largediameter EU: \gdpcapeu\ \$)        		\newline
         		\item \textbf{C0$_2$-Emissionen/Kopf}: \cocap t (\largediameter EU: \cocapeu t)
         		\newline
         		\item \textbf{Strommix}:
@@ -43,7 +43,8 @@
 	{Migration}{
 		\newcommand{\theme}{zur Bewertung der Asyl- und Migrationspolitik}
 		\newcommand{\facts}{
-			\item \textbf{BIP/Kopf} (Reichtum des Landes): \gdpcap \$ (\largediameter EU: \gdpcapeu \$)
+			\item \textbf{BIP} (Größe der Wirtschaft): \gdp\ Mrd. \$ (\largediameter EU:\gdpeu\ Mrd. \$) \newline
+			\textbf{BIP/Kopf}: \qquad \qquad \qquad \qquad \quad \gdpcap\ \$ (\largediameter EU: \gdpcapeu\ \$)
         		\newline
         		\item \textbf{Anteil Geflüchtete an Bevölkerung}: \refperc \% (\largediameter EU: \refperceu \%)
         		\newline
@@ -56,7 +57,8 @@
 	{Armee}{
 		\newcommand{\theme}{zur Bewertung der Außen- und Sicherheitspolitik}
 		\newcommand{\facts}{
-			\item \textbf{BIP/Kopf} (Reichtum des Landes): \gdpcap \$ (\largediameter EU: \gdpcapeu \$)
+			\item \textbf{BIP} (Größe der Wirtschaft): \gdp\ Mrd. \$ (\largediameter EU:\gdpeu\ Mrd. \$) \newline
+			\textbf{BIP/Kopf}: \qquad \qquad \qquad \qquad \quad \gdpcap\ \$ (\largediameter EU: \gdpcapeu\ \$)
 			\newline
 		 	\item \textbf{Militärausgaben (Prozent der Wirtschaftsleistung)}: \milperc \% (\largediameter EU: \milperceu \%)
 		 	\newline
@@ -83,6 +85,12 @@
 \newcommand{\getcountry}[1]{%
     \DTLforeach{members}{\iso=iso,\country=country}{%
         \ifthenelse{\equal{#1}{\iso}}{\country}{}%
+    }%
+}
+
+\newcommand{\getgdp}[1]{%
+    \DTLforeach{members}{\iso=iso,\gdp=gdp}{%
+        \ifthenelse{\equal{#1}{\iso}}{\gdp}{}%
     }%
 }
 
@@ -160,6 +168,12 @@
 
 
 
+\newcommand{\getgdpeu}[1]{%
+    \DTLforeach{members}{\iso=iso,\gdpEu=gdpEu}{%
+        \ifthenelse{\equal{#1}{\iso}}{\gdpEu}{}%
+    }%
+}
+
 
 \newcommand{\getgdpcapeu}[1]{%
     \DTLforeach{members}{\iso=iso,\gdpCapEu=gdpCapEu}{%
@@ -226,6 +240,8 @@
 \IfEqCase{\kurzel}{
 	{AUT}{
 		\newcommand{\country}{\getcountry{AUT}}
+		\newcommand{\gdp}{\getgdp{AUT}}	
+		\newcommand{\gdpeu}{\getgdpeu{AUT}}		
 		\newcommand{\gdpcap}{\getgdpcap{AUT}}
 		\newcommand{\refperc}{\getrefperc{AUT}}
 		\newcommand{\workageperc}{\getworkageperc{AUT}}
@@ -251,6 +267,8 @@
 	}%
 	{BEL}{
 		\newcommand{\country}{\getcountry{BEL}}
+		\newcommand{\gdp}{\getgdp{BEL}}	
+		\newcommand{\gdpeu}{\getgdpeu{BEL}}
 		\newcommand{\gdpcap}{\getgdpcap{BEL}}
 		\newcommand{\refperc}{\getrefperc{BEL}}
 		\newcommand{\workageperc}{\getworkageperc{BEL}}
@@ -276,6 +294,8 @@
 	}%
 	{BGR}{
 		\newcommand{\country}{\getcountry{BGR}}
+		\newcommand{\gdp}{\getgdp{BGR}}	
+		\newcommand{\gdpeu}{\getgdpeu{BGR}}
 		\newcommand{\gdpcap}{\getgdpcap{BGR}}
 		\newcommand{\refperc}{\getrefperc{BGR}}
 		\newcommand{\workageperc}{\getworkageperc{BGR}}
@@ -301,6 +321,8 @@
 	}%
 	{HRV}{
 		\newcommand{\country}{\getcountry{HRV}}
+		\newcommand{\gdp}{\getgdp{HRV}}	
+		\newcommand{\gdpeu}{\getgdpeu{HRV}}
 		\newcommand{\gdpcap}{\getgdpcap{HRV}}
 		\newcommand{\refperc}{\getrefperc{HRV}}
 		\newcommand{\workageperc}{\getworkageperc{HRV}}
@@ -326,6 +348,8 @@
 	}%
 	{CYP}{
 		\newcommand{\country}{\getcountry{CYP}}
+		\newcommand{\gdp}{\getgdp{CYP}}	
+		\newcommand{\gdpeu}{\getgdpeu{CYP}}
 		\newcommand{\gdpcap}{\getgdpcap{CYP}}
 		\newcommand{\refperc}{\getrefperc{CYP}}
 		\newcommand{\workageperc}{\getworkageperc{CYP}}
@@ -351,6 +375,8 @@
 	}%
 	{CZE}{
 		\newcommand{\country}{\getcountry{CZE}}
+		\newcommand{\gdp}{\getgdp{CZE}}	
+		\newcommand{\gdpeu}{\getgdpeu{CZE}}
 		\newcommand{\gdpcap}{\getgdpcap{CZE}}
 		\newcommand{\refperc}{\getrefperc{CZE}}
 		\newcommand{\workageperc}{\getworkageperc{CZE}}
@@ -376,6 +402,8 @@
 	}%
 	{DNK}{
 		\newcommand{\country}{\getcountry{DNK}}
+		\newcommand{\gdp}{\getgdp{DNK}}	
+		\newcommand{\gdpeu}{\getgdpeu{DNK}}
 		\newcommand{\gdpcap}{\getgdpcap{DNK}}
 		\newcommand{\refperc}{\getrefperc{DNK}}
 		\newcommand{\workageperc}{\getworkageperc{DNK}}
@@ -401,6 +429,8 @@
 	}%
 	{EST}{
 		\newcommand{\country}{\getcountry{EST}}
+		\newcommand{\gdp}{\getgdp{EST}}	
+		\newcommand{\gdpeu}{\getgdpeu{EST}}
 		\newcommand{\gdpcap}{\getgdpcap{EST}}
 		\newcommand{\refperc}{\getrefperc{EST}}
 		\newcommand{\workageperc}{\getworkageperc{EST}}
@@ -426,6 +456,8 @@
 	}%
 	{FIN}{
 		\newcommand{\country}{\getcountry{FIN}}
+		\newcommand{\gdp}{\getgdp{FIN}}	
+		\newcommand{\gdpeu}{\getgdpeu{FIN}}
 		\newcommand{\gdpcap}{\getgdpcap{FIN}}
 		\newcommand{\refperc}{\getrefperc{FIN}}
 		\newcommand{\workageperc}{\getworkageperc{FIN}}
@@ -451,6 +483,8 @@
 	}%
 	{FRA}{
 		\newcommand{\country}{\getcountry{FRA}}
+		\newcommand{\gdp}{\getgdp{FRA}}	
+		\newcommand{\gdpeu}{\getgdpeu{FRA}}
 		\newcommand{\gdpcap}{\getgdpcap{FRA}}
 		\newcommand{\refperc}{\getrefperc{FRA}}
 		\newcommand{\workageperc}{\getworkageperc{FRA}}
@@ -476,6 +510,8 @@
 	}%
 	{DEU}{
 		\newcommand{\country}{\getcountry{DEU}}
+		\newcommand{\gdp}{\getgdp{DEU}}	
+		\newcommand{\gdpeu}{\getgdpeu{DEU}}
 		\newcommand{\gdpcap}{\getgdpcap{DEU}}
 		\newcommand{\refperc}{\getrefperc{DEU}}
 		\newcommand{\workageperc}{\getworkageperc{DEU}}
@@ -501,6 +537,8 @@
 	}%
 	{GRC}{
 		\newcommand{\country}{\getcountry{GRC}}
+		\newcommand{\gdp}{\getgdp{GRC}}	
+		\newcommand{\gdpeu}{\getgdpeu{GRC}}
 		\newcommand{\gdpcap}{\getgdpcap{GRC}}
 		\newcommand{\refperc}{\getrefperc{GRC}}
 		\newcommand{\workageperc}{\getworkageperc{GRC}}
@@ -526,6 +564,8 @@
 	}%
 	{HUN}{
 		\newcommand{\country}{\getcountry{HUN}}
+		\newcommand{\gdp}{\getgdp{HUN}}	
+		\newcommand{\gdpeu}{\getgdpeu{HUN}}
 		\newcommand{\gdpcap}{\getgdpcap{HUN}}
 		\newcommand{\refperc}{\getrefperc{HUN}}
 		\newcommand{\workageperc}{\getworkageperc{HUN}}
@@ -551,6 +591,8 @@
 	}%
 	{IRL}{
 		\newcommand{\country}{\getcountry{IRL}}
+		\newcommand{\gdp}{\getgdp{IRL}}	
+		\newcommand{\gdpeu}{\getgdpeu{IRL}}
 		\newcommand{\gdpcap}{\getgdpcap{IRL}}
 		\newcommand{\refperc}{\getrefperc{IRL}}
 		\newcommand{\workageperc}{\getworkageperc{IRL}}
@@ -576,6 +618,8 @@
 	}%
 	{ITA}{
 		\newcommand{\country}{\getcountry{ITA}}
+		\newcommand{\gdp}{\getgdp{ITA}}	
+		\newcommand{\gdpeu}{\getgdpeu{ITA}}
 		\newcommand{\gdpcap}{\getgdpcap{ITA}}
 		\newcommand{\refperc}{\getrefperc{ITA}}
 		\newcommand{\workageperc}{\getworkageperc{ITA}}
@@ -601,6 +645,8 @@
 	}%
 	{LVA}{
 		\newcommand{\country}{\getcountry{LVA}}
+		\newcommand{\gdp}{\getgdp{LVA}}	
+		\newcommand{\gdpeu}{\getgdpeu{LVA}}
 		\newcommand{\gdpcap}{\getgdpcap{LVA}}
 		\newcommand{\refperc}{\getrefperc{LVA}}
 		\newcommand{\workageperc}{\getworkageperc{LVA}}
@@ -626,6 +672,8 @@
 	}%
 	{LTU}{
 		\newcommand{\country}{\getcountry{LTU}}
+		\newcommand{\gdp}{\getgdp{LTU}}	
+		\newcommand{\gdpeu}{\getgdpeu{LTU}}
 		\newcommand{\gdpcap}{\getgdpcap{LTU}}
 		\newcommand{\refperc}{\getrefperc{LTU}}
 		\newcommand{\workageperc}{\getworkageperc{LTU}}
@@ -651,6 +699,8 @@
 	}%
 	{LUX}{
 		\newcommand{\country}{\getcountry{LUX}}
+		\newcommand{\gdp}{\getgdp{LUX}}	
+		\newcommand{\gdpeu}{\getgdpeu{LUX}}
 		\newcommand{\gdpcap}{\getgdpcap{LUX}}
 		\newcommand{\refperc}{\getrefperc{LUX}}
 		\newcommand{\workageperc}{\getworkageperc{LUX}}
@@ -676,6 +726,8 @@
 	}%
 	{MLT}{
 		\newcommand{\country}{\getcountry{MLT}}
+		\newcommand{\gdp}{\getgdp{MLT}}	
+		\newcommand{\gdpeu}{\getgdpeu{MLT}}
 		\newcommand{\gdpcap}{\getgdpcap{MLT}}
 		\newcommand{\refperc}{\getrefperc{MLT}}
 		\newcommand{\workageperc}{\getworkageperc{MLT}}
@@ -701,6 +753,8 @@
 	}%
 	{NLD}{
 		\newcommand{\country}{\getcountry{NLD}}
+		\newcommand{\gdp}{\getgdp{NLD}}	
+		\newcommand{\gdpeu}{\getgdpeu{NLD}}
 		\newcommand{\gdpcap}{\getgdpcap{NLD}}
 		\newcommand{\refperc}{\getrefperc{NLD}}
 		\newcommand{\workageperc}{\getworkageperc{NLD}}
@@ -726,6 +780,8 @@
 	}%
 	{POL}{
 		\newcommand{\country}{\getcountry{POL}}
+		\newcommand{\gdp}{\getgdp{POL}}	
+		\newcommand{\gdpeu}{\getgdpeu{POL}}
 		\newcommand{\gdpcap}{\getgdpcap{POL}}
 		\newcommand{\refperc}{\getrefperc{POL}}
 		\newcommand{\workageperc}{\getworkageperc{POL}}
@@ -751,6 +807,8 @@
 	}%
 	{PRT}{
 		\newcommand{\country}{\getcountry{PRT}}
+		\newcommand{\gdp}{\getgdp{PRT}}	
+		\newcommand{\gdpeu}{\getgdpeu{PRT}}
 		\newcommand{\gdpcap}{\getgdpcap{PRT}}
 		\newcommand{\refperc}{\getrefperc{PRT}}
 		\newcommand{\workageperc}{\getworkageperc{PRT}}
@@ -776,6 +834,8 @@
 	}%
 	{ROU}{
 		\newcommand{\country}{\getcountry{ROU}}
+		\newcommand{\gdp}{\getgdp{ROU}}	
+		\newcommand{\gdpeu}{\getgdpeu{ROU}}
 		\newcommand{\gdpcap}{\getgdpcap{ROU}}
 		\newcommand{\refperc}{\getrefperc{ROU}}
 		\newcommand{\workageperc}{\getworkageperc{ROU}}
@@ -801,6 +861,8 @@
 	}%
 	{SVK}{
 		\newcommand{\country}{\getcountry{SVK}}
+		\newcommand{\gdp}{\getgdp{SVK}}	
+		\newcommand{\gdpeu}{\getgdpeu{SVK}}
 		\newcommand{\gdpcap}{\getgdpcap{SVK}}
 		\newcommand{\refperc}{\getrefperc{SVK}}
 		\newcommand{\workageperc}{\getworkageperc{SVK}}
@@ -826,6 +888,8 @@
 	}%
 	{SVN}{
 		\newcommand{\country}{\getcountry{SVN}}
+		\newcommand{\gdp}{\getgdp{SVN}}	
+		\newcommand{\gdpeu}{\getgdpeu{SVN}}
 		\newcommand{\gdpcap}{\getgdpcap{SVN}}
 		\newcommand{\refperc}{\getrefperc{SVN}}
 		\newcommand{\workageperc}{\getworkageperc{SVN}}
@@ -851,6 +915,8 @@
 	}%
 	{ESP}{
 		\newcommand{\country}{\getcountry{ESP}}
+		\newcommand{\gdp}{\getgdp{ESP}}	
+		\newcommand{\gdpeu}{\getgdpeu{ESP}}
 		\newcommand{\gdpcap}{\getgdpcap{ESP}}
 		\newcommand{\refperc}{\getrefperc{ESP}}
 		\newcommand{\workageperc}{\getworkageperc{ESP}}
@@ -876,6 +942,8 @@
 	}%
 	{SWE}{
 		\newcommand{\country}{\getcountry{SWE}}
+		\newcommand{\gdp}{\getgdp{SWE}}	
+		\newcommand{\gdpeu}{\getgdpeu{SWE}}
 		\newcommand{\gdpcap}{\getgdpcap{SWE}}
 		\newcommand{\refperc}{\getrefperc{SWE}}
 		\newcommand{\workageperc}{\getworkageperc{SWE}}
