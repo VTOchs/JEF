@@ -5,6 +5,7 @@
 \usepackage{expl3} 
 \usepackage{datatool}
 \usepackage{etoolbox}
+\usepackage{eurosym}
 \usepackage{gensymb}
 \usepackage{verbatim}
 \usepackage{tikz}
@@ -14,6 +15,7 @@
 \usetikzlibrary{calc}
 \input{../Meta/var.tex}
 \input{../Meta/shinyin.tex}
+
 
 \IfEqCase{\Thema}{%
 	{Green Deal}{
@@ -88,7 +90,7 @@
         \newcommand{\slideOne}{%
         		\vspace{-1cm}
 			\begin{center}
-        		\includegraphics[height=6cm, width=\textwidth]{Bilder/asyl_num.png} 
+        		\includegraphics[height=6cm, width=\textwidth]{Bilder/asyl_num_2024.png} 
         		\end{center}
       	}
         \newcommand{\slideOneTitle}{%
@@ -97,11 +99,11 @@
       	\newcommand{\slideTwo}{%
         		\vspace{-1cm}
             	\begin{center}
-            	\includegraphics[height=6cm]{Bilder/asyl_capita.png} 
+            	\includegraphics[width=11cm]{Bilder/asyl_capita_2024.png} 
            	\end{center}
        	}
        	\newcommand{\slideTwoTitle}{%
-        		Anzahl der Asyl-Anträge pro Mitgliedstaat (2021)
+        		Anzahl der Asyl-Anträge pro Mitgliedstaat (2024)
      	}
        	\newcommand{\slideThree}{%
         		\vspace{-1cm}
@@ -163,7 +165,7 @@
         	\newcommand{\slideThree}{%
         		\vspace{-1cm}
             	\begin{center}
-            	\includegraphics[height=6cm, width=\textwidth]{Bilder/mil_spend_eu.png} 
+            	\includegraphics[width=7cm]{Bilder/defence_exp.png} 
             	\end{center}
       	}
         	\newcommand{\slideThreeTitle}{%
@@ -173,9 +175,10 @@
         		\vspace{-1cm}
             \begin{itemize}
             		\item 1954: Französische Nationalversammlung lehnt Europäische Armee ab, stattdessen Gründung Westeuropäische Union
-              	\item 1992: Gemeinsame Außen- und Sicherheitspolitik (GASP)
+              	\item 1992: Gemeinsame Außen- und Sicherheitspolitik (\textit{GASP})
              	\item 1999: Hoher Vertreter der EU für Außen- und Sicherheitspolitik
-                	\item 2017: Vertiefte militärische Koordinierung durch Permanent Structured Cooperation (SSZ/PESCO)
+                	\item 2017: Vertiefte militärische Koordinierung durch Permanent Structured Cooperation (\textit{SSZ/PESCO})
+                	\item 2025: 150 Mrd. \euro\ gemeinsame Militärinvestitionen \newline (Security Action for Europe = \textit{SAFE})
           	\end{itemize}
         	}
         \newcommand{\slideFourTitle}{%

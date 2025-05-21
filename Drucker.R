@@ -171,8 +171,8 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 12,
-          textInput("localSup", "Lokale Unterstützung:", "Europe Direct München"),
-          textInput("sponsor", "Sponsor:", "Stadt München"),
+          textInput("localSup", "Lokale Unterstützung:", "das Europe Direct München"),
+          textInput("sponsor", "Sponsor:", "die Stadt München"),
           textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
           selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
         )
@@ -184,11 +184,14 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 12,
+          textInput("timeVorb", "Uhrzeit Vorbereitung:", value = "07:45-09:00"),
           textInput("timeEinf", "Uhrzeit Briefing:", value = "09:00-09:45"),
           textInput("timeFrakOne", "Uhrzeit 1. Fraktionssitzung:", value = "09:45-11:15"),
+          textInput("timePauseOne", "Uhrzeit 1. Zwischenpause:", value = "11:15-11:30"),
           textInput("timeAuss", "Uhrzeit Ausschusssitzung:", value = "11:30-12:45"),
           textInput("timeMittag", "Uhrzeit Mittagspause:", value = "12:45-13:15"),
           textInput("timeFrakTwo", "Uhrzeit 2. Fraktionssitzung:", value = "13:15-13:45"),
+          textInput("timePauseTwo", "Uhrzeit 2. Zwischenpause:", value = "13:45-14:00"),
           textInput("timePlenar", "Uhrzeit Plenardebatte:", value = "14:00-15:00")
         )
       )
@@ -248,41 +251,57 @@ server <- function(input, output, session) {
                )
   
   observeEvent(input$print, 
-     # Fix LaTex-Variables into tex-File
-     {sink("LaTeX/Meta/shinyin.tex")
-     paste0("\\newcommand\\Thema{", input$topic, "}\n") |> cat()
-     paste0("\\newcommand\\city{", input$city, "}\n") |> cat()
-     paste0("\\newcommand\\datum{", format(as.Date(input$date), "%d.%m.%Y"), "}\n") |> cat()
-     paste0("\\newcommand\\timeEinf{", input$timeEinf, "}\n") |> cat()
-     paste0("\\newcommand\\timeFrakOne{", input$timeFrakOne, "}\n") |> cat()
-     paste0("\\newcommand\\timeAuss{", input$timeAuss, "}\n") |> cat()
-     paste0("\\newcommand\\timeMittag{", input$timeMittag, "}\n") |> cat()
-     paste0("\\newcommand\\timeFrakTwo{", input$timeFrakTwo, "}\n") |> cat()
-     paste0("\\newcommand\\timePlenar{", input$timePlenar, "}\n") |> cat()
-     paste0("\\newcommand\\politiker{", input$pol, "}\n") |> cat()
-     paste0("\\newcommand\\politikerOffice{", input$pol_office, "}\n") |> cat()
-     paste0("\\newcommand\\stadtvertreter{", input$stadtvert, "}\n") |> cat()
-     paste0("\\newcommand\\stadtvertreterOffice{", input$stadtvert_office, "}\n") |> cat()
-     paste0("\\newcommand\\localSupport{", input$localSup, "}\n") |> cat()
-     paste0("\\newcommand\\sponsor{", input$sponsor, "}\n") |> cat()
-     paste0("\\newcommand\\jefvorsitz{", input$jefvorsitz, "}\n") |> cat()
-     paste0("\\newcommand\\gendervorsitz{", ifelse(input$gender == "M", "Landesvorsitzender", "Landesvorsitzende"), "}\n") |> cat()
-     paste0("\\newcommand\\evpLeader{", input$leit_evp, "}\n") |> cat()
-     paste0("\\newcommand\\evpRoom{", input$room_evp, "}\n") |> cat()
-     paste0("\\newcommand\\sdLeader{", input$leit_sd, "}\n") |> cat()
-     paste0("\\newcommand\\sdRoom{", input$room_sd, "}\n") |> cat()
-     paste0("\\newcommand\\reLeader{", input$leit_renew, "}\n") |> cat()
-     paste0("\\newcommand\\reRoom{", input$room_renew, "}\n") |> cat()
-     paste0("\\newcommand\\greenLeader{", input$leit_green, "}\n") |> cat()
-     paste0("\\newcommand\\greenRoom{", input$room_green, "}\n") |> cat()
-     paste0("\\newcommand\\pfeLeader{", input$leit_pfe, "}\n") |> cat()
-     paste0("\\newcommand\\pfeRoom{", input$room_pfe, "}\n") |> cat()
-     sink()}) 
+     
+       # Involvierte Ausschüsse festlegen
+       {if (input$topic == "Green Deal") {
+         committees <- c("AGRI", "BUDG", "ITRE", "TRAN")
+       } else if (input$topic == "Migration") {
+         committees <- c("BUDG", "DROI", "EMPL", "LIBE")
+       } else if (input$topic == "Armee") {
+         committees <- c("BUDG", "LIBE", "SEDE")
+       }
+               
+        # Fix LaTex-Variables into tex-File
+        sink("LaTeX/Meta/shinyin.tex")
+        cat(paste0("\\newcommand\\Thema{", input$topic, "}\n"))
+        cat(paste0("\\newcommand\\city{", input$city, "}\n"))
+        cat(paste0("\\newcommand\\datum{", format(as.Date(input$date), "%d.%m.%Y"), "}\n"))
+        cat(paste0("\\newcommand\\timeVorb{", input$timeVorb, "}\n"))
+        cat(paste0("\\newcommand\\timeEinf{", input$timeEinf, "}\n"))
+        cat(paste0("\\newcommand\\timeFrakOne{", input$timeFrakOne, "}\n"))
+        cat(paste0("\\newcommand\\timePauseOne{", input$timePauseOne, "}\n"))
+        cat(paste0("\\newcommand\\timeAuss{", input$timeAuss, "}\n"))
+        cat(paste0("\\newcommand\\timeMittag{", input$timeMittag, "}\n"))
+        cat(paste0("\\newcommand\\timeFrakTwo{", input$timeFrakTwo, "}\n"))
+        cat(paste0("\\newcommand\\timePauseTwo{", input$timePauseTwo, "}\n"))
+        cat(paste0("\\newcommand\\timePlenar{", input$timePlenar, "}\n"))
+        cat(paste0("\\newcommand\\politiker{", input$pol, "}\n"))
+        cat(paste0("\\newcommand\\politikerOffice{", input$pol_office, "}\n"))
+        cat(paste0("\\newcommand\\stadtvertreter{", input$stadtvert, "}\n"))
+        cat(paste0("\\newcommand\\stadtvertreterOffice{", input$stadtvert_office, "}\n"))
+        cat(paste0("\\newcommand\\localSupport{", input$localSup, "}\n"))
+        cat(paste0("\\newcommand\\sponsor{", input$sponsor, "}\n"))
+        cat(paste0("\\newcommand\\jefvorsitz{", input$jefvorsitz, "}\n"))
+        cat(paste0("\\newcommand\\gendervorsitz{", ifelse(input$gender == "M", "Landesvorsitzender", "Landesvorsitzende"), "}\n"))
+        cat(paste0("\\newcommand\\evpLeader{", input$leit_evp, "}\n"))
+        cat(paste0("\\newcommand\\evpRoom{", input$room_evp, "}\n"))
+        cat(paste0("\\newcommand\\sdLeader{", input$leit_sd, "}\n"))
+        cat(paste0("\\newcommand\\sdRoom{", input$room_sd, "}\n"))
+        cat(paste0("\\newcommand\\reLeader{", input$leit_renew, "}\n"))
+        cat(paste0("\\newcommand\\reRoom{", input$room_renew, "}\n"))
+        cat(paste0("\\newcommand\\greenLeader{", input$leit_green, "}\n"))
+        cat(paste0("\\newcommand\\greenRoom{", input$room_green, "}\n"))
+        cat(paste0("\\newcommand\\pfeLeader{", input$leit_pfe, "}\n"))
+        cat(paste0("\\newcommand\\pfeRoom{", input$room_pfe, "}\n"))
+        cat(paste0("\\newcommand\\anzahlcomm{", length(committees), "}\n"))
+        sink()
+        print("Var-Print fertig!")}
+      ) 
 
   observeEvent(input$print, 
     
     if (input$docs == "Repository") {
-      # Involvierte Ausschüsse festlegen
+      
       if (input$topic == "Green Deal") {
         committees <- c("AGRI", "BUDG", "ITRE", "TRAN")
       } else if (input$topic == "Migration") {
@@ -323,6 +342,10 @@ server <- function(input, output, session) {
         file.rename("Fraktionspapier.pdf", paste0(input$resPath, "/Fraktionen/", group, "/Fraktionspapier_", group, ".pdf"))
       }
       
+      file.copy("Sonstiges/Fraktionsvorsitzende.docx", paste0(input$resPath, "/Fraktionen/Fraktionsvorsitzende.docx"))
+      
+      print("Fraktionen fertig!")
+      
       ## Ausschüsse
       for (committee in committees) {
         {sink("LaTeX/Meta/var.tex")
@@ -333,6 +356,8 @@ server <- function(input, output, session) {
         file.rename("Ausschusssitzung.pdf", paste0(input$resPath, "/Ausschüsse/", committee, ".pdf"))
       }
       
+      print("Ausschüsse fertig!")
+      
       ## Sonstiges
       
       tools::texi2pdf("LaTeX/Folien/Plenarsitzung.tex", clean = T)
@@ -340,6 +365,9 @@ server <- function(input, output, session) {
       
       tools::texi2pdf("LaTeX/Folien/Briefing.tex", clean = T)
       file.rename("Briefing.pdf", paste0(input$resPath, "/Sonstiges/Briefing.pdf"))
+      
+      tools::texi2pdf("LaTeX/How-To.tex", clean = T)
+      file.rename("How-To.pdf", paste0(input$resPath, "/Sonstiges/How-To.pdf"))
       
       ## TN-Zertifikate
       
@@ -356,13 +384,15 @@ server <- function(input, output, session) {
         }
       }
       
+      print("Zertifikate fertig!")
+      
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX/Folien")
       }
       
-      print("Repo-Druck fertig!")
+      print(paste0("Repo-Druck (", input$city, ") fertig!"))
       
     } else if (input$docs == "Unterlagen SuS (min. 27)") {
       
@@ -431,6 +461,7 @@ server <- function(input, output, session) {
         tools::texi2pdf("LaTeX/TN-Zertifikat.tex", clean = T)
         file.rename("TN-Zertifikat.pdf", paste0(input$resPath, "/", sheet, ".pdf"))
       }
+      
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
         move_temp_files(target_dir = "temp", file_ext = suffix, source_dir = "LaTeX")
