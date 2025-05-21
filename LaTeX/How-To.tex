@@ -1,11 +1,9 @@
 \documentclass{article}
-%\usepackage{enumitem,amssymb}
-%\newlist{todolist}{itemize}{2}
-%\setlist[todolist]{label=$\square$
 \usepackage{verbatim}
 \usepackage{etoolbox}
 \usepackage{datatool}
-
+\usepackage{xstring}
+\input{Meta/shinyin.tex}
 
 \title{SimEP How-To Guide}
 \author{Svea \& Vincent}
@@ -13,169 +11,27 @@
 
 \newcommand{\KOM}{Svea}
 \newcommand{\EP}{Vincent}
-\newcommand{\city}{München}
 
-\newcommand{\checkCity}{%
-    \ifdefined\city%
-        \ifthenelse{\equal{\city}{München}}{%
-            \newcommand{\STADTVERTRETER}{Florian Kraus (Stadtschulrat)}%
-            \newcommand{\EUVERTRETER}{Maria Noichl (MdEP)}%
-            \newcommand{\THEMA}{Asyl- und Migrationspolitik}%
-            \newcommand{\VERANSTALTUNGSORT}{Landtag Bayern}%
-            \newcommand{\FOERDERER}{Europe Direct München, Stadt München \& Landtag Bayern}%
-            \newcommand{\ausschussOne}{BUDG}%
-            \newcommand{\ausschussTwo}{DROI}%
-            \newcommand{\ausschussThree}{EMPL}%
-            \newcommand{\ausschussFour}{LIBE}%
-            \newcommand{\timeVorb}{07:45-09:00}%
-            \newcommand{\timeEinf}{09:00-09:45}%
-            \newcommand{\timeFrakOne}{09:45-11:15}%
-            \newcommand{\timePauseOne}{11:15-11:30}%
-            \newcommand{\timeAuss}{11:30-12:45}%
-            \newcommand{\timeMittag}{12:45-13:15}%
-            \newcommand{\timeFrakTwo}{13:15-13:45}%
-            \newcommand{\timePauseTwo}{13:45-14:00}%
-            \newcommand{\timePlenar}{14:00-15:00}%
-        }{%
-            \newcommand{\STADTVERTRETER}{Dr. Andrea Heilmaier (Wirtschafts- und Wissenschaftsreferentin)}%
-            \newcommand{\EUVERTRETER}{Monika Hohlmeier (MdEP)}%
-            \newcommand{\THEMA}{Außen- und Sicherheitspolitik}%
-            \newcommand{\VERANSTALTUNGSORT}{Rathaus Nürnberg}%
-            \newcommand{\FOERDERER}{Europe Direct Nürnberg \& Stadt Nürnberg}%
-            \newcommand{\ausschussOne}{BUDG}%
-            \newcommand{\ausschussTwo}{LIBE}%
-            \newcommand{\ausschussThree}{SEDE}%
-            \newcommand{\timeVorb}{07:45-09:00}%
-            \newcommand{\timeEinf}{09:00-09:45}%
-            \newcommand{\timeFrakOne}{09:45-11:15}%
-            \newcommand{\timePauseOne}{11:15-11:30}%
-            \newcommand{\timeAuss}{11:30-12:45}%
-            \newcommand{\timeMittag}{12:45-13:15}%
-            \newcommand{\timeFrakTwo}{13:15-13:45}%
-            \newcommand{\timePauseTwo}{13:45-14:00}%
-            \newcommand{\timePlenar}{14:00-15:00}%
-        }%
-    \fi%
+
+\IfEqCase{\Thema}{%
+	{Green Deal}{\newcommand{\THEMA}{zur Europäischen Klimapolitik im Rahmen des Green Deal}}%
+	{Migration}{\newcommand{\THEMA}{zu einem Europäischen Asyl- und Migrationssystem}}%
+	{Armee}{\newcommand{\THEMA}{zu einer Europäischen Armee}}
 }
 
-
+\IfEqCase{\city}{%
+	{München}{
+		\newcommand{\VERANSTALTUNGSORT}{Rathaus Nürnberg}%
+        \newcommand{\FOERDERER}{Europe Direct Nürnberg, Stadt Nürnberg \& Rudolf und Eberhard Bauer Stiftung}%
+	}%
+	{Nürnberg}{
+        \newcommand{\VERANSTALTUNGSORT}{Landtag Bayern}%
+        \newcommand{\FOERDERER}{Europe Direct München, Stadt München \& Landtag Bayern}%
+	}%
+}
+ 
 \begin{document}
-\checkCity
 
-\begin{comment}
-	\maketitle
-	\newpage
-	
-	\section{Planung}
-	\subsection{Finanzierung}
-    \begin{itemize}
-        \item Nächstes Jahr:
-        \begin{itemize}
-            \item Bamberg \& Bayreuth über Landeszentrale
-            \item München \& Nürnberg über Staatskanzlei
-        \end{itemize}
-        \item Weitere Möglichkeiten:
-        \begin{itemize}
-            \item djo
-            \item Staatskanzlei
-            \item EU/EP
-            \item Sponsoring
-            \item Stadt/Europe Direct
-        \end{itemize}
-    \end{itemize}
-
-	\subsection{Veranstaltungsort \& -tag}
-    \begin{itemize}
-        \item Ferien \& Prüfungen beachten
-    \end{itemize}
-
-    \subsection{Gastredner:innen}
-    \begin{itemize}
-        \item Direkt nachdem der Termin feststeht
-        \item EU- \& Stadt-Vertreter
-    \end{itemize}
-    
-	\subsection{Schulklassen}
-     \begin{itemize}
-        \item Telefonnummern der Lehrer anfragen!
-        \item Reminder ca. einen Monat vorher
-    \end{itemize}
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{c|c|c|c|c}
-             Schule & Klasse & Lehrer & Anzahl Schüler & Namensliste erhalten\\
-             \hline
-             HSG Nürnberg & 11. & Fr. Maier-Hofer & 29 & Nein\\
-             CEG Erlangen & ??? & Hr. Peters & 18 & Nein \\
-             PPG Hersbruck & 11. & Fr. Raub & 20 & Nein \\
-             Wirtschaftsschule Erlangen & 10. & Fr. Foldyna & 17 & Nein \\
-        \end{tabular}
-    \end{table}
-	
-	\subsection{Teamer:innen \& Unterkunft}
-    \begin{itemize}
-        \item Extra WhatsApp-Gruppe gründen (nur wirklich Teilnehmende)
-        \item Hotel anfragen
-        \item 2-3 Monate vorher fixe Zusage einholen
-        \item dann buchen (je nach Stornierungsbedingungen)
-        \item vor Frist nochmal nachfragen
-    \end{itemize}
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{c|c|c|c}
-             Fraktion & Leitung & weitere Teamer & Anzahl Schüler \\
-             \hline
-             EVP & & & \\
-             S\&D & & & \\
-             Renew & & & \\
-             Grüne & & & \\
-             ID & & &
-        \end{tabular}
-
-    \end{table}
-    
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{c|c|c}
-             Ausschuss & Leitung & weitere Teamer \\
-             \hline
-             Ausschuss I & & \\
-             Ausschuss II & & \\
-             Ausschuss III & & \\
-             Ausschuss IV & & 
-        \end{tabular}
-    \end{table}
- 
-	\subsection{Unterlagen}
-	\begin{itemize}
-		\item Mappen:
-		\begin{itemize}
-			\item Fotobändchen
-			\item Flyer
-			\item Fraktionspapiere
-			\item Gesetzesentwürfe
-			\item Länderpapiere
-			\item Teilnahmebescheinigungen
-		\end{itemize}
-		\item Namensschilder (Team \& Schüler)
-		\item Raumschilder		
-	\end{itemize}
- 
-	\subsection{Catering}
-    \begin{itemize}
-        \item über Stadt
-    \end{itemize}
-
-    \subsection{Abendessen}
-    
-	\subsection{Presse}
-	\begin{itemize}
-		\item Pressemitteilung
-		\item Einladung $\to$ direkt Journalisten anschreiben?
-	\end{itemize}   
-	\newpage
-\end{comment}
- 
 	\section{Ablauf}
 	\subsection{Vorbereitung (\timeVorb)}
 	\begin{itemize}
@@ -189,13 +45,13 @@
 		\end{itemize}
 		\item Dekoration Plenum \& Mappen abzählen [Fraktionsteamer:innen]
 		\item Schüler in Empfang nehmen [\KOM\ \& \EP]
-		%\item EU-VERTRETER in Empfang nehmen [\KOM\ \& \EP]		
+		\item \politiker in Empfang nehmen [\KOM\ \& \EP]		
 	\end{itemize}
 	
 	\subsection{Einführung (\timeEinf)}
 	\begin{itemize}
 		\item Kurze Begrüßung/Intro [\KOM]
-		\item Grußwort [\EUVERTRETER]
+		\item Grußwort [\politiker]
 		\item Präsentation Briefing [\KOM]
         \item SuS-Anzahl nachzählen \& Mappen entsprechend anpassen
         \item Aufgaben:
@@ -208,7 +64,7 @@
 	\subsection{1. Fraktionssitzung (\timeFrakOne)}
 	\begin{enumerate}
 		\item Icebreaker (Bildkarten) [5 min]: \newline Assoziationen mit Fraktion \& Thema
-        \item Zufällig in drei gleichgroße Kleingruppen einteilen
+        \item Zufällig in \anzahlcomm\ gleichgroße Kleingruppen einteilen
         \item Jeder Kleingruppe durch Namensschilder Ausschuss zuweisen (einen der Namensschilderbögen geben)
 		\item Präsentation [15 min]
 		\begin{itemize}
@@ -220,7 +76,7 @@
 			\item Weiteren Ablauf des Gesetzgebungsprozesses/der SimEP klarstellen
             \item Raum für Fragen
 		\end{itemize}
-		\item Diskussion über Position der Fraktion zu \THEMA \newline [10 min]
+		\item Diskussion über Position der Fraktion \THEMA \newline [10 min]
 		\item In den Auschussgruppen [50 min]
 		\begin{enumerate}
 			\item Gesetzesentwurf (besonders zugewiesener Abschnitt) lesen
@@ -285,14 +141,14 @@
 	\subsection{Zwischenpause (\timePauseTwo)}
 	\begin{itemize}
 		\item Reihenfolge ÄA festlegen (weitreichendste zuerst) [\EP]
-		\item \STADTVERTRETER\ in Empfang nehmen [\KOM]
+		\item \stadtvertreter\ in Empfang nehmen [\KOM]
 		\item gegebenenfalls Fraktionsvorstand bei Rede unterstützen [Fraktionsteamer:innen]
 	\end{itemize}
 	
 	\subsection{Plenarsitzung (\timePlenar)}
 	\begin{enumerate}
 		\item Grußwort \newline
-        [\STADTVERTRETER]
+        [\stadtvertreter]
 		\item Plenardebatte [\EP]
 		\begin{enumerate}
 			\item Für jeden ÄA
@@ -310,8 +166,8 @@
 		\item Vorstellung KV
 		\item Danksagung an
 		\begin{itemize}
-            \item \STADTVERTRETER
-			\item \EUVERTRETER
+            \item \stadtvertreter\ (\stadtvertreterOffice)
+			\item \politiker\ (\politikerOffice)
 			\item \VERANSTALTUNGSORT
 			\item \FOERDERER
 		\end{itemize}
@@ -323,8 +179,8 @@
 		\item Gruppenfoto
 		\item Feedbackrunde
 		\item Bericht (Website) \& Insta-Post
-		\item Dankesmail an \STADTVERTRETER
-		\item Dankesmail an \EUVERTRETER
+		\item Dankesmail an \stadtvertreter
+		\item Dankesmail an \politiker
 		\item Dankesmail an Lehrkräfte
 	\end{itemize}
     \newpage

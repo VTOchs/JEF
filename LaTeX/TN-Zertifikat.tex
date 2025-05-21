@@ -20,14 +20,14 @@
 	{Armee}{\newcommand{\theme}{zu einer Europäischen Armee}}%
 }
 
-\newcommand{\constrainedlogo}[3][2cm]{%
-  \includegraphics[width=#2,height=#1,keepaspectratio]{#3}%
+\newcommand{\constrainedlogo}[4][2cm]{%
+  \raisebox{#3}{\includegraphics[width=#2,height=#1,keepaspectratio]{#4}}%
 }
 
-\newcommand{\jeflogo}{\constrainedlogo[2.5cm]{5cm}{Logos/jef.png}}
-\newcommand{\simeplogo}{\constrainedlogo[2.5cm]{5cm}{Logos/simep.png}}
-\newcommand{\financelogo}{\constrainedlogo[2.5cm]{5cm}{Logos/finance.png}}
-\newcommand{\citylogo}{\constrainedlogo[2.5cm]{5cm}{Logos/\city.png}}
+\newcommand{\jeflogo}{\constrainedlogo[2.5cm]{5cm}{0pt}{Logos/jef.png}}
+\newcommand{\simeplogo}{\constrainedlogo[2.5cm]{5cm}{0pt}{Logos/simep.png}}
+\newcommand{\financelogo}{\constrainedlogo[1.5cm]{4cm}{0pt}{Logos/finance\_\city.png}}
+\newcommand{\citylogo}{\constrainedlogo[1.5cm]{4cm}{0pt}{Logos/\city.png}}
 \newcommand{\signature}{Logos/signature.png}
 
 
@@ -80,21 +80,16 @@
         };      
         
         % Bottom left corner
-        \node at ([xshift=4mm, yshift=15mm] current page.south west) [anchor=south west, inner sep=0pt] {
-            {\financelogo}
+        \node[anchor=south west, inner sep=0pt, text width=4.5cm, align=left] at ([xshift=10mm, yshift=10mm] current page.south west) {
+            \small Kofinanziert durch:\\[3mm]
+            \financelogo
         };
-        % Text below bottom left corner
-        \node at ([xshift=14mm, yshift=28mm] current page.south west) [anchor=south west, inner sep=0pt] {
-            \small Kofinanziert durch:
-        };
+        
     
         % Bottom right corner
-        \node at ([xshift=-10mm, yshift=12mm] current page.south east) [anchor=south east, inner sep=0pt] {
-            {\citylogo}
-        };
-        % Text below bottom right corner
-        \node at ([xshift=-20mm, yshift=28mm] current page.south east) [anchor=south east, inner sep=0pt] {
-            \small Unterstützt durch:
+        \node[anchor=south east, inner sep=0pt, text width=4.5cm, align=right] at ([xshift=-10mm, yshift=8mm] current page.south east) {
+            \small Unterstützt durch:\\[3mm]
+            \citylogo
         };
     
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  13 MAY 2025 20:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  21 MAY 2025 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -224,45 +224,51 @@ Package: fp-eval 1995/04/03
 \dtl@entrycr=\count305
 \dtl@omitlines=\count306
 )
+(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count307
+\xs_countb=\count308
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+) (Meta/shinyin.tex)
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
+\l__color_backend_stack_int=\count309
 \l__pdf_internal_box=\box53
-)
-No file How-To.aux.
+) (How-To.aux)
 \openout1 = `How-To.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-[1
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+ [1
 
 {C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (0.88828pt too wide) in paragraph at lines 241--242
+Overfull \hbox (0.88828pt too wide) in paragraph at lines 97--98
 []\OT1/cmr/m/n/10 Reihenfolge []AA fes-tle-gen (weitre-ichend-ste zuerst) [Auss
 -chussteamer:innen] 
  []
 
 
-Overfull \hbox (1.94402pt too wide) in paragraph at lines 257--258
+Overfull \hbox (1.94402pt too wide) in paragraph at lines 113--114
 []\OT1/cmr/m/n/10 Kompromissfindung $\OMS/cmsy/m/n/10 !$ []\OT1/cmr/m/n/10 AA k
 ^^?onnen noch abge^^?andert/zusammengelegt
  []
 
 [2]
-Overfull \hbox (25.27849pt too wide) in paragraph at lines 289--290
+Overfull \hbox (25.27849pt too wide) in paragraph at lines 145--146
 []\OT1/cmr/m/n/10 gegebenenfalls Frak-tionsvor-stand bei Rede un-terst^^?utzen 
 [Frak-tion-steamer:innen] 
  []
@@ -274,20 +280,20 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3705 strings out of 474486
- 55723 string characters out of 5743756
+ 4022 strings out of 474486
+ 60450 string characters out of 5743756
  1934542 words of memory out of 5000000
- 25975 multiletter control sequences out of 15000+600000
+ 26278 multiletter control sequences out of 15000+600000
  560376 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,5n,93p,317b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,5n,93p,337b,336s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx10.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmbx12.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmr10.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on How-To.pdf (5 pages, 65053 bytes).
+Output written on How-To.pdf (5 pages, 65141 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  25 APR 2025 15:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  21 MAY 2025 22:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,77 +757,71 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 <Logos/signature.png, id=4, 355.3275pt x 219.82124pt>
 File: Logos/signature.png Graphic file (type png)
 <use Logos/signature.png>
-Package pdftex.def Info: Logos/signature.png  used on input line 115.
+Package pdftex.def Info: Logos/signature.png  used on input line 110.
 (pdftex.def)             Requested size: 70.46037pt x 43.58778pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--115
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 
  []
 
 
-Overfull \hbox (2.98865pt too wide) in paragraph at lines 115--115
-\OT1/cmr/m/n/10.95 einem Europ[]aischen Asyl- und Migrationssystem erarbeitet. 
-Dabei wurden das europ[]aische politische
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--115
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--115
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--115
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 115--115
+Underfull \hbox (badness 10000) in paragraph at lines 110--110
 
  []
 
 <Logos/jef.png, id=5, 794.97pt x 270.38014pt>
 File: Logos/jef.png Graphic file (type png)
 <use Logos/jef.png>
-Package pdftex.def Info: Logos/jef.png  used on input line 115.
+Package pdftex.def Info: Logos/jef.png  used on input line 110.
 (pdftex.def)             Requested size: 142.26357pt x 48.38577pt.
 <Logos/simep.png, id=7, 376.40625pt x 376.40625pt>
 File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
-Package pdftex.def Info: Logos/simep.png  used on input line 115.
+Package pdftex.def Info: Logos/simep.png  used on input line 110.
 (pdftex.def)             Requested size: 71.1331pt x 71.1331pt.
-<Logos/finance.png, id=8, 773.89125pt x 131.49126pt>
-File: Logos/finance.png Graphic file (type png)
-<use Logos/finance.png>
-Package pdftex.def Info: Logos/finance.png  used on input line 115.
-(pdftex.def)             Requested size: 142.25838pt x 24.171pt.
-<Logos/München.png, id=9, 210.7875pt x 56.46094pt>
+<Logos/finance_München.png, id=8, 773.89125pt x 131.49126pt>
+File: Logos/finance_München.png Graphic file (type png)
+<use Logos/finance_München.png>
+Package pdftex.def Info: Logos/finance_München.png  used on input line 110.
+(pdftex.def)             Requested size: 113.81142pt x 19.3376pt.
+<Logos/München.png, id=9, 210.7875pt x 44.41594pt>
 File: Logos/München.png Graphic file (type png)
 <use Logos/München.png>
-Package pdftex.def Info: Logos/München.png  used on input line 115.
-(pdftex.def)             Requested size: 142.26578pt x 38.10689pt.
+Package pdftex.def Info: Logos/München.png  used on input line 110.
+(pdftex.def)             Requested size: 113.8139pt x 23.98221pt.
 [1
 
 {C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Logos/sign
-ature.png> <./Logos/jef.png> <./Logos/simep.png> <./Logos/finance.png> <./Logos
-/München.png>] (TN-Zertifikat.aux)
+ature.png> <./Logos/jef.png> <./Logos/simep.png> <./Logos/finance_München.png>
+ <./Logos/München.png>] (TN-Zertifikat.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17637 strings out of 474486
- 343622 string characters out of 5743756
+ 17635 strings out of 474486
+ 343633 string characters out of 5743756
  1933542 words of memory out of 5000000
- 39575 multiletter control sequences out of 15000+600000
+ 39573 multiletter control sequences out of 15000+600000
  562083 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,6n,93p,663b,637s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,9n,93p,663b,781s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr10.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -835,7 +829,7 @@ blic/amsfonts/cm/cmr12.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Admin/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on TN-Zertifikat.pdf (1 page, 478065 bytes).
+Output written on TN-Zertifikat.pdf (1 page, 476125 bytes).
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

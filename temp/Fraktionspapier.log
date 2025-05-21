@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  28 APR 2025 12:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  21 MAY 2025 22:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -755,63 +755,7 @@ Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 \dtlkeys@caucus=\toks66
 \dtlrows@caucus=\count348
 \dtlcols@caucus=\count349
-
-! Undefined control sequence.
-<argument> \Fraktion 
-                     
-l.289 }
-       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \Fraktion 
-                     
-l.289 }
-       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \Fraktion 
-                     
-l.289 }
-       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \Fraktion 
-                     
-l.289 }
-       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \Fraktion 
-                     
-l.289 }
-       
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-No file Fraktionspapier.aux.
+ (Fraktionspapier.aux)
 \openout1 = `Fraktionspapier.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 393.
@@ -905,17 +849,6 @@ Package gensymb Info: Using \Omega for \ohm on input line 393.
 
 Package gensymb Warning: Not defining \micro.
 
-! Undefined control sequence.
-<argument> \huge \Fraktionsname 
-                                
-l.398 \textbf{\huge \Fraktionsname}
-                                   
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 396--400
 
@@ -925,38 +858,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 396--400
 Underfull \hbox (badness 10000) in paragraph at lines 396--400
 
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 396--400
-
- []
-
-! Undefined control sequence.
-l.406 ... und gehörst der Fraktion \Fraktionsname
-                                                  \ (\Fraktionskuerzel) an. ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.406 ...aktion \Fraktionsname\ (\Fraktionskuerzel
-                                                  ) an. Dein Ziel ist es, di...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-l.406 ...sen und Standpunkte der \Fraktionskuerzel
-                                                   -Fraktion durchzusetzen. ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 404--407
@@ -969,18 +870,13 @@ Underfull \hbox (badness 2293) in paragraph at lines 404--407
  []
 
 
-Underfull \hbox (badness 1983) in paragraph at lines 404--407
-\OT1/cmr/m/n/10.95 Zu-gleich kommst du aus ei-nem der 27
+Underfull \hbox (badness 10000) in paragraph at lines 404--407
+\OT1/cmr/m/n/10.95 Par-la-ment und geh[]orst der Frak-ti-on
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 404--407
-\OT1/cmr/m/n/10.95 EU-Mitgliedstaaten und hast so-mit ei-ne
- []
-
-
-Underfull \hbox (badness 2941) in paragraph at lines 404--407
-\OT1/cmr/m/n/10.95 be-son-de-re Per-spek-ti-ve auf die Asyl- &
+Underfull \hbox (badness 10000) in paragraph at lines 404--407
+\OT1/cmr/m/n/10.95 Die Gr[]unen/Europ[]aische Freie Al-li-anz
  []
 
 
@@ -993,68 +889,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 420--421
 
  []
 
-! Undefined control sequence.
-l.422         \item Größe: Die \Fraktionskuerzel
-                                                   -Fraktion ist mit \numSea...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-l.422 ...ktionskuerzel -Fraktion ist mit \numSeats
-                                                  \ von 705 Abgeordneten die...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 1087) in paragraph at lines 422--423
+[]\OT1/cmr/m/n/10.95 Gr[]o^^Ye: Die Gr[]une/EFA-Fraktion ist
+ []
 
-! Undefined control sequence.
-l.422 ...mSeats\ von 705 Abgeordneten die \groesse
-                                                  \ Fraktion im Europäische...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-l.423         \item Vorsitz: \vorsitz
-                                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 1881) in paragraph at lines 422--423
+\OT1/cmr/m/n/10.95 mit 53 von 705 Ab-ge-ord-ne-ten die
+ []
 
-! Undefined control sequence.
-l.424         \item Zusammensetzung: \Beschreibung
-                                                  \ aus \numCountry\ Mitglie...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-l.424 ...ensetzung: \Beschreibung\ aus \numCountry
-                                                  \ Mitgliedstaaten arbeiten...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 1424) in paragraph at lines 424--425
+[]\OT1/cmr/m/n/10.95 Zusammensetzung: Gr[]une & Re-gio-
+ []
 
-! Undefined control sequence.
-l.424 ...staaten arbeiten in der \Fraktionskuerzel
-                                                   -Fraktion zusammen.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+\OT1/cmr/m/n/10.95 nal-par-tei-en (Deutsch-land: B[]undnis
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 424--425
+\OT1/cmr/m/n/10.95 90/Die Gr[]unen & Volt) aus 17
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+\OT1/cmr/m/n/10.95 Mit-glied-staa-ten ar-bei-ten in der
+ []
 
 <Logos/jef.png, id=4, 794.97pt x 270.38014pt>
 File: Logos/jef.png Graphic file (type png)
@@ -1066,126 +929,79 @@ File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
 Package pdftex.def Info: Logos/simep.png  used on input line 449.
 (pdftex.def)             Requested size: 71.1331pt x 71.1331pt.
-! Undefined control sequence.
-<argument> Folien/Bilder/Fraktion 
-                                  .png
-l.453 			{\fraktionslogo
-                        }        		
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+<Folien/Bilder/Green.png, id=7, 401.5pt x 294.09875pt>
+File: Folien/Bilder/Green.png Graphic file (type png)
+<use Folien/Bilder/Green.png>
+Package pdftex.def Info: Folien/Bilder/Green.png  used on input line 453.
+(pdftex.def)             Requested size: 97.10938pt x 71.13261pt.
+<Logos/finance_Nürnberg.png, id=8, 1195.46625pt x 614.295pt>
+File: Logos/finance_Nürnberg.png Graphic file (type png)
+<use Logos/finance_Nürnberg.png>
+Package pdftex.def Info: Logos/finance_Nürnberg.png  used on input line 459.
+(pdftex.def)             Requested size: 83.05273pt x 42.67697pt.
+<Logos/Nürnberg.png, id=9, 447.6725pt x 455.7025pt>
+File: Logos/Nürnberg.png Graphic file (type png)
+<use Logos/Nürnberg.png>
+Package pdftex.def Info: Logos/Nürnberg.png  used on input line 466.
+(pdftex.def)             Requested size: 41.92137pt x 42.67332pt.
 
-! Undefined control sequence.
-<argument> Folien/Bilder/Fraktion 
-                                  .png
-l.453 			{\fraktionslogo
-                        }        		
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Underfull \hbox (badness 6063) in paragraph at lines 466--467
+ [][]
+ []
 
-! Undefined control sequence.
-<argument> Folien/Bilder/Fraktion 
-                                  .png
-l.453 			{\fraktionslogo
-                        }        		
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<write> ...Warning: File `Folien/Bilder/\Fraktion 
-                                                  .png' not found\on@line .
-l.453 			{\fraktionslogo
-                        }        		
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `Folien/Bilder/.png' not found on input line 453.
-
-
-! Package pdftex.def Error: File `Folien/Bilder/.png' not found: using draft se
-tting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.453 			{\fraktionslogo
-                        }        		
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-<Logos/finance.png, id=7, 773.89125pt x 131.49126pt>
-File: Logos/finance.png Graphic file (type png)
-<use Logos/finance.png>
-Package pdftex.def Info: Logos/finance.png  used on input line 458.
-(pdftex.def)             Requested size: 142.25838pt x 24.171pt.
-<Logos/München.png, id=8, 210.7875pt x 56.46094pt>
-File: Logos/München.png Graphic file (type png)
-<use Logos/München.png>
-Package pdftex.def Info: Logos/München.png  used on input line 467.
-(pdftex.def)             Requested size: 142.26578pt x 38.10689pt.
 [1
 
 {C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Logos/jef.
-png> <./Logos/simep.png> <./Logos/finance.png> <./Logos/München.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 481--483
+png> <./Logos/simep.png> <./Folien/Bilder/Green.png> <./Logos/finance_Nürnberg
+.png> <./Logos/Nürnberg.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 476--478
 
  []
 
-! Undefined control sequence.
-l.484 \leitlinien
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 488--490
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 
  []
 
-! Undefined control sequence.
-l.491 \policyPosition
-                     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--485
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 486--486
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 486--486
+
+ []
 
 File: Logos/jef.png Graphic file (type png)
 <use Logos/jef.png>
-Package pdftex.def Info: Logos/jef.png  used on input line 496.
+Package pdftex.def Info: Logos/jef.png  used on input line 491.
 (pdftex.def)             Requested size: 142.26357pt x 48.38577pt.
 File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
-Package pdftex.def Info: Logos/simep.png  used on input line 501.
+Package pdftex.def Info: Logos/simep.png  used on input line 496.
 (pdftex.def)             Requested size: 71.1331pt x 71.1331pt.
 [2]
 File: Logos/jef.png Graphic file (type png)
 <use Logos/jef.png>
-Package pdftex.def Info: Logos/jef.png  used on input line 511.
+Package pdftex.def Info: Logos/jef.png  used on input line 506.
 (pdftex.def)             Requested size: 142.26357pt x 48.38577pt.
 File: Logos/simep.png Graphic file (type png)
 <use Logos/simep.png>
-Package pdftex.def Info: Logos/simep.png  used on input line 516.
+Package pdftex.def Info: Logos/simep.png  used on input line 511.
 (pdftex.def)             Requested size: 71.1331pt x 71.1331pt.
 
-Overfull \vbox (29.66722pt too high) has occurred while \output is active []
+Overfull \vbox (28.0674pt too high) has occurred while \output is active []
 
 
 [3] (Fraktionspapier.aux)
@@ -1193,30 +1009,25 @@ Overfull \vbox (29.66722pt too high) has occurred while \output is active []
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 20255 strings out of 474486
- 396735 string characters out of 5743756
+ 20239 strings out of 474486
+ 396314 string characters out of 5743756
  1941542 words of memory out of 5000000
- 42161 multiletter control sequences out of 15000+600000
- 563556 words of font info for 55 fonts, out of 8000000 for 9000
+ 42144 multiletter control sequences out of 15000+600000
+ 563388 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,6n,117p,566b,691s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,9n,117p,566b,774s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk> <C:\Users\Admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1095.pk><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Admin/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Admin/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Fraktionspapier.pdf (3 pages, 467039 bytes).
+MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Fraktionspapier.pdf (3 pages, 1029037 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
