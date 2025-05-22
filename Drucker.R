@@ -157,11 +157,17 @@ body <- dashboardBody(
         box(
           width = 12,
           selectInput("topic", "Thema:",
-                      choices = c("Green Deal", "Migration", "Armee"),
-                      selected = "Migration"),
-          textInput("city", "Stadt:", value = "München"),
+                      choices = c("Green Deal", "Asyl", "Armee"),
+                      selected = "Asyl"),
+          selectInput("city", "Stadt:",
+                      choices = c("München", "Nürnberg"),
+                      selected = "München"),
+          # textInput("city", "Stadt:", value = "München"),
           dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
-          textInput("resPath", "Zielordner:", "Results")
+          selectInput("resPath", "Zielordner:",
+                      choices = c("München", "Nürnberg"),
+                      selected = "München")
+          # textInput("resPath", "Zielordner:", "Results")
         )
       )
     ),
@@ -171,8 +177,14 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 12,
-          textInput("localSup", "Lokale Unterstützung:", "das Europe Direct München"),
-          textInput("sponsor", "Sponsor:", "die Stadt München"),
+          selectInput("localSup", "Lokale Unterstützung:",
+                      choices = c("das Europe Direct München", "das Europe Direct Nürnberg"),
+                      selected = "das Europe Direct München"),
+          # textInput("localSup", "Lokale Unterstützung:", "das Europe Direct München"),
+          selectInput("sponsor", "Sponsor:",
+                      choices = c("die Stadt München", "die Stadt Nürnberg"),
+                      selected = "die Stadt München"),
+          # textInput("sponsor", "Sponsor:", "die Stadt München"),
           textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
           selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
         )
@@ -202,10 +214,19 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 4,
-          textInput("pol", "Politiker:", value = "Maria Noichl"),
+          selectInput("pol", "Politiker:",
+                      choices = c("Maria Noichl", "Monika Hohlmeier"),
+                      selected = "Maria Noichl"),
+          # textInput("pol", "Politiker:", value = "Maria Noichl"),
           textInput("pol_office", "Politiker (Amt):", value = "Mitglied des Europäischen Parlaments"),
-          textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
-          textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat")
+          selectInput("stadtvert", "Stadtvertreter:",
+                      choices = c("Florian Kraus", "Dr. Andrea Heilmaier"),
+                      selected = "Florian Kraus"),
+          # textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
+          selectInput("stadtvert_office", "Stadtvertreter (Amt):",
+                      choices = c("Stadtschulrat", "Wirtschafts- und Wissenschaftsreferentin"),
+                      selected = "Stadtschulrat")
+          # textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat")
         ),
         box(
           width = 4,
@@ -255,7 +276,7 @@ server <- function(input, output, session) {
        # Involvierte Ausschüsse festlegen
        {if (input$topic == "Green Deal") {
          committees <- c("AGRI", "BUDG", "ITRE", "TRAN")
-       } else if (input$topic == "Migration") {
+       } else if (input$topic == "Asyl") {
          committees <- c("BUDG", "DROI", "EMPL", "LIBE")
        } else if (input$topic == "Armee") {
          committees <- c("BUDG", "LIBE", "SEDE")
@@ -294,8 +315,7 @@ server <- function(input, output, session) {
         cat(paste0("\\newcommand\\pfeLeader{", input$leit_pfe, "}\n"))
         cat(paste0("\\newcommand\\pfeRoom{", input$room_pfe, "}\n"))
         cat(paste0("\\newcommand\\anzahlcomm{", length(committees), "}\n"))
-        sink()
-        print("Var-Print fertig!")}
+        sink()}
       ) 
 
   observeEvent(input$print, 
@@ -304,7 +324,7 @@ server <- function(input, output, session) {
       
       if (input$topic == "Green Deal") {
         committees <- c("AGRI", "BUDG", "ITRE", "TRAN")
-      } else if (input$topic == "Migration") {
+      } else if (input$topic == "Asyl") {
         committees <- c("BUDG", "DROI", "EMPL", "LIBE")
       } else if (input$topic == "Armee") {
         committees <- c("BUDG", "LIBE", "SEDE")
@@ -324,8 +344,9 @@ server <- function(input, output, session) {
       dir.create(file.path(input$resPath, "Sonstiges"), showWarnings = F)
       ### TN-Zertifikate
       dir.create(file.path(input$resPath, "Sonstiges", "TN-Zertifikate"), showWarnings = F)
-      
+
       # Compile pdfs
+      pdf_order <- c()
       ## Fraktionen
       for (group in groupsEP) {
         {sink("LaTeX/Meta/var.tex")
@@ -340,11 +361,11 @@ server <- function(input, output, session) {
         
         tools::texi2pdf("LaTeX/Fraktionspapier.tex", clean = T)
         file.rename("Fraktionspapier.pdf", paste0(input$resPath, "/Fraktionen/", group, "/Fraktionspapier_", group, ".pdf"))
+        
+        pdf_order <- append(pdf_order, paste0("LaTeX/Sonstiges/Raum ", group, ".pdf"))
       }
       
-      file.copy("Sonstiges/Fraktionsvorsitzende.docx", paste0(input$resPath, "/Fraktionen/Fraktionsvorsitzende.docx"))
-      
-      print("Fraktionen fertig!")
+      # print("Fraktionen fertig!")
       
       ## Ausschüsse
       for (committee in committees) {
@@ -354,9 +375,10 @@ server <- function(input, output, session) {
         sink()}
         tools::texi2pdf("LaTeX/Folien/Ausschusssitzung.tex", clean = T)
         file.rename("Ausschusssitzung.pdf", paste0(input$resPath, "/Ausschüsse/", committee, ".pdf"))
+        pdf_order <- append(pdf_order, paste0("LaTeX/Sonstiges/", committee, "_Schilder/", list.files(paste0("LaTeX/Sonstiges/", committee, "_Schilder"))))
       }
       
-      print("Ausschüsse fertig!")
+      # print("Ausschüsse fertig!")
       
       ## Sonstiges
       
@@ -368,6 +390,12 @@ server <- function(input, output, session) {
       
       tools::texi2pdf("LaTeX/How-To.tex", clean = T)
       file.rename("How-To.pdf", paste0(input$resPath, "/Sonstiges/How-To.pdf"))
+      
+      pdf_order <- append(pdf_order, "LaTeX/Sonstiges/Namen Leitung.pdf")
+      pdf_order <- append(pdf_order, "LaTeX/Sonstiges/Namen Vorstand.pdf")
+      
+      pdf_combine(input = pdf_order,
+                  output = paste0(input$resPath, "/Sonstiges/Schilder.pdf"))
       
       ## TN-Zertifikate
       
@@ -384,7 +412,7 @@ server <- function(input, output, session) {
         }
       }
       
-      print("Zertifikate fertig!")
+      # print("Zertifikate fertig!")
       
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
