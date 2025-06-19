@@ -1,10 +1,15 @@
 library(diffobj)
 library(ggplot2)
 library(grid)
+library(rsconnect)
 library(shiny)
 library(shinydashboard)
 library(stringr)
-library(tidyverse)#
+library(tidyverse)
+
+# rsconnect::setAccountInfo(name='jef-bayern',
+# 			  token=Sys.getenv("shinyToken"),
+# 			  secret=Sys.getenv("shinySecret"))
 
 collapse_diff <- function(str_list){
   for (i in seq_along(str_list)) {
@@ -474,30 +479,80 @@ server <- function(input, output, session) {
     HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Abschnitt:</div> ", input$evp_section))
   })
   
+  # output$evp_old_print <- renderUI({
+  #   diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
+  #   splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
+  #   splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
+  #   
+  #   oldBold_evp <- splitOldNew_evp[(splitMat_evp[1,2]+1):(splitMat_evp[2,1]-1)]
+  #   oldBold_evp <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_evp, collapse = ""))
+  #   oldBold_evp <- gsub("</span>", "</b>", paste(oldBold_evp, collapse = ""))
+  #   oldBold_evp
+  #   
+  #   HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_evp))
+  # })
+  # 
+  # output$evp_new_print <- renderUI({
+  #   diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
+  #   splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
+  #   splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
+  #   
+  #   newBold_evp <- splitOldNew_evp[(splitMat_evp[3,2]+1):(splitMat_evp[4,1]-1)]
+  #   newBold_evp <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_evp, collapse = ""))
+  #   newBold_evp <- gsub("</span>", "</b>", paste(newBold_evp, collapse = ""))
+  #   newBold_evp
+  #   
+  #   HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_evp))
+  # })
+  
   output$evp_old_print <- renderUI({
-    diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
-    splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
-    splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$evp_old, input$evp_new)
     
-    oldBold_evp <- splitOldNew_evp[(splitMat_evp[1,2]+1):(splitMat_evp[2,1]-1)]
-    oldBold_evp <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_evp, collapse = ""))
-    oldBold_evp <- gsub("</span>", "</b>", paste(oldBold_evp, collapse = ""))
-    oldBold_evp
+    if (input$evp_old == "" || input$evp_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_evp))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$evp_old, "\\s+")[[1]]
+    new_words <- strsplit(input$evp_new, "\\s+")[[1]]
+    
+    # Find words that are in old but not in new (deleted words)
+    deleted_words <- setdiff(old_words, new_words)
+    
+    # Highlight deleted words
+    result_text <- input$evp_old
+    for (word in deleted_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ffdddd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", result_text))
   })
   
   output$evp_new_print <- renderUI({
-    diffOldNew_evp <- as.character(diffChr(input$evp_old, input$evp_new, pager="off"))[1]
-    splitOldNew_evp <- strsplit(diffOldNew_evp, "")[[1]]
-    splitMat_evp <- str_locate_all(diffOldNew_evp, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$evp_old, input$evp_new)
     
-    newBold_evp <- splitOldNew_evp[(splitMat_evp[3,2]+1):(splitMat_evp[4,1]-1)]
-    newBold_evp <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_evp, collapse = ""))
-    newBold_evp <- gsub("</span>", "</b>", paste(newBold_evp, collapse = ""))
-    newBold_evp
+    if (input$evp_old == "" || input$evp_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_evp))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$evp_old, "\\s+")[[1]]
+    new_words <- strsplit(input$evp_new, "\\s+")[[1]]
+    
+    # Find words that are in new but not in old (added words)
+    added_words <- setdiff(new_words, old_words)
+    
+    # Highlight added words
+    result_text <- input$evp_new
+    for (word in added_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ddffdd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", result_text))
   })
   
   output$evp_logo <- renderUI({tags$img(src = "EPP.png", width = 150, height = 100)})
@@ -553,29 +608,53 @@ server <- function(input, output, session) {
   })
   
   output$sd_old_print <- renderUI({
-    diffOldNew_sd <- as.character(diffChr(input$sd_old, input$sd_new, pager="off"))[1]
-    splitOldNew_sd <- strsplit(diffOldNew_sd, "")[[1]]
-    splitMat_sd <- str_locate_all(diffOldNew_sd, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$sd_old, input$sd_new)
     
-    oldBold_sd <- splitOldNew_sd[(splitMat_sd[1,2]+1):(splitMat_sd[2,1]-1)]
-    oldBold_sd <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_sd, collapse = ""))
-    oldBold_sd <- gsub("</span>", "</b>", paste(oldBold_sd, collapse = ""))
-    oldBold_sd
+    if (input$sd_old == "" || input$sd_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_sd))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$sd_old, "\\s+")[[1]]
+    new_words <- strsplit(input$sd_new, "\\s+")[[1]]
+    
+    # Find words that are in old but not in new (deleted words)
+    deleted_words <- setdiff(old_words, new_words)
+    
+    # Highlight deleted words
+    result_text <- input$sd_old
+    for (word in deleted_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ffdddd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", result_text))
   })
   
   output$sd_new_print <- renderUI({
-    diffOldNew_sd <- as.character(diffChr(input$sd_old, input$sd_new, pager="off"))[1]
-    splitOldNew_sd <- strsplit(diffOldNew_sd, "")[[1]]
-    splitMat_sd <- str_locate_all(diffOldNew_sd, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$sd_old, input$sd_new)
     
-    newBold_sd <- splitOldNew_sd[(splitMat_sd[3,2]+1):(splitMat_sd[4,1]-1)]
-    newBold_sd <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_sd, collapse = ""))
-    newBold_sd <- gsub("</span>", "</b>", paste(newBold_sd, collapse = ""))
-    newBold_sd
+    if (input$sd_old == "" || input$sd_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_sd))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$sd_old, "\\s+")[[1]]
+    new_words <- strsplit(input$sd_new, "\\s+")[[1]]
+    
+    # Find words that are in new but not in old (added words)
+    added_words <- setdiff(new_words, old_words)
+    
+    # Highlight added words
+    result_text <- input$sd_new
+    for (word in added_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ddffdd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", result_text))
   })
   
   output$sd_logo <- renderUI({tags$img(src = "S&D.png", width = 150, height = 100)})
@@ -631,29 +710,53 @@ server <- function(input, output, session) {
   })
   
   output$renew_old_print <- renderUI({
-    diffOldNew_renew <- as.character(diffChr(input$renew_old, input$renew_new, pager="off"))[1]
-    splitOldNew_renew <- strsplit(diffOldNew_renew, "")[[1]]
-    splitMat_renew <- str_locate_all(diffOldNew_renew, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$renew_old, input$renew_new)
     
-    oldBold_renew <- splitOldNew_renew[(splitMat_renew[1,2]+1):(splitMat_renew[2,1]-1)]
-    oldBold_renew <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_renew, collapse = ""))
-    oldBold_renew <- gsub("</span>", "</b>", paste(oldBold_renew, collapse = ""))
-    oldBold_renew
+    if (input$renew_old == "" || input$renew_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_renew))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$renew_old, "\\s+")[[1]]
+    new_words <- strsplit(input$renew_new, "\\s+")[[1]]
+    
+    # Find words that are in old but not in new (deleted words)
+    deleted_words <- setdiff(old_words, new_words)
+    
+    # Highlight deleted words
+    result_text <- input$renew_old
+    for (word in deleted_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ffdddd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", result_text))
   })
   
   output$renew_new_print <- renderUI({
-    diffOldNew_renew <- as.character(diffChr(input$renew_old, input$renew_new, pager="off"))[1]
-    splitOldNew_renew <- strsplit(diffOldNew_renew, "")[[1]]
-    splitMat_renew <- str_locate_all(diffOldNew_renew, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$renew_old, input$renew_new)
     
-    newBold_renew <- splitOldNew_renew[(splitMat_renew[3,2]+1):(splitMat_renew[4,1]-1)]
-    newBold_renew <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_renew, collapse = ""))
-    newBold_renew <- gsub("</span>", "</b>", paste(newBold_renew, collapse = ""))
-    newBold_renew
+    if (input$renew_old == "" || input$renew_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_renew))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$renew_old, "\\s+")[[1]]
+    new_words <- strsplit(input$renew_new, "\\s+")[[1]]
+    
+    # Find words that are in new but not in old (added words)
+    added_words <- setdiff(new_words, old_words)
+    
+    # Highlight added words
+    result_text <- input$renew_new
+    for (word in added_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ddffdd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", result_text))
   })
   
   output$renew_logo <- renderUI({tags$img(src = "Renew.png", width = 150, height = 100)})
@@ -710,29 +813,53 @@ server <- function(input, output, session) {
   })
   
   output$green_old_print <- renderUI({
-    diffOldNew_green <- as.character(diffChr(input$green_old, input$green_new, pager="off"))[1]
-    splitOldNew_green <- strsplit(diffOldNew_green, "")[[1]]
-    splitMat_green <- str_locate_all(diffOldNew_green, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$green_old, input$green_new)
     
-    oldBold_green <- splitOldNew_green[(splitMat_green[1,2]+1):(splitMat_green[2,1]-1)]
-    oldBold_green <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_green, collapse = ""))
-    oldBold_green <- gsub("</span>", "</b>", paste(oldBold_green, collapse = ""))
-    oldBold_green
+    if (input$green_old == "" || input$green_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_green))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$green_old, "\\s+")[[1]]
+    new_words <- strsplit(input$green_new, "\\s+")[[1]]
+    
+    # Find words that are in old but not in new (deleted words)
+    deleted_words <- setdiff(old_words, new_words)
+    
+    # Highlight deleted words
+    result_text <- input$green_old
+    for (word in deleted_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ffdddd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", result_text))
   })
   
   output$green_new_print <- renderUI({
-    diffOldNew_green <- as.character(diffChr(input$green_old, input$green_new, pager="off"))[1]
-    splitOldNew_green <- strsplit(diffOldNew_green, "")[[1]]
-    splitMat_green <- str_locate_all(diffOldNew_green, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$green_old, input$green_new)
     
-    newBold_green <- splitOldNew_green[(splitMat_green[3,2]+1):(splitMat_green[4,1]-1)]
-    newBold_green <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_green, collapse = ""))
-    newBold_green <- gsub("</span>", "</b>", paste(newBold_green, collapse = ""))
-    newBold_green
+    if (input$green_old == "" || input$green_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_green))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$green_old, "\\s+")[[1]]
+    new_words <- strsplit(input$green_new, "\\s+")[[1]]
+    
+    # Find words that are in new but not in old (added words)
+    added_words <- setdiff(new_words, old_words)
+    
+    # Highlight added words
+    result_text <- input$green_new
+    for (word in added_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ddffdd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", result_text))
   })
   
   output$green_logo <- renderUI({tags$img(src = "Greens.png", width = 150, height = 100)})
@@ -748,7 +875,7 @@ server <- function(input, output, session) {
   
   
   
-  # ID
+  # PfE
   
   pfe_type <- reactiveVal("empty")
   pfe_res <- reactiveVal("")
@@ -759,7 +886,7 @@ server <- function(input, output, session) {
     if (pfe_type() == "empty") {
       plot_empty_circle()
     } else {
-      plot_result_circle(pfe_plot_data(), id)
+      plot_result_circle(pfe_plot_data(), pfe)
     }
   })
   
@@ -768,7 +895,7 @@ server <- function(input, output, session) {
     pfe_type("result")
     pfe_new_data <- data.frame(
       cat = factor(c('Ja', 'Nein', 'Enthaltung'), levels = c('Ja', 'Nein', 'Enthaltung')),
-      id = c(input$pfe_yes, input$pfe_no, input$pfe_abst)
+      pfe = c(input$pfe_yes, input$pfe_no, input$pfe_abst)
     )
     pfe_plot_data(pfe_new_data)
     
@@ -789,29 +916,53 @@ server <- function(input, output, session) {
   })
   
   output$pfe_old_print <- renderUI({
-    diffOldNew_id <- as.character(diffChr(input$pfe_old, input$pfe_new, pager="off"))[1]
-    splitOldNew_id <- strsplit(diffOldNew_id, "")[[1]]
-    splitMat_id <- str_locate_all(diffOldNew_id, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$pfe_old, input$pfe_new)
     
-    oldBold_id <- splitOldNew_id[(splitMat_id[1,2]+1):(splitMat_id[2,1]-1)]
-    oldBold_id <- gsub("<span class='diffobj-word delete'>", "<b>", paste(oldBold_id, collapse = ""))
-    oldBold_id <- gsub("</span>", "</b>", paste(oldBold_id, collapse = ""))
-    oldBold_id
+    if (input$pfe_old == "" || input$pfe_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", oldBold_id))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$pfe_old, "\\s+")[[1]]
+    new_words <- strsplit(input$pfe_new, "\\s+")[[1]]
+    
+    # Find words that are in old but not in new (deleted words)
+    deleted_words <- setdiff(old_words, new_words)
+    
+    # Highlight deleted words
+    result_text <- input$pfe_old
+    for (word in deleted_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ffdddd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Alter Text:</div> ", result_text))
   })
   
   output$pfe_new_print <- renderUI({
-    diffOldNew_id <- as.character(diffChr(input$pfe_old, input$pfe_new, pager="off"))[1]
-    splitOldNew_id <- strsplit(diffOldNew_id, "")[[1]]
-    splitMat_id <- str_locate_all(diffOldNew_id, "<span class='diffobj-trim'></span>")[[1]]
+    req(input$pfe_old, input$pfe_new)
     
-    newBold_id <- splitOldNew_id[(splitMat_id[3,2]+1):(splitMat_id[4,1]-1)]
-    newBold_id <- gsub("<span class='diffobj-word insert'>", "<b>", paste(newBold_id, collapse = ""))
-    newBold_id <- gsub("</span>", "</b>", paste(newBold_id, collapse = ""))
-    newBold_id
+    if (input$pfe_old == "" || input$pfe_new == "") {
+      return(HTML("<div>Please enter text to compare</div>"))
+    }
     
-    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", newBold_id))
+    # Simple word-level diff highlighting
+    old_words <- strsplit(input$pfe_old, "\\s+")[[1]]
+    new_words <- strsplit(input$pfe_new, "\\s+")[[1]]
+    
+    # Find words that are in new but not in old (added words)
+    added_words <- setdiff(new_words, old_words)
+    
+    # Highlight added words
+    result_text <- input$pfe_new
+    for (word in added_words) {
+      result_text <- gsub(paste0("\\b", word, "\\b"), 
+                          paste0("<span style='background-color: #ddffdd; font-weight: bold;'>", word, "</span>"), 
+                          result_text)
+    }
+    
+    HTML(paste0("<div style='font-weight: bold; display: inline-block;'>Neuer Text:</div> ", result_text))
   })
   
   output$pfe_logo <- renderUI({tags$img(src = "PfE.png", width = 150, height = 100)})
@@ -878,7 +1029,6 @@ server <- function(input, output, session) {
   })
   
 }
-
 
 
 shinyApp(ui = ui, server = server)
