@@ -225,8 +225,11 @@ body <- dashboardBody(
           # textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
           selectInput("stadtvert_office", "Stadtvertreter (Amt):",
                       choices = c("Stadtschulrat", "Wirtschafts- und Wissenschaftsreferentin"),
-                      selected = "Stadtschulrat")
-          # textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat")
+                      selected = "Stadtschulrat"),
+          # textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat"),
+          selectInput("location", "Veranstaltungsort:",
+                      choices = c("im Bayerischen Landtag", "im Nürnberger Rathaus"),
+                      selected = "im Bayerischen Landtag")
         ),
         box(
           width = 4,
@@ -314,6 +317,8 @@ server <- function(input, output, session) {
         cat(paste0("\\newcommand\\greenRoom{", input$room_green, "}\n"))
         cat(paste0("\\newcommand\\pfeLeader{", input$leit_pfe, "}\n"))
         cat(paste0("\\newcommand\\pfeRoom{", input$room_pfe, "}\n"))
+        cat(paste0("\\newcommand\\numSuS{", input$numSuS, "}\n"))
+        cat(paste0("\\newcommand\\location{", input$location, "}\n"))
         cat(paste0("\\newcommand\\anzahlcomm{", length(committees), "}\n"))
         sink()}
       ) 
@@ -388,6 +393,12 @@ server <- function(input, output, session) {
       
       tools::texi2pdf("LaTeX/How-To.tex", clean = T)
       file.rename("How-To.pdf", paste0(input$resPath, "/Sonstiges/How-To.pdf"))
+      
+      tools::texi2pdf("LaTeX/PM.tex", clean = T)
+      file.rename("PM.pdf", paste0(input$resPath, "/Sonstiges/Pressemitteilung.pdf"))
+      
+      tools::texi2pdf("LaTeX/Datenschutzvereinbarung.tex", clean = T)
+      file.rename("Datenschutzvereinbarung.pdf", paste0(input$resPath, "/Sonstiges/Datenschutzvereinbarung.pdf"))
       
       file.copy(paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"), paste0(input$resPath, "/Sonstiges/Entwurf_", input$topic, ".pdf"))
       
