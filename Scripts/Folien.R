@@ -173,11 +173,12 @@ for (committee in com_list) {
                 as_xml_document()
   
   list_name <- xml_find_all(xml_com, "//*[@id='docMembersList']//*[@class='erpl_title-h4 t-item']") |> 
-    as_list() |> 
-    lapply(function(x) x[[1]]) |> unlist() |> 
-    lapply(capitalize_first_letter) |> unlist()
+    xml_text() |> 
+    lapply(capitalize_first_letter) |> 
+    unlist()
+  
   list_misc <- xml_find_all(xml_com, "//*[@id='docMembersList']//*[@class='sln-additional-info']") |> 
-    as_list() |> 
+    xml_text() |> 
     lapply(function(x) x[[1]]) |> unlist()
   
   df_com <- data.frame(name = list_name,
