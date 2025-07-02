@@ -5,6 +5,6 @@ account: jef-bayern
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14964012
-bundleId: 10487426
+bundleId: 10556015
 url: https://jef-bayern.shinyapps.io/Plenarabstimmung/
 version: 1
