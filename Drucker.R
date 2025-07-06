@@ -364,18 +364,60 @@ server <- function(input, output, session) {
       }
       
       susFrakLand <- get_sus_dist(input$numSuS)
-      pdf_order <- c()
       
+      # Process PDF combinations in batches to avoid "Too many open files" error
+      batch_size <- 10  # Process 10 students at a time
+      all_students <- list()
+      
+      # Create list of all student combinations
       for (group in susFrakLand |> names()) {
         for (member in susFrakLand[[group]]) {
-          pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
-          pdf_order <- append(pdf_order, paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"))
-          pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+          all_students <- append(all_students, list(c(
+            paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"),
+            paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"),
+            paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf")
+          )))
         }
       }
       
-      pdf_combine(input = pdf_order,
-                  output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+      # Process in batches
+      total_students <- length(all_students)
+      num_batches <- ceiling(total_students / batch_size)
+      
+      for (batch_num in 1:num_batches) {
+        start_idx <- (batch_num - 1) * batch_size + 1
+        end_idx <- min(batch_num * batch_size, total_students)
+        
+        # Create batch PDF order
+        batch_pdf_order <- c()
+        for (i in start_idx:end_idx) {
+          batch_pdf_order <- append(batch_pdf_order, all_students[[i]])
+        }
+        
+        # Combine batch
+        batch_output <- paste0(input$resPath, "/Schülerunterlagen_SimEP_Batch_", batch_num, ".pdf")
+        pdf_combine(input = batch_pdf_order, output = batch_output)
+        
+        # Clean up batch file handles
+        gc()
+      }
+      
+      # If only one batch, rename to final name
+      if (num_batches == 1) {
+        file.rename(paste0(input$resPath, "/Schülerunterlagen_SimEP_Batch_1.pdf"), 
+                   paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+      } else {
+        # Combine all batches into final file
+        batch_files <- paste0(input$resPath, "/Schülerunterlagen_SimEP_Batch_", 1:num_batches, ".pdf")
+        pdf_combine(input = batch_files, output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+        
+        # Clean up batch files
+        for (batch_file in batch_files) {
+          if (file.exists(batch_file)) {
+            file.remove(batch_file)
+          }
+        }
+      }
       
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
