@@ -59,15 +59,15 @@ body <- dashboardBody(
           width = 12,
           selectInput("topic", "Thema:",
                       choices = c("Green Deal", "Asyl", "Armee"),
-                      selected = "Asyl"),
+                      selected = "Armee"),
           selectInput("city", "Stadt:",
-                      choices = c("München", "Nürnberg"),
-                      selected = "München"),
+                      choices = c("Coburg", "München", "Nürnberg", "Passau", "Ulm"),
+                      selected = "Nürnberg"),
           # textInput("city", "Stadt:", value = "München"),
           dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
           selectInput("resPath", "Zielordner:",
-                      choices = c("München", "Nürnberg"),
-                      selected = "München")
+                      choices = c("Coburg", "München", "Nürnberg", "Passau", "Ulm"),
+                      selected = "Nürnberg")
           # textInput("resPath", "Zielordner:", "Results")
         )
       )
@@ -80,11 +80,11 @@ body <- dashboardBody(
           width = 12,
           selectInput("localSup", "Lokale Unterstützung:",
                       choices = c("das Europe Direct München", "das Europe Direct Nürnberg"),
-                      selected = "das Europe Direct München"),
+                      selected = "das Europe Direct Nürnberg"),
           # textInput("localSup", "Lokale Unterstützung:", "das Europe Direct München"),
           selectInput("sponsor", "Sponsor:",
                       choices = c("die Stadt München", "die Stadt Nürnberg"),
-                      selected = "die Stadt München"),
+                      selected = "die Stadt Nürnberg"),
           # textInput("sponsor", "Sponsor:", "die Stadt München"),
           textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
           selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
@@ -115,30 +115,30 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 4,
-          selectInput("pol", "Politiker:",
-                      choices = c("Maria Noichl", "Monika Hohlmeier"),
-                      selected = "Maria Noichl"),
-          # textInput("pol", "Politiker:", value = "Maria Noichl"),
+          # selectInput("pol", "Politiker:",
+                      # choices = c("Maria Noichl", ""),
+                      # selected = "Maria Noichl"),
+          textInput("pol", "Politiker:", value = "Maria Noichl"),
           textInput("pol_office", "Politiker (Amt):", value = "Mitglied des Europäischen Parlaments"),
-          selectInput("stadtvert", "Stadtvertreter:",
-                      choices = c("Florian Kraus", "Dr. Andrea Heilmaier"),
-                      selected = "Florian Kraus"),
-          # textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
+          # selectInput("stadtvert", "Stadtvertreter:",
+          #             choices = c("Florian Kraus", "Dr. Andrea Heilmaier"),
+          #             selected = "Dr. Andrea Heilmaier"),
+          textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
           selectInput("stadtvert_office", "Stadtvertreter (Amt):",
                       choices = c("Stadtschulrat", "Wirtschafts- und Wissenschaftsreferentin"),
-                      selected = "Stadtschulrat"),
+                      selected = "Wirtschafts- und Wissenschaftsreferentin"),
           # textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat"),
           selectInput("location", "Veranstaltungsort:",
-                      choices = c("im Bayerischen Landtag", "im Nürnberger Rathaus"),
-                      selected = "im Bayerischen Landtag")
+                      choices = c("im Münchner Rathaus", "im Nürnberger Rathaus", "im Ulmer Rathaus"),
+                      selected = "im Nürnberger Rathaus")
         ),
         box(
           width = 4,
-          textInput("leit_evp", "Leitung EVP:", value = "Linus"),
+          textInput("leit_evp", "Leitung EVP:", value = "Max"),
           textInput("leit_sd", "Leitung S&D:", value = "Christoph"),
-          textInput("leit_renew", "Leitung Renew:", value = "Marco"),
-          textInput("leit_green", "Leitung Grüne:", value = "Katharina"),
-          textInput("leit_pfe", "Leitung PfE:", value = "Franz")
+          textInput("leit_renew", "Leitung Renew:", value = "Antonia"),
+          textInput("leit_green", "Leitung Grüne:", value = "Niels"),
+          textInput("leit_pfe", "Leitung PfE:", value = "Linus")
         ),
         box(
           width = 4,
@@ -315,7 +315,7 @@ server <- function(input, output, session) {
         xlPath <- paste0("Daten/SuS/", excel)
         for (sheet in excel_sheets(xlPath)) {
           df_xlsx <- read_excel(xlPath, sheet = sheet)
-          write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE)
+          write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE, fileEncoding = "UTF-8", quote = FALSE)
           {sink("LaTeX/Meta/var.tex")
             paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
             sink()}
@@ -372,11 +372,29 @@ server <- function(input, output, session) {
       # Create list of all student combinations
       for (group in susFrakLand |> names()) {
         for (member in susFrakLand[[group]]) {
-          all_students <- append(all_students, list(c(
-            paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"),
-            paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"),
-            paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf")
-          )))
+          # Define file paths
+          frak_pdf <- paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group, ".pdf")
+          entwurf_pdf <- paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf")
+          land_pdf <- paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member, ".pdf")
+          # Count pages in each PDF
+          n_frak <- pdf_length(frak_pdf)
+          n_entwurf <- pdf_length(entwurf_pdf)
+          n_land <- pdf_length(land_pdf)
+          total_pages <- n_frak + n_entwurf + n_land
+          # Prepare list of PDFs to combine
+          pdfs_to_combine <- c(frak_pdf, entwurf_pdf, land_pdf)
+          if (total_pages %% 2 == 1) {
+            # Insert blank page if total is odd
+            blank_pdf <- "white.pdf"
+            if (!file.exists(blank_pdf)) {
+              # Create a blank PDF if it doesn't exist
+              pdf(blank_pdf, width=8.27, height=11.69) # A4 size in inches
+              plot.new()
+              dev.off()
+            }
+            pdfs_to_combine <- c(pdfs_to_combine, blank_pdf)
+          }
+          all_students <- append(all_students, list(pdfs_to_combine))
         }
       }
       
@@ -433,7 +451,7 @@ server <- function(input, output, session) {
       xlPath <- paste0("Daten/SuS/", input$tnListPath, ".xlsx")
       for (sheet in excel_sheets(xlPath)) {
         df_xlsx <- read_excel(xlPath, sheet = sheet)
-        write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE)
+        write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE, fileEncoding = "UTF-8", quote = FALSE)
         {sink("LaTeX/Meta/var.tex")
         paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
         sink()}

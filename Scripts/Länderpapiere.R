@@ -46,7 +46,7 @@ euMember <- c("Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czechia", 
               "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden")
 
 
-scrape_OWID <- function(indicator, df, indName="indicator"){
+scrape_OWID <- function(indicator, df, indName="indicator", firstOnly = F){
   urlOWID <- paste0("https://ourworldindata.org/grapher/", indicator, "?tab=table&time=latest")
   
   links <- xml2::read_html(urlOWID) |>
@@ -57,9 +57,9 @@ scrape_OWID <- function(indicator, df, indName="indicator"){
   
   json_urls <- grep("json$", all_urls, value = TRUE)
   dfOWID <- df
-  for (i in seq(1, length(json_urls), 2)) {
-    data <- fromJSON(json_urls[i])|> data.frame()
-    meta <- fromJSON(json_urls[i+1])
+  if (firstOnly) {
+    data <- fromJSON(json_urls[1])|> data.frame()
+    meta <- fromJSON(json_urls[2])
     
     data <- data |> 
       left_join(meta$dimensions$entities$values, join_by(entities == id)) |> 
@@ -84,12 +84,44 @@ scrape_OWID <- function(indicator, df, indName="indicator"){
       select(values, code) |> 
       rename(!!col_name := values, iso3c := code) |> 
       right_join(dfOWID, join_by(iso3c == iso3c))
+  } else {
+    for (i in seq(1, length(json_urls), 2)) {
+      data <- fromJSON(json_urls[i])|> data.frame()
+      meta <- fromJSON(json_urls[i+1])
+      
+      data <- data |> 
+        left_join(meta$dimensions$entities$values, join_by(entities == id)) |> 
+        slice_max(years) |>
+        filter(name %in% euMember) 
+      
+      meanValue <- data$values |> mean()
+      year <- data$years |> max()
+      
+      data <- data |>
+        rbind(c(
+          meanValue,
+          year,
+          0,
+          "European Union",
+          "EUU"
+        ))
+      
+      col_name <- str_split(str_split(meta$name, pattern = " \\(%")[[1]][1], pattern = " ")[[1]][1]
+      
+      dfOWID <- data |> 
+        select(values, code) |> 
+        rename(!!col_name := values, iso3c := code) |> 
+        right_join(dfOWID, join_by(iso3c == iso3c))
+    }
   }
+  
   if (ncol(dfOWID) == 4) {
     names(dfOWID) <- c(indName, "iso3c", "iso2c", "country")
   }
   dfOWID
 }
+
+
 
 # OWID Crawlen -----------------------------------------------------
 
@@ -118,8 +150,8 @@ df_landerpapiere <- data.frame(
 
 df_landerpapiere <- scrape_OWID("share-elec-by-source", df_landerpapiere) |> 
           left_join(scrape_OWID("per-capita-ghg-emissions", df_landerpapiere, indName="coCap")[, c("coCap", "iso3c")], by = "iso3c") |> 
-          left_join(scrape_OWID("military-spending-as-a-share-of-gdp-sipri", df_landerpapiere, indName="milPerc")[, c("milPerc", "iso3c")], by = "iso3c") |> 
-          left_join(scrape_OWID("gdp-per-capita-worldbank", df_landerpapiere, indName="gdpCap")[, c("gdpCap", "iso3c")], by = "iso3c") |> 
+          left_join(scrape_OWID("military-spending-as-a-share-of-gdp-sipri", df_landerpapiere, indName="milPerc", firstOnly = T)[, c("milPerc", "iso3c")], by = "iso3c") |> 
+          left_join(scrape_OWID("gdp-per-capita-worldbank", df_landerpapiere, indName="gdpCap", firstOnly = T)[, c("gdpCap", "iso3c")], by = "iso3c") |> 
           left_join(scrape_OWID("gdp-worldbank", df_landerpapiere, indName="gdp")[, c("gdp", "iso3c")], by = "iso3c") |> 
           left_join(scrape_OWID("population", df_landerpapiere, indName="totPop")[, c("totPop", "iso3c")], by = "iso3c") |>
           left_join(scrape_OWID("refugee-population-by-country-or-territory-of-asylum", df_landerpapiere, indName="refPop")[, c("refPop", "iso3c")], by = "iso3c") |>
