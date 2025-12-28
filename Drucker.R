@@ -59,6 +59,7 @@ body <- dashboardBody(
           width = 12,
           selectInput("topic", "Thema:",
                       choices = c("Green Deal", "Asyl", "Armee"),
+<<<<<<< HEAD
                       selected = "Armee"),
           selectInput("city", "Stadt:",
                       choices = c("Coburg", "München", "Nürnberg", "Passau", "Ulm"),
@@ -68,6 +69,17 @@ body <- dashboardBody(
           selectInput("resPath", "Zielordner:",
                       choices = c("Coburg", "München", "Nürnberg", "Passau", "Ulm"),
                       selected = "Nürnberg")
+=======
+                      selected = "Asyl"),
+          selectInput("city", "Stadt:",
+                      choices = c("München", "Nürnberg"),
+                      selected = "München"),
+          # textInput("city", "Stadt:", value = "München"),
+          dateInput("date", "Datum:", format = "dd.mm.yyyy", language = "de", weekstart = 1),
+          selectInput("resPath", "Zielordner:",
+                      choices = c("München", "Nürnberg"),
+                      selected = "München")
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
           # textInput("resPath", "Zielordner:", "Results")
         )
       )
@@ -80,11 +92,19 @@ body <- dashboardBody(
           width = 12,
           selectInput("localSup", "Lokale Unterstützung:",
                       choices = c("das Europe Direct München", "das Europe Direct Nürnberg"),
+<<<<<<< HEAD
                       selected = "das Europe Direct Nürnberg"),
           # textInput("localSup", "Lokale Unterstützung:", "das Europe Direct München"),
           selectInput("sponsor", "Sponsor:",
                       choices = c("die Stadt München", "die Stadt Nürnberg"),
                       selected = "die Stadt Nürnberg"),
+=======
+                      selected = "das Europe Direct München"),
+          # textInput("localSup", "Lokale Unterstützung:", "das Europe Direct München"),
+          selectInput("sponsor", "Sponsor:",
+                      choices = c("die Stadt München", "die Stadt Nürnberg"),
+                      selected = "die Stadt München"),
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
           # textInput("sponsor", "Sponsor:", "die Stadt München"),
           textInput("jefvorsitz", "Vorsitz JEF Bayern:", value = "Farras Fathi"),
           selectInput("gender", "Geschlecht Vorsitz JEF Bayern", choices = c("M", "W"), selected = "M")
@@ -115,6 +135,7 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 4,
+<<<<<<< HEAD
           # selectInput("pol", "Politiker:",
                       # choices = c("Maria Noichl", ""),
                       # selected = "Maria Noichl"),
@@ -139,6 +160,32 @@ body <- dashboardBody(
           textInput("leit_renew", "Leitung Renew:", value = "Antonia"),
           textInput("leit_green", "Leitung Grüne:", value = "Niels"),
           textInput("leit_pfe", "Leitung PfE:", value = "Linus")
+=======
+          selectInput("pol", "Politiker:",
+                      choices = c("Maria Noichl", "Monika Hohlmeier"),
+                      selected = "Maria Noichl"),
+          # textInput("pol", "Politiker:", value = "Maria Noichl"),
+          textInput("pol_office", "Politiker (Amt):", value = "Mitglied des Europäischen Parlaments"),
+          selectInput("stadtvert", "Stadtvertreter:",
+                      choices = c("Florian Kraus", "Dr. Andrea Heilmaier"),
+                      selected = "Florian Kraus"),
+          # textInput("stadtvert", "Stadtvertreter:", value = "Florian Kraus"),
+          selectInput("stadtvert_office", "Stadtvertreter (Amt):",
+                      choices = c("Stadtschulrat", "Wirtschafts- und Wissenschaftsreferentin"),
+                      selected = "Stadtschulrat"),
+          # textInput("stadtvert_office", "Stadtvertreter (Amt):", value = "Stadtschulrat"),
+          selectInput("location", "Veranstaltungsort:",
+                      choices = c("im Bayerischen Landtag", "im Nürnberger Rathaus"),
+                      selected = "im Bayerischen Landtag")
+        ),
+        box(
+          width = 4,
+          textInput("leit_evp", "Leitung EVP:", value = "Linus"),
+          textInput("leit_sd", "Leitung S&D:", value = "Christoph"),
+          textInput("leit_renew", "Leitung Renew:", value = "Marco"),
+          textInput("leit_green", "Leitung Grüne:", value = "Katharina"),
+          textInput("leit_pfe", "Leitung PfE:", value = "Franz")
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
         ),
         box(
           width = 4,
@@ -315,7 +362,11 @@ server <- function(input, output, session) {
         xlPath <- paste0("Daten/SuS/", excel)
         for (sheet in excel_sheets(xlPath)) {
           df_xlsx <- read_excel(xlPath, sheet = sheet)
+<<<<<<< HEAD
           write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE, fileEncoding = "UTF-8", quote = FALSE)
+=======
+          write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
           {sink("LaTeX/Meta/var.tex")
             paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
             sink()}
@@ -364,6 +415,7 @@ server <- function(input, output, session) {
       }
       
       susFrakLand <- get_sus_dist(input$numSuS)
+<<<<<<< HEAD
       
       # Process PDF combinations in batches to avoid "Too many open files" error
       batch_size <- 10  # Process 10 students at a time
@@ -436,6 +488,20 @@ server <- function(input, output, session) {
           }
         }
       }
+=======
+      pdf_order <- c()
+      
+      for (group in susFrakLand |> names()) {
+        for (member in susFrakLand[[group]]) {
+          pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Fraktionspapier_", group,".pdf"))
+          pdf_order <- append(pdf_order, paste0("LaTeX/Gesetzesentwürfe/Entwurf_", input$topic, ".pdf"))
+          pdf_order <- append(pdf_order, paste0(input$resPath, "/Einzeldokumente/Länderpapier_", member,".pdf"))
+        }
+      }
+      
+      pdf_combine(input = pdf_order,
+                  output = paste0(input$resPath, "/Schülerunterlagen_SimEP.pdf"))
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
       
       for (suffix in c("aux", "log", "out", "nav", "toc", "gz", "snm")) {
         move_temp_files("temp", suffix)
@@ -451,7 +517,11 @@ server <- function(input, output, session) {
       xlPath <- paste0("Daten/SuS/", input$tnListPath, ".xlsx")
       for (sheet in excel_sheets(xlPath)) {
         df_xlsx <- read_excel(xlPath, sheet = sheet)
+<<<<<<< HEAD
         write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE, fileEncoding = "UTF-8", quote = FALSE)
+=======
+        write.csv(df_xlsx, paste0("Daten/SuS/", sheet, ".csv"), row.names = FALSE)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
         {sink("LaTeX/Meta/var.tex")
         paste0("\\newcommand\\klasse{", sheet, "}\n") |> cat()
         sink()}

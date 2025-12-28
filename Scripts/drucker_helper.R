@@ -50,6 +50,7 @@ dhondt <- function (parties, votes, n_seats){
   }
 }
 
+<<<<<<< HEAD
 
 get_sus_dist <- function(numSuS, landDist = T){
   if (landDist) {
@@ -69,6 +70,37 @@ get_sus_dist <- function(numSuS, landDist = T){
     partyDist <- dhondt(parties = df_caucus$party,
                         votes = df_caucus$total,
                         n_seats = numSuS)
+=======
+get_sus_dist <- function(numSuS, landDist = T){
+  
+  df_caucus <- read.csv("Daten/caucus_data.csv")
+  df_caucus$party <- df_caucus$party |> sapply(translate_latex)
+  
+  partyDist <- dhondt(parties = df_caucus$party,
+                      votes = df_caucus$total,
+                      n_seats = numSuS)
+  if (landDist) {
+    countDist <- dhondt(parties = countries,
+                        votes = rep(1, length(countries)),
+                        n_seats = numSuS)
+    
+    listDist <- vector(mode = "list", length = 5)
+    names(listDist) <- groupsEP
+    
+    while (countDist$SEATS |> sum() > 0) {
+      party <- partyDist[which.max(partyDist$SEATS),] |> pull(PARTY)
+      partyDist[partyDist$PARTY == party, "SEATS"] <- partyDist[partyDist$PARTY == party, "SEATS"] - 1
+      countryCandid <- countDist |> filter(SEATS == max(countDist$SEATS)) |> pull(PARTY)
+      country <- sample(countryCandid, 1)
+      listDist[[party]][[length(listDist[[party]]) + 1]] <- country
+      countDist[countDist$PARTY == country, "SEATS"] <- countDist[countDist$PARTY == country, "SEATS"] - 1
+    }
+    
+    listDist <- lapply(listDist, unlist)
+    listDist <- listDist[order(sapply(listDist, length), decreasing = T)]
+    listDist
+  } else {
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
     partyDist |> arrange(desc(SEATS)) |> rename(SuS = SEATS,
                                                 Fraktion = PARTY)
   }

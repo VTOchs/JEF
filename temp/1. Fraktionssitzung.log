@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  22 DEC 2025 16:12
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  23 MAY 2025 00:06
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1073,6 +1077,7 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \dtlrows@caucus=\count394
 \dtlcols@caucus=\count395
 
+<<<<<<< HEAD
 ! Undefined control sequence.
 <argument> \Fraktion 
                      
@@ -1151,6 +1156,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 No file "1. Fraktionssitzung".aux.
+=======
+(1. Fraktionssitzung.aux)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 \openout1 = `"1. Fraktionssitzung.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 439.
@@ -1171,6 +1179,10 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 439.
 LaTeX Font Info:    ... okay on input line 439.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 439.
 LaTeX Font Info:    ... okay on input line 439.
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1240,6 +1252,10 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 439.
+<<<<<<< HEAD
+=======
+ (1. Fraktionssitzung.out) (1. Fraktionssitzung.out)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 \@outlinefile=\write6
 \openout6 = `"1. Fraktionssitzung.out"'.
 
@@ -1322,6 +1338,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+<<<<<<< HEAD
 
 No file "1. Fraktionssitzung".nav.
 ! Undefined control sequence.
@@ -1385,15 +1402,29 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 <../Logos/jef.png, id=12, 794.97pt x 270.38014pt>
+=======
+ (1. Fraktionssitzung.nav)
+<Bilder/EVP.png, id=12, 475.7775pt x 234.8775pt>
+File: Bilder/EVP.png Graphic file (type png)
+<use Bilder/EVP.png>
+Package pdftex.def Info: Bilder/EVP.png  used on input line 440.
+(pdftex.def)             Requested size: 85.35312pt x 42.13634pt.
+<../Logos/jef.png, id=13, 794.97pt x 270.38014pt>
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 440.
 (pdftex.def)             Requested size: 83.65019pt x 28.45056pt.
+<<<<<<< HEAD
 <../Logos/simep.png, id=14, 376.40625pt x 376.40625pt>
+=======
+<../Logos/simep.png, id=15, 376.40625pt x 376.40625pt>
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 440.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 <../Logos/finance_Nürnberg.png, id=15, 1195.46625pt x 614.295pt>
 File: ../Logos/finance_Nürnberg.png Graphic file (type png)
 <use ../Logos/finance_Nürnberg.png>
@@ -1436,6 +1467,27 @@ LaTeX Font Info:    Trying to load font information for U+msa on input line 452
 .
 
 (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+=======
+<../Logos/finance_München.png, id=16, 773.89125pt x 131.49126pt>
+File: ../Logos/finance_München.png Graphic file (type png)
+<use ../Logos/finance_München.png>
+Package pdftex.def Info: ../Logos/finance_München.png  used on input line 440.
+
+(pdftex.def)             Requested size: 85.35266pt x 14.5022pt.
+<../Logos/München.png, id=17, 210.7875pt x 44.41594pt>
+File: ../Logos/München.png Graphic file (type png)
+<use ../Logos/München.png>
+Package pdftex.def Info: ../Logos/München.png  used on input line 440.
+(pdftex.def)             Requested size: 85.35881pt x 17.98631pt.
+ [1
+
+{C:/Users/Admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Bilder/EVP
+.png> <../Logos/jef.png> <../Logos/simep.png> <../Logos/finance_München.png> <
+../Logos/München.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 452
+.
+ (C:\Users\Admin\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 452
@@ -1452,6 +1504,7 @@ erncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
+<<<<<<< HEAD
 ! Undefined control sequence.
 \beamer@doifinframe ...Vorstellung \Fraktionsname 
                                                   \item Vorstellung und Besp...
@@ -1463,6 +1516,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 452.
@@ -1471,7 +1526,11 @@ File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 452.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 [2
+=======
+ [2
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 
 ]
 File: ../Logos/jef.png Graphic file (type png)
@@ -1496,7 +1555,11 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 471.
  [4
 
 ]
+<<<<<<< HEAD
 <Bilder/EP_seats.jpg, id=134, 730.22812pt x 728.7225pt>
+=======
+<Bilder/EP_seats.jpg, id=136, 730.22812pt x 728.7225pt>
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: Bilder/EP_seats.jpg Graphic file (type jpg)
 <use Bilder/EP_seats.jpg>
 Package pdftex.def Info: Bilder/EP_seats.jpg  used on input line 482.
@@ -1516,6 +1579,7 @@ Overfull \vbox (10.82423pt too high) detected at line 482
 [5
 
  <./Bilder/EP_seats.jpg>]
+<<<<<<< HEAD
 ! Undefined control sequence.
 <argument> \mentiLink 
                       
@@ -1546,6 +1610,8 @@ and I'll forget about whatever was undefined.
 Package hyperref Warning: Suppressing link with empty target on input line 490.
 
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 490.
@@ -1554,6 +1620,7 @@ File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 490.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 ! Undefined control sequence.
 \insertframetitle ->{\Fraktionsname 
                                     \ifnum \beamer@autobreakcount >0 \relax ...
@@ -1935,6 +2002,26 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+=======
+ [6
+
+]
+<Bilder/rep1_EVP.jpg, id=191, 114.8215pt x 145.21542pt>
+File: Bilder/rep1_EVP.jpg Graphic file (type jpg)
+<use Bilder/rep1_EVP.jpg>
+Package pdftex.def Info: Bilder/rep1_EVP.jpg  used on input line 517.
+(pdftex.def)             Requested size: 44.99394pt x 56.9055pt.
+<Bilder/rep2_EVP.jpg, id=192, 289.08pt x 361.35pt>
+File: Bilder/rep2_EVP.jpg Graphic file (type jpg)
+<use Bilder/rep2_EVP.jpg>
+Package pdftex.def Info: Bilder/rep2_EVP.jpg  used on input line 517.
+(pdftex.def)             Requested size: 45.52151pt x 56.9055pt.
+<Bilder/rep3_EVP.jpg, id=193, 114.8215pt x 145.21542pt>
+File: Bilder/rep3_EVP.jpg Graphic file (type jpg)
+<use Bilder/rep3_EVP.jpg>
+Package pdftex.def Info: Bilder/rep3_EVP.jpg  used on input line 517.
+(pdftex.def)             Requested size: 44.99394pt x 56.9055pt.
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 517.
@@ -1943,6 +2030,7 @@ File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 517.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 ! Undefined control sequence.
 \insertframetitle ->{\Fraktionsname 
                                     \ifnum \beamer@autobreakcount >0 \relax ...
@@ -1968,6 +2056,15 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+=======
+
+Overfull \vbox (0.97711pt too high) detected at line 517
+ []
+
+[7
+
+ <./Bilder/rep1_EVP.jpg> <./Bilder/rep2_EVP.jpg> <./Bilder/rep3_EVP.jpg>]
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 522.
@@ -1976,6 +2073,7 @@ File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 522.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 ! Undefined control sequence.
 \insertframetitle ->{\Fraktionsname 
                                     \ - Leitlinien\ifnum \beamer@autobreakco...
@@ -1986,10 +2084,13 @@ of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 
 [8
 
 ]
+<<<<<<< HEAD
 ! Undefined control sequence.
 \beamer@doifinframe ... } \vspace {-1.5cm} \goals 
                                                   \end {beamer@frameslide}
@@ -2001,6 +2102,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 527.
@@ -2009,6 +2112,7 @@ File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 527.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 ! Undefined control sequence.
 \insertframetitle ->{\Fraktionsname 
                                     \ - \Thema \ifnum \beamer@autobreakcount...
@@ -2034,6 +2138,11 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+=======
+ [9
+
+]
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 File: ../Logos/jef.png Graphic file (type png)
 <use ../Logos/jef.png>
 Package pdftex.def Info: ../Logos/jef.png  used on input line 537.
@@ -2042,7 +2151,11 @@ File: ../Logos/simep.png Graphic file (type png)
 <use ../Logos/simep.png>
 Package pdftex.def Info: ../Logos/simep.png  used on input line 537.
 (pdftex.def)             Requested size: 42.67412pt x 42.67412pt.
+<<<<<<< HEAD
 [10
+=======
+ [10
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 
 ]
 File: ../Logos/jef.png Graphic file (type png)
@@ -2087,11 +2200,16 @@ Package pdftex.def Info: ../Logos/simep.png  used on input line 567.
 \tf@snm=\write9
 \openout9 = `"1. Fraktionssitzung.snm"'.
 
+<<<<<<< HEAD
  [14] (1. Fraktionssitzung.aux)
+=======
+ (1. Fraktionssitzung.aux)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
+<<<<<<< HEAD
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
@@ -2116,12 +2234,26 @@ Here is how much of TeX's memory you used:
  566248 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,419b,804s stack positions out of 10000i,1000n,20000p,200000b,200000s
+=======
+Package rerunfilecheck Info: File `"1. Fraktionssitzung".out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 30664 strings out of 474486
+ 604916 string characters out of 5743756
+ 1938542 words of memory out of 5000000
+ 52301 multiletter control sequences out of 15000+600000
+ 565724 words of font info for 63 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 128i,14n,123p,419b,775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 <C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmss10.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmss12.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmss17.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/Admin/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/Admin/AppData/Local/P
+<<<<<<< HEAD
 rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/Admin/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Ad
 min/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pf
@@ -2131,4 +2263,12 @@ PDF statistics:
  417 PDF objects out of 1000 (max. 8388607)
  27 named destinations out of 1000 (max. 500000)
  74 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+rograms/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on "1. Fraktionssitzung.pdf" (13 pages, 1082825 bytes).
+PDF statistics:
+ 410 PDF objects out of 1000 (max. 8388607)
+ 27 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 

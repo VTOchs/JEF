@@ -14,13 +14,17 @@ library(xml2)
 pres_of_EP <- "Roberta Metsola"
 
 # manuelles Übersetzen der Ländernamen
+<<<<<<< HEAD
 # zweimal Tschechien/Tschechische Rep.
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 translation_data_country <- data.frame(
   en = c("Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Czechia", "Denmark", "Estonia",
          "European Union", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia",
           "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden"),
   de = c("Österreich", "Belgien", "Bulgarien", "Kroatien", "Zypern", "Tschechien", "Tschechien", "Dänemark", "Estland",
          "Europäische Union", "Finnland", "Frankreich", "Deutschland", "Griechenland", "Ungarn", "Irland", "Italien", "Lettland",
+<<<<<<< HEAD
           "Litauen", "Luxemburg", "Malta", "Niederlande", "Polen", "Portugal", "Rumänien", "Slowakei", "Slowenien", "Spanien", "Schweden"),
   iso = c("AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "CZE", "DNK", "EST", "EUU", "FIN", "FRA", "DEU", "GRC",
           "HUN", "IRL", "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE")
@@ -28,6 +32,12 @@ translation_data_country <- data.frame(
 
 translate_country <- function(country, source = "en", target = "de"){
   translation_data_country[translation_data_country[,source] == country, target]
+=======
+          "Litauen", "Luxemburg", "Malta", "Niederlande", "Polen", "Portugal", "Rumänien", "Slowakei", "Slowenien", "Spanien", "Schweden")
+)
+translate_country <- function(country){
+  translation_data_country[translation_data_country$en == country, "de"]
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 }
 
 translation_data_rank <- data.frame(
@@ -75,6 +85,7 @@ df_all <- url_seats |>
           .[[1]] %>%
           html_table()
 
+<<<<<<< HEAD
 # get the parties which are present in each member state
 # to ensure only proper country-party combinations
 party_per_country <- !df_all |> select(-c(Land, NI, insgesamt)) |> is.na() |> as.data.frame()
@@ -111,6 +122,8 @@ for (party in colnames(party_per_country)) {
 saveRDS(listTC, "Daten/country_party.rds")
 
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 # get Rank of each Caucus
 caucus_seats <- df_all |>
                   filter(Land != "EU") |>
@@ -191,9 +204,12 @@ df_caucus <- merge(df_caucus, df_ranks, by = "party")
 
 write_csv(df_caucus, "Daten/caucus_data.csv", quote = "none")
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 # Committees --------------------------------------------------------------
 
 translation_data_group <- data.frame(

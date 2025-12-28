@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  22 JUL 2025 21:20
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.2.2)  21 MAY 2025 22:37
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -634,7 +638,11 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks61
 \inpenc@posthook=\toks62
 )
+<<<<<<< HEAD
 (Meta/var.tex) (Meta/shinyin.tex)
+=======
+(Meta/shinyin.tex)
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 \dtldb@class=\toks63
 \dtlkeys@class=\toks64
 \dtlrows@class=\count335
@@ -754,6 +762,7 @@ G,.JBIG2,.JB2,.eps]
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
+<<<<<<< HEAD
 
 ! Package datatool Error: Can't assign \surname : there is no key `Nachname' in
  data base `class'.
@@ -769,6 +778,8 @@ command, so I can't give any explicit help.
 Pretend that you're Hercule Poirot: Examine all clues,
 and deduce the truth by order and method.
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 <Logos/signature.png, id=4, 355.3275pt x 219.82124pt>
 File: Logos/signature.png Graphic file (type png)
 <use Logos/signature.png>
@@ -780,12 +791,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--110
  []
 
 
+<<<<<<< HEAD
 Overfull \hbox (17.99207pt too wide) in paragraph at lines 110--110
 \OT1/cmr/m/n/10.95 Tamara,"Berkmiller" NULL hat an den Gruppendiskussionen in d
 en Fraktions- und Ausschusssitzungen
  []
 
 
+=======
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 Underfull \hbox (badness 10000) in paragraph at lines 110--110
 
  []
@@ -836,10 +850,17 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  17629 strings out of 474486
  343623 string characters out of 5743756
  1933542 words of memory out of 5000000
  39564 multiletter control sequences out of 15000+600000
+=======
+ 17635 strings out of 474486
+ 343633 string characters out of 5743756
+ 1933542 words of memory out of 5000000
+ 39573 multiletter control sequences out of 15000+600000
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
  562083 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,9n,93p,663b,781s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -850,7 +871,11 @@ blic/amsfonts/cm/cmr12.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Admin/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Admin/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+<<<<<<< HEAD
 Output written on TN-Zertifikat.pdf (1 page, 477086 bytes).
+=======
+Output written on TN-Zertifikat.pdf (1 page, 476125 bytes).
+>>>>>>> a7b0bb142dce7a83abb091924986f0d7a17e3b8b
 PDF statistics:
  49 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
